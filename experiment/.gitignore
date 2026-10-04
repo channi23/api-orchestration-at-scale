@@ -1,0 +1,6 @@
+dataset/upstream/
+representations/tscg/node_modules/
+models/
+__pycache__/
+*.pyc
+runs/*/server.log

@@ -1,0 +1,635 @@
+# Frozen tool-pool review log (v1). Format:
+#   rank|A|tool_name|family|task_suitable(1/0)|description
+#   rank|R|REJECT_CODE
+# Reviewed strictly in rank order of dataset/pool_candidates.jsonl. Rules: config/experiment.json pool.review_rules
+0|A|record_channel_transactions|transaction_volume_report|1|Record the number of completed transactions for a user contact channel over a reporting period.
+1|R|OPAQUE
+2|A|create_calendar_event|calendar_event|1|Create a calendar event with a title, start and end time, and location.
+3|R|OPAQUE
+4|A|flag_race_condition_record|manifest_failure_record|1|Record a processing-manifest payload marking a record that failed because of a race condition.
+5|A|calculate_area|area_calculation|0|Calculate the area of a geometric shape from its dimensions.
+6|A|respond_permission_request|permission_response|1|Respond to a permission creation request by accepting or declining it.
+7|A|search_jobs|job_search|1|Search job listings by keywords, location, and salary range.
+8|A|reserve_charging_connector|ev_charging_reservation|1|Reserve an electric-vehicle charging connector for an ID tag until an expiry date.
+9|R|OPAQUE
+10|A|create_targeting_auxiliary|content_auxiliary|1|Define a content-targeting auxiliary with an identifier, a short UID, and a name.
+11|R|NO_USER_VALUES
+12|A|set_shipment_address|shipping_address|1|Specify the sender or recipient address for a shipment.
+13|R|OPAQUE
+14|A|generate_password|password_generation|1|Generate a random password of a given length with optional character classes.
+15|A|configure_bidding_engine|ad_engine_config|1|Configure an ad bidding engine with its demand-side platform endpoints, log level, and port.
+16|R|OPAQUE
+17|A|generate_invoice|invoice|1|Generate an invoice for a customer listing purchased items with quantities and prices.
+18|A|search_hotels|hotel_search|1|Search for available hotels in a location for given check-in and check-out dates.
+19|A|report_build_status|ci_build_status|1|Report the result of a continuous-integration build for a repository branch and commit.
+20|R|OPAQUE
+21|A|create_ami_manifest|ami_manifest|1|Create a manifest for an instance-store machine image, specifying the storage bucket and credentials.
+22|A|record_award_applications|award_application_stats|1|Record how many award applications reached a given completion stage during a reporting period.
+23|A|set_annotation_filter|annotation_filter|1|Configure which annotation names to include or exclude, optionally treating names as regular expressions.
+24|A|register_push_token|push_token|1|Register a device's push-notification registration token.
+25|A|set_smart_light|smart_light|1|Set the name, brightness level, and on/off state of a smart light.
+26|R|NO_USER_VALUES
+27|R|OPAQUE
+28|A|register_ca_bundle|ca_bundle|1|Register a certificate-authority bundle with a name, status, and description.
+29|R|NO_USER_VALUES
+30|A|embed_youtube_video|video_embed|1|Embed a YouTube video using its embed URL.
+31|A|search_news|news_search|1|Search news articles by keywords, source, and publication date range.
+32|R|SEMANTIC_DUPLICATE
+33|R|TOY
+34|A|define_resource_spec|compute_resource_spec|1|Define the hardware specification of a computing resource for a date range.
+35|A|record_security_holding|portfolio_holding|1|Record a portfolio holding of a security with its quantity, price, and market value.
+36|A|define_search_field|search_layer_field|1|Define an attribute field used in a map search-layer configuration.
+37|R|OPAQUE
+38|A|configure_dcos_cli|dcos_config|1|Configure the cluster command-line client's connection, timeout, and output settings.
+39|R|OPAQUE
+40|A|add_call_to_action|cta_link|1|Add a call-to-action link with its text, target URL, and button style.
+41|R|NO_USER_VALUES
+42|A|record_temperature_event|temperature_event|1|Record a temperature reading event in degrees Fahrenheit.
+43|R|OPAQUE
+44|A|track_alias_event|identity_alias|1|Record a user-identity alias event linking a previous user ID to a new one.
+45|R|TOY
+46|A|calculate_distance|distance_calculation|1|Calculate the distance between two geographic coordinates.
+47|A|attach_step_image|step_image|1|Attach an image, given its local filename and alt text, to a presentation step.
+48|A|create_category|category|1|Create a category with a URL-safe identifier and a title.
+49|A|add_ui_library|ui_library_setup|1|Add the UI component library to a project with selected themes and optional gesture support.
+50|R|NO_USER_VALUES
+51|A|schedule_meeting|calendar_event|1|Schedule a meeting with a title, participants, and start and end times.
+52|A|set_server_address|app_server_config|1|Set the host name and port on which the application runs.
+53|R|OPAQUE
+54|A|set_service_exposure|service_exposure|1|Record a deployed service by ID and whether it is exposed to the outside world.
+55|R|OPAQUE
+56|A|calculate_mortgage_payment|loan_payment|1|Calculate the monthly mortgage payment for a property purchase.
+57|R|OPAQUE
+58|R|TOY
+59|A|create_home_variable|home_variable|1|Create a home-automation controller variable with a name, a value, and optional predefined values.
+60|A|set_visitor_dimension|visitor_dimension|1|Attach an experimentation visitor-dimension context with a dimension ID and value.
+61|A|create_poll|poll|1|Create a poll with a question, answer options, and an end time.
+62|A|set_color_modulation|color_modulation|1|Configure color modulation for rendering points from an attribute field and a value range.
+63|R|SEMANTIC_DUPLICATE
+64|R|OPAQUE
+65|A|record_device_identity|device_identity|1|Record device and consumer recognition data, including bot, incognito, proxy, and Tor flags.
+66|R|OPAQUE
+67|R|TOY
+68|A|create_api_resource|api_resource|1|Create a REST API resource path segment under a parent resource.
+69|R|TOY
+70|A|set_temporal_filter|temporal_filter|1|Configure a camera's temporal mean filter by the number of images to average.
+71|R|TOY
+72|R|NO_USER_VALUES
+73|A|submit_rpc_job|rpc_job|1|Submit a remote procedure call job to the computers matching a database query.
+74|A|create_booking_resource|booking_resource|1|Create a bookable resource for a school with a display color and a moderation setting.
+75|A|calculate_tax|tax_calculation|1|Calculate income tax from an annual income and a set of tax brackets.
+76|A|update_notification_state|notification_state|1|Confirm or finish a notification in the notification center.
+77|R|TOY
+78|A|set_ad_adapter_params|ad_adapter_params|1|Set the publisher ID and placement for an advertising bid adapter.
+79|A|search_restaurants|restaurant_search|1|Search for restaurants by location, cuisine, and price range.
+80|A|record_video_metadata|video_metadata|1|Record technical metadata extracted from a video file, such as frame size, duration, and audio sample rate.
+81|A|calculate_shipping_cost|shipping_cost|1|Calculate the shipping cost of a package from its weight and dimensions.
+82|A|configure_elasticsearch_storage|search_storage_config|1|Configure an Elasticsearch storage target for failed events.
+83|R|OPAQUE
+84|A|track_exception|exception_tracking|1|Record an application exception hit with a description and whether it was fatal.
+85|R|TOY
+86|A|record_procurement_outcome|procurement_outcome|1|Record the outcome of a procurement award, including its value, the awarding organisation, and contract dates.
+87|A|export_device_query|device_query|1|Query devices by tags or by IDs and store the results at a result path.
+88|A|track_share_event|share_event|1|Record a content share event with the content type, item ID, and share method.
+89|R|NO_USER_VALUES
+90|R|OPAQUE
+91|A|register_function_extensions|function_extensions|1|Register installed serverless-function extensions by name, type name, and assembly path hint.
+92|R|NO_USER_VALUES
+93|A|create_content_reference|content_reference|1|Create a reference to external content that a provider resolves by ID.
+94|A|record_social_post|social_post|1|Record a social media post with its text, author, timestamp, and engagement counts.
+95|A|create_load_test|load_test|1|Create a load-testing script with a target, an arrival mode, and test scenarios.
+96|A|create_appliance_variable|appliance_variable|1|Create a network-appliance variable with its type, scope, expiry, and overflow behaviour.
+97|A|post_release_comment|release_comment|1|Post a comment message on a software release.
+98|R|NO_USER_VALUES
+99|A|set_visible_layer|visible_layer|1|Mark a map layer, and optionally specific sublayers, as visible in a slide.
+100|A|select_country|country_selection|1|Select a Central American country.
+101|R|OPAQUE
+102|A|set_full_name|person_name|1|Set a person's first name, optional middle name, and last name.
+103|A|install_app_package|package_install|1|Install a package by name and version into an app, with optional settings.
+104|R|OPAQUE
+105|A|compute_bitwise_xor|bitwise_op|1|Compute the bitwise XOR of two or more numbers through a remote procedure call.
+106|R|OPAQUE
+107|R|TOY
+108|R|OPAQUE
+109|R|OPAQUE
+110|A|add_bazel_support|build_tool_setup|1|Add Bazel build support to a project, optionally skipping dependency installation.
+111|R|OPAQUE
+112|A|create_home_section|home_section|1|Create a named section in a home-automation controller with a display sort order.
+113|R|OPAQUE
+114|R|OPAQUE
+115|R|TOY
+116|R|SEMANTIC_DUPLICATE
+117|A|push_chart_update|chart_stream|1|Push new data series, each with a label and values, to a line-chart stream.
+118|A|attach_transaction_memo|transaction_memo|1|Attach a memo with a type, an encoding format, and data to a transaction.
+119|R|TOY
+120|A|generate_interface|code_generator|1|Generate a source-code interface file with a name, prefix, and type in a project.
+121|A|configure_notebook_service|notebook_config|1|Configure a notebook service and its Spark executor settings.
+122|A|add_contact_detail|contact_detail|1|Add a contact detail such as an email address, phone number, or postal address.
+123|A|track_email_bounce|email_bounce|1|Record an email bounce event with the recipient, reason, status, and message identifiers.
+124|R|OPAQUE
+125|R|SEMANTIC_DUPLICATE
+126|A|report_node_health|node_health|1|Report a cluster node's health status, host IP address, and role.
+127|A|record_business_licence|licence_record|1|Record a regulator-issued business or financial licence with its jurisdiction and classification.
+128|A|create_mesh_settings|mesh_asset|1|Create a mesh-settings asset that links a mesh asset path to a material asset path.
+129|R|NO_USER_VALUES
+130|R|OPAQUE
+131|R|TOY
+132|R|OPAQUE
+133|A|create_geo_path|geo_path|1|Create a named geographic path from a list of latitude and longitude points.
+134|R|TOY
+135|R|OPAQUE
+136|R|OPAQUE
+137|R|OPAQUE
+138|R|OPAQUE
+139|A|apply_selector_changes|selector_migration|1|Rename or remove component and directive selectors across a codebase.
+140|A|record_identifier|identifier|1|Record an issued identifier together with the identifier scheme it belongs to.
+141|A|create_festival_event|festival_event|1|Create a festival event with a UUID, an owner UUID, and a title.
+142|A|define_kill_chain_phase|kill_chain|1|Define a phase within a named cyber-attack kill chain.
+143|A|define_product_category|category|1|Define a product category with a name, an image URL, a description, and a display ordering.
+144|R|OPAQUE
+145|A|send_email|email_send|1|Send an email with a subject, message body, and optional attachments to a recipient.
+146|A|push_device_configuration|config_push|1|Push a configuration body to a device in a request message identified by message ID and configuration ID.
+147|R|NO_USER_VALUES
+148|A|set_analytics_general|analytics_general|1|Attach general analytics hit parameters such as the tracking ID, protocol version, and IP anonymization.
+149|A|save_album_info|album_info|1|Save information about a music album, including artist, title, URL, tracks, and tags.
+150|R|TOY
+151|A|create_place|place|1|Create a place with a name, a postal address, geographic coordinates, and links.
+152|R|OPAQUE
+153|R|NO_USER_VALUES
+154|A|create_game_variant|game_variant|1|Create a game variant entry with a name, description, icon URL, and content identifiers.
+155|A|record_intel_statement|intel_statement|1|Record an intelligence statement value with its credibility rating on the Admiralty scale.
+156|R|OPAQUE
+157|A|calculate_discounted_price|discount_calculation|1|Calculate discounted prices for a list of items given their original prices and discount percentages.
+158|R|OPAQUE
+159|R|SEMANTIC_DUPLICATE
+160|R|NO_USER_VALUES
+161|A|set_video_subtitles|video_subtitles|1|Set the subtitle tracks for a video, each with a format and URL, plus a transcription confidence.
+162|A|bind_cache_policy|cache_policy_binding|1|Bind a caching policy globally with a priority, a bind type, and evaluation settings.
+163|A|analyze_health_data|health_data|1|Analyze a series of timestamped health measurements.
+164|R|SEMANTIC_DUPLICATE
+165|R|TOY
+166|A|configure_chat_webhook|chat_webhook|1|Configure a chat webhook message with a service path, message text, and channel name.
+167|A|create_volume_type|volume_type|1|Create a block-storage volume type with a name and capability extra specs.
+168|A|create_auth_policy|auth_policy|1|Create an authentication policy with a name, a rule, and an action.
+169|R|TOY
+170|A|set_template_metadata|template_metadata|1|Set metadata for a configuration template, including target path, file permissions, and reload command.
+171|R|SEMANTIC_DUPLICATE
+172|A|create_team_user|user_account|1|Create a team user with a name, ID, email address, role, and active status.
+173|A|add_movie|movie|1|Add a movie with its title, rating, director, actors, and category.
+174|A|discover_fabric_devices|fabric_discovery|1|Discover a number of devices in a network fabric identified by UUID.
+175|A|register_quantum_backend|quantum_backend|1|Register a quantum computing backend with its name, qubit coupling map, basis gates, and simulator flags.
+176|R|OPAQUE
+177|R|NO_USER_VALUES
+178|A|track_screen_view|screen_view|1|Record a screen-view analytics hit for a named screen.
+179|A|submit_badge_list|badge_list|1|Submit a list of badge assertion URIs with their relative priorities.
+180|A|register_vendor_app|vendor_app|1|Register a vendor's public app with its app ID, vendor ID, and name.
+181|R|OPAQUE
+182|A|configure_camera_network|camera_network|1|Configure a camera's network settings: static IP address, subnet mask, gateway, and DHCP use.
+183|R|OPAQUE
+184|A|set_url_filter_params|url_filtering|1|Set URL-filtering database parameters such as the cloud host, update schedule, and database threads.
+185|A|send_node_commands|node_commands|1|Send a list of named commands with key-value parameters to a network node.
+186|A|calculate_carbon_footprint|carbon_footprint|1|Calculate the carbon footprint of a trip from distance, vehicle type, fuel efficiency, and occupancy.
+187|R|SEMANTIC_DUPLICATE
+188|R|SEMANTIC_DUPLICATE
+189|A|provision_demo_cluster|cluster_provisioning|1|Provision a demo container cluster with master and worker instance sizes, provider, RAM, vCPUs, and storage.
+190|R|NO_USER_VALUES
+191|R|OPAQUE
+192|R|OPAQUE
+193|R|OPAQUE
+194|A|import_geojson_namespace|geojson_import|1|Import a GeoJSON file as a namespace, choosing which feature property serves as the ID.
+195|R|OPAQUE
+196|R|OPAQUE
+197|A|update_note|note|1|Update a note's body text and associated tags.
+198|A|revoke_token|token_revoke|1|Revoke an OAuth access token or refresh token.
+199|R|OPAQUE
+200|A|configure_storefront_site|storefront_site|1|Configure a virtual-app storefront site with its name, store URL, receiver mode, and frame options.
+201|R|NO_USER_VALUES
+202|R|NO_USER_VALUES
+203|R|NO_USER_VALUES
+204|A|add_document_link|document_link|1|Add a link from the current document to an external resource with a relation type and HTTP method.
+205|R|OPAQUE
+206|A|enable_table_stream|table_stream|1|Enable a change stream on a database table with a chosen stream view type.
+207|A|submit_rssi_report|rssi_report|1|Submit a radio device's carrier RSSI measurement report with frequency, bandwidth, and RSSI values.
+208|A|track_uri_redirect|uri_redirect|1|Record a URI redirect passing through an event collector.
+209|A|record_revision|revision|1|Record revision information for an object, including revision ID, parent ID, branch, and editions.
+210|R|SEMANTIC_DUPLICATE
+211|A|calculate_gpa|gpa|1|Calculate a grade point average from a list of courses with grades and credits.
+212|A|configure_sprite_animation|sprite_animation|1|Configure a sprite animation with a name, start and end frames, frame rate, and looping.
+213|R|TOY
+214|A|register_locale_file|locale_file|1|Register an i18n locale file by its unique key and URL.
+215|R|SEMANTIC_DUPLICATE
+216|R|TOY
+217|A|contribute_ts_plugins|ts_plugin|1|Declare TypeScript server plugins contributed by an editor extension package.
+218|A|check_quote_subscription|quote_subscription|1|Check whether Level II quotes are subscribed for a security, by class code and security code.
+219|A|configure_log_viewer|log_viewer|1|Configure a log viewer with a message topic and a maximum in-memory buffer size.
+220|R|OPAQUE
+221|R|OPAQUE
+222|A|book_flight|flight_booking|1|Book a flight between two airports for a number of passengers on given dates.
+223|R|OPAQUE
+224|R|SEMANTIC_DUPLICATE
+225|R|OPAQUE
+226|A|register_docker_image|container_image|1|Register a container image with its ID, name, author, version, and customization script.
+227|A|manage_app_installs|package_install|1|Install and uninstall apps on a device by their short codes.
+228|A|request_order_disconnect|order_disconnect|1|Request that a seller disconnect an existing network service order.
+229|R|OPAQUE
+230|R|OPAQUE
+231|A|track_calories|calorie_tracking|1|Track calories from a list of consumed food items against a daily calorie target.
+232|R|NO_USER_VALUES
+233|R|OPAQUE
+234|A|attach_consent_document|consent_document|1|Attach a consent document context with its ID, version, name, and description.
+235|R|OPAQUE
+236|A|set_csv_location_fields|csv_location|1|Specify which CSV fields hold the latitude and longitude coordinates for a map layer.
+237|A|search_recipes_by_ingredients|recipe_search|1|Find recipes that use the available ingredients, with optional diet and preparation-time limits.
+238|A|assign_pantry_role|pantry_role|1|Assign a user a role (administrator, contributor, or viewer) in a food pantry.
+239|R|SEMANTIC_DUPLICATE
+240|R|OPAQUE
+241|R|OPAQUE
+242|A|configure_rate_throttle|rate_throttle|1|Throttle payloads to a maximum rate per minute and store the time since the last allowed payload.
+243|R|NO_USER_VALUES
+244|A|add_video_watermark|video_watermark|1|Add a watermark image from a storage bucket to a transcoded video, with size, position, and opacity.
+245|A|set_root_password_plugin|root_password|1|Set the root password in a machine-image plugin manifest.
+246|R|OPAQUE
+247|A|submit_order_addresses|order_billing|1|Submit billing and shipping details for a list of orders, including loyalty information.
+248|A|set_action_property|action_property|1|Apply an operation such as set, add, or toggle to a named property with a value.
+249|R|OPAQUE
+250|A|change_configuration|config_key_change|1|Change a charge-point configuration key to a new value.
+251|R|OPAQUE
+252|R|SEMANTIC_DUPLICATE
+253|R|OPAQUE
+254|R|OPAQUE
+255|R|TOY
+256|A|authorize_id_tag|id_tag_authorization|1|Authorize an RFID ID tag at a charging station.
+257|A|register_speaker|speaker|1|Register a conference speaker with name, email, slide status, rating, and tags.
+258|A|add_language|language_add|1|Add one or more languages to a project's translations.
+259|A|add_say_step|voice_step|1|Add a voice step that speaks a phrase in a chosen voice and language.
+260|A|create_course|course|1|Create a course with a title, start date, syllabus, credits, and schedule.
+261|R|OPAQUE
+262|R|OPAQUE
+263|R|OPAQUE
+264|R|SEMANTIC_DUPLICATE
+265|R|SEMANTIC_DUPLICATE
+266|A|track_product_impression|product_impression|1|Record an e-commerce product impression with product details, list position, and price.
+267|A|set_vulnerability_whitelist|vuln_whitelist|1|Whitelist specific CVEs with rationales and ignore vulnerabilities at or below a severity level.
+268|R|SEMANTIC_DUPLICATE
+269|R|OPAQUE
+270|A|set_date_time|date_time|1|Set a date and time from its individual components and a timezone.
+271|R|NO_USER_VALUES
+272|R|OPAQUE
+273|R|TOY
+274|A|create_shipping_label|shipping_label|1|Create a shipping label for a parcel with a chosen carrier, dimensions, and weight.
+275|R|OPAQUE
+276|R|OPAQUE
+277|A|publish_doc_package|doc_package|1|Publish documentation package metadata: title, version, authors, description, and pages.
+278|R|OPAQUE
+279|A|create_view_template|view_template|1|Create a view template with a name, a body, an optional layout ID, and view tags.
+280|A|define_observed_property|observed_property|1|Define a sensor observation property with a name, type, definition, and unit of measure where needed.
+281|R|NO_USER_VALUES
+282|R|NO_USER_VALUES
+283|R|OPAQUE
+284|A|configure_clinical_display_group|clinical_display|1|Configure how a clinical concept group is graphed, including graph type and whether it shares one axis.
+285|A|set_subscription|tag_subscription|1|Subscribe or unsubscribe to all updates or only to updates with specific tags.
+286|A|configure_webjob|webjob_settings|1|Configure a background web job's graceful shutdown time and singleton behaviour.
+287|A|configure_ldap_import|ldap_import|1|Configure how person records are imported by mapping directory attributes to display names and data types.
+288|R|OPAQUE
+289|A|define_keyframe|keyframe|1|Define an animation keyframe segment with a start value, start time, and bezier easing curves.
+290|A|track_app_event|app_event|1|Record a named app event with arbitrary attributes.
+291|R|TOY
+292|A|register_plugin_engine|plugin_engine|1|Register a plugin engine by UID with its manifest, URL prefix, and root URL.
+293|A|update_map_chart_points|map_chart_update|1|Update data points in place on a map chart, addressed by series and index.
+294|A|create_tenant|tenant|1|Create a tenant with an ID, a name, and a description.
+295|R|TOY
+296|R|TOY
+297|R|OPAQUE
+298|A|tag_named_entity|named_entity|1|Tag a named entity, such as a person, place, or organization, found in a piece of content.
+299|R|OPAQUE
+300|R|OPAQUE
+301|R|OPAQUE
+302|R|SEMANTIC_DUPLICATE
+303|R|OPAQUE
+304|R|OPAQUE
+305|R|OPAQUE
+306|A|track_push_message|push_message_event|1|Record a push-notification message event with its message text, action, and network.
+307|R|TOY
+308|R|OPAQUE
+309|A|configure_log_shipping_agent|log_agent|1|Configure a log-shipping agent with its log service host, dataspace, ingest token, and node resources.
+310|A|book_hotel|hotel_booking|1|Book a hotel room of a given type in a location for a number of guests and dates.
+311|R|NO_USER_VALUES
+312|R|OPAQUE
+313|A|create_app_descriptor|app_descriptor|1|Create an edge application descriptor with a manifest version, app information, and app type.
+314|R|NO_USER_VALUES
+315|A|bind_gamepad_axis|gamepad_binding|1|Bind one or more action UIDs to a gamepad axis change event.
+316|R|SEMANTIC_DUPLICATE
+317|R|SEMANTIC_DUPLICATE
+318|A|register_service_site|service_site|1|Register a service site with its address, coordinates, opening days and hours, and status.
+319|R|OPAQUE
+320|R|SEMANTIC_DUPLICATE
+321|R|TOY
+322|R|OPAQUE
+323|R|TOY
+324|R|SEMANTIC_DUPLICATE
+325|R|TOY
+326|R|SEMANTIC_DUPLICATE
+327|R|OPAQUE
+328|A|trigger_charger_message|charger_trigger|1|Ask a charge point to send a specific message, such as a heartbeat or a status notification.
+329|R|SEMANTIC_DUPLICATE
+330|R|OPAQUE
+331|R|TOY
+332|R|OPAQUE
+333|A|configure_ua_parser|enrichment_config|1|Enable or disable the user-agent parser enrichment.
+334|R|OPAQUE
+335|A|set_api_access_whitelist|api_access_whitelist|1|Set which URL patterns get access to the runtime API in a web application manifest.
+336|R|PII
+337|R|SEMANTIC_DUPLICATE
+338|R|OPAQUE
+339|R|OPAQUE
+340|A|respond_invitation|invitation_response|1|Accept or decline an invitation identified by an email address and an invitation token.
+341|R|OPAQUE
+342|R|OPAQUE
+343|R|OPAQUE
+344|A|update_firmware|firmware_update|1|Instruct a charge point to download and install firmware from a location at a given time, with retry settings.
+345|R|NO_USER_VALUES
+346|A|set_custom_dimension|custom_dimension|1|Set an analytics custom dimension value at a given index.
+347|A|add_employees|employee|1|Add employees, each with a name, a unit number, and a job title.
+348|R|SEMANTIC_DUPLICATE
+349|R|OPAQUE
+350|R|SEMANTIC_DUPLICATE
+351|R|TOY
+352|A|select_programming_language|language_selection|1|Select a programming language from a fixed list.
+353|A|create_api_stage|api_stage|1|Create a deployment stage for a REST API with optional cache cluster and stage variables.
+354|R|OPAQUE
+355|A|enable_integration|integration_toggle|1|Enable or disable a messaging integration such as a chat, SMS, or email provider.
+356|A|set_rgba_color|color|1|Set a color from red, green, blue, and alpha values.
+357|A|render_list_component|list_component|1|Render a list component as an ordered or unordered list of text items.
+358|A|invite_org_member|org_invite|1|Invite someone by email to an organization with a given role.
+359|R|OPAQUE
+360|R|SEMANTIC_DUPLICATE
+361|A|register_ui_customization_keys|ui_keys|1|Register a set of UI customization keys for a look-and-feel plugin.
+362|A|build_uri|uri_builder|1|Build a URI from its scheme, host, port, path, query, and fragment.
+363|R|OPAQUE
+364|A|configure_dimensioning_model|camera_model|1|Configure a camera dimensioning model with a name, a flow angle, and an object type.
+365|R|OPAQUE
+366|R|OPAQUE
+367|A|configure_ledger_servers|ledger_servers|1|Configure the list of ledger server URLs used by a REST gateway.
+368|R|SEMANTIC_DUPLICATE
+369|A|configure_webpack_transpiler|webpack_transpiler|1|Configure the mutation-testing webpack transpiler with a config file, a context, and silent mode.
+370|A|track_page_view|page_view|1|Record a web page view with its URL, path, title, referrer, and search string.
+371|R|NO_USER_VALUES
+372|R|OPAQUE
+373|R|OPAQUE
+374|R|OPAQUE
+375|R|TOY
+376|A|track_app_state_transition|app_state|1|Record an app state transition, such as a launch or backgrounding, with first-run and upgrade flags.
+377|R|SEMANTIC_DUPLICATE
+378|A|add_payment_card|payment_card|1|Add a payment card with cardholder name, card number, expiry month and year, and CVV.
+379|R|TOY
+380|R|SEMANTIC_DUPLICATE
+381|R|TOY
+382|R|SEMANTIC_DUPLICATE
+383|A|update_person_profile|person_profile|1|Update a person's contact details, availability, and notification preferences.
+384|R|OPAQUE
+385|R|OPAQUE
+386|A|configure_dynamodb_storage|dedupe_storage_config|1|Configure an Amazon DynamoDB table for duplicate-event tracking.
+387|R|NO_USER_VALUES
+388|A|create_group|group|1|Create a user group with a name.
+389|A|unsubscribe_from_list|tag_subscription|1|Unsubscribe a user's email from a mailing list identified by list ID or list code.
+390|A|track_transaction|ecommerce_transaction|1|Record an e-commerce transaction with its ID, revenue, shipping, tax, and currency.
+391|A|create_support_ticket|support_ticket|1|Create a support ticket for a school with a subject, description, category, and attachments.
+392|R|OPAQUE
+393|R|NO_USER_VALUES
+394|A|declare_rental_flags|rental_declaration|1|Declare annual rental-income flags: non-resident landlord status and shared rent-a-room income.
+395|A|set_content_owner|content_owner|1|Set the owning organization of a piece of content, including whether the content is sponsored.
+396|A|record_previous_company_name|company_name_history|1|Record a company's previous name with the dates it was used.
+397|A|configure_comments|comment_config|1|Configure commenting on content: whether it is allowed and displayed, moderation, and how many days it stays open.
+398|R|OPAQUE
+399|R|SEMANTIC_DUPLICATE
+400|R|SEMANTIC_DUPLICATE
+401|R|OPAQUE
+402|R|OPAQUE
+403|R|TOY
+404|A|update_reply_notification_settings|notification_settings|1|Update a user's settings for new-reply notifications, including the notification token.
+405|R|OPAQUE
+406|R|OPAQUE
+407|A|set_map_range|map_range|1|Set the active map range, such as floors, with its current and full extents.
+408|R|NO_USER_VALUES
+409|R|OPAQUE
+410|R|SEMANTIC_DUPLICATE
+411|A|create_resume|resume|1|Create a resume with a person's name, work experience, and education.
+412|A|track_group_event|group_event|1|Record a group event associating a user with a group ID.
+413|R|OPAQUE
+414|R|OPAQUE
+415|A|configure_video_conversion|video_conversion|1|Configure batch conversion of video files to MPEG-4 with source globs, output directory, and ffmpeg options.
+416|A|run_package_migration|package_migration|1|Run migrations for a package from a previously installed version to a new version using a migration collection.
+417|R|OPAQUE
+418|A|set_spatial_filter|spatial_filter|1|Configure a camera's spatial bilateral filter mask size and smoothing parameters.
+419|A|send_fleet_moves|game_moves|1|Send fleet moves in a planet-conquest game, each with an origin, a destination, and a ship count.
+420|R|SEMANTIC_DUPLICATE
+421|A|create_document_asset|ui_document_asset|1|Create a UI document asset that points to an RML file and lists the fonts it requires.
+422|A|register_app_client|app_client|1|Register a client for an app with a client ID, the app ID, and a label.
+423|R|OPAQUE
+424|A|copy_json_path|json_path_copy|1|Copy a value from a source JSON path to a destination JSON path.
+425|R|SEMANTIC_DUPLICATE
+426|A|set_analytics_hit_type|analytics_hit_type|1|Set the analytics hit type and whether it is a non-interaction hit.
+427|A|create_multiple_choice_question|quiz_question|1|Create a multiple-choice question with its text and lists of correct and incorrect answers.
+428|R|SEMANTIC_DUPLICATE
+429|A|configure_prerender|prerender|1|Configure prerendering of app routes using browser and server build targets.
+430|A|set_node_taint|node_taint|1|Set a taint on a cluster node with a key, a value, and a scheduling effect.
+431|R|NO_USER_VALUES
+432|R|OPAQUE
+433|R|TOY
+434|R|OPAQUE
+435|R|OPAQUE
+436|A|configure_redshift_storage|warehouse_storage_config|1|Configure an Amazon Redshift database as the storage target for enriched events.
+437|A|modify_collection_element|collection_edit|1|Insert, replace, or remove an element in a named collection.
+438|A|set_hotspot_rotation|hotspot_rotation|1|Set the x, y, and z rotation of a hotspot in its local coordinate system.
+439|R|OPAQUE
+440|R|OPAQUE
+441|R|TOY
+442|A|track_video_start|video_event|1|Record a video-start event with the video's title, URL, provider, duration, and progress.
+443|R|OPAQUE
+444|R|SEMANTIC_DUPLICATE
+445|A|record_statutory_filing|statutory_filing|1|Record a company's statutory filing with its date, title or filing type, and URL.
+446|R|OPAQUE
+447|A|update_user_names|user_name_update|1|Update a user's username or display name.
+448|A|request_data_export|data_export|1|Request a data export by email, optionally including files, data-table rows, and devices.
+449|A|query_analytics_api|analytics_query|1|Query a web-analytics API method for a site with a period and a frequency.
+450|R|OPAQUE
+451|R|NO_USER_VALUES
+452|A|define_town_structure|town_structure|1|Define a building shown on a game's town screen, with its animation file and screen position.
+453|R|OPAQUE
+454|A|create_region_tag|region_tag|1|Create a region tag that restricts which entries are visible, with a name, a group, and a comment.
+455|R|SEMANTIC_DUPLICATE
+456|R|OPAQUE
+457|R|OPAQUE
+458|R|SEMANTIC_DUPLICATE
+459|A|add_redirect_step|redirect_step|1|Add a redirect step to a call flow that sends the caller to a URL using GET or POST.
+460|A|add_flight_listing|flight_listing|1|Add a flight listing with airline, flight code, airports, departure date, price, and available seats.
+461|A|set_content_channels|content_channels|1|Set the output channels in which a piece of content may appear.
+462|R|OPAQUE
+463|A|create_help_home_page|help_page|1|Create a help-center home page with a title, description, image, display order, and help-topic links.
+464|R|OPAQUE
+465|R|NO_USER_VALUES
+466|A|start_charging_transaction|charging_transaction|1|Start a charging transaction on a connector for an ID tag with the starting meter value and timestamp.
+467|R|SEMANTIC_DUPLICATE
+468|A|set_antenna_pattern|antenna_pattern|1|Set an antenna radiation-pattern point with an angle and a gain.
+469|A|register_youth_athlete|sports_registration|1|Register a 12-to-14-year-old for a sports activity with name, sex, and age.
+470|A|calculate_interest|interest_calculation|1|Calculate simple or compound interest on a principal over a period of years.
+471|A|submit_fuel_site_ids|fuel_id_list|1|Submit a list of IDs for fuel stations, pumps, or tanks.
+472|A|configure_popup_attachments|popup_attachments|1|Configure how attachments appear in a map popup, as a list of links or as previews.
+473|R|OPAQUE
+474|A|track_deep_link|deep_link|1|Record that a deep link was received, with its URL and referrer.
+475|R|OPAQUE
+476|A|convert_temperature|temperature_conversion|1|Convert a temperature value between Celsius, Fahrenheit, and Kelvin.
+477|A|add_badge_signature|badge_signature|1|Add a signature line, with signer name, job title, and signature image, to a badge's display.
+478|A|register_user_device|user_device|1|Register a user's device by its user-agent string.
+479|R|SEMANTIC_DUPLICATE
+480|R|OPAQUE
+481|R|NO_USER_VALUES
+482|R|SEMANTIC_DUPLICATE
+483|R|SEMANTIC_DUPLICATE
+484|R|SEMANTIC_DUPLICATE
+485|A|add_ussd_language_step|ussd_step|1|Add a USSD menu step that sets the session language.
+486|R|OPAQUE
+487|R|OPAQUE
+488|R|OPAQUE
+489|R|NO_USER_VALUES
+490|A|add_router_store|state_store_setup|1|Add a router store to an app module, optionally without adding the package dependency.
+491|R|TOY
+492|A|configure_publish_template|publish_template|1|Configure the topic and message templates used to publish messages.
+493|R|TOY
+494|A|update_scoreboard|scoreboard|1|Update a two-player scoreboard with each player's name, characters, and score.
+495|R|TOY
+496|R|OPAQUE
+497|A|configure_chat_monitor|chat_monitor|1|Configure which live-stream chat channels to monitor, plus the relay server URL and key.
+498|R|NO_USER_VALUES
+499|A|register_libraries|library_registry|1|Register the libraries in a repository by path, marking the main one.
+500|A|submit_chargeback|chargeback|1|Submit a finance chargeback message with a function code, usage units, and division number.
+501|R|OPAQUE
+502|A|create_chapter|chapter|1|Create a book chapter with a title, text, slug, and links to its parent and sibling chapters.
+503|R|OPAQUE
+504|A|group_travel_packages|package_grouping|1|Group travel packages by a primary and a secondary attribute, such as hotel or departure date.
+505|A|register_queue_client|queue_client|1|Register a client with its name and its input and output message-queue URLs.
+506|R|OPAQUE
+507|R|OPAQUE
+508|A|configure_signal_subscription|signal_subscription|1|Configure a subscription to trading signals by class, subclass, and level, with conflation and auto-close settings.
+509|A|define_url_parameter|url_parameter|1|Define a URL route parameter with a name, a type, and an optional regex pattern.
+510|R|NO_USER_VALUES
+511|R|SEMANTIC_DUPLICATE
+512|R|NO_USER_VALUES
+513|A|add_publication|publication|1|Add a journal publication with its title, volume, year, issue, page, and identifiers.
+514|A|track_search|search_event|1|Record a site search event with the search term.
+515|R|SEMANTIC_DUPLICATE
+516|A|set_data_retention|data_retention|1|Set the retention lifespan, in seconds, for objects from a data source.
+517|A|set_led_states|smart_light|1|Turn individual LEDs on or off by their IDs.
+518|R|SEMANTIC_DUPLICATE
+519|A|track_app_uninstall|app_uninstall|1|Record an app uninstall event with the device's channel IDs and timestamps.
+520|A|define_tile_lod|tile_lod|1|Define a map tile level of detail with its level ID, resolution, and scale.
+521|A|calculate_age_difference|age_difference|1|Calculate the age difference between two people from their names and dates of birth.
+522|R|OPAQUE
+523|A|request_persistent_volume|persistent_volume|1|Request persistent storage for a container app with a name, an access mode, and a size.
+524|R|SEMANTIC_DUPLICATE
+525|R|SEMANTIC_DUPLICATE
+526|A|register_virtual_machine|virtual_machine|1|Register a virtual machine by ID with the IP address and port used for deployments.
+527|R|OPAQUE
+528|A|record_image_metadata|image_metadata|1|Record the width and length metadata extracted from an image file.
+529|A|register_dog|pet|1|Register a dog with its name, breed, age, and birth date.
+530|A|configure_api_diff_report|diff_report|1|Configure an API-diff report's output file, indentation, append mode, and minimum severity.
+531|R|OPAQUE
+532|A|add_order_item|order_item|1|Add an item to an order with its name, quantity, price, currency, and SKU.
+533|R|OPAQUE
+534|A|withdraw_consent|consent_withdrawal|1|Withdraw consent, either for all purposes or not.
+535|A|register_organization|organization|1|Register a research organization with its title, acronym, country, DOI, and alternate identifiers.
+536|R|OPAQUE
+537|R|SEMANTIC_DUPLICATE
+538|R|OPAQUE
+539|R|OPAQUE
+540|A|add_table_column|table_column|1|Add a column to a data table with a name, data type, constraint, and default value.
+541|R|OPAQUE
+542|R|NO_USER_VALUES
+543|R|TOY
+544|R|NO_USER_VALUES
+545|R|OPAQUE
+546|R|NO_USER_VALUES
+547|A|create_version_repo|version_repo|1|Create a versioning repository with a version bumper, SCM URL, description, and seed history.
+548|R|SEMANTIC_DUPLICATE
+549|R|TOY
+550|A|submit_producer_share|crop_share|1|Submit a producer's share of a crop as a percentage.
+551|A|define_range_domain|range_domain|1|Define a range domain that limits a field's valid values to a minimum and a maximum.
+552|R|OPAQUE
+553|R|OPAQUE
+554|R|OPAQUE
+555|R|OPAQUE
+556|A|set_analytics_app_info|analytics_app|1|Attach app information (ID, installer ID, name, and version) to analytics hits.
+557|R|OPAQUE
+558|R|SEMANTIC_DUPLICATE
+559|R|SEMANTIC_DUPLICATE
+560|A|set_loop_animation|loop_animation|1|Set a looping animation style, such as blink or wiggle, and how many times it repeats.
+561|R|OPAQUE
+562|R|SEMANTIC_DUPLICATE
+563|R|SEMANTIC_DUPLICATE
+564|R|TOY
+565|R|OPAQUE
+566|A|track_client_session|client_session|1|Record a client-side user session with user ID, session ID, session index, previous session, and storage mechanism.
+567|A|track_profile_update|profile_update_event|1|Record a mailing-list profile update event with the subscriber's email, names, and list ID.
+568|A|send_connector_status|connector_status|1|Report a charge-point connector's status and error code.
+569|R|OPAQUE
+570|A|set_related_records_order|sort_order|1|Set the field and the ascending or descending order used to sort related records.
+571|R|OPAQUE
+572|A|attach_amp_user_id|amp_identity|1|Attach accelerated-mobile-page user identification: client ID, domain user ID, and user ID.
+573|R|TOY
+574|R|OPAQUE
+575|A|configure_vpn_service|vpn_service|1|Configure a VPN service's instance count, CPU, memory, port, and framework name.
+576|R|NO_USER_VALUES
+577|R|OPAQUE
+578|R|SEMANTIC_DUPLICATE
+579|R|OPAQUE
+580|R|OPAQUE
+581|R|SEMANTIC_DUPLICATE
+582|R|SEMANTIC_DUPLICATE
+583|R|OPAQUE
+584|A|set_scene_lighting|scene_lighting|1|Set a 3D scene's simulated sun date and time, shadow display, and UTC display offset.
+585|A|create_version|version_commit|1|Create a new version from a commit ID, its parent commits, and a message.
+586|R|SEMANTIC_DUPLICATE
+587|R|NO_USER_VALUES
+588|A|define_resource_type|resource_type|1|Define a resource type with an ID, an abbreviation, and a description.
+589|A|search_products|product_search|1|Search products by keywords within a category and a price range.
+590|R|TOY
+591|R|OPAQUE
+592|A|set_hotspot_position|hotspot_position|1|Set a hotspot's position by spherical angles and radius or by world coordinates.
+593|A|call_action_method|action_method|1|Call a named action method with an array of arguments.
+594|A|register_vehicle|vehicle|1|Register a vehicle by its registration number.
+595|A|render_rating_component|rating_component|1|Render a star-rating component with community and user ratings and read-only or disabled states.
+596|R|OPAQUE
+597|A|attach_step_file|step_image|1|Attach a file, given its path, to a presentation step.
+598|A|configure_jasmine_runner|test_runner|1|Set the Jasmine configuration file used by the mutation-testing test runner.
+599|A|submit_ballot|ballot|1|Submit an election ballot with its ID, a uniquifier, and the chosen candidates for each contest.
+600|R|OPAQUE
+601|R|NO_USER_VALUES
+602|A|calculate_retirement_savings|retirement_savings|1|Project retirement savings from current savings, monthly contributions, years to retirement, and annual return.
+603|R|SEMANTIC_DUPLICATE
+604|A|configure_svg_patterns|svg_patterns|1|Configure downloading SVG patterns from a pattern gallery page into an output file.
+605|R|TOY
+606|R|OPAQUE
+607|R|TOY
+608|A|track_link_click|link_click|1|Record a link click with its URL, domain, ID, classes, and whether it is outbound.
+609|R|OPAQUE
+610|A|track_app_warning|app_warning|1|Record an application warning event with its warning message.
+611|R|OPAQUE
+612|R|OPAQUE
+613|R|OPAQUE
+614|A|create_forum_post|forum_post|1|Create a post in a discussion thread with a title, content, publication and expiration dates, and a headline flag.
+615|A|create_timeline_diagram|timeline_diagram|1|Create a timeline diagram with a title and labelled spans measured in years.
+616|R|OPAQUE
+617|R|TOY
+618|A|configure_pod_network|pod_network|1|Configure a pod network fabric with its CIDR range and per-node connection limit.
+619|R|NO_USER_VALUES
+620|A|record_vulnerability|vulnerability|1|Record a vulnerability with its name and severity level.
+621|R|TOY
+622|R|OPAQUE
+623|R|TOY
+624|A|register_u2f_key|u2f_key|1|Register a U2F security key with its public key and attestation certificate.
+625|R|TOY
+626|R|SEMANTIC_DUPLICATE
+627|R|OPAQUE
+628|R|OPAQUE
+629|R|SEMANTIC_DUPLICATE
+630|A|set_template_directory|template_directory|1|Set the directory that contains the configuration templates for a config generator.

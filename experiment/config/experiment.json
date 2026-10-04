@@ -1,0 +1,51 @@
+{
+  "experiment_id": "representation-v1",
+  "dataset": {
+    "name": "JSONSchemaBench",
+    "source": "https://github.com/guidance-ai/jsonschemabench",
+    "commit": "9a94995b9279ae3af3aed4b2629172790b968d14",
+    "n_schemas_observed": 9558
+  },
+  "schema_selection": {
+    "included_subsets": [
+      "Glaiveai2K",
+      "Github_trivial",
+      "Github_easy",
+      "Github_medium",
+      "Snowplow",
+      "WashingtonPost"
+    ],
+    "min_top_props": 1,
+    "max_top_props": 15,
+    "max_chars_pretty": 1500
+  },
+  "pool": {
+    "seed": 20261004,
+    "target_size": 300,
+    "flat_fraction": 0.5,
+    "near_duplicate_jaccard": 0.8,
+    "glaive_dedup": "one schema per original function name (filename minus 8-hex suffix): lowest rank key",
+    "ranking": "sha256(f'{seed}:{schema_id}') ascending, per stratum",
+    "review_rules": {
+      "process": "Candidates reviewed strictly in pool_candidates.jsonl rank order; first 300 accepted form the pool. Every reviewed candidate gets a recorded decision.",
+      "accept_if": [
+        "purpose is interpretable from the schema itself (title/description/property names) without guessing",
+        "at least one top-level property whose value a user could state in natural language",
+        "not a test/toy/placeholder schema"
+      ],
+      "reject_codes": {
+        "OPAQUE": "purpose not interpretable from the schema",
+        "TOY": "test/example/placeholder schema",
+        "NO_USER_VALUES": "no property a user could plausibly supply (only internal/system fields)",
+        "SEMANTIC_DUPLICATE": "same purpose and near-same inputs as an already-accepted tool",
+        "PII": "schema embeds apparent personal data (real-looking emails, credentials) - excluded from prompts"
+      },
+      "metadata_style": {
+        "tool_name": "snake_case verb_object, unique, no dataset/subset/schema identifiers; GlaiveAI tools keep their original function name",
+        "description": "one sentence, <= 25 words, states what the tool does; written once, identical in every representation",
+        "family": "short label of the tool's function; a catalog contains at most one tool per family",
+        "task_suitable": "true if a natural-language request can fully determine values for all required fields (used only for target eligibility)"
+      }
+    }
+  }
+}
