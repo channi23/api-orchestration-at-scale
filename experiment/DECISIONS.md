@@ -8,6 +8,20 @@
 - **100 tasks in total**, each evaluated at all catalog sizes (the paired design), chosen over 100 tasks per catalog.
 - Catalog sizes 5/10/20/50/100, 10 replicates, pilot first.
 
+## Pre-run methodological decisions (approved by the user before the full run, 2026-10-04)
+- **Latency sub-run reduced from 250 to 50 requests.**
+  - *Original plan:* uncached latency for replicate 0, paraphrase 0, all 10 tasks per cell: 5 sizes × 5 representations × 10 tasks = 250 requests.
+  - *New design:* 2 fixed tasks per catalog-size × representation cell (`T106_p0` flat, `T103_p0` structured), i.e. 5 × 5 × 2 = **50 requests** (`config/runs/latency.json`).
+  - *Reason:* latency is a secondary metric. Uncached latency is nearly deterministic for a fixed prompt length (prefill dominates; measured 132 tok/s prefill, 14 tok/s decode). The reduced design still covers every catalog-size × representation cell, and cuts estimated runtime from about 5–6 h to about 1.5 h (a 100-tool raw prompt is about 28k tokens, roughly 5 min uncached).
+  - *Reporting consequence:* latency is reported as individual observations plus the median per cell, and labelled **secondary/exploratory**. It is not equivalent to the original 250-request design and is not used for inferential claims.
+  - Nothing else changed: the 3,000-request cached full run, the primary metric (E2E) and all other metrics are as planned.
+- **Pilot outcome (pilot-v1, 300 requests; pilot-uncached-v1, 50 requests).**
+  - The pipeline was validated end to end.
+  - Determinism (cached vs uncached prompt evaluation, same 50 requests): **48/50 outputs byte-identical; 50/50 identical E2E outcomes.** The 2 differing outputs differ only in an unrequested free-text value and in a field that fails either way.
+- **Pilot-driven fixes (before the full run).**
+  - Tasks v1.1: T151 paraphrase 1 quotes the description. In v1, the next sentence could legitimately be read as part of it.
+  - A secondary metric, E2E-strict, was added: E2E plus no invented non-empty values in unrequested fields. Re-scoring the pilot left primary E2E unchanged in all 300 rows.
+
 ## Implementation choices within the approved plan (flagged for review)
 1. **Size cap 2,500 → 1,500 pretty-printed chars.**
    - The plan set the cap so that 100 raw tools fit the 32k context.

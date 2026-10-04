@@ -1,3 +1,3 @@
-{"run_prefix": "latency", "purpose": "uncached latency sub-study (prompt cache disabled) on replicate 0, paraphrase 0",
+{"run_prefix": "latency", "purpose": "SECONDARY/EXPLORATORY uncached latency sub-run (prompt cache disabled). Reduced pre-run from the planned 250 requests (replicate 0, paraphrase 0, all 10 tasks per cell) to 50 requests: 2 fixed tasks per catalog-size x representation cell (one flat target T106_p0, one structured target T103_p0). See DECISIONS.md.",
  "replicates": [0], "sizes": [5, 10, 20, 50, 100], "arms": ["raw", "minified", "normalized", "tscg", "tscg_info"],
- "families": ["select"], "paraphrases": [0], "cache_prompt": false}
+ "families": ["select"], "paraphrases": [0], "task_ids": ["T106_p0", "T103_p0"], "cache_prompt": false}

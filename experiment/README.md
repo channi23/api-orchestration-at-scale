@@ -5,9 +5,14 @@ Model, decoding, system prompt wording, tool catalog, tool names, tasks, evaluat
 execution are identical across conditions. No retrieval, discovery, MCP, planning, extra agents or
 training. Scope and decisions: [`PLAN.md`](PLAN.md), [`DECISIONS.md`](DECISIONS.md).
 
-**Status:** every component is built and validated offline (evaluator self-tests, smoke test
-against a fake server). The **pilot has not run yet**: the egress policy blocks Hugging Face, so
-the Qwen3-1.7B weights can't be downloaded. No model results exist yet.
+**Status:** pilot complete (`runs/pilot-v1`, `runs/pilot-uncached-v1`; determinism 48/50 byte-identical,
+50/50 identical E2E outcomes). Full run in progress. Pilot numbers are not scientific results.
+
+**Latency (secondary/exploratory):** measured in a separate uncached sub-run. It was reduced before the
+run from the planned 250 requests to **50** (2 fixed tasks × every catalog-size × representation cell),
+because latency is secondary and nearly deterministic for a fixed prompt length. Individual
+observations and per-cell medians are reported; this sample isn't equivalent to the 250-request design.
+See `DECISIONS.md`.
 
 ## Conditions (5 arms)
 | arm | what the model sees for each tool |
@@ -59,7 +64,7 @@ python3 src/run.py --config config/runs/pilot.json            # PILOT (300 reque
 python3 src/run.py --config config/runs/pilot_uncached.json   # determinism + uncached latency check
 # after pilot review:
 python3 src/run.py --config config/runs/full.json             # 3,000 requests
-python3 src/run.py --config config/runs/latency.json          # 250 uncached requests
+python3 src/run.py --config config/runs/latency.json          # 50 uncached requests (secondary)
 python3 src/analyze.py --run runs/<full_run_id> --latency-run runs/<latency_run_id>
 ```
 - The pipeline steps are deterministic. The frozen human-authored inputs are `dataset/review_log.v1.txt` and `tasks/tasks_source.v1.json`.
