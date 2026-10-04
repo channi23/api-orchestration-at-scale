@@ -1,5 +1,6 @@
 {
-  "version": "v1",
+  "version": "v1.1",
+  "changelog": ["v1.1 (after pilot-v1): T151 paraphrase 1 quoted the description; v1 let the following sentence be read as part of it (authoring ambiguity found in pilot review)."],
   "authoring": "Written once by the experimenter (Claude, in-session) on 2026-10-04 from the frozen target schemas; never regenerated per representation. Two paraphrases per target share one gold argument object.",
   "comparison_rules": "strings: casefold + whitespace-collapsed + trailing period stripped; numbers: numeric equality; enums/booleans/null: exact; arrays: ordered unless path listed in unordered_paths; per-path alternatives in acceptable_variants",
   "tasks": [
@@ -21,7 +22,7 @@
      "gold_args": {"name": "lab5_device", "coupling_map": [[0, 1], [1, 2], [2, 3]], "basis_gates": "u1,u2,u3,cx", "simulator": false, "local": false}},
     {"tool_id": "T151",
      "prompts": ["Publish the documentation package \"Signal Toolkit Guide\" version 2.1.0 by authors Ana Ruiz and Tom Lee, described as \"User guide for the signal toolkit\", with pages index.md and install.md.",
-                 "Version 2.1.0 of our docs, titled Signal Toolkit Guide, is ready to go out. Authors: Ana Ruiz, Tom Lee. Description: User guide for the signal toolkit. It contains two pages, index.md then install.md."],
+                 "Version 2.1.0 of our docs, titled Signal Toolkit Guide, is ready to go out. Authors: Ana Ruiz, Tom Lee. Description: \"User guide for the signal toolkit\". It contains two pages, index.md then install.md."],
      "gold_args": {"title": "Signal Toolkit Guide", "version": "2.1.0", "authors": ["Ana Ruiz", "Tom Lee"], "description": "User guide for the signal toolkit", "pages": ["index.md", "install.md"]},
      "unordered_paths": ["authors"]},
     {"tool_id": "T272",

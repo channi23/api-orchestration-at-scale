@@ -132,6 +132,7 @@ def main():
                    "schema_valid": np.mean([E("schema_valid")(r) for r in g]),
                    "json_valid": np.mean([E("json_valid")(r) for r in g]),
                    "e2e": np.mean([E("e2e_success")(r) for r in g]),
+                   "e2e_strict": np.mean([int(bool(r["eval"].get("e2e_strict"))) for r in g]),
                    "e2e_ci95": boot_ci_mean(g, E("e2e_success")),
                    "selection_ci95": boot_ci_mean(g, E("tool_correct")),
                    "input_tokens": np.mean([r["usage"].get("prompt_tokens", np.nan) for r in g]),
@@ -155,6 +156,7 @@ def main():
                          "schema_valid": np.mean([E("schema_valid")(r) for r in g]),
                          "semantic_correct": np.mean([E("semantic_correct")(r) for r in g]),
                          "e2e": np.mean([E("e2e_success")(r) for r in g]),
+                         "e2e_strict": np.mean([int(bool(r["eval"].get("e2e_strict"))) for r in g]),
                          "input_tokens": np.mean([r["usage"].get("prompt_tokens", np.nan) for r in g])})
     res["arggen_table"] = argt
 
@@ -173,6 +175,7 @@ def main():
         add(f"{LABEL[arm]} vs Raw, E2E, pooled", sel, "raw", arm, "e2e_success")
     add("TSCG vs TSCG-info JSON (format at fixed information), E2E, pooled", sel, "tscg_info", "tscg", "e2e_success")
     add("TSCG vs Raw-minified, E2E, pooled", sel, "minified", "tscg", "e2e_success")
+    add("TSCG vs Raw, E2E-strict, pooled", sel, "raw", "tscg", "e2e_strict")
     for k in sizes:
         add(f"TSCG vs Raw, E2E, size {k}", sel, "raw", "tscg", "e2e_success", lambda r, k=k: r["size"] == k)
         add(f"TSCG vs Raw, selection, size {k}", sel, "raw", "tscg", "tool_correct", lambda r, k=k: r["size"] == k)
@@ -257,20 +260,20 @@ def write_markdown(res, out):
          "## Selection + arguments + end-to-end (full catalog shown)", "",
          "Proportions in %. E2E 95% CI = cluster bootstrap over catalog replicates. Latency = median wall-clock; "
          "'cached' uses llama.cpp prompt-prefix caching (catalog shared across a cell's tasks), 'uncached' from the latency sub-run.", "",
-         "| Tools | Representation | n | Selection | Arg EM | Field Acc | Schema valid | E2E [95% CI] | Input tokens | Output tokens | Latency cached (ms) | Latency uncached (ms) | Ctx fail |",
-         "|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
+         "| Tools | Representation | n | Selection | Arg EM | Field Acc | Schema valid | E2E [95% CI] | E2E-strict | Input tokens | Output tokens | Latency cached (ms) | Latency uncached (ms) | Ctx fail |",
+         "|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for r in res["main_table"]:
         unc = '' if r['latency_ms_uncached'] is None else f"{r['latency_ms_uncached']:.0f}"
         L.append(f"| {r['tools']} | {LABEL[r['arm']]} | {r['n']} | {fmt(r['selection'])} | {fmt(r['arg_em'])} | {fmt(r['field_acc'])} | "
-                 f"{fmt(r['schema_valid'])} | {fmt(r['e2e'])} [{fmt(r['e2e_ci95'][0])}, {fmt(r['e2e_ci95'][1])}] | "
+                 f"{fmt(r['schema_valid'])} | {fmt(r['e2e'])} [{fmt(r['e2e_ci95'][0])}, {fmt(r['e2e_ci95'][1])}] | {fmt(r['e2e_strict'])} | "
                  f"{r['input_tokens']:.0f} | {r['output_tokens']:.1f} | {r['latency_ms_cached']:.0f} | "
                  f"{unc} | {r['context_failures']} |")
     L += ["", "## Argument generation (tool fixed; only the gold tool shown)", "",
-          "| Representation | n | JSON valid | Arg EM | Field Acc | Schema valid | Semantic correct | E2E | Input tokens |",
-          "|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
+          "| Representation | n | JSON valid | Arg EM | Field Acc | Schema valid | Semantic correct | E2E | E2E-strict | Input tokens |",
+          "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for r in res["arggen_table"]:
         L.append(f"| {LABEL[r['arm']]} | {r['n']} | {fmt(r['json_valid'])} | {fmt(r['arg_em'])} | {fmt(r['field_acc'])} | "
-                 f"{fmt(r['schema_valid'])} | {fmt(r['semantic_correct'])} | {fmt(r['e2e'])} | {r['input_tokens']:.0f} |")
+                 f"{fmt(r['schema_valid'])} | {fmt(r['semantic_correct'])} | {fmt(r['e2e'])} | {fmt(r['e2e_strict'])} | {r['input_tokens']:.0f} |")
     L += ["", "## Paired comparisons (B − A)", "",
           "Exact McNemar on discordant pairs; Holm-adjusted across all secondary comparisons (primary reported unadjusted).", "",
           "| Comparison | A | B | n pairs | A % | B % | Δ pp [95% CI] | rel. % | A-only / B-only | p (exact) | p (Holm) | OR disc. [95% CI] |",

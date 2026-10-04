@@ -1,0 +1,1075 @@
+{
+ "run_id": "pilot-v1",
+ "n_requests": 300,
+ "sizes": [
+  5,
+  20
+ ],
+ "arms": [
+  "raw",
+  "minified",
+  "normalized",
+  "tscg",
+  "tscg_info"
+ ],
+ "main_table": [
+  {
+   "tools": 5,
+   "arm": "raw",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 0.95,
+   "arg_em": 0.85,
+   "field_acc": 0.9199999999999999,
+   "schema_valid": 0.9,
+   "json_valid": 0.95,
+   "e2e": 0.9,
+   "e2e_strict": 0.9,
+   "e2e_ci95": [
+    0.8,
+    1.0
+   ],
+   "selection_ci95": [
+    0.9,
+    1.0
+   ],
+   "input_tokens": 1472.7,
+   "output_tokens": 55.0,
+   "latency_ms_cached": 4224.936977500192,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 5,
+   "arm": "minified",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 1.0,
+   "arg_em": 0.9,
+   "field_acc": 0.962857142857143,
+   "schema_valid": 0.95,
+   "json_valid": 1.0,
+   "e2e": 0.9,
+   "e2e_strict": 0.9,
+   "e2e_ci95": [
+    0.8,
+    1.0
+   ],
+   "selection_ci95": [
+    1.0,
+    1.0
+   ],
+   "input_tokens": 910.7,
+   "output_tokens": 55.65,
+   "latency_ms_cached": 3731.637891499986,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 5,
+   "arm": "normalized",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 0.95,
+   "arg_em": 0.85,
+   "field_acc": 0.9199999999999999,
+   "schema_valid": 0.9,
+   "json_valid": 0.95,
+   "e2e": 0.9,
+   "e2e_strict": 0.9,
+   "e2e_ci95": [
+    0.8,
+    1.0
+   ],
+   "selection_ci95": [
+    0.9,
+    1.0
+   ],
+   "input_tokens": 1339.7,
+   "output_tokens": 55.0,
+   "latency_ms_cached": 4369.236525000133,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 5,
+   "arm": "tscg",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 1.0,
+   "arg_em": 0.6,
+   "field_acc": 0.89625,
+   "schema_valid": 0.8,
+   "json_valid": 1.0,
+   "e2e": 0.7,
+   "e2e_strict": 0.65,
+   "e2e_ci95": [
+    0.7,
+    0.7
+   ],
+   "selection_ci95": [
+    1.0,
+    1.0
+   ],
+   "input_tokens": 563.7,
+   "output_tokens": 54.6,
+   "latency_ms_cached": 3616.08460750017,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 5,
+   "arm": "tscg_info",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 1.0,
+   "arg_em": 0.65,
+   "field_acc": 0.9025000000000001,
+   "schema_valid": 0.8,
+   "json_valid": 1.0,
+   "e2e": 0.75,
+   "e2e_strict": 0.65,
+   "e2e_ci95": [
+    0.7,
+    0.8
+   ],
+   "selection_ci95": [
+    1.0,
+    1.0
+   ],
+   "input_tokens": 1037.2,
+   "output_tokens": 58.0,
+   "latency_ms_cached": 3699.906059499881,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 20,
+   "arm": "raw",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 1.0,
+   "arg_em": 0.8,
+   "field_acc": 0.9400000000000001,
+   "schema_valid": 0.9,
+   "json_valid": 1.0,
+   "e2e": 0.9,
+   "e2e_strict": 0.85,
+   "e2e_ci95": [
+    0.8,
+    1.0
+   ],
+   "selection_ci95": [
+    1.0,
+    1.0
+   ],
+   "input_tokens": 5636.2,
+   "output_tokens": 55.75,
+   "latency_ms_cached": 9732.4204345,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 20,
+   "arm": "minified",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 0.95,
+   "arg_em": 0.8,
+   "field_acc": 0.9199999999999999,
+   "schema_valid": 0.9,
+   "json_valid": 0.95,
+   "e2e": 0.9,
+   "e2e_strict": 0.85,
+   "e2e_ci95": [
+    0.8,
+    1.0
+   ],
+   "selection_ci95": [
+    0.9,
+    1.0
+   ],
+   "input_tokens": 3385.7,
+   "output_tokens": 55.75,
+   "latency_ms_cached": 6925.226887500003,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 20,
+   "arm": "normalized",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 1.0,
+   "arg_em": 0.8,
+   "field_acc": 0.9400000000000001,
+   "schema_valid": 0.9,
+   "json_valid": 1.0,
+   "e2e": 0.9,
+   "e2e_strict": 0.85,
+   "e2e_ci95": [
+    0.8,
+    1.0
+   ],
+   "selection_ci95": [
+    1.0,
+    1.0
+   ],
+   "input_tokens": 5375.7,
+   "output_tokens": 55.75,
+   "latency_ms_cached": 9453.860018500109,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 20,
+   "arm": "tscg",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 0.95,
+   "arg_em": 0.5,
+   "field_acc": 0.8275,
+   "schema_valid": 0.75,
+   "json_valid": 1.0,
+   "e2e": 0.6,
+   "e2e_strict": 0.55,
+   "e2e_ci95": [
+    0.5,
+    0.7
+   ],
+   "selection_ci95": [
+    0.9,
+    1.0
+   ],
+   "input_tokens": 1744.7,
+   "output_tokens": 55.0,
+   "latency_ms_cached": 4914.527595999971,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  },
+  {
+   "tools": 20,
+   "arm": "tscg_info",
+   "n": 20,
+   "n_replicates": 2,
+   "selection": 1.0,
+   "arg_em": 0.6,
+   "field_acc": 0.89,
+   "schema_valid": 0.75,
+   "json_valid": 1.0,
+   "e2e": 0.7,
+   "e2e_strict": 0.65,
+   "e2e_ci95": [
+    0.6,
+    0.8
+   ],
+   "selection_ci95": [
+    1.0,
+    1.0
+   ],
+   "input_tokens": 3509.2,
+   "output_tokens": 57.25,
+   "latency_ms_cached": 7916.760444999909,
+   "latency_ms_uncached": null,
+   "context_failures": 0,
+   "truncated": 0
+  }
+ ],
+ "arggen_table": [
+  {
+   "arm": "raw",
+   "n": 20,
+   "json_valid": 0.95,
+   "tool_echo_correct": 0.95,
+   "arg_em": 0.8,
+   "field_acc": 0.912857142857143,
+   "schema_valid": 0.9,
+   "semantic_correct": 0.85,
+   "e2e": 0.85,
+   "e2e_strict": 0.8,
+   "input_tokens": 397.2
+  },
+  {
+   "arm": "minified",
+   "n": 20,
+   "json_valid": 1.0,
+   "tool_echo_correct": 1.0,
+   "arg_em": 0.85,
+   "field_acc": 0.97,
+   "schema_valid": 0.95,
+   "semantic_correct": 0.95,
+   "e2e": 0.95,
+   "e2e_strict": 0.85,
+   "input_tokens": 285.6
+  },
+  {
+   "arm": "normalized",
+   "n": 20,
+   "json_valid": 0.95,
+   "tool_echo_correct": 0.95,
+   "arg_em": 0.8,
+   "field_acc": 0.912857142857143,
+   "schema_valid": 0.9,
+   "semantic_correct": 0.85,
+   "e2e": 0.85,
+   "e2e_strict": 0.8,
+   "input_tokens": 370.6
+  },
+  {
+   "arm": "tscg",
+   "n": 20,
+   "json_valid": 1.0,
+   "tool_echo_correct": 1.0,
+   "arg_em": 0.55,
+   "field_acc": 0.7995238095238095,
+   "schema_valid": 0.8,
+   "semantic_correct": 0.7,
+   "e2e": 0.6,
+   "e2e_strict": 0.55,
+   "input_tokens": 213.8
+  },
+  {
+   "arm": "tscg_info",
+   "n": 20,
+   "json_valid": 1.0,
+   "tool_echo_correct": 1.0,
+   "arg_em": 0.55,
+   "field_acc": 0.8453571428571429,
+   "schema_valid": 0.75,
+   "semantic_correct": 0.75,
+   "e2e": 0.6,
+   "e2e_strict": 0.6,
+   "input_tokens": 310.1
+  }
+ ],
+ "paired_comparisons": [
+  {
+   "n_pairs": 40,
+   "acc_a": 0.9,
+   "acc_b": 0.65,
+   "diff_pp": -25.0,
+   "rel_improvement_pct": -27.77777777777778,
+   "ci95_diff_pp": [
+    -30.0,
+    -20.0
+   ],
+   "discordant_a_only": 10,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.001953125,
+   "discordant_odds_ratio": 0.047619047619047616,
+   "or_ci95": [
+    0.0027902888825120974,
+    0.8126662835367884
+   ],
+   "name": "PRIMARY: TSCG vs Raw, E2E, pooled sizes",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": true,
+   "holm_p": 0.001953125
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.975,
+   "acc_b": 0.975,
+   "diff_pp": 0.0,
+   "rel_improvement_pct": 0.0,
+   "ci95_diff_pp": [
+    0.0,
+    0.0
+   ],
+   "discordant_a_only": 1,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 1.0,
+   "discordant_odds_ratio": 1.0,
+   "or_ci95": [
+    0.10401573895102821,
+    9.613929681072701
+   ],
+   "name": "TSCG vs Raw, tool_correct, pooled",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "tool_correct",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.825,
+   "acc_b": 0.55,
+   "diff_pp": -27.499999999999993,
+   "rel_improvement_pct": -33.33333333333333,
+   "ci95_diff_pp": [
+    -35.0,
+    -20.0
+   ],
+   "discordant_a_only": 11,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.0009765625,
+   "discordant_odds_ratio": 0.043478260869565216,
+   "or_ci95": [
+    0.002561993838400366,
+    0.7378468831221905
+   ],
+   "name": "TSCG vs Raw, arg_exact_match, pooled",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "arg_exact_match",
+   "primary": false,
+   "holm_p": 0.01953125
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.9,
+   "acc_b": 0.775,
+   "diff_pp": -12.5,
+   "rel_improvement_pct": -13.88888888888889,
+   "ci95_diff_pp": [
+    -20.0,
+    -5.0
+   ],
+   "discordant_a_only": 5,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.0625,
+   "discordant_odds_ratio": 0.09090909090909091,
+   "or_ci95": [
+    0.005026621750776492,
+    1.6441385924136203
+   ],
+   "name": "TSCG vs Raw, schema_valid, pooled",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "schema_valid",
+   "primary": false,
+   "holm_p": 0.875
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.9,
+   "acc_b": 0.9,
+   "diff_pp": 0.0,
+   "rel_improvement_pct": 0.0,
+   "ci95_diff_pp": [
+    0.0,
+    0.0
+   ],
+   "discordant_a_only": 1,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 1.0,
+   "discordant_odds_ratio": 1.0,
+   "or_ci95": [
+    0.10401573895102821,
+    9.613929681072701
+   ],
+   "name": "Raw-minified vs Raw, E2E, pooled",
+   "a": "raw",
+   "b": "minified",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.9,
+   "acc_b": 0.9,
+   "diff_pp": 0.0,
+   "rel_improvement_pct": 0.0,
+   "ci95_diff_pp": [
+    0.0,
+    0.0
+   ],
+   "discordant_a_only": 0,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 1.0,
+   "discordant_odds_ratio": 1.0,
+   "or_ci95": [
+    0.019841094744370288,
+    50.400444778065484
+   ],
+   "name": "Normalized vs Raw, E2E, pooled",
+   "a": "raw",
+   "b": "normalized",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.9,
+   "acc_b": 0.725,
+   "diff_pp": -17.500000000000004,
+   "rel_improvement_pct": -19.444444444444446,
+   "ci95_diff_pp": [
+    -35.0,
+    0.0
+   ],
+   "discordant_a_only": 7,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.015625,
+   "discordant_odds_ratio": 0.06666666666666667,
+   "or_ci95": [
+    0.0038073821147679705,
+    1.1673229296333172
+   ],
+   "name": "TSCG-info JSON vs Raw, E2E, pooled",
+   "a": "raw",
+   "b": "tscg_info",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 0.265625
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.725,
+   "acc_b": 0.65,
+   "diff_pp": -7.499999999999996,
+   "rel_improvement_pct": -10.344827586206891,
+   "ci95_diff_pp": [
+    -20.0,
+    5.0
+   ],
+   "discordant_a_only": 4,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 0.375,
+   "discordant_odds_ratio": 0.3333333333333333,
+   "or_ci95": [
+    0.052522269930815574,
+    2.115504742225937
+   ],
+   "name": "TSCG vs TSCG-info JSON (format at fixed information), E2E, pooled",
+   "a": "tscg_info",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.9,
+   "acc_b": 0.65,
+   "diff_pp": -25.0,
+   "rel_improvement_pct": -27.77777777777778,
+   "ci95_diff_pp": [
+    -30.0,
+    -20.0
+   ],
+   "discordant_a_only": 11,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 0.00634765625,
+   "discordant_odds_ratio": 0.13043478260869565,
+   "or_ci95": [
+    0.023792454115807576,
+    0.7150684175481583
+   ],
+   "name": "TSCG vs Raw-minified, E2E, pooled",
+   "a": "minified",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 0.1142578125
+  },
+  {
+   "n_pairs": 40,
+   "acc_a": 0.875,
+   "acc_b": 0.6,
+   "diff_pp": -27.500000000000004,
+   "rel_improvement_pct": -31.428571428571434,
+   "ci95_diff_pp": [
+    -35.0,
+    -20.0
+   ],
+   "discordant_a_only": 11,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.0009765625,
+   "discordant_odds_ratio": 0.043478260869565216,
+   "or_ci95": [
+    0.002561993838400366,
+    0.7378468831221905
+   ],
+   "name": "TSCG vs Raw, E2E-strict, pooled",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "e2e_strict",
+   "primary": false,
+   "holm_p": 0.01953125
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.9,
+   "acc_b": 0.7,
+   "diff_pp": -20.000000000000007,
+   "rel_improvement_pct": -22.22222222222223,
+   "ci95_diff_pp": [
+    -30.0,
+    -10.0
+   ],
+   "discordant_a_only": 4,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.125,
+   "discordant_odds_ratio": 0.1111111111111111,
+   "or_ci95": [
+    0.005981881861682094,
+    2.063845341284305
+   ],
+   "name": "TSCG vs Raw, E2E, size 5",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.95,
+   "acc_b": 1.0,
+   "diff_pp": 5.000000000000004,
+   "rel_improvement_pct": 5.263157894736847,
+   "ci95_diff_pp": [
+    0.0,
+    10.0
+   ],
+   "discordant_a_only": 0,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 1.0,
+   "discordant_odds_ratio": 3.0,
+   "or_ci95": [
+    0.12220512318060582,
+    73.64666689709063
+   ],
+   "name": "TSCG vs Raw, selection, size 5",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "tool_correct",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.9,
+   "acc_b": 0.6,
+   "diff_pp": -30.000000000000004,
+   "rel_improvement_pct": -33.333333333333336,
+   "ci95_diff_pp": [
+    -30.0,
+    -30.0
+   ],
+   "discordant_a_only": 6,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.03125,
+   "discordant_odds_ratio": 0.07692307692307693,
+   "or_ci95": [
+    0.004333226131295714,
+    1.3655321887261556
+   ],
+   "name": "TSCG vs Raw, E2E, size 20",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 0.5
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 1.0,
+   "acc_b": 0.95,
+   "diff_pp": -5.000000000000004,
+   "rel_improvement_pct": -5.000000000000004,
+   "ci95_diff_pp": [
+    -10.0,
+    0.0
+   ],
+   "discordant_a_only": 1,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 1.0,
+   "discordant_odds_ratio": 0.3333333333333333,
+   "or_ci95": [
+    0.013578347020067305,
+    8.18296298856562
+   ],
+   "name": "TSCG vs Raw, selection, size 20",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "tool_correct",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 1.0,
+   "acc_b": 0.8,
+   "diff_pp": -19.999999999999996,
+   "rel_improvement_pct": -19.999999999999996,
+   "ci95_diff_pp": [
+    -33.33333333333333,
+    0.0
+   ],
+   "discordant_a_only": 4,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.125,
+   "discordant_odds_ratio": 0.1111111111111111,
+   "or_ci95": [
+    0.005981881861682094,
+    2.063845341284305
+   ],
+   "name": "TSCG vs Raw, E2E, flat targets",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 1.0,
+   "acc_b": 0.8,
+   "diff_pp": -19.999999999999996,
+   "rel_improvement_pct": -19.999999999999996,
+   "ci95_diff_pp": [
+    -33.33333333333333,
+    0.0
+   ],
+   "discordant_a_only": 4,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.125,
+   "discordant_odds_ratio": 0.1111111111111111,
+   "or_ci95": [
+    0.005981881861682094,
+    2.063845341284305
+   ],
+   "name": "TSCG vs TSCG-info, E2E, flat targets",
+   "a": "tscg_info",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.8,
+   "acc_b": 0.5,
+   "diff_pp": -30.000000000000004,
+   "rel_improvement_pct": -37.5,
+   "ci95_diff_pp": [
+    -50.0,
+    0.0
+   ],
+   "discordant_a_only": 6,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.03125,
+   "discordant_odds_ratio": 0.07692307692307693,
+   "or_ci95": [
+    0.004333226131295714,
+    1.3655321887261556
+   ],
+   "name": "TSCG vs Raw, E2E, structured targets",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 0.5
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.45,
+   "acc_b": 0.5,
+   "diff_pp": 4.999999999999999,
+   "rel_improvement_pct": 11.111111111111109,
+   "ci95_diff_pp": [
+    0.0,
+    8.333333333333332
+   ],
+   "discordant_a_only": 0,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 1.0,
+   "discordant_odds_ratio": 3.0,
+   "or_ci95": [
+    0.12220512318060582,
+    73.64666689709063
+   ],
+   "name": "TSCG vs TSCG-info, E2E, structured targets",
+   "a": "tscg_info",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.85,
+   "acc_b": 0.6,
+   "diff_pp": -25.0,
+   "rel_improvement_pct": -29.411764705882355,
+   "ci95_diff_pp": [
+    -40.0,
+    -10.0
+   ],
+   "discordant_a_only": 5,
+   "discordant_b_only": 0,
+   "mcnemar_exact_p": 0.0625,
+   "discordant_odds_ratio": 0.09090909090909091,
+   "or_ci95": [
+    0.005026621750776492,
+    1.6441385924136203
+   ],
+   "name": "ARGGEN: TSCG vs Raw, E2E (tool fixed)",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 0.875
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.8,
+   "acc_b": 0.55,
+   "diff_pp": -25.0,
+   "rel_improvement_pct": -31.25,
+   "ci95_diff_pp": [
+    -50.0,
+    0.0
+   ],
+   "discordant_a_only": 6,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 0.125,
+   "discordant_odds_ratio": 0.23076923076923078,
+   "or_ci95": [
+    0.039095517585004916,
+    1.3621622415928378
+   ],
+   "name": "ARGGEN: TSCG vs Raw, arg EM (tool fixed)",
+   "a": "raw",
+   "b": "tscg",
+   "metric": "arg_exact_match",
+   "primary": false,
+   "holm_p": 1.0
+  },
+  {
+   "n_pairs": 20,
+   "acc_a": 0.6,
+   "acc_b": 0.6,
+   "diff_pp": 0.0,
+   "rel_improvement_pct": 0.0,
+   "ci95_diff_pp": [
+    0.0,
+    0.0
+   ],
+   "discordant_a_only": 1,
+   "discordant_b_only": 1,
+   "mcnemar_exact_p": 1.0,
+   "discordant_odds_ratio": 1.0,
+   "or_ci95": [
+    0.10401573895102821,
+    9.613929681072701
+   ],
+   "name": "ARGGEN: TSCG vs TSCG-info, E2E (tool fixed)",
+   "a": "tscg_info",
+   "b": "tscg",
+   "metric": "e2e_success",
+   "primary": false,
+   "holm_p": 1.0
+  }
+ ],
+ "degradation": {
+  "raw": {
+   "first_significant_drop_size": null,
+   "per_size": [
+    {
+     "size": 20,
+     "diff_pp_vs_smallest": 0.0,
+     "holm_p": 1.0
+    }
+   ]
+  },
+  "minified": {
+   "first_significant_drop_size": null,
+   "per_size": [
+    {
+     "size": 20,
+     "diff_pp_vs_smallest": 0.0,
+     "holm_p": 1.0
+    }
+   ]
+  },
+  "normalized": {
+   "first_significant_drop_size": null,
+   "per_size": [
+    {
+     "size": 20,
+     "diff_pp_vs_smallest": 0.0,
+     "holm_p": 1.0
+    }
+   ]
+  },
+  "tscg": {
+   "first_significant_drop_size": null,
+   "per_size": [
+    {
+     "size": 20,
+     "diff_pp_vs_smallest": -9.999999999999998,
+     "holm_p": 0.5
+    }
+   ]
+  },
+  "tscg_info": {
+   "first_significant_drop_size": null,
+   "per_size": [
+    {
+     "size": 20,
+     "diff_pp_vs_smallest": -5.000000000000004,
+     "holm_p": 1.0
+    }
+   ]
+  }
+ },
+ "token_covariate_glm": {
+  "formula": "E2E ~ log(input tokens) + arm (ref=raw); logit; cluster-robust SE by intent",
+  "coef": {
+   "const": 3.6065073302229536,
+   "log_input_tokens": -0.17623282954683867,
+   "arm[minified]": -0.08745724756400661,
+   "arm[normalized]": -0.012236690239407209,
+   "arm[tscg]": -1.77077447034895,
+   "arm[tscg_info]": -1.3038263489318926
+  },
+  "se": {
+   "const": 1.4993385648382682,
+   "log_input_tokens": 0.15292777907635002,
+   "arm[minified]": 0.384433999183695,
+   "arm[normalized]": 0.010275874994157094,
+   "arm[tscg]": 0.9288879836055273,
+   "arm[tscg_info]": 0.8692853530830544
+  },
+  "p": {
+   "const": 0.01615482135789964,
+   "log_input_tokens": 0.24915981106529494,
+   "arm[minified]": 0.8200379771378059,
+   "arm[normalized]": 0.23372529582458856,
+   "arm[tscg]": 0.056606365746243816,
+   "arm[tscg_info]": 0.13364470465694514
+  }
+ },
+ "failures_primary": {
+  "raw|5": {
+   "malformed output": 1,
+   "ignored schema constraint": 1
+  },
+  "raw|all": {
+   "malformed output": 1,
+   "ignored schema constraint": 3
+  },
+  "minified|5": {
+   "ignored schema constraint": 1,
+   "correct tool, wrong argument": 1
+  },
+  "minified|all": {
+   "ignored schema constraint": 2,
+   "correct tool, wrong argument": 1,
+   "malformed output": 1
+  },
+  "normalized|5": {
+   "malformed output": 1,
+   "ignored schema constraint": 1
+  },
+  "normalized|all": {
+   "malformed output": 1,
+   "ignored schema constraint": 3
+  },
+  "tscg|5": {
+   "correct tool, wrong argument": 2,
+   "ignored schema constraint": 2,
+   "invalid argument type": 2
+  },
+  "tscg|all": {
+   "correct tool, wrong argument": 5,
+   "ignored schema constraint": 4,
+   "wrong tool": 1,
+   "invalid argument type": 4
+  },
+  "tscg_info|5": {
+   "ignored schema constraint": 2,
+   "invalid argument type": 2,
+   "correct tool, wrong argument": 1
+  },
+  "tscg_info|all": {
+   "ignored schema constraint": 4,
+   "invalid argument type": 5,
+   "correct tool, wrong argument": 2
+  },
+  "raw|20": {
+   "ignored schema constraint": 2
+  },
+  "minified|20": {
+   "malformed output": 1,
+   "ignored schema constraint": 1
+  },
+  "normalized|20": {
+   "ignored schema constraint": 2
+  },
+  "tscg|20": {
+   "correct tool, wrong argument": 3,
+   "wrong tool": 1,
+   "ignored schema constraint": 2,
+   "invalid argument type": 2
+  },
+  "tscg_info|20": {
+   "ignored schema constraint": 2,
+   "invalid argument type": 3,
+   "correct tool, wrong argument": 1
+  }
+ },
+ "failures_secondary": {
+  "raw|all": {
+   "correct tool, wrong argument": 3
+  },
+  "minified|all": {
+   "correct tool, wrong argument": 2
+  },
+  "normalized|all": {
+   "correct tool, wrong argument": 3
+  },
+  "tscg|all": {
+   "correct tool, wrong argument": 5,
+   "hallucinated field": 4,
+   "invalid enum/value": 4
+  },
+  "tscg_info|all": {
+   "correct tool, wrong argument": 5,
+   "invalid enum/value": 4,
+   "hallucinated field": 2
+  }
+ },
+ "arggen_failures_primary": {
+  "raw": {
+   "malformed output": 1,
+   "ignored schema constraint": 1,
+   "correct tool, wrong argument": 1
+  },
+  "minified": {
+   "ignored schema constraint": 1
+  },
+  "normalized": {
+   "malformed output": 1,
+   "ignored schema constraint": 1,
+   "correct tool, wrong argument": 1
+  },
+  "tscg": {
+   "correct tool, wrong argument": 4,
+   "ignored schema constraint": 2,
+   "invalid argument type": 2
+  },
+  "tscg_info": {
+   "ignored schema constraint": 3,
+   "correct tool, wrong argument": 3,
+   "invalid argument type": 2
+  }
+ }
+}

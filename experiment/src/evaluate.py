@@ -341,6 +341,13 @@ def evaluate(content: str, task: dict, raw_schema: dict, catalog_tool_names: set
         else:
             exec_res = {"status": "error", "error": "unknown_tool"} if parsed["tool"] not in catalog_tool_names else {"status": "wrong_tool_executed"}
     primary, secondary = classify(parsed, tool_ok, errs, cmp, exec_res, halluc, context_error)
+    # unrequested fields carrying invented (non-empty) values; reported as a secondary metric
+    unreq = []
+    if cmp:
+        for pth in cmp["extra_paths"]:
+            v = _get(cmp["aligned_args"], pth)
+            if v not in (None, "", [], {}, KeyError):
+                unreq.append(pth)
     schema_valid = tool_ok and not errs
     return {
         "json_valid": parsed["json_valid"], "json_strict": parsed["json_strict"], "format_ok": parsed["format_ok"],
@@ -358,5 +365,7 @@ def evaluate(content: str, task: dict, raw_schema: dict, catalog_tool_names: set
         "execution_status": exec_res.get("status"),
         "execution_success": exec_res.get("status") == "ok",
         "e2e_success": bool(tool_ok and schema_valid and exec_res.get("final_success")),
+        "unrequested_value_paths": unreq,
+        "e2e_strict": bool(tool_ok and schema_valid and exec_res.get("final_success")) and not unreq,
         "failure_primary": primary, "failure_secondary": secondary,
     }
