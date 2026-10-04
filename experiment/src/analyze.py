@@ -249,6 +249,24 @@ def main():
             afail[r["arm"]][r["eval"]["failure_primary"]] += 1
     res["arggen_failures_primary"] = {k: dict(v) for k, v in afail.items()}
 
+    # ---------------- latency (SECONDARY / EXPLORATORY; uncached sub-run, 2 tasks per cell)
+    lat_obs = [{"size": r["size"], "arm": r["arm"], "task_id": r["task_id"], "catalog_id": r["catalog_id"],
+                "wall_latency_ms": r["wall_latency_ms"], "prompt_tokens": r["usage"].get("prompt_tokens"),
+                "completion_tokens": r["usage"].get("completion_tokens"),
+                "server_prompt_ms": r["server_timings"].get("prompt_ms"), "server_predicted_ms": r["server_timings"].get("predicted_ms"),
+                "http_status": r["http_status"], "run_id": r["run_id"]} for r in lat]
+    lat_cells = []
+    for k in sizes:
+        for arm in ARMS:
+            v = [o for o in lat_obs if o["size"] == k and o["arm"] == arm and o["http_status"] == 200]
+            if v:
+                lat_cells.append({"size": k, "arm": arm, "n": len(v),
+                                  "observations_ms": [round(o["wall_latency_ms"]) for o in v],
+                                  "median_ms": float(np.median([o["wall_latency_ms"] for o in v])),
+                                  "median_prompt_tokens": float(np.median([o["prompt_tokens"] for o in v]))})
+    res["latency_secondary_exploratory"] = {"label": "SECONDARY/EXPLORATORY: uncached sub-run reduced pre-run from 250 to 50 requests (2 fixed tasks per cell); not equivalent to the original design; no inferential claims",
+                                            "observations": lat_obs, "cells": lat_cells}
+
     json.dump(res, open(os.path.join(out, "results.json"), "w"), indent=1, default=float)
     write_markdown(res, out)
     plots(res, sel, out)
@@ -259,7 +277,7 @@ def write_markdown(res, out):
     L = [f"# Results — {res['run_id']}", "", f"Requests analysed: {res['n_requests']}", "",
          "## Selection + arguments + end-to-end (full catalog shown)", "",
          "Proportions in %. E2E 95% CI = cluster bootstrap over catalog replicates. Latency = median wall-clock; "
-         "'cached' uses llama.cpp prompt-prefix caching (catalog shared across a cell's tasks), 'uncached' from the latency sub-run.", "",
+         "'cached' uses llama.cpp prompt-prefix caching (catalog shared across a cell's tasks), 'uncached' = median of the reduced SECONDARY/EXPLORATORY latency sub-run (2 tasks per cell; see latency section).", "",
          "| Tools | Representation | n | Selection | Arg EM | Field Acc | Schema valid | E2E [95% CI] | E2E-strict | Input tokens | Output tokens | Latency cached (ms) | Latency uncached (ms) | Ctx fail |",
          "|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for r in res["main_table"]:
@@ -289,6 +307,13 @@ def write_markdown(res, out):
     for arm, d in res["degradation"].items():
         L.append(f"| {LABEL[arm]} | {d['first_significant_drop_size'] or 'none'} | " +
                  "; ".join(f"{x['size']}: {x['diff_pp_vs_smallest']:+.1f} ({x['holm_p']:.2g})" for x in d["per_size"]) + " |")
+    ls = res.get("latency_secondary_exploratory", {})
+    if ls.get("cells"):
+        L += ["", "## Latency — SECONDARY / EXPLORATORY", "", ls["label"] + ".", "",
+              "Uncached wall-clock per request (prompt cache disabled). Individual observations and the per-cell median.", "",
+              "| Tools | Representation | n | observations (ms) | median (ms) | median prompt tokens |", "|---:|---|---:|---|---:|---:|"]
+        for c in ls["cells"]:
+            L.append(f"| {c['size']} | {LABEL[c['arm']]} | {c['n']} | {', '.join(map(str, c['observations_ms']))} | {c['median_ms']:.0f} | {c['median_prompt_tokens']:.0f} |")
     g = res.get("token_covariate_glm", {})
     if "coef" in g:
         L += ["", "## Token-count covariate model", "", g["formula"], "", "| term | coef | SE | p |", "|---|---:|---:|---:|"]
