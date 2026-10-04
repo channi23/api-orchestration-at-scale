@@ -24,7 +24,9 @@
     "-b",
     "2048",
     "-ub",
-    "512"
+    "512",
+    "--cache-ram",
+    "0"
   ],
   "request_params": {
     "temperature": 0.0,
@@ -38,5 +40,6 @@
     }
   },
   "decoding": "greedy (temperature 0, top_k 1); thinking disabled via chat template kwarg, identical for all conditions",
-  "hardware": "cloud container, 4 vCPU Intel Xeon @2.1GHz (AVX-512, AMX), 15 GB RAM, no GPU"
+  "hardware": "cloud container, 4 vCPU Intel Xeon @2.1GHz (AVX-512, AMX), 15 GB RAM, no GPU",
+  "server_args_note": "--cache-ram 0 added before full-v2: the default 8 GiB host-RAM prompt cache caused an OOM kill of llama-server after 100 requests of full-v1 (memory cgroup limit). Slot-level prefix reuse (cache_prompt) is unaffected; decoding parameters unchanged."
 }

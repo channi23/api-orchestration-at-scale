@@ -22,6 +22,12 @@
   - Tasks v1.1: T151 paraphrase 1 quotes the description. In v1, the next sentence could legitimately be read as part of it.
   - A secondary metric, E2E-strict, was added: E2E plus no invented non-empty values in unrequested fields. Re-scoring the pilot left primary E2E unchanged in all 300 rows.
 
+## Infrastructure incident during the full run (no design change)
+- `full-v1` stopped after 100 of 3,000 requests: the kernel's memory cgroup OOM-killed llama-server (RSS 13.9 GB).
+- *Cause:* this llama.cpp build's default host-RAM prompt cache (`--cache-ram`, 8 GiB) keeps prompt states from earlier cells on top of the model and the 32k KV cache.
+- *Fix:* `--cache-ram 0` was added to `config/model.json` `server_args`. Slot-level prefix reuse within a cell still works (verified: 4,835 of 4,874 prompt tokens reused on the second request). Server RSS stays at about 7.6 GB. Decoding parameters are unchanged.
+- *Handling:* so that every condition runs under one server configuration, the 100 completed requests were **not** merged. They are kept for the record as `runs/full-v1-aborted/`. The full run restarted from zero as `full-v2`, followed by `latency-v2`. Preflight was re-run against the new server configuration.
+
 ## Implementation choices within the approved plan (flagged for review)
 1. **Size cap 2,500 → 1,500 pretty-printed chars.**
    - The plan set the cap so that 100 raw tools fit the 32k context.
