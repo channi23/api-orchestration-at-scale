@@ -1,0 +1,45 @@
+{
+  "n_tools": 300,
+  "flat": {
+    "n": 174,
+    "lossless_except_text": 40,
+    "with_type_changes": 0,
+    "with_lost_enums_behind_ref": 0,
+    "with_dropped_substructure": 0,
+    "with_required_not_in_properties": 2,
+    "with_dropped_constraints": 89,
+    "with_dropped_defaults": 24,
+    "with_title_only_text_dropped": 6,
+    "with_param_descriptions_rewritten": 74,
+    "with_tool_description_rewritten": 1,
+    "with_root_description_or_title_dropped": 134
+  },
+  "structured": {
+    "n": 126,
+    "lossless_except_text": 3,
+    "with_type_changes": 14,
+    "with_lost_enums_behind_ref": 1,
+    "with_dropped_substructure": 117,
+    "with_required_not_in_properties": 1,
+    "with_dropped_constraints": 51,
+    "with_dropped_defaults": 13,
+    "with_title_only_text_dropped": 5,
+    "with_param_descriptions_rewritten": 40,
+    "with_tool_description_rewritten": 2,
+    "with_root_description_or_title_dropped": 78
+  },
+  "all": {
+    "n": 300,
+    "lossless_except_text": 43,
+    "with_type_changes": 14,
+    "with_lost_enums_behind_ref": 1,
+    "with_dropped_substructure": 117,
+    "with_required_not_in_properties": 3,
+    "with_dropped_constraints": 140,
+    "with_dropped_defaults": 37,
+    "with_title_only_text_dropped": 11,
+    "with_param_descriptions_rewritten": 114,
+    "with_tool_description_rewritten": 3,
+    "with_root_description_or_title_dropped": 212
+  }
+}

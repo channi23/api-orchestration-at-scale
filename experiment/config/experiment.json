@@ -47,5 +47,18 @@
         "task_suitable": "true if a natural-language request can fully determine values for all required fields (used only for target eligibility)"
       }
     }
+  },
+  "catalogs": {
+    "seed": 20261005,
+    "n_replicates": 10,
+    "sizes": [
+      5,
+      10,
+      20,
+      50,
+      100
+    ],
+    "targets_per_replicate": 5,
+    "construction": "per replicate: 5 targets (strata alternate 3/2 and 2/3 across replicates; targets disjoint across replicates; drawn from task_suitable tools) + 95 distractors; at most one tool per family; distractors ordered by greedy stratum balancing so every prefix is balanced; Catalog_k = first k tools (nested); presentation order = seeded shuffle per (replicate,size), identical across representations"
   }
 }

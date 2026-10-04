@@ -1,0 +1,25 @@
+{
+  "tscg": {
+    "package": "@tscg/core",
+    "version": "1.4.3",
+    "options": {
+      "model": "qwen-3",
+      "profile": "conservative"
+    },
+    "invocation": "compress([tool], {model:'qwen-3', profile:'conservative'}) per tool; catalog = '\\n\\n'.join (verified equal to compress(catalog))",
+    "node": "v22.22.0",
+    "repo_commit_inspected": "51378d6c5e2306d82832b7eca3287bc0f29d31d2",
+    "timing_reps": 15
+  },
+  "normalized": "local $ref inlined (siblings merged over target), definitions/$defs/$schema/$id/$comment/root id removed; nothing else changed",
+  "minified": "identical content to raw, json separators (',',':') and no indentation",
+  "raw": "original JSONSchemaBench schema verbatim as `parameters`, json indent=2",
+  "tscg_info": "JSON Schema with exactly the fields TSCG keeps (top-level name/type/SDM description/enum/required), tool description SDM-rewritten by official compressDescriptions()",
+  "files": {
+    "raw/tools.v1.jsonl": "1ee633e7a97c6c083c0bf1f33727578288ca5f7a171dd2f9184fb6778d4aa6e4",
+    "minified/tools.v1.jsonl": "701fb064be8ace5cd6529f9210629ddcf8ee81868524a0600397d79daafb1636",
+    "normalized/tools.v1.jsonl": "900e084b9c7045f55f521273f71295c0e5a6d9eac0582b34b0c84f8b11811c24",
+    "tscg/tools.v1.jsonl": "bdddcfec9a1b828eff7524454e9d69a36f1c70f1d0a13b24caab0ed65b5c629f",
+    "tscg_info/tools.v1.jsonl": "51a5c71c2af43c180dff6d0129932029cb740a011a28753bbea15af8a69d46f1"
+  }
+}

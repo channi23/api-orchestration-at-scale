@@ -1,0 +1,402 @@
+[
+ {
+  "catalog_id": "C005_R00",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.195029,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R00",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.393646,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R00",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.690224,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R00",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.681044,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R00",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 5.042635,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R01",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.176087,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R01",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.351659,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R01",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.85126,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R01",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 2.291729,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R01",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 4.737524,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R02",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.142095,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R02",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.281171,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R02",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.64259,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R02",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.933267,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R02",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 3.275886,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R03",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.111643,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R03",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.207809,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R03",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.46115,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R03",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.278917,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R03",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 2.970083,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R04",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.129984,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R04",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.276594,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R04",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.600862,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R04",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.511221,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R04",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 3.193148,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R05",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.103545,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R05",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.18988,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R05",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.506297,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R05",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.479308,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R05",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 3.21217,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R06",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.12659,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R06",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.234039,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R06",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.560937,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R06",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.416575,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R06",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 2.986577,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R07",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.143802,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R07",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.29976,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R07",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.592868,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R07",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.341376,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R07",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 3.318502,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R08",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.230564,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R08",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.258372,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R08",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.562158,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R08",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.426185,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R08",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 3.051618,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C005_R09",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.11828,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C010_R09",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.311624,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C020_R09",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 0.61167,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C050_R09",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 1.906815,
+  "applied": [
+   "SDM"
+  ]
+ },
+ {
+  "catalog_id": "C100_R09",
+  "equal_to_per_tool_join": true,
+  "compress_ms_median": 3.312158,
+  "applied": [
+   "SDM"
+  ]
+ }
+]

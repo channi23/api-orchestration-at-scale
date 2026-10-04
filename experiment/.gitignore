@@ -3,4 +3,7 @@ representations/tscg/node_modules/
 models/
 __pycache__/
 *.pyc
-runs/*/server.log
+runs/server.log
+runs/server.pid
+models/
+runs/_smoke*/

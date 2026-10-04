@@ -1,6 +1,6 @@
 # Representation Experiment v1 — Inspection Findings & Implementation Plan
 
-Status: **awaiting approval. No experiment code has been written yet.**
+Status: **approved 2026-10-04 with changes (5 arms; 100 tasks total). See DECISIONS.md. Original pre-approval plan text below.**
 Scope: Stage 5 / RQ5 of the proposal, cut down to a single controlled variable, **schema representation**.
 Out of scope: training, retrieval, progressive discovery, MCP, planning, multi-agent setups, Blaze.
 

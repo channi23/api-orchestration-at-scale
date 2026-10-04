@@ -1,0 +1,21 @@
+{
+  "label": "compact-model representation experiment (not an external/frontier reproduction)",
+  "model_name": "Qwen3-1.7B",
+  "hf_repo": "Qwen/Qwen3-1.7B-GGUF",
+  "gguf_file": "Qwen3-1.7B-Q8_0.gguf",
+  "hf_revision": "TO_BE_PINNED_AT_DOWNLOAD",
+  "gguf_sha256": "TO_BE_RECORDED_AT_DOWNLOAD",
+  "parameter_count": "1.7B (official model card: 1.7B total, 1.4B non-embedding)",
+  "quantization": "Q8_0 (official Qwen GGUF)",
+  "context_length": 32768,
+  "inference_backend": "llama.cpp llama-server",
+  "llama_cpp_repo": "https://github.com/ggml-org/llama.cpp",
+  "llama_cpp_commit": "11fe02151f79c41d0d4af7da708755d73b9c0da6",
+  "server_args": ["-c", "32768", "-np", "1", "-t", "4", "--jinja", "--seed", "0", "-b", "2048", "-ub", "512"],
+  "request_params": {
+    "temperature": 0.0, "top_k": 1, "top_p": 1.0, "min_p": 0.0, "seed": 0, "max_tokens": 512,
+    "chat_template_kwargs": {"enable_thinking": false}
+  },
+  "decoding": "greedy (temperature 0, top_k 1); thinking disabled via chat template kwarg, identical for all conditions",
+  "hardware": "cloud container, 4 vCPU Intel Xeon @2.1GHz (AVX-512, AMX), 15 GB RAM, no GPU"
+}
