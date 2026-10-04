@@ -28,6 +28,13 @@
 - *Fix:* `--cache-ram 0` was added to `config/model.json` `server_args`. Slot-level prefix reuse within a cell still works (verified: 4,835 of 4,874 prompt tokens reused on the second request). Server RSS stays at about 7.6 GB. Decoding parameters are unchanged.
 - *Handling:* so that every condition runs under one server configuration, the 100 completed requests were **not** merged. They are kept for the record as `runs/full-v1-aborted/`. The full run restarted from zero as `full-v2`, followed by `latency-v2`. Preflight was re-run against the new server configuration.
 
+## Container restart during full-v2 (resumed, no design change)
+- At about 23:00 UTC on 2026-10-04 the cloud container restarted. The llama-server and runner processes were stopped at 2,200 of 3,000 requests. On-disk artifacts survived.
+- Integrity check before resuming: 2,200 complete JSON lines, 2,200 unique request keys, no partial write.
+- The same server binary, model file and server arguments were restarted, and `run.py` resumed (it skips completed request keys).
+- The first request of the interrupted cell after the resume ran without a warm prompt cache. The pilot showed that cached and uncached evaluation agree in outcome (48/50 byte-identical, 50/50 identical E2E).
+- (An earlier container restart notice, at about 19:45 UTC, did not stop the processes; nothing was lost.)
+
 ## Implementation choices within the approved plan (flagged for review)
 1. **Size cap 2,500 → 1,500 pretty-printed chars.**
    - The plan set the cap so that 100 raw tools fit the 32k context.
