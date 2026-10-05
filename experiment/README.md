@@ -5,8 +5,30 @@ Model, decoding, system prompt wording, tool catalog, tool names, tasks, evaluat
 execution are identical across conditions. No retrieval, discovery, MCP, planning, extra agents or
 training. Scope and decisions: [`PLAN.md`](PLAN.md), [`DECISIONS.md`](DECISIONS.md).
 
-**Status:** pilot complete (`runs/pilot-v1`, `runs/pilot-uncached-v1`; determinism 48/50 byte-identical,
-50/50 identical E2E outcomes). Full run in progress. Pilot numbers are not scientific results.
+**Status: complete.**
+- Main run `runs/full-v2`: 3,000 requests, all HTTP 200, 0 context failures.
+- Latency run `runs/latency-v2`: 50 requests, secondary/exploratory.
+- Pilot: `runs/pilot-v1` and `runs/pilot-uncached-v1`. Determinism was 48/50 byte-identical with 50/50 identical E2E outcomes.
+- Run incidents (an OOM-aborted first attempt and a container restart) are documented in `DECISIONS.md`.
+
+### Results (authoritative)
+| file | content |
+|---|---|
+| [`analysis/full-v2/RESULTS.md`](analysis/full-v2/RESULTS.md) / `results.json` | all tables, paired statistics, failure taxonomy, latency |
+| [`analysis/full-v2/REPORT.md`](analysis/full-v2/REPORT.md) | final report: answers to the 10 research questions, limitations, recommendation |
+| [`analysis/full-v2/SUMMARY_STE.md`](analysis/full-v2/SUMMARY_STE.md) | controlled-language summary (~80% ASD-STE100) |
+| [`analysis/full-v2/figures/`](analysis/full-v2/figures/) | required plots 1–5 and `experiment_diagram.svg` |
+| [`analysis/full-v2/explainer.html`](analysis/full-v2/explainer.html) | offline interactive explainer (open locally in a browser) |
+
+- Every number in REPORT, SUMMARY, diagram and explainer is resolved by provenance key from `results.json` or the frozen artifacts (`src/provenance.py`); an unknown key is an error.
+- The explanatory views are not separate sources of truth.
+- Rebuild all outputs from the run artifacts with `scripts/make_outputs.sh` (no model calls).
+
+**Headline (observed; Qwen3-1.7B only):**
+- E2E success pooled over sizes: Raw 82.4%, TSCG 56.6% (−25.8 pp, 95% CI [−32.8, −18.2], exact McNemar p = 3.3e-30).
+- Tool selection was unchanged.
+- Raw-minified and Normalized did not differ detectably from Raw.
+- Details and caveats are in REPORT.md.
 
 **Latency (secondary/exploratory):** measured in a separate uncached sub-run. It was reduced before the
 run from the planned 250 requests to **50** (2 fixed tasks × every catalog-size × representation cell),
@@ -63,9 +85,10 @@ python3 src/count_tokens.py            # model-tokenizer token counts for every 
 python3 src/run.py --config config/runs/pilot.json            # PILOT (300 requests)
 python3 src/run.py --config config/runs/pilot_uncached.json   # determinism + uncached latency check
 # after pilot review:
-python3 src/run.py --config config/runs/full.json             # 3,000 requests
+python3 src/run.py --config config/runs/full.json --run-id full-v2   # 3,000 requests (~19 h on 4 CPUs)
 python3 src/run.py --config config/runs/latency.json          # 50 uncached requests (secondary)
-python3 src/analyze.py --run runs/<full_run_id> --latency-run runs/<latency_run_id>
+python3 src/run.py --config config/runs/latency.json --run-id latency-v2
+scripts/make_outputs.sh                # analysis, report, summary, diagram, explainer
 ```
 - The pipeline steps are deterministic. The frozen human-authored inputs are `dataset/review_log.v1.txt` and `tasks/tasks_source.v1.json`.
 - Runs are append-only and resumable, keyed by run ID. They store the system prompts, raw outputs, usage, server timings and evaluations.

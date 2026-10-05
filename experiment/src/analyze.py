@@ -193,6 +193,40 @@ def main():
             c["holm_p"] = c["mcnemar_exact_p"]
     res["paired_comparisons"] = comps
 
+    # ---------------- does the TSCG-Raw effect change with catalog size? (paired difference-in-differences)
+    inter = []
+    eff = collections.defaultdict(dict)  # (replicate, task) -> size -> tscg - raw
+    idx = {(r["arm"], r["size"], r["task_id"]): r for r in sel}
+    for r in sel:
+        if r["arm"] == "raw" and ("tscg", r["size"], r["task_id"]) in idx:
+            eff[(r["replicate"], r["task_id"])][r["size"]] = E("e2e_success")(idx[("tscg", r["size"], r["task_id"])]) - E("e2e_success")(r)
+    for k in sizes[1:]:
+        dd = [(rep, v[k] - v[sizes[0]]) for (rep, _), v in eff.items() if k in v and sizes[0] in v]
+        if not dd:
+            continue
+        pos, neg = sum(d > 0 for _, d in dd), sum(d < 0 for _, d in dd)
+        p = stats.binomtest(pos, pos + neg, 0.5).pvalue if pos + neg else 1.0
+        by = collections.defaultdict(list)
+        for rep, d in dd:
+            by[rep].append(d)
+        rl, rng, bs = sorted(by), random.Random(2), []
+        for _ in range(N_BOOT):
+            v = []
+            for rep in (rng.choice(rl) for _ in rl):
+                v += by[rep]
+            bs.append(sum(v) / len(v))
+        bs.sort()
+        inter.append({"size": k, "vs_size": sizes[0], "n_tasks": len(dd),
+                      "effect_at_size_pp": 100 * np.mean([v[k] for v in eff.values() if k in v]),
+                      "effect_at_base_pp": 100 * np.mean([v[sizes[0]] for v in eff.values() if sizes[0] in v]),
+                      "did_pp": 100 * np.mean([d for _, d in dd]),
+                      "ci95_did_pp": [100 * bs[int(0.025 * N_BOOT)], 100 * bs[int(0.975 * N_BOOT) - 1]],
+                      "n_more_negative": neg, "n_more_positive": pos, "sign_test_p": p})
+    for c, ph in zip(inter, holm([c["sign_test_p"] for c in inter])):
+        c["holm_p"] = ph
+    res["effect_by_size_interaction"] = {"description": "per task: (TSCG - Raw E2E) at size k minus the same at the smallest size; exact sign test on non-zero changes; cluster-bootstrap CI over replicates; Holm across sizes",
+                                         "rows": inter}
+
     # ---------------- degradation point: first size significantly below size-5 (same tasks), per arm
     deg = {}
     for arm in ARMS:
@@ -307,6 +341,13 @@ def write_markdown(res, out):
     for arm, d in res["degradation"].items():
         L.append(f"| {LABEL[arm]} | {d['first_significant_drop_size'] or 'none'} | " +
                  "; ".join(f"{x['size']}: {x['diff_pp_vs_smallest']:+.1f} ({x['holm_p']:.2g})" for x in d["per_size"]) + " |")
+    it = res.get("effect_by_size_interaction", {})
+    if it.get("rows"):
+        L += ["", "## Does the TSCG − Raw effect change with catalog size? (paired difference-in-differences)", "", it["description"] + ".", "",
+              "| size k | effect at k (pp) | effect at 5 (pp) | DiD (pp) [95% CI] | tasks worse / better | sign-test p | Holm p |", "|---:|---:|---:|---:|---:|---:|---:|"]
+        for c in it["rows"]:
+            L.append(f"| {c['size']} | {c['effect_at_size_pp']:+.1f} | {c['effect_at_base_pp']:+.1f} | {c['did_pp']:+.1f} [{c['ci95_did_pp'][0]:+.1f}, {c['ci95_did_pp'][1]:+.1f}] | "
+                     f"{c['n_more_negative']} / {c['n_more_positive']} | {c['sign_test_p']:.3g} | {c['holm_p']:.3g} |")
     ls = res.get("latency_secondary_exploratory", {})
     if ls.get("cells"):
         L += ["", "## Latency — SECONDARY / EXPLORATORY", "", ls["label"] + ".", "",
@@ -409,14 +450,14 @@ def plots(res, sel, out):
         for fi, f in enumerate(present):
             v = 100 * res["failures_primary"].get(f"{arm}|all", {}).get(f, 0) / max(1, n_per_arm[arm])
             if v:
-                ax.barh(yi, v, left=left, color=seq[fi % len(seq)], edgecolor="#fcfcfb", linewidth=2, height=0.6,
-                        label=f if yi == 0 or f not in ax.get_legend_handles_labels()[1] else None)
+                ax.barh(yi, v, left=left, color=seq[fi % len(seq)], edgecolor="#fcfcfb", linewidth=2, height=0.6)
                 left += v
     ax.set_yticks(range(len(ARMS))); ax.set_yticklabels([LABEL[a] for a in ARMS]); ax.invert_yaxis()
     ax.set_xlabel("Share of selection-family requests (%) by primary failure")
     ax.set_title("Failure-type distribution (all catalog sizes)", loc="left", fontsize=11)
-    h, l = ax.get_legend_handles_labels()
-    ax.legend(h, l, loc="center left", bbox_to_anchor=(1.01, 0.5), fontsize=8)
+    from matplotlib.patches import Patch
+    handles = [Patch(facecolor=seq[fi % len(seq)], label=f) for fi, f in enumerate(present)]
+    ax.legend(handles=handles, loc="center left", bbox_to_anchor=(1.01, 0.5), fontsize=8, title="stack order (left→right)", title_fontsize=8)
     ax.grid(axis="y", visible=False)
     fig.tight_layout(); fig.savefig(os.path.join(out, "figures", "4_failure_distribution.png"), dpi=160); plt.close(fig)
 

@@ -68,6 +68,18 @@ class Prov:
             v = c[field]
         elif kind == "fail":
             v = self.res["failures_primary"].get(sel.split("=", 1)[1], {}).get(field, 0)
+        elif kind == "inter":
+            k = sel.split("=", 1)[1]
+            row = next((r for r in self.res["effect_by_size_interaction"]["rows"] if str(r["size"]) == k), None)
+            if row is None:
+                raise KeyError(key)
+            v = row[field]
+        elif kind == "glm":
+            v = self.res["token_covariate_glm"][field][sel]
+        elif kind == "lat":
+            sz, arm = [x.split("=")[1] for x in sel.split(",")]
+            row = next(c for c in self.res["latency_secondary_exploratory"]["cells"] if str(c["size"]) == sz and c["arm"] == arm)
+            v = row[field]
         elif kind == "deg":
             v = self.res["degradation"][sel.split("=", 1)[1]][field]
         elif kind == "audit":
@@ -86,10 +98,12 @@ class Prov:
             s = "n/a"
         elif field in PCT_FIELDS:
             s = f"{100 * v:.1f}%"
-        elif field in ("diff_pp",):
+        elif field in ("diff_pp", "did_pp", "effect_at_size_pp", "effect_at_base_pp"):
             s = f"{v:+.1f} pp"
-        elif field in ("mcnemar_exact_p", "holm_p"):
+        elif field in ("mcnemar_exact_p", "holm_p", "sign_test_p", "p"):
             s = f"{v:.2g}"
+        elif field.endswith("_pct") and isinstance(v, (int, float)):
+            s = f"{v:.1f}"
         elif isinstance(v, float):
             s = f"{v:,.0f}" if abs(v) >= 100 else f"{v:.2f}"
         elif isinstance(v, list):

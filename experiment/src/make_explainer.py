@@ -133,7 +133,7 @@ svg text{fill:var(--ink2);font-size:11.5px} .gridl{stroke:var(--line)} .axis{str
 
 <h2>4. Paired statistical comparisons</h2>
 <p class="small muted">Each comparison pairs the same task in the same catalog. Test: exact McNemar on discordant pairs. CI: cluster bootstrap over catalog replicates.
-Secondary comparisons are Holm-adjusted. "Not significant" means the data cannot distinguish the two conditions at α = 0.05; it does not show they are equal.</p>
+Secondary comparisons are Holm-adjusted; ★ = pre-registered primary (unadjusted). sig. = significant, n.s. = not significant. "Not significant" means the data cannot distinguish the two conditions at α = 0.05; it does not show they are equal.</p>
 <div class="controls"><label>Show <select id="cmpfilter"><option value="all">all</option><option value="pooled">pooled</option><option value="size">by catalog size</option><option value="stratum">by schema stratum</option><option value="arggen">argument generation (tool fixed)</option></select></label></div>
 <div class="tablewrap panel"><table id="cmptable"></table></div>
 
@@ -150,6 +150,7 @@ Secondary comparisons are Holm-adjusted. "Not significant" means the data cannot
 <div class="tablewrap panel"><table id="audittable"></table></div>
 
 <h2>8. Token cost (model tokenizer)</h2>
+<p class="small muted">tok/tool = mean tokens per tool; compr. = median per-tool compression vs Raw; transform ms = median transformation time per tool; @k = mean system-prompt tokens for a k-tool catalog.</p>
 <div class="tablewrap panel"><table id="toktable"></table></div>
 
 <h2>9. Latency — secondary / exploratory</h2>
@@ -228,11 +229,11 @@ function draw(){const m=msel.value,[name,ci]=METRICS[m],svg=document.getElementB
   T.map(x=>`<tr><td>${x.tools}</td><td class="l"><span class="sw" style="background:${col(x.arm)}"></span> ${L[x.arm]}</td><td>${x.n}</td>${cols.map(c=>`<td data-k="${esc(AF)} › main_table[tools=${x.tools},arm=${x.arm}].${c[0]}">${c[0].includes('tokens')?Math.round(x[c[0]]).toLocaleString():pct(x[c[0]])}</td>`).join('')}<td data-k="${esc(AF)} › main_table[tools=${x.tools},arm=${x.arm}].e2e_ci95">[${pct(x.e2e_ci95[0])}, ${pct(x.e2e_ci95[1])}]</td></tr>`).join('')}
 // comparisons
 function cmpRows(){const f=document.getElementById('cmpfilter').value;return R.paired_comparisons.filter(c=>f==='all'||(f==='pooled'&&/pooled/.test(c.name))||(f==='size'&&/size \d+/.test(c.name))||(f==='stratum'&&/targets/.test(c.name))||(f==='arggen'&&/^ARGGEN/.test(c.name)))}
-function drawCmp(){document.getElementById('cmptable').innerHTML=`<tr><th class="l">Comparison</th><th>n pairs</th><th>A</th><th>B</th><th>Δ (B−A)</th><th>95% CI</th><th>A-only / B-only</th><th>p exact</th><th>p Holm</th><th class="l">verdict (α=0.05)</th></tr>`+
+function drawCmp(){document.getElementById('cmptable').innerHTML=`<tr><th class="l">Comparison</th><th>n pairs</th><th>A</th><th>B</th><th>Δ (B−A)</th><th>95% CI</th><th>A-only / B-only</th><th>p exact</th><th>p Holm</th><th class="l">α=0.05</th></tr>`+
  cmpRows().map(c=>{const k=`${AF} › paired_comparisons[name="${c.name}"]`;const p=c.primary?c.mcnemar_exact_p:c.holm_p;const s=p<0.05;
  return `<tr class="${c.primary?'primary':''}"><td class="l">${esc(c.name)}<div class="small muted">A = ${L[c.a]}, B = ${L[c.b]}</div></td><td>${c.n_pairs}</td><td data-k="${esc(k)}.acc_a">${pct(c.acc_a)}</td><td data-k="${esc(k)}.acc_b">${pct(c.acc_b)}</td>
  <td data-k="${esc(k)}.diff_pp">${c.diff_pp>=0?'+':''}${c.diff_pp.toFixed(1)} pp</td><td data-k="${esc(k)}.ci95_diff_pp">[${c.ci95_diff_pp.map(v=>v.toFixed(1)).join(', ')}]</td><td>${c.discordant_a_only} / ${c.discordant_b_only}</td>
- <td data-k="${esc(k)}.mcnemar_exact_p">${c.mcnemar_exact_p.toPrecision(2)}</td><td data-k="${esc(k)}.holm_p">${c.holm_p.toPrecision(2)}</td><td class="l ${s?'sig':'ns'}">${s?'significant':'not significant'}${c.primary?' (primary, unadjusted)':''}</td></tr>`}).join('')}
+ <td data-k="${esc(k)}.mcnemar_exact_p">${c.mcnemar_exact_p.toPrecision(2)}</td><td data-k="${esc(k)}.holm_p">${c.holm_p.toPrecision(2)}</td><td class="l ${s?'sig':'ns'}">${s?'sig.':'n.s.'}${c.primary?' ★':''}</td></tr>`}).join('')}
 document.getElementById('cmpfilter').onchange=drawCmp;
 // failures
 const FS=['wrong tool','multiple-tool confusion','correct tool, wrong argument','missing required argument','invalid argument type','invalid enum/value','hallucinated field','ignored schema constraint','context-length failure','malformed output','execution failure','semantic/task failure','other'];
@@ -254,7 +255,7 @@ document.getElementById('argtable').innerHTML=`<tr><th class="l">Representation<
 const AU=[['lossless_except_text','Lossless apart from text rewriting'],['with_dropped_substructure','Nested structure dropped'],['with_type_changes','A type shown incorrectly'],['with_lost_enums_behind_ref','Enum lost (behind $ref)'],['with_required_not_in_properties','Required field not shown'],['with_dropped_constraints','Constraints dropped'],['with_dropped_defaults','Defaults dropped'],['with_param_descriptions_rewritten','Parameter descriptions rewritten'],['with_root_description_or_title_dropped','Schema-level description/title dropped']];
 document.getElementById('audittable').innerHTML=`<tr><th class="l">Change</th><th>flat tools</th><th>structured tools</th><th>all tools</th></tr>`+AU.map(([k,n])=>`<tr><td class="l">${n}</td>${['flat','structured','all'].map(s=>`<td data-k="${esc(P.audit_file)} › ${s}.${k}">${D.audit[s][k]} / ${D.audit[s].n}</td>`).join('')}</tr>`).join('');
 // tokens
-document.getElementById('toktable').innerHTML=`<tr><th class="l">Representation</th><th>mean tokens per tool</th><th>median compression vs Raw</th><th>median transform time (ms)</th>${R.sizes.map(s=>`<th>prompt tokens @${s} tools (mean)</th>`).join('')}</tr>`+
+document.getElementById('toktable').innerHTML=`<tr><th class="l">Representation</th><th>tok/tool</th><th>compr.</th><th>transform ms</th>${R.sizes.map(s=>`<th>@${s}</th>`).join('')}</tr>`+
  A.map(a=>{const t=D.tokens[a+'/all'];return `<tr><td class="l">${L[a]}</td><td data-k="${esc(P.token_file)} › ${a}/all.mean_tokens">${t.mean_tokens}</td><td data-k="${esc(P.token_file)} › ${a}/all.median_compression_pct">${t.median_compression_pct}%</td><td data-k="${esc(P.token_file)} › ${a}/all.median_transform_ms">${t.median_transform_ms}</td>${R.sizes.map(s=>{const c=D.tokens['catalog/'+s+'/'+a];return `<td data-k="${esc(P.token_file)} › catalog/${s}/${a}.mean">${c?Math.round(c.mean).toLocaleString():'—'}</td>`}).join('')}</tr>`}).join('');
 // latency
 const LS=R.latency_secondary_exploratory||{};document.getElementById('latwarn').innerHTML=`<b>Secondary / exploratory.</b> ${esc(LS.label||'No latency run analysed.')}`;

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 580" role="img" aria-label="Experiment pipeline diagram">
+<title>Representation experiment v1: pipeline, independent variable and primary outcome</title>
+<style>
+  :root{--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--line:#c3c2b7;--step:#ffffff;--iv:#eaf2fc;--ivb:#2a78d6;--out:#fdf1e9;--outb:#eb6834}
+  @media (prefers-color-scheme: dark){:root{--bg:#1a1a19;--ink:#ffffff;--ink2:#c3c2b7;--line:#52514e;--step:#242423;--iv:#1d2b3d;--ivb:#3987e5;--out:#3a2418;--outb:#d95926}}
+  svg{background:var(--bg)} rect{fill:var(--step);stroke:var(--line);stroke-width:1.5}
+  .iv rect{fill:var(--iv);stroke:var(--ivb);stroke-width:2} .out rect{fill:var(--out);stroke:var(--outb);stroke-width:2}
+  .ctl rect{fill:none;stroke-dasharray:6 4}
+  .t{font:600 15px system-ui,sans-serif;fill:var(--ink)} .l{font:13px system-ui,sans-serif;fill:var(--ink2)}
+  .a{stroke:var(--ink2);stroke-width:2} #ah path{fill:var(--ink2)}
+  .prov{font:11px ui-monospace,monospace;fill:var(--ink2)}</style>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<g class="step"><rect x="20" y="200" width="180" height="180" rx="10"/>
+<text class="t" x="34" y="226">1  Catalogs</text>
+<text class="l" x="34" y="250">9,558 real schemas</text>
+<text class="l" x="34" y="269">→ 4,219 eligible</text>
+<text class="l" x="34" y="288">→ 300-tool pool</text>
+<text class="l" x="34" y="307">50 nested catalogs</text>
+<text class="l" x="34" y="326">(10 replicates)</text>
+</g>
+<line class="a" x1="202" y1="290.0" x2="222" y2="290.0" marker-end="url(#ah)"/>
+<g class="step iv"><rect x="226" y="200" width="180" height="180" rx="10"/>
+<text class="t" x="240" y="226">2  Representation</text>
+<text class="l" x="240" y="250">Raw JSON</text>
+<text class="l" x="240" y="269">Raw-minified JSON</text>
+<text class="l" x="240" y="288">Normalized JSON</text>
+<text class="l" x="240" y="307">TSCG (official)</text>
+<text class="l" x="240" y="326">TSCG-info JSON</text>
+</g>
+<line class="a" x1="408" y1="290.0" x2="428" y2="290.0" marker-end="url(#ah)"/>
+<g class="step"><rect x="432" y="200" width="180" height="180" rx="10"/>
+<text class="t" x="446" y="226">3  Model (fixed)</text>
+<text class="l" x="446" y="250">Qwen3-1.7B Q8_0</text>
+<text class="l" x="446" y="269">llama.cpp, CPU</text>
+<text class="l" x="446" y="288">greedy, seed 0</text>
+<text class="l" x="446" y="307">thinking off</text>
+<text class="l" x="446" y="326">same prompt text</text>
+</g>
+<line class="a" x1="614" y1="290.0" x2="634" y2="290.0" marker-end="url(#ah)"/>
+<g class="step"><rect x="638" y="200" width="180" height="180" rx="10"/>
+<text class="t" x="652" y="226">4  Tool call</text>
+<text class="l" x="652" y="250">select one tool</text>
+<text class="l" x="652" y="269">generate arguments</text>
+<text class="l" x="652" y="288">JSON output</text>
+<text class="l" x="652" y="307">100 tasks</text>
+<text class="l" x="652" y="326">(50 intents × 2)</text>
+</g>
+<line class="a" x1="820" y1="290.0" x2="840" y2="290.0" marker-end="url(#ah)"/>
+<g class="step"><rect x="844" y="200" width="180" height="180" rx="10"/>
+<text class="t" x="858" y="226">5  Validate + mock</text>
+<text class="l" x="858" y="250">parse JSON</text>
+<text class="l" x="858" y="269">validate against</text>
+<text class="l" x="858" y="288">  the RAW schema</text>
+<text class="l" x="858" y="307">deterministic mock</text>
+<text class="l" x="858" y="326">receipt check</text>
+</g>
+<line class="a" x1="1026" y1="290.0" x2="1046" y2="290.0" marker-end="url(#ah)"/>
+<g class="step out"><rect x="1050" y="200" width="180" height="180" rx="10"/>
+<text class="t" x="1064" y="226">6  Metrics</text>
+<text class="l" x="1064" y="250">E2E success (primary)</text>
+<text class="l" x="1064" y="269">selection, arg EM,</text>
+<text class="l" x="1064" y="288">field acc, validity</text>
+<text class="l" x="1064" y="307">tokens, latency</text>
+<text class="l" x="1064" y="326">failure taxonomy</text>
+</g>
+<g class="iv"><rect x="216" y="30" width="582" height="130" rx="10"/>
+<text class="t" x="230" y="56">Independent variable</text>
+<text class="l" x="230" y="80">Schema representation: 5 conditions</text>
+<text class="l" x="230" y="99">Design factor: catalog size 5 / 10 / 20 / 50 / 100</text>
+<text class="l" x="230" y="118">Every task is paired across all conditions and sizes</text>
+</g>
+<line class="a" x1="316.0" y1="160" x2="316.0" y2="196" marker-end="url(#ah)"/>
+<g class="out"><rect x="834" y="30" width="396" height="130" rx="10"/>
+<text class="t" x="848" y="56">Primary outcome</text>
+<text class="l" x="848" y="80">End-to-end task success:</text>
+<text class="l" x="848" y="99">valid JSON ∧ correct tool ∧ schema-valid</text>
+<text class="l" x="848" y="118">∧ correct arguments ∧ mock receipt match</text>
+</g>
+<line class="a" x1="1140.0" y1="160" x2="1140.0" y2="196" marker-end="url(#ah)"/>
+<g class="ctl"><rect x="20" y="410" width="1220" height="125" rx="10"/>
+<text class="t" x="34" y="436">Held constant across all conditions</text>
+<text class="l" x="34" y="460">model + version + quantization · decoding parameters · system-prompt wording · user task · tool names and tool order</text>
+<text class="l" x="34" y="479">tool catalog membership · evaluator · mock execution · number of trials · task IDs</text>
+<text class="l" x="34" y="498">Not in this experiment: retrieval, progressive discovery, MCP, planning, extra agents, training, Blaze</text>
+</g>
+<text class="prov" x="20" y="570">Counts resolved from frozen artifacts (src/provenance.py; meta.*). Analysis: full-v2/results.json sha256 5cb9d5311d61…</text>
+</svg>
