@@ -1,0 +1,4 @@
+[latency-v2] 25 new requests done (last: select|normalized|C020_R00|T106_p0, 58599 ms)
+[latency-v2] 50 new requests done (last: select|tscg_info|C100_R00|T103_p0, 303011 ms)
+run latency-v2: 50 new requests, results at /home/user/api-orchestration-at-scale/experiment/runs/latency-v2/results.jsonl
+LAT_EXIT=0
