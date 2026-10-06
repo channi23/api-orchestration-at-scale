@@ -19,6 +19,7 @@ training. Scope and decisions: [`PLAN.md`](PLAN.md), [`DECISIONS.md`](DECISIONS.
 | [`analysis/full-v2/SUMMARY_STE.md`](analysis/full-v2/SUMMARY_STE.md) | controlled-language summary (~80% ASD-STE100) |
 | [`analysis/full-v2/figures/`](analysis/full-v2/figures/) | required plots 1–5 and `experiment_diagram.svg` |
 | [`analysis/full-v2/explainer.html`](analysis/full-v2/explainer.html) | offline interactive explainer (open locally in a browser) |
+| [`NEXT_STEPS.md`](NEXT_STEPS.md) | what we learned, what is new, how it helps the project, and ranked next experiments |
 
 - Every number in REPORT, SUMMARY, diagram and explainer is resolved by provenance key from `results.json` or the frozen artifacts (`src/provenance.py`); an unknown key is an error.
 - The explanatory views are not separate sources of truth.
