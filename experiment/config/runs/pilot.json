@@ -1,0 +1,3 @@
+{"run_prefix": "pilot", "purpose": "validate the full pipeline; NOT a scientific result",
+ "replicates": [0, 1], "sizes": [5, 20], "arms": ["raw", "minified", "normalized", "tscg", "tscg_info"],
+ "families": ["select", "arggen"], "paraphrases": [0, 1], "cache_prompt": true}

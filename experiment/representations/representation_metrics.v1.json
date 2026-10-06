@@ -1,0 +1,194 @@
+{
+ "tokenizer": "Qwen3-1.7B-Q8_0.gguf",
+ "note": "tokens of the per-tool representation text (no chat template)",
+ "raw/all": {
+  "mean_tokens": 266.1,
+  "median_compression_pct": 0.0,
+  "mean_compression_pct": 0.0,
+  "median_transform_ms": 0.0265
+ },
+ "raw/flat": {
+  "mean_tokens": 252.5,
+  "median_compression_pct": 0.0,
+  "mean_compression_pct": 0.0,
+  "median_transform_ms": 0.0222
+ },
+ "raw/structured": {
+  "mean_tokens": 284.8,
+  "median_compression_pct": 0.0,
+  "mean_compression_pct": 0.0,
+  "median_transform_ms": 0.031
+ },
+ "minified/all": {
+  "mean_tokens": 160.0,
+  "median_compression_pct": 40.1,
+  "mean_compression_pct": 39.9,
+  "median_transform_ms": 0.0073
+ },
+ "minified/flat": {
+  "mean_tokens": 155.1,
+  "median_compression_pct": 39.2,
+  "mean_compression_pct": 38.7,
+  "median_transform_ms": 0.0068
+ },
+ "minified/structured": {
+  "mean_tokens": 166.8,
+  "median_compression_pct": 42.5,
+  "mean_compression_pct": 41.6,
+  "median_transform_ms": 0.0079
+ },
+ "normalized/all": {
+  "mean_tokens": 252.4,
+  "median_compression_pct": 5.4,
+  "mean_compression_pct": 5.5,
+  "median_transform_ms": 0.0052
+ },
+ "normalized/flat": {
+  "mean_tokens": 240.0,
+  "median_compression_pct": 4.9,
+  "mean_compression_pct": 5.5,
+  "median_transform_ms": 0.0044
+ },
+ "normalized/structured": {
+  "mean_tokens": 269.5,
+  "median_compression_pct": 5.7,
+  "mean_compression_pct": 5.5,
+  "median_transform_ms": 0.0065
+ },
+ "tscg/all": {
+  "mean_tokens": 78.1,
+  "median_compression_pct": 71.7,
+  "mean_compression_pct": 71.0,
+  "median_transform_ms": 0.0204
+ },
+ "tscg/flat": {
+  "mean_tokens": 88.4,
+  "median_compression_pct": 67.5,
+  "mean_compression_pct": 66.3,
+  "median_transform_ms": 0.0212
+ },
+ "tscg/structured": {
+  "mean_tokens": 63.8,
+  "median_compression_pct": 79.4,
+  "mean_compression_pct": 77.4,
+  "median_transform_ms": 0.0195
+ },
+ "tscg_info/all": {
+  "mean_tokens": 165.7,
+  "median_compression_pct": 35.5,
+  "mean_compression_pct": 36.4,
+  "median_transform_ms": 0.003
+ },
+ "tscg_info/flat": {
+  "mean_tokens": 182.8,
+  "median_compression_pct": 29.0,
+  "mean_compression_pct": 27.5,
+  "median_transform_ms": 0.0031
+ },
+ "tscg_info/structured": {
+  "mean_tokens": 142.0,
+  "median_compression_pct": 51.0,
+  "mean_compression_pct": 48.5,
+  "median_transform_ms": 0.0029
+ },
+ "catalog/5/raw": {
+  "mean": 1446.1,
+  "max": 1748
+ },
+ "catalog/5/minified": {
+  "mean": 872.4,
+  "max": 1000
+ },
+ "catalog/5/normalized": {
+  "mean": 1365.6,
+  "max": 1712
+ },
+ "catalog/5/tscg": {
+  "mean": 462,
+  "max": 554
+ },
+ "catalog/5/tscg_info": {
+  "mean": 918.5,
+  "max": 1081
+ },
+ "catalog/10/raw": {
+  "mean": 2880.7,
+  "max": 3269
+ },
+ "catalog/10/minified": {
+  "mean": 1706.5,
+  "max": 1890
+ },
+ "catalog/10/normalized": {
+  "mean": 2744,
+  "max": 3100
+ },
+ "catalog/10/tscg": {
+  "mean": 817.1,
+  "max": 1066
+ },
+ "catalog/10/tscg_info": {
+  "mean": 1714.4,
+  "max": 2158
+ },
+ "catalog/20/raw": {
+  "mean": 5586.5,
+  "max": 6085
+ },
+ "catalog/20/minified": {
+  "mean": 3305.6,
+  "max": 3565
+ },
+ "catalog/20/normalized": {
+  "mean": 5316.1,
+  "max": 5893
+ },
+ "catalog/20/tscg": {
+  "mean": 1588.1,
+  "max": 1826
+ },
+ "catalog/20/tscg_info": {
+  "mean": 3346.7,
+  "max": 3718
+ },
+ "catalog/50/raw": {
+  "mean": 13406.1,
+  "max": 14197
+ },
+ "catalog/50/minified": {
+  "mean": 7923.1,
+  "max": 8317
+ },
+ "catalog/50/normalized": {
+  "mean": 12733.6,
+  "max": 13452
+ },
+ "catalog/50/tscg": {
+  "mean": 3826.2,
+  "max": 4185
+ },
+ "catalog/50/tscg_info": {
+  "mean": 8213,
+  "max": 8744
+ },
+ "catalog/100/raw": {
+  "mean": 27153.4,
+  "max": 28122
+ },
+ "catalog/100/minified": {
+  "mean": 16032.7,
+  "max": 16787
+ },
+ "catalog/100/normalized": {
+  "mean": 25737.7,
+  "max": 26764
+ },
+ "catalog/100/tscg": {
+  "mean": 7694.1,
+  "max": 8294
+ },
+ "catalog/100/tscg_info": {
+  "mean": 16521.1,
+  "max": 17315
+ }
+}

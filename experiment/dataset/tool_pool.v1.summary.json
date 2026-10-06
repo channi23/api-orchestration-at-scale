@@ -1,0 +1,34 @@
+{
+  "by_stratum": {
+    "flat": 174,
+    "structured": 126
+  },
+  "by_subset": {
+    "Github_easy": 180,
+    "Github_medium": 46,
+    "Github_trivial": 9,
+    "Glaiveai2K": 28,
+    "Snowplow": 35,
+    "WashingtonPost": 2
+  },
+  "decisions": {
+    "accept": 300,
+    "reject:NO_USER_VALUES": 45,
+    "reject:OPAQUE": 172,
+    "reject:PII": 1,
+    "reject:SEMANTIC_DUPLICATE": 64,
+    "reject:TOY": 49
+  },
+  "families_with_multiple_tools": {
+    "calendar_event": 2,
+    "category": 2,
+    "package_install": 2,
+    "smart_light": 2,
+    "step_image": 2,
+    "tag_subscription": 2
+  },
+  "n_accepted": 300,
+  "n_families": 294,
+  "n_reviewed": 631,
+  "task_suitable": 299
+}

@@ -1,0 +1,322 @@
+{
+ "0": [
+  {
+   "tool_id": "T106",
+   "tool_name": "register_vendor_app",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o39515"
+  },
+  {
+   "tool_id": "T227",
+   "tool_name": "add_flight_listing",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o44458"
+  },
+  {
+   "tool_id": "T141",
+   "tool_name": "change_configuration",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o43974"
+  },
+  {
+   "tool_id": "T103",
+   "tool_name": "register_quantum_backend",
+   "stratum": "structured",
+   "schema_id": "Github_medium/o24463"
+  },
+  {
+   "tool_id": "T151",
+   "tool_name": "publish_doc_package",
+   "stratum": "structured",
+   "schema_id": "Github_medium/o91038"
+  }
+ ],
+ "1": [
+  {
+   "tool_id": "T272",
+   "tool_name": "set_loop_animation",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o46559"
+  },
+  {
+   "tool_id": "T170",
+   "tool_name": "trigger_charger_message",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o43995"
+  },
+  {
+   "tool_id": "T178",
+   "tool_name": "create_api_stage",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o21848"
+  },
+  {
+   "tool_id": "T262",
+   "tool_name": "register_dog",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o39452"
+  },
+  {
+   "tool_id": "T286",
+   "tool_name": "render_rating_component",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o85205"
+  }
+ ],
+ "2": [
+  {
+   "tool_id": "T188",
+   "tool_name": "track_page_view",
+   "stratum": "flat",
+   "schema_id": "Snowplow/sp_175_Normalized"
+  },
+  {
+   "tool_id": "T199",
+   "tool_name": "record_previous_company_name",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o65462"
+  },
+  {
+   "tool_id": "T008",
+   "tool_name": "set_shipment_address",
+   "stratum": "flat",
+   "schema_id": "Github_medium/o75563"
+  },
+  {
+   "tool_id": "T013",
+   "tool_name": "report_build_status",
+   "stratum": "structured",
+   "schema_id": "Github_medium/o82154"
+  },
+  {
+   "tool_id": "T120",
+   "tool_name": "record_revision",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o86226"
+  }
+ ],
+ "3": [
+  {
+   "tool_id": "T132",
+   "tool_name": "attach_consent_document",
+   "stratum": "flat",
+   "schema_id": "Snowplow/sp_269_Normalized"
+  },
+  {
+   "tool_id": "T048",
+   "tool_name": "set_ad_adapter_params",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o68291"
+  },
+  {
+   "tool_id": "T062",
+   "tool_name": "post_release_comment",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o84345"
+  },
+  {
+   "tool_id": "T221",
+   "tool_name": "update_user_names",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o39442"
+  },
+  {
+   "tool_id": "T220",
+   "tool_name": "record_statutory_filing",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o65451"
+  }
+ ],
+ "4": [
+  {
+   "tool_id": "T146",
+   "tool_name": "create_course",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o40180"
+  },
+  {
+   "tool_id": "T273",
+   "tool_name": "track_client_session",
+   "stratum": "flat",
+   "schema_id": "Snowplow/sp_266_Normalized"
+  },
+  {
+   "tool_id": "T218",
+   "tool_name": "set_hotspot_rotation",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o44276"
+  },
+  {
+   "tool_id": "T051",
+   "tool_name": "calculate_shipping_cost",
+   "stratum": "structured",
+   "schema_id": "Glaiveai2K/calculate_shipping_cost_c34b9e81"
+  },
+  {
+   "tool_id": "T168",
+   "tool_name": "bind_gamepad_axis",
+   "stratum": "structured",
+   "schema_id": "Github_trivial/o44238"
+  }
+ ],
+ "5": [
+  {
+   "tool_id": "T029",
+   "tool_name": "calculate_distance",
+   "stratum": "flat",
+   "schema_id": "Glaiveai2K/calculate_distance_97630804"
+  },
+  {
+   "tool_id": "T028",
+   "tool_name": "track_alias_event",
+   "stratum": "flat",
+   "schema_id": "Snowplow/sp_171_Normalized"
+  },
+  {
+   "tool_id": "T055",
+   "tool_name": "export_device_query",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o6187"
+  },
+  {
+   "tool_id": "T089",
+   "tool_name": "create_place",
+   "stratum": "structured",
+   "schema_id": "Github_medium/o43729"
+  },
+  {
+   "tool_id": "T092",
+   "tool_name": "calculate_discounted_price",
+   "stratum": "structured",
+   "schema_id": "Glaiveai2K/calculate_discounted_price_92fe3b6f"
+  }
+ ],
+ "6": [
+  {
+   "tool_id": "T279",
+   "tool_name": "set_scene_lighting",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o90230"
+  },
+  {
+   "tool_id": "T239",
+   "tool_name": "register_user_device",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o20470"
+  },
+  {
+   "tool_id": "T248",
+   "tool_name": "group_travel_packages",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o82257"
+  },
+  {
+   "tool_id": "T152",
+   "tool_name": "create_view_template",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o9896"
+  },
+  {
+   "tool_id": "T005",
+   "tool_name": "search_jobs",
+   "stratum": "structured",
+   "schema_id": "Glaiveai2K/search_jobs_ece2422b"
+  }
+ ],
+ "7": [
+  {
+   "tool_id": "T009",
+   "tool_name": "generate_password",
+   "stratum": "flat",
+   "schema_id": "Glaiveai2K/generate_password_42faba47"
+  },
+  {
+   "tool_id": "T022",
+   "tool_name": "define_resource_spec",
+   "stratum": "flat",
+   "schema_id": "Github_medium/o83272"
+  },
+  {
+   "tool_id": "T158",
+   "tool_name": "define_keyframe",
+   "stratum": "structured",
+   "schema_id": "Github_medium/o26969"
+  },
+  {
+   "tool_id": "T295",
+   "tool_name": "create_timeline_diagram",
+   "stratum": "structured",
+   "schema_id": "Github_medium/o84139"
+  },
+  {
+   "tool_id": "T203",
+   "tool_name": "create_resume",
+   "stratum": "structured",
+   "schema_id": "Glaiveai2K/create_resume_3dc11395"
+  }
+ ],
+ "8": [
+  {
+   "tool_id": "T135",
+   "tool_name": "assign_pantry_role",
+   "stratum": "flat",
+   "schema_id": "Github_medium/o53616"
+  },
+  {
+   "tool_id": "T040",
+   "tool_name": "set_color_modulation",
+   "stratum": "flat",
+   "schema_id": "Github_easy/o90179"
+  },
+  {
+   "tool_id": "T250",
+   "tool_name": "configure_signal_subscription",
+   "stratum": "flat",
+   "schema_id": "Github_medium/o47921"
+  },
+  {
+   "tool_id": "T176",
+   "tool_name": "add_employees",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o83721"
+  },
+  {
+   "tool_id": "T161",
+   "tool_name": "update_map_chart_points",
+   "stratum": "structured",
+   "schema_id": "Github_medium/o54552"
+  }
+ ],
+ "9": [
+  {
+   "tool_id": "T001",
+   "tool_name": "create_calendar_event",
+   "stratum": "flat",
+   "schema_id": "Glaiveai2K/create_calendar_event_a2233073"
+  },
+  {
+   "tool_id": "T166",
+   "tool_name": "book_hotel",
+   "stratum": "flat",
+   "schema_id": "Glaiveai2K/book_hotel_e2c3dd06"
+  },
+  {
+   "tool_id": "T240",
+   "tool_name": "add_ussd_language_step",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o58495"
+  },
+  {
+   "tool_id": "T172",
+   "tool_name": "set_api_access_whitelist",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o58320"
+  },
+  {
+   "tool_id": "T057",
+   "tool_name": "register_function_extensions",
+   "stratum": "structured",
+   "schema_id": "Github_easy/o39754"
+  }
+ ]
+}

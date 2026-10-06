@@ -1,0 +1,68 @@
+{
+ "checks": {
+  "model": {
+   "model_path": "/home/user/api-orchestration-at-scale/experiment/models/Qwen3-1.7B-Q8_0.gguf",
+   "gguf_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+   "expected_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+   "n_ctx": 32768,
+   "build": "b11382-11fe02151",
+   "pass": true
+  },
+  "context_limit": {
+   "n_ctx": 32768,
+   "max_new_tokens": 512,
+   "n_prompts_checked": 250,
+   "worst_case_by_size_arm": {
+    "5/minified": 1581,
+    "5/normalized": 2293,
+    "5/raw": 2329,
+    "5/tscg": 1134,
+    "5/tscg_info": 1661,
+    "10/minified": 2471,
+    "10/normalized": 3681,
+    "10/raw": 3850,
+    "10/tscg": 1629,
+    "10/tscg_info": 2721,
+    "20/minified": 4177,
+    "20/normalized": 6505,
+    "20/raw": 6697,
+    "20/tscg": 2396,
+    "20/tscg_info": 4288,
+    "50/minified": 8929,
+    "50/normalized": 14064,
+    "50/raw": 14809,
+    "50/tscg": 4791,
+    "50/tscg_info": 9314,
+    "100/minified": 17350,
+    "100/normalized": 27327,
+    "100/raw": 28685,
+    "100/tscg": 8906,
+    "100/tscg_info": 17885
+   },
+   "exceeding": [],
+   "pass": true
+  },
+  "representation_hashes": {
+   "mismatch": [],
+   "pass": true
+  },
+  "tasks_build": {
+   "stdout": "tasks=100 intents=50 leakage_issues=0 gold_valid=all",
+   "pass": true
+  },
+  "evaluator_tests": {
+   "stdout": "12 evaluator tests passed",
+   "pass": true
+  },
+  "request_counts": {
+   "full": 3000,
+   "latency": 50,
+   "pass": true
+  },
+  "disk_free_gb": {
+   "value": 28.1,
+   "pass": true
+  }
+ },
+ "all_pass": true
+}

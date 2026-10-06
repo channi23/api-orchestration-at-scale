@@ -1,0 +1,40 @@
+[full-v1] 25 new requests done (last: select|normalized|C005_R00|T141_p0, 3460 ms)
+[full-v1] 50 new requests done (last: select|tscg_info|C005_R00|T151_p1, 5520 ms)
+[full-v1] 75 new requests done (last: select|normalized|C010_R00|T141_p0, 3263 ms)
+[full-v1] 100 new requests done (last: select|tscg_info|C010_R00|T151_p1, 6916 ms)
+Traceback (most recent call last):
+  File "/home/user/api-orchestration-at-scale/experiment/src/run.py", line 161, in <module>
+    main()
+  File "/home/user/api-orchestration-at-scale/experiment/src/run.py", line 125, in main
+    status, resp = http_json(args.server + "/v1/chat/completions", payload)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/api-orchestration-at-scale/experiment/src/run.py", line 36, in http_json
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1352, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 1415, in getresponse
+    response.begin()
+  File "/usr/lib/python3.11/http/client.py", line 330, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 299, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+FULL_EXIT=1

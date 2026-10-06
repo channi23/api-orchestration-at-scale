@@ -1,0 +1,6 @@
+{
+  "name": "tscg-runner",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@tscg/core": "1.4.3" }
+}
