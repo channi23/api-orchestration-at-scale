@@ -1,0 +1,26 @@
+{
+  "run_prefix": "e1-lora",
+  "purpose": "E1: 2x2 training x decoding on held-out tools (arms A-E of the brief). Base arms need the base GGUF, tuned arms the fused LoRA GGUF: run with --arms and restart the server between them, same --run-id.",
+  "model_config": "configs/model.qwen3-1.7b.json",
+  "replicates": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "sizes": [5, 20],
+  "families": ["select", "arggen"],
+  "paraphrases": [0, 1],
+  "cache_prompt": true,
+  "arms": ["A_raw_free", "B_raw_cd", "C_raw_lora_free", "D_min_lora_free", "E_min_lora_cd", "Bm_min_cd"],
+  "arm_defs": {
+    "A_raw_free":      {"representation": "raw",      "decoding": "free",        "model": "base"},
+    "B_raw_cd":        {"representation": "raw",      "decoding": "constrained", "model": "base"},
+    "Bm_min_cd":       {"representation": "minified", "decoding": "constrained", "model": "base"},
+    "C_raw_lora_free": {"representation": "raw",      "decoding": "free",        "model": "lora-raw"},
+    "D_min_lora_free": {"representation": "minified", "decoding": "free",        "model": "lora-minified"},
+    "E_min_lora_cd":   {"representation": "minified", "decoding": "constrained", "model": "lora-minified"}
+  },
+  "comparisons": [
+    ["PRIMARY: LoRA adds to constrained decoding (E vs Bm, minified)", "Bm_min_cd", "E_min_lora_cd"],
+    ["LoRA vs untuned, free, raw (C vs A)", "A_raw_free", "C_raw_lora_free"],
+    ["constrained decoding vs LoRA (B vs C)", "B_raw_cd", "C_raw_lora_free"],
+    ["representation under LoRA (D vs C)", "C_raw_lora_free", "D_min_lora_free"],
+    ["constrained decoding on top of LoRA (E vs D)", "D_min_lora_free", "E_min_lora_cd"]
+  ]
+}

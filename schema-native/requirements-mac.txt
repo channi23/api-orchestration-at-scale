@@ -1,0 +1,4 @@
+# Apple Silicon only. Versions are the latest on PyPI on 2026-11-12; none of these were executed in the authoring environment.
+mlx==0.32.4
+mlx-lm==0.32.2
+huggingface-hub==2.4.0

@@ -1,0 +1,9 @@
+# Model-free part (runs on Linux and macOS). Versions are the ones the tests were run with.
+jsonschema==4.26.0
+numpy==2.5.3
+scipy==1.18.1
+pytest==9.1.1
+# constrained-decoding engines used by the model-free engine audit
+llguidance==1.9.1
+xgrammar==0.2.9
+outlines_core==0.2.14
