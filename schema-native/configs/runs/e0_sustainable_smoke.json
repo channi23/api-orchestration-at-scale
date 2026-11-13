@@ -1,0 +1,74 @@
+{
+  "run_prefix": "e0-sustainable-smoke",
+  "purpose": "Real-server path smoke only; not an accuracy result Separate sustainable profile; never pool with original E0.",
+  "model_config": "configs/model.qwen3-1.7b.sustainable.json",
+  "replicates": [
+    0
+  ],
+  "sizes": [
+    5,
+    20
+  ],
+  "families": [
+    "select",
+    "arggen"
+  ],
+  "paraphrases": [
+    0
+  ],
+  "cache_prompt": true,
+  "arms": [
+    "A_raw_free",
+    "B_raw_cd",
+    "A2_min_free",
+    "B2_min_cd"
+  ],
+  "arm_defs": {
+    "A_raw_free": {
+      "representation": "raw",
+      "decoding": "free"
+    },
+    "B_raw_cd": {
+      "representation": "raw",
+      "decoding": "constrained"
+    },
+    "A2_min_free": {
+      "representation": "minified",
+      "decoding": "free"
+    },
+    "B2_min_cd": {
+      "representation": "minified",
+      "decoding": "constrained"
+    }
+  },
+  "comparisons": [
+    [
+      "PRIMARY: constrained vs free, raw",
+      "A_raw_free",
+      "B_raw_cd"
+    ],
+    [
+      "constrained vs free, minified",
+      "A2_min_free",
+      "B2_min_cd"
+    ],
+    [
+      "minified vs raw, free (replication of the finished experiment)",
+      "A_raw_free",
+      "A2_min_free"
+    ],
+    [
+      "minified vs raw, constrained",
+      "B_raw_cd",
+      "B2_min_cd"
+    ]
+  ],
+  "expected_requests": 12,
+  "requires_preflight": true,
+  "task_ids": [
+    "T106_p0"
+  ],
+  "result_kind": "smoke",
+  "constraint_transport": "llguidance_grammar",
+  "request_cooldown_seconds": 2
+}

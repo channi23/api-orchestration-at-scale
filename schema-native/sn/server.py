@@ -1,4 +1,5 @@
 """Run one dedicated server in the foreground; preserve startup and peak-memory evidence."""
+import argparse
 import json
 import os
 from pathlib import Path
@@ -8,9 +9,14 @@ from . import paths
 
 
 def main():
-    cfg = json.loads(Path(paths.ROOT, 'configs/model.qwen3-1.7b.json').read_text())
-    model = sys.argv[1] if len(sys.argv) > 1 else str(Path(paths.ROOT, 'models', cfg['gguf_file']))
-    port = sys.argv[2] if len(sys.argv) > 2 else '8080'
+    ap = argparse.ArgumentParser()
+    ap.add_argument('model', nargs='?')
+    ap.add_argument('port', nargs='?', default='8080')
+    ap.add_argument('--config', default='configs/model.qwen3-1.7b.json')
+    args = ap.parse_args()
+    cfg = json.loads(Path(paths.ROOT, args.config).read_text())
+    model = args.model or str(Path(paths.ROOT, 'models', cfg['gguf_file']))
+    port = args.port
     if not Path(model).is_file():
         raise SystemExit('Model missing: run scripts/setup_mac.sh first')
     tools = Path(os.environ.get('TOOLS_DIR', str(Path(paths.ROOT, '.tools'))))
@@ -25,7 +31,7 @@ def main():
         try:
             rc = proc.wait()
         except KeyboardInterrupt:
-            proc.terminate()
+            # The foreground child already received SIGINT; avoid a second termination signal.
             rc = proc.wait()
     raise SystemExit(rc)
 

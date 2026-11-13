@@ -171,3 +171,39 @@ def test_explicit_llguidance_transport_bypasses_jinja_schema_lowering():
     assert set(payload) == {"grammar"}
     assert payload["grammar"].startswith("%llguidance {}\nstart: %json ")
     assert json.loads(payload["grammar"].split("%json ", 1)[1]) == schema
+
+
+def test_schema_key_order_and_rendered_files_are_part_of_identity(tmp_path, monkeypatch):
+    schema = tmp_path / 'X/a.json'
+    schema.parent.mkdir()
+    schema.write_text('{"properties":{"a":{},"b":{}}}')
+    import schema_utils as su
+    monkeypatch.setattr(su, 'DATA_DIR', str(tmp_path))
+    monkeypatch.setattr(paths, 'pool', lambda: {'T0': {'schema_id': 'X/a'}})
+    before = provenance.inputs()
+    schema.write_text('{"properties":{"b":{},"a":{}}}')
+    after = provenance.inputs()
+    assert before['schema:X/a'] != after['schema:X/a']
+    assert any('representations/raw/tools.v1.jsonl' in key for key in before)
+    assert any('representations/minified/tools.v1.jsonl' in key for key in before)
+
+
+def test_resume_runtime_identity_checks_binary_but_not_growing_log():
+    original = {'runtime': {'binary_sha256': 'a', 'server_log_sha256': 'old'}}
+    same = copy.deepcopy(original)
+    same['runtime']['server_log_sha256'] = 'new'
+    assert provenance.runtime_identity(original) == provenance.runtime_identity(same)
+    same['runtime']['binary_sha256'] = 'b'
+    assert provenance.runtime_identity(original) != provenance.runtime_identity(same)
+
+
+def test_sustainable_profile_preserves_model_and_request_parameters():
+    base = json.loads(Path(paths.ROOT, 'configs/model.qwen3-1.7b.json').read_text())
+    profile = json.loads(Path(paths.ROOT, 'configs/model.qwen3-1.7b.sustainable.json').read_text())
+    assert profile['gguf_sha256'] == base['gguf_sha256']
+    assert profile['request_params'] == base['request_params']
+    assert profile['llama_cpp_commit'] == base['llama_cpp_commit']
+    args = profile['server_args']
+    assert args[args.index('-c')+1] == '8192'
+    assert args[args.index('-np')+1] == '1'
+    assert profile['request_params']['max_tokens'] + 6185 < 8192

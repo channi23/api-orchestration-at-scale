@@ -126,6 +126,9 @@ def main():
     cfg_path = a.config if os.path.isabs(a.config) else os.path.join(paths.ROOT, a.config)
     rc = json.load(open(cfg_path))
     model = json.load(open(os.path.join(paths.ROOT, rc.get("model_config", "configs/model.qwen3-1.7b.json"))))
+    cooldown = float(rc.get("request_cooldown_seconds", 0))
+    if cooldown < 0:
+        raise ValueError("request_cooldown_seconds must be nonnegative")
     run_id = a.run_id or f"{rc['run_prefix']}-{dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
     if run_id in (".", "..") or os.path.basename(run_id) != run_id:
         raise ValueError("run-id must be a single directory name")
@@ -157,7 +160,8 @@ def main():
             old = json.load(open(manifest))
             if (old.get("identity") != ident or old.get("server") != a.server
                     or old.get("environment") != provenance.environment()
-                    or old.get("server_props") != (props if st == 200 else None)):
+                    or old.get("server_props") != (props if st == 200 else None)
+                    or provenance.runtime_identity(old.get("preflight")) != provenance.runtime_identity(receipt)):
                 raise ValueError("Resume identity mismatch: use a new run-id; existing data preserved")
         if not os.path.exists(manifest):
             json.dump({"run_id": run_id, "created_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "git_commit": git_sha(),
@@ -262,6 +266,8 @@ def main():
                     print(f"[{run_id}] {n_new} requests (last {key}, {wall:.0f} ms)", flush=True)
                 if a.limit and n_new >= a.limit:
                     break
+                if cooldown:
+                    time.sleep(cooldown)  # pacing is recorded in config, outside measured request latency
         print(f"run {run_id}: {n_new} new requests -> {res_path}")
     finally:
         lock.close()

@@ -25,12 +25,13 @@ def file_sha(path):
 def inputs():
     files = [os.path.join(paths.EXP, p) for p in (
         "tasks/tasks.v1.jsonl", "catalogs/catalogs.v1.json", "dataset/tool_pool.v1.jsonl")]
+    files += [os.path.join(paths.EXP, "representations", arm, "tools.v1.jsonl") for arm in ("raw", "minified")]
     files += [os.path.join(paths.EXP_SRC, p) for p in ("prompts.py", "render.py", "evaluate.py", "schema_utils.py")]
     files += [os.path.join(paths.HERE, p) for p in ("run.py", "envelope.py", "provenance.py", "preflight.py")]
     out = {os.path.relpath(p, paths.REPO): file_sha(p) for p in files}
     for tool in paths.pool().values():
         sid = tool["schema_id"]
-        out["schema:" + sid] = digest(su.load_schema(sid))
+        out["schema:" + sid] = file_sha(os.path.join(su.DATA_DIR, sid + ".json"))
     return out
 
 
@@ -66,3 +67,9 @@ def engine_log_errors(path, offset):
         lines = f.read().decode(errors='replace').splitlines()
     return [line for line in lines if 'llg error:' in line.lower() or
             ('llguidance' in line.lower() and 'not enabled' in line.lower())]
+
+
+def runtime_identity(receipt):
+    runtime = (receipt or {}).get("runtime", {})
+    return {key: runtime.get(key) for key in ("model_sha256", "llama_commit", "llguidance_commit",
+                                            "binary_sha256", "cmake_cache_sha256", "metal_offloaded_layers")}

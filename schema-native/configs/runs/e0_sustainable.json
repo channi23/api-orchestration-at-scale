@@ -1,0 +1,81 @@
+{
+  "run_prefix": "e0-sustainable",
+  "purpose": "E0: does constrained decoding change end-to-end success for the UNTUNED model, and by how much less than the measured upper bound? 2 representations x 2 decodings. No training. Separate sustainable profile; never pool with original E0.",
+  "model_config": "configs/model.qwen3-1.7b.sustainable.json",
+  "replicates": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "sizes": [
+    5,
+    20
+  ],
+  "families": [
+    "select",
+    "arggen"
+  ],
+  "paraphrases": [
+    0,
+    1
+  ],
+  "cache_prompt": true,
+  "arms": [
+    "A_raw_free",
+    "B_raw_cd",
+    "A2_min_free",
+    "B2_min_cd"
+  ],
+  "arm_defs": {
+    "A_raw_free": {
+      "representation": "raw",
+      "decoding": "free"
+    },
+    "B_raw_cd": {
+      "representation": "raw",
+      "decoding": "constrained"
+    },
+    "A2_min_free": {
+      "representation": "minified",
+      "decoding": "free"
+    },
+    "B2_min_cd": {
+      "representation": "minified",
+      "decoding": "constrained"
+    }
+  },
+  "comparisons": [
+    [
+      "PRIMARY: constrained vs free, raw",
+      "A_raw_free",
+      "B_raw_cd"
+    ],
+    [
+      "constrained vs free, minified",
+      "A2_min_free",
+      "B2_min_cd"
+    ],
+    [
+      "minified vs raw, free (replication of the finished experiment)",
+      "A_raw_free",
+      "A2_min_free"
+    ],
+    [
+      "minified vs raw, constrained",
+      "B_raw_cd",
+      "B2_min_cd"
+    ]
+  ],
+  "expected_requests": 1200,
+  "requires_preflight": true,
+  "result_kind": "benchmark",
+  "constraint_transport": "llguidance_grammar",
+  "request_cooldown_seconds": 2
+}
