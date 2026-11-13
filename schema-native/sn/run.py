@@ -135,120 +135,123 @@ def main():
     rdir = os.path.join(paths.RUNS, run_id)
     os.makedirs(os.path.join(rdir, "prompts"), exist_ok=True)
     lock = open(os.path.join(rdir, ".writer.lock"), "w")
-    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    headers = {"Authorization": f"Bearer {a.api_key}"} if a.api_key else {}
-
-    st, props = http_json(a.server + "/props", headers=headers)     # llama-server; optional elsewhere
-    if receipt and (st != 200 or props != receipt["server_checks"]["props"]):
-        raise ValueError("Server properties changed since preflight; run preflight again")
-    manifest = os.path.join(rdir, "manifest.json")
-    if os.path.exists(manifest):
-        old = json.load(open(manifest))
-        if (old.get("identity") != ident or old.get("server") != a.server
-                or old.get("environment") != provenance.environment()
-                or old.get("server_props") != (props if st == 200 else None)):
-            raise ValueError("Resume identity mismatch: use a new run-id; existing data preserved")
-    if not os.path.exists(manifest):
-        json.dump({"run_id": run_id, "created_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "git_commit": git_sha(),
-                   "run_config": rc, "model_config": model, "server": a.server,
-                   "identity": ident, "environment": provenance.environment(), "preflight": receipt,
-                   "expected_request_keys": sorted(expected),
-                   "server_props": props if st == 200 else None,
-                   "system_template": prompts.SYSTEM_TEMPLATE, "arggen_suffix": prompts.ARGGEN_SUFFIX},
-                  open(manifest, "w"), indent=2, default=str)
-
-    tasks, pool, cats = paths.tasks(), paths.pool(), paths.catalogs()
-    raw = {}
-
-    def raw_schema(tid):
-        if tid not in raw:
-            raw[tid] = su.load_schema(pool[tid]["schema_id"])
-        return raw[tid]
-
-    res_path = os.path.join(rdir, "results.jsonl")
-    existing = paths.jsonl(res_path) if os.path.exists(res_path) else []
-    provenance.validate_rows(existing, expected)
-    done = {r["request_key"] for r in existing}
-    base = dict(model["request_params"])
-    base["cache_prompt"] = rc.get("cache_prompt", True)
-    n_new = 0
-    with open(res_path, "a") as fout:
-        for fam, arm_name, cat, t in reqs:
-            if a.arms and arm_name not in a.arms:
-                continue
-            arm = rc["arm_defs"][arm_name]
-            key = request_key(fam, arm_name, cat, t)
-            if key in done:
-                continue
-            rep = arm["representation"]
-            msgs = prompts.messages_select(rep, cat["presentation_order"], t) if fam == "select" else prompts.messages_arggen(rep, t)
-            sp_sha = prompts.sha(msgs[0]["content"])
-            ppath = os.path.join(rdir, "prompts", f"{sp_sha[:16]}.txt.gz")
-            if not os.path.exists(ppath):
-                with gzip.open(ppath, "wt") as f:
-                    f.write(msgs[0]["content"])
-            cat_ids = cat["presentation_order"] if cat else [t["tool_id"]]
-            payload = dict(base, messages=msgs)
-            if arm.get("model"):
-                payload["model"] = arm["model"]
-            if arm["decoding"] == "constrained":
-                payload["response_format"] = response_format(
-                    env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids]))
-            log_path = receipt["runtime"]["server_log_path"] if receipt else None
-            log_offset = os.path.getsize(log_path) if log_path else 0
-            t0 = time.perf_counter()
-            status, resp = http_json(a.server + "/v1/chat/completions", payload, headers=headers)
-            wall = (time.perf_counter() - t0) * 1000
-            log_errors = provenance.engine_log_errors(log_path, log_offset) if log_path else []
-            failure = error_kind(status, resp, arm["decoding"])
-            if log_errors and arm["decoding"] == "constrained":
-                failure = "engine_error"
-            ctx_err = failure == "context_error"
-            engine_err = failure == "engine_error"
-            content, finish, usage, timings = "", None, {}, {}
-            if status == 200:
-                try:
-                    ch = resp["choices"][0]
-                    content = ch["message"].get("content") or ""
-                    if not isinstance(content, str):
-                        raise ValueError("Non-text response content")
-                    finish, usage, timings = ch.get("finish_reason"), resp.get("usage", {}), resp.get("timings", {})
-                except (KeyError, IndexError, TypeError, ValueError):
-                    failure = "response_error"
-            violation = None
-            if status == 200 and not failure and arm["decoding"] == "constrained" and finish != "length":
-                try:
-                    jsonschema.Draft7Validator(payload["response_format"]["json_schema"]["schema"]).validate(json.loads(content))
-                except (ValueError, jsonschema.ValidationError) as e:
-                    failure = "constraint_violation"
-                    engine_err = True
-                    violation = str(e)[:1000]
-            names = {pool[i]["tool_name"] for i in cat_ids}
-            ev = evaluate(content, t, raw_schema(t["tool_id"]), names, context_error=ctx_err)
-            raw_e2e = ev["e2e_success"]
-            if failure:
-                ev["e2e_success"] = ev["e2e_strict"] = False
-            rec = {"request_key": key, "raw_evaluator_e2e": raw_e2e,
-                   "engine_log_errors": log_errors, "constraint_violation": violation, "run_id": run_id, "family": fam, "arm": arm_name,
-                   "representation": rep, "decoding": arm["decoding"], "model_alias": arm.get("model"),
-                   "catalog_id": cat["catalog_id"] if cat else None, "size": cat["size"] if cat else 1,
-                   "replicate": t["replicate"], "task_id": t["task_id"], "intent_id": t["intent_id"],
-                   "tool_id": t["tool_id"], "stratum": t["stratum"],
-                   "gold_position": cat["target_positions"][t["tool_id"]] if cat else 0,
-                   "system_prompt_sha256": sp_sha, "user_message": msgs[1]["content"],
-                   "http_status": status, "error": None if status == 200 and not failure else resp, "engine_error": engine_err, "request_error": failure,
-                   "raw_content": content, "finish_reason": finish, "truncated": finish == "length",
-                   "usage": usage, "server_timings": timings, "wall_latency_ms": wall, "eval": ev}
-            fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
-            fout.flush()
-            n_new += 1
-            if failure in ("transport_error", "http_error", "context_error", "response_error"):
-                raise RuntimeError(f"Recorded {failure} for {key}; stopping. Inspect before starting a new run.")
-            if n_new % 25 == 0:
-                print(f"[{run_id}] {n_new} requests (last {key}, {wall:.0f} ms)", flush=True)
-            if a.limit and n_new >= a.limit:
-                break
-    print(f"run {run_id}: {n_new} new requests -> {res_path}")
+    try:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        headers = {"Authorization": f"Bearer {a.api_key}"} if a.api_key else {}
+    
+        st, props = http_json(a.server + "/props", headers=headers)     # llama-server; optional elsewhere
+        if receipt and (st != 200 or props != receipt["server_checks"]["props"]):
+            raise ValueError("Server properties changed since preflight; run preflight again")
+        manifest = os.path.join(rdir, "manifest.json")
+        if os.path.exists(manifest):
+            old = json.load(open(manifest))
+            if (old.get("identity") != ident or old.get("server") != a.server
+                    or old.get("environment") != provenance.environment()
+                    or old.get("server_props") != (props if st == 200 else None)):
+                raise ValueError("Resume identity mismatch: use a new run-id; existing data preserved")
+        if not os.path.exists(manifest):
+            json.dump({"run_id": run_id, "created_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "git_commit": git_sha(),
+                       "run_config": rc, "model_config": model, "server": a.server,
+                       "identity": ident, "environment": provenance.environment(), "preflight": receipt,
+                       "expected_request_keys": sorted(expected),
+                       "server_props": props if st == 200 else None,
+                       "system_template": prompts.SYSTEM_TEMPLATE, "arggen_suffix": prompts.ARGGEN_SUFFIX},
+                      open(manifest, "w"), indent=2, default=str)
+    
+        tasks, pool, cats = paths.tasks(), paths.pool(), paths.catalogs()
+        raw = {}
+    
+        def raw_schema(tid):
+            if tid not in raw:
+                raw[tid] = su.load_schema(pool[tid]["schema_id"])
+            return raw[tid]
+    
+        res_path = os.path.join(rdir, "results.jsonl")
+        existing = paths.jsonl(res_path) if os.path.exists(res_path) else []
+        provenance.validate_rows(existing, expected)
+        done = {r["request_key"] for r in existing}
+        base = dict(model["request_params"])
+        base["cache_prompt"] = rc.get("cache_prompt", True)
+        n_new = 0
+        with open(res_path, "a") as fout:
+            for fam, arm_name, cat, t in reqs:
+                if a.arms and arm_name not in a.arms:
+                    continue
+                arm = rc["arm_defs"][arm_name]
+                key = request_key(fam, arm_name, cat, t)
+                if key in done:
+                    continue
+                rep = arm["representation"]
+                msgs = prompts.messages_select(rep, cat["presentation_order"], t) if fam == "select" else prompts.messages_arggen(rep, t)
+                sp_sha = prompts.sha(msgs[0]["content"])
+                ppath = os.path.join(rdir, "prompts", f"{sp_sha[:16]}.txt.gz")
+                if not os.path.exists(ppath):
+                    with gzip.open(ppath, "wt") as f:
+                        f.write(msgs[0]["content"])
+                cat_ids = cat["presentation_order"] if cat else [t["tool_id"]]
+                payload = dict(base, messages=msgs)
+                if arm.get("model"):
+                    payload["model"] = arm["model"]
+                if arm["decoding"] == "constrained":
+                    payload["response_format"] = response_format(
+                        env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids]))
+                log_path = receipt["runtime"]["server_log_path"] if receipt else None
+                log_offset = os.path.getsize(log_path) if log_path else 0
+                t0 = time.perf_counter()
+                status, resp = http_json(a.server + "/v1/chat/completions", payload, headers=headers)
+                wall = (time.perf_counter() - t0) * 1000
+                log_errors = provenance.engine_log_errors(log_path, log_offset) if log_path else []
+                failure = error_kind(status, resp, arm["decoding"])
+                if log_errors and arm["decoding"] == "constrained":
+                    failure = "engine_error"
+                ctx_err = failure == "context_error"
+                engine_err = failure == "engine_error"
+                content, finish, usage, timings = "", None, {}, {}
+                if status == 200:
+                    try:
+                        ch = resp["choices"][0]
+                        content = ch["message"].get("content") or ""
+                        if not isinstance(content, str):
+                            raise ValueError("Non-text response content")
+                        finish, usage, timings = ch.get("finish_reason"), resp.get("usage", {}), resp.get("timings", {})
+                    except (KeyError, IndexError, TypeError, ValueError):
+                        failure = "response_error"
+                violation = None
+                if status == 200 and not failure and arm["decoding"] == "constrained" and finish != "length":
+                    try:
+                        jsonschema.Draft7Validator(payload["response_format"]["json_schema"]["schema"]).validate(json.loads(content))
+                    except (ValueError, jsonschema.ValidationError) as e:
+                        failure = "constraint_violation"
+                        engine_err = True
+                        violation = str(e)[:1000]
+                names = {pool[i]["tool_name"] for i in cat_ids}
+                ev = evaluate(content, t, raw_schema(t["tool_id"]), names, context_error=ctx_err)
+                raw_e2e = ev["e2e_success"]
+                if failure:
+                    ev["e2e_success"] = ev["e2e_strict"] = False
+                rec = {"request_key": key, "raw_evaluator_e2e": raw_e2e,
+                       "engine_log_errors": log_errors, "constraint_violation": violation, "run_id": run_id, "family": fam, "arm": arm_name,
+                       "representation": rep, "decoding": arm["decoding"], "model_alias": arm.get("model"),
+                       "catalog_id": cat["catalog_id"] if cat else None, "size": cat["size"] if cat else 1,
+                       "replicate": t["replicate"], "task_id": t["task_id"], "intent_id": t["intent_id"],
+                       "tool_id": t["tool_id"], "stratum": t["stratum"],
+                       "gold_position": cat["target_positions"][t["tool_id"]] if cat else 0,
+                       "system_prompt_sha256": sp_sha, "user_message": msgs[1]["content"],
+                       "http_status": status, "error": None if status == 200 and not failure else resp, "engine_error": engine_err, "request_error": failure,
+                       "raw_content": content, "finish_reason": finish, "truncated": finish == "length",
+                       "usage": usage, "server_timings": timings, "wall_latency_ms": wall, "eval": ev}
+                fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                fout.flush()
+                n_new += 1
+                if failure in ("transport_error", "http_error", "context_error", "response_error"):
+                    raise RuntimeError(f"Recorded {failure} for {key}; stopping. Inspect before starting a new run.")
+                if n_new % 25 == 0:
+                    print(f"[{run_id}] {n_new} requests (last {key}, {wall:.0f} ms)", flush=True)
+                if a.limit and n_new >= a.limit:
+                    break
+        print(f"run {run_id}: {n_new} new requests -> {res_path}")
+    finally:
+        lock.close()
 
 
 if __name__ == "__main__":
