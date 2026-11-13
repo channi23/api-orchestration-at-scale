@@ -21,6 +21,7 @@ import copy
 import json
 from typing import Any
 
+from . import constraint_policy
 from . import paths  # noqa: F401  (adds experiment/src to sys.path)
 import schema_utils as su  # type: ignore  # noqa: E402
 
@@ -43,18 +44,18 @@ def argument_schema(raw_schema: dict) -> dict:
     return su.normalize(copy.deepcopy(raw_schema))
 
 
-def tool_branch(tool_name: str, raw_schema: dict) -> dict:
+def tool_branch(tool_name: str, raw_schema: dict, policy=constraint_policy.ORIGINAL) -> dict:
     return {
         "type": "object",
-        "properties": {"tool": {"const": tool_name}, "arguments": argument_schema(raw_schema)},
+        "properties": {"tool": {"const": tool_name}, "arguments": constraint_policy.prepare(argument_schema(raw_schema), policy)},
         "required": ["tool", "arguments"],
         "additionalProperties": False,
     }
 
 
-def envelope(tools: list[tuple[str, dict]]) -> dict:
+def envelope(tools: list[tuple[str, dict]], policy=constraint_policy.ORIGINAL) -> dict:
     """tools: [(tool_name, raw_schema), ...] in presentation order."""
-    branches = [tool_branch(n, s) for n, s in tools]
+    branches = [tool_branch(n, s, policy) for n, s in tools]
     return branches[0] if len(branches) == 1 else {"anyOf": branches}
 
 

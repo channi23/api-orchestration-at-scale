@@ -210,7 +210,7 @@ def main():
                     payload["model"] = arm["model"]
                 constraint_schema = None
                 if arm["decoding"] == "constrained":
-                    constraint_schema = env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids])
+                    constraint_schema = env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids], rc.get("constraint_policy", "original-v0"))
                     payload.update(constraint_payload(constraint_schema, rc.get("constraint_transport", "response_format")))
                 log_path = receipt["runtime"]["server_log_path"] if receipt else None
                 log_offset = os.path.getsize(log_path) if log_path else 0
