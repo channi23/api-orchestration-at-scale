@@ -30,7 +30,7 @@ import urllib.error
 import urllib.request
 
 from . import envelope as env
-from . import paths, provenance
+from . import paths, provenance, resources
 from .preflight import plan, request_key
 import prompts  # type: ignore  # noqa: E402
 import schema_utils as su  # type: ignore  # noqa: E402
@@ -187,6 +187,7 @@ def main():
         base = dict(model["request_params"])
         base["cache_prompt"] = rc.get("cache_prompt", True)
         n_new = 0
+        resource_state = {}
         with open(res_path, "a") as fout:
             for fam, arm_name, cat, t in reqs:
                 if a.arms and arm_name not in a.arms:
@@ -195,6 +196,7 @@ def main():
                 key = request_key(fam, arm_name, cat, t)
                 if key in done:
                     continue
+                resource_check = resources.check(rc, resource_state)
                 rep = arm["representation"]
                 msgs = prompts.messages_select(rep, cat["presentation_order"], t) if fam == "select" else prompts.messages_arggen(rep, t)
                 sp_sha = prompts.sha(msgs[0]["content"])
@@ -245,7 +247,7 @@ def main():
                 if failure:
                     ev["e2e_success"] = ev["e2e_strict"] = False
                 rec = {"request_key": key, "raw_evaluator_e2e": raw_e2e,
-                       "engine_log_errors": log_errors, "constraint_violation": violation,
+                       "resource_check": resource_check, "engine_log_errors": log_errors, "constraint_violation": violation,
                        "constraint_transport": rc.get("constraint_transport", "response_format") if constraint_schema else None,
                        "constraint_schema_sha256": provenance.digest(constraint_schema) if constraint_schema else None, "run_id": run_id, "family": fam, "arm": arm_name,
                        "representation": rep, "decoding": arm["decoding"], "model_alias": arm.get("model"),

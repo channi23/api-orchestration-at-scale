@@ -207,3 +207,40 @@ def test_sustainable_profile_preserves_model_and_request_parameters():
     assert args[args.index('-c')+1] == '8192'
     assert args[args.index('-np')+1] == '1'
     assert profile['request_params']['max_tokens'] + 6185 < 8192
+
+
+def test_sustainable_guard_rejects_pressure_before_inference(monkeypatch):
+    from sn import resources
+    monkeypatch.setattr(resources.subprocess, 'check_output', lambda *a, **k: '2')
+    with pytest.raises(RuntimeError, match='no new inference request'):
+        resources.check({'require_normal_memory_pressure': True}, {})
+    assert resources.check({}, {}) is None
+
+
+def test_sustainable_guard_uses_active_writes_not_accumulated_swap(monkeypatch):
+    from sn import resources
+    tick = [0]
+    def fake(cmd, **kwargs):
+        if cmd[0] == 'sysctl': return '1'
+        return f'Mach Virtual Memory Statistics: (page size of 16384 bytes)\nSwapouts: {5000000 + tick[0]*128}.\n'
+    monkeypatch.setattr(resources.subprocess, 'check_output', fake)
+    monkeypatch.setattr(resources.time, 'monotonic', lambda: float(tick[0]))
+    state = {}
+    assert resources.check({'require_normal_memory_pressure': True}, state)['swapout_mib_per_sec_since_previous_check'] is None
+    for n in (1,2):
+        tick[0] = n
+        assert resources.check({'require_normal_memory_pressure': True}, state)['swapout_mib_per_sec_since_previous_check'] == 2
+    tick[0] = 3
+    with pytest.raises(RuntimeError, match='Sustained swap writes'):
+        resources.check({'require_normal_memory_pressure': True}, state)
+
+
+def test_preflight_checks_resources_before_generation_probes(monkeypatch):
+    from sn import resources
+    calls = []
+    monkeypatch.setattr(run, 'http_json', lambda url, *a, **k: (calls.append(url) or (200, {})))
+    def reject(*a): raise RuntimeError('pressure warning')
+    monkeypatch.setattr(resources, 'check', reject)
+    with pytest.raises(RuntimeError, match='pressure warning'):
+        preflight.online('http://fake', {'request_params': {}}, {}, resource_config={'require_normal_memory_pressure': True})
+    assert calls == ['http://fake/props']

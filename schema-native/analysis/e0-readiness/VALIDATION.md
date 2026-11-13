@@ -6,7 +6,7 @@
   Claude's stage-0 commit `ea0a759`.
 - Stage 0 PR #2 merged as `807b7db`, after the request-failure fix `f2d98bc`.
 - Existing experiment tree is unchanged: `4fc5823a83abd5f498c3c01dc6032bd485ffa13e`.
-- Original evaluator: 12 tests pass. E0 package: 34 tests pass, including real localhost fake-server
+- Original evaluator: 12 tests pass. E0 package: 40 tests pass, including real localhost fake-server
   tests, changed-config resume refusal, partial-report gating, duplicate rejection, online constraint
   negative controls and context-overflow rejection.
 - Frozen offline plan: 1,200 unique paired requests and 70 unique envelopes. Both 5- and 20-tool
@@ -44,7 +44,7 @@ E0 explicitly sends `%llguidance` in the native `grammar` field to avoid that ro
 `tools/server/server-context.cpp` exposes the `/props` model path/build/context fields and the
 `/apply-template` and `/tokenize` response shapes used by preflight.
 
-## Real Mac runtime (benchmark in progress)
+## Real Mac runtime (incomplete checkpoint)
 
 The Metal device probe succeeds with the required system access. The pinned llama.cpp server and
 quantizer build; server `--version` reports `11fe021`. The official Q8_0 GGUF downloads and matches
@@ -59,7 +59,18 @@ standalone Python 1.9.1 check above. `format: uri` is an additional refusal. The
 return HTTP 200 after llguidance failure; fresh log monitoring detects this and prevents false
 constrained success. Completed constrained outputs are independently envelope-validated as well.
 
-The frozen 1,200-request E0 is in progress, retaining engine failures in system-level outcomes.
-No complete benchmark result or training claim exists yet. E1 and E2 remain gated. The first setup
-attempt exposed a writer-lock release bug during repeated tests; explicit cleanup fixed it and the
-34-test suite passes. A clean end-to-end setup rerun is still to be recorded.
+The original E0 stopped at **588/1,200** saved requests for host-resource constraints, with 120
+engine failures kept separate. The partial report contains no paired inference. An interrupted
+in-flight request was never written, preserving all saved latencies. The original configuration
+remains unchanged. All other user apps were left open. No model weights were modified or trained.
+
+A separate sustainable profile was added: context 8,192, batch 512, microbatch 128, 2-second pacing,
+normal-pressure admission and an active-swap guard. Its measured KV allocation is 896 MiB rather
+than 1,792 MiB; model RSS was roughly 2.6 GiB rather than 3.5 GiB. It still produced warning pressure
+with the current host workload, and was unloaded before benchmark requests. It is **not** a completed
+accuracy or multi-hour stability validation. It must use a new run ID.
+
+Final validation: 40 package tests and 12 original evaluator tests pass. The complete setup script
+was rerun successfully (39 tests at that point; the final guard regression adds the 40th) with the existing Python 3.14 environment and cached weights/build. Fresh
+Python 3.13 installation remains untested. Exact rendered input files, raw schema byte order, runtime
+binary and CMake cache identity are included in the tightened checks. E1 and E2 remain gated.

@@ -27,7 +27,7 @@ def inputs():
         "tasks/tasks.v1.jsonl", "catalogs/catalogs.v1.json", "dataset/tool_pool.v1.jsonl")]
     files += [os.path.join(paths.EXP, "representations", arm, "tools.v1.jsonl") for arm in ("raw", "minified")]
     files += [os.path.join(paths.EXP_SRC, p) for p in ("prompts.py", "render.py", "evaluate.py", "schema_utils.py")]
-    files += [os.path.join(paths.HERE, p) for p in ("run.py", "envelope.py", "provenance.py", "preflight.py")]
+    files += [os.path.join(paths.HERE, p) for p in ("run.py", "envelope.py", "provenance.py", "preflight.py", "resources.py")]
     out = {os.path.relpath(p, paths.REPO): file_sha(p) for p in files}
     for tool in paths.pool().values():
         sid = tool["schema_id"]

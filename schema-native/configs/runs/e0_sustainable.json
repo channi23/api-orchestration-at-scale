@@ -77,5 +77,6 @@
   "requires_preflight": true,
   "result_kind": "benchmark",
   "constraint_transport": "llguidance_grammar",
-  "request_cooldown_seconds": 2
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true
 }

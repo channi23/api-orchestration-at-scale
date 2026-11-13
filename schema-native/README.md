@@ -5,10 +5,13 @@ benchmark. It uses one pinned model and server for all four conditions: raw/free
 minified/free, minified/constrained. There are 1,200 requests: 100 tasks × four arms ×
 (two selection catalogs, 5 and 20 tools, plus the fixed-tool argument condition).
 
-**Current status:** Claude's stage 0 is merged. The pinned server and model run on a 16 GB Apple M4;
-34 package tests and the 12-request real smoke complete. Runtime preflight finds 11/70 envelope
-refusals in bundled llguidance 1.0.1. The frozen 1,200-request E0 is in progress; no complete
-benchmark or training result is claimed yet. The original `experiment/` tracked files are unchanged.
+**Current status:** Claude's stage 0 is merged. The pinned server and Q8_0 model run on a
+16 GiB M4; 40 package tests pass; the 12-request real path smoke completes with four recorded engine failures. Bundled llguidance 1.0.1
+refuses 11/70 envelopes. The original E0 stopped at **588/1,200** saved requests for host resource
+constraints; [the partial report](analysis/e0-v1/REPORT.md) has no paired inference. No training ran.
+A separate 8K profile halves KV allocation, but still produced warning pressure with the existing
+app workload and was unloaded before benchmark requests. See [the resource guide](RESOURCE_GUIDE.md).
+The original `experiment/` tracked files are unchanged.
 `PLAN.md` contains the preregistered predictions and research gates.
 
 ## Model-free verification
@@ -33,7 +36,9 @@ The dataset is pinned at `9a94995b9279ae3af3aed4b2629172790b968d14`.
 ## Run E0 on a 16 GB Apple Silicon Mac
 
 Prerequisites: Xcode command-line tools (`xcode-select --install`), Python 3.13, CMake and Rust/Cargo
-(for example `brew install python@3.13 cmake rust`). Docker cannot expose Apple Metal here.
+(for example `brew install python@3.13 cmake rust`). Standard Linux Docker containers on macOS do not provide this Metal path. Docker Model Runner
+can manage a native Metal engine outside the container; E0 uses a directly pinned native server
+to keep the experimental backend fixed. See [Docker Model Runner](https://docs.docker.com/ai/model-runner/).
 Close memory-heavy apps. Disk must hold the dataset, build, environment and about 1.8 GB GGUF.
 Memory estimates in the source report remain estimates until this is run.
 
@@ -138,7 +143,7 @@ need run-specific memory measurements.
 
 ## Research gates and limits
 
-E0 is instrumented and runtime-tested, but the benchmark readout is not yet complete. Read the real E0 before E1: ≥95% constrained accuracy
+E0 is instrumented and runtime-tested, but the benchmark is an incomplete checkpoint. The remaining 612 requests require adequate host headroom and the recorded original configuration, or a separately named new 8K run. Read the real E0 before E1: ≥95% constrained accuracy
 means harder tasks first; constrained below free means inspect engine faults and run a second engine.
 Even a positive E0 does not establish unseen-schema learning. Test v2 (250 new intents), keyword stress
 and impossible-request tasks remain to be authored and validated before a powered training claim.
