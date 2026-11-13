@@ -1,0 +1,6 @@
+# Lightweight E0 runtime. Engine audit and training dependencies are separate.
+jsonschema==4.26.0
+numpy==2.5.3
+scipy==1.18.1
+pytest==9.1.1
+huggingface-hub==2.4.0
