@@ -42,6 +42,7 @@ def test_runner_sends_envelope_only_for_constrained_arms_and_report_runs(tmp_pat
     monkeypatch.setattr(sys, "argv", ["sn.run", "--config", "configs/runs/smoke.json", "--server", url, "--run-id", "_smoke"])
     SEEN.clear()
     sn_run.main()
+    sn_run.main()  # actual resume must add no duplicate rows
     srv.shutdown()
     rows = paths.jsonl(str(tmp_path / "runs" / "_smoke" / "results.jsonl"))
     assert len(rows) == 2 * (5 + 5)                      # 2 arms x (5 select + 5 arggen) tasks of replicate 0
@@ -105,3 +106,18 @@ def test_synth_filters_and_mlx_rows(tmp_path, monkeypatch):
     assert [x["role"] for x in m] == ["system", "user", "assistant"]
     assert json.loads(m[2]["content"]) == {"tool": "set_widget_size", "arguments": {"width": 3}}
     assert '"name":"other_tool"' in m[0]["content"] and "\n  " not in m[0]["content"].split("Available tools:")[1].split("Respond")[0].strip()
+
+
+def test_infrastructure_errors_are_not_model_failures():
+    from sn.run import error_kind
+    assert error_kind(401, {"error": "auth"}, "constrained") == "http_error"
+    assert error_kind(500, {"error": "server"}, "constrained") == "http_error"
+    assert error_kind(400, {"error": "grammar refused schema"}, "constrained") == "engine_error"
+    assert error_kind(400, {"error": "context too large"}, "constrained") == "context_error"
+    assert error_kind(0, {"error": "offline"}, "free") == "transport_error"
+    from evaluate import evaluate
+    task = paths.tasks()[0]
+    ev = evaluate("", task, {}, set())
+    c = report.cell([{"http_status": 400, "engine_error": True, "request_error": "engine_error",
+                     "eval": ev, "usage": {}, "wall_latency_ms": 1}])
+    assert c["engine_errors"] == 1 and sum(c["classes"].values()) == 0

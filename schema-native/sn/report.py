@@ -36,8 +36,11 @@ def quantile(xs, q):
 def cell(rows: list[dict]) -> dict:
     ok_engine = [r for r in rows if not r.get("engine_error")]
     lat = [r["wall_latency_ms"] for r in rows if r["http_status"] == 200]
-    d = ceiling.decompose(rows)
+    model_rows = [r for r in rows if r["http_status"] == 200]
+    d = ceiling.decompose(model_rows) if model_rows else dict.fromkeys(ceiling.CLASSES, 0)
     return {"n": len(rows), "engine_errors": len(rows) - len(ok_engine),
+            "request_errors": dict(collections.Counter(r.get("request_error") or "http_error"
+                                                       for r in rows if r["http_status"] != 200)),
             "tool": pct(rows, lambda r: r["eval"]["tool_correct"]),
             "schema_valid": pct(rows, lambda r: r["eval"]["schema_valid"]),
             "semantic": pct(rows, lambda r: r["eval"]["semantic_correct"]),

@@ -49,6 +49,23 @@ def http_json(url, payload=None, timeout=3600, headers=None):
         except Exception:
             return e.code, {"error": body}
 
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
+        return 0, {"error": str(e)}
+
+
+def error_kind(status, resp, decoding):
+    """Keep infrastructure failures out of the model failure taxonomy."""
+    if status == 200:
+        return None
+    msg = json.dumps(resp).lower()
+    if "context" in msg and status in (400, 413):
+        return "context_error"
+    if status in (400, 422) and decoding == "constrained" and any(
+        word in msg for word in ("schema", "grammar", "llguidance", "constraint")
+    ):
+        return "engine_error"
+    return "transport_error" if status == 0 else "http_error"
+
 
 def git_sha():
     try:
@@ -147,9 +164,9 @@ def main():
             t0 = time.perf_counter()
             status, resp = http_json(a.server + "/v1/chat/completions", payload, headers=headers)
             wall = (time.perf_counter() - t0) * 1000
-            err_text = json.dumps(resp).lower() if status != 200 else ""
-            ctx_err = status != 200 and "context" in err_text
-            engine_err = status != 200 and arm["decoding"] == "constrained" and not ctx_err
+            failure = error_kind(status, resp, arm["decoding"])
+            ctx_err = failure == "context_error"
+            engine_err = failure == "engine_error"
             content, finish, usage, timings = "", None, {}, {}
             if status == 200:
                 ch = resp["choices"][0]
@@ -164,7 +181,7 @@ def main():
                    "tool_id": t["tool_id"], "stratum": t["stratum"],
                    "gold_position": cat["target_positions"][t["tool_id"]] if cat else 0,
                    "system_prompt_sha256": sp_sha, "user_message": msgs[1]["content"],
-                   "http_status": status, "error": None if status == 200 else resp, "engine_error": engine_err,
+                   "http_status": status, "error": None if status == 200 else resp, "engine_error": engine_err, "request_error": failure,
                    "raw_content": content, "finish_reason": finish, "truncated": finish == "length",
                    "usage": usage, "server_timings": timings, "wall_latency_ms": wall, "eval": ev}
             fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
