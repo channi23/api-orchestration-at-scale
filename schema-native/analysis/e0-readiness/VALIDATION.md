@@ -6,7 +6,7 @@
   Claude's stage-0 commit `ea0a759`.
 - Stage 0 PR #2 merged as `807b7db`, after the request-failure fix `f2d98bc`.
 - Existing experiment tree is unchanged: `4fc5823a83abd5f498c3c01dc6032bd485ffa13e`.
-- Original evaluator: 12 tests pass. E0 package: 29 tests pass, including real localhost fake-server
+- Original evaluator: 12 tests pass. E0 package: 34 tests pass, including real localhost fake-server
   tests, changed-config resume refusal, partial-report gating, duplicate rejection, online constraint
   negative controls and context-overflow rejection.
 - Frozen offline plan: 1,200 unique paired requests and 70 unique envelopes. Both 5- and 20-tool
@@ -34,17 +34,32 @@ server and saves any explicit refusals. If reproduced, these affect both constra
 do not treat them as model misunderstandings or silently delete these tasks. Investigate a documented,
 semantics-preserving preparation policy or a second engine before model-quality or E1 conclusions.
 
-## Source-verified, not executed
+## Source and runtime checks
 
 At llama.cpp `11fe02151f79c41d0d4af7da708755d73b9c0da6`,
 `common/json-schema-to-grammar.cpp` selects `%llguidance` when built with `LLAMA_USE_LLGUIDANCE`,
 and `common/sampling.cpp` routes it to the llguidance sampler.
+The `--jinja` autoparser instead builds GBNF for `response_format`; a real probe reproduced this.
+E0 explicitly sends `%llguidance` in the native `grammar` field to avoid that route.
 `tools/server/server-context.cpp` exposes the `/props` model path/build/context fields and the
 `/apply-template` and `/tokenize` response shapes used by preflight.
 
-## Still requires the user's Mac
+## Real Mac runtime (benchmark in progress)
 
-No Qwen GGUF weights or llama.cpp build were present in the checked locations. No new model
-inference, Metal runtime validation, latency, peak memory, training, tokenizer-template check, or
-adapter export was run. Follow `schema-native/README.md` for the exact local commands. E1/E2
-remain gated. Preserve the preflight receipt, raw run directory, report and dedicated server log.
+The Metal device probe succeeds with the required system access. The pinned llama.cpp server and
+quantizer build; server `--version` reports `11fe021`. The official Q8_0 GGUF downloads and matches
+the pinned SHA-256. Actual hardware: Apple M4, 10 CPU cores, 17,179,869,184 bytes RAM (16 GiB).
+Server diagnostics at verbosity 4 confirm all 29 layers offloaded to the GPU.
+
+The real 12-request path smoke completes, with four engine-failure rows recorded separately.
+Full online preflight checks all 600 distinct prompts: maximum input length 6,185 tokens, with
+512 output tokens reserved inside 16,384 context. It finds **11/70** envelope refusals in the bundled
+llguidance **1.0.1**, commit `d795912fedc7d393de740177ea9ea761e7905774`. This is distinct from the
+standalone Python 1.9.1 check above. `format: uri` is an additional refusal. The pinned server can
+return HTTP 200 after llguidance failure; fresh log monitoring detects this and prevents false
+constrained success. Completed constrained outputs are independently envelope-validated as well.
+
+The frozen 1,200-request E0 is in progress, retaining engine failures in system-level outcomes.
+No complete benchmark result or training claim exists yet. E1 and E2 remain gated. The first setup
+attempt exposed a writer-lock release bug during repeated tests; explicit cleanup fixed it and the
+34-test suite passes. A clean end-to-end setup rerun is still to be recorded.

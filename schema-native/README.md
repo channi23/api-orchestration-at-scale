@@ -5,9 +5,10 @@ benchmark. It uses one pinned model and server for all four conditions: raw/free
 minified/free, minified/constrained. There are 1,200 requests: 100 tasks × four arms ×
 (two selection catalogs, 5 and 20 tools, plus the fixed-tool argument condition).
 
-**Current status:** Claude's model-free stage 0 is merged. E0 integrity and fake-server tests pass;
-new model inference and Apple Metal execution have **not** been performed. No new accuracy,
-latency, memory, or training result is claimed. The original `experiment/` tracked files are unchanged.
+**Current status:** Claude's stage 0 is merged. The pinned server and model run on a 16 GB Apple M4;
+34 package tests and the 12-request real smoke complete. Runtime preflight finds 11/70 envelope
+refusals in bundled llguidance 1.0.1. The frozen 1,200-request E0 is in progress; no complete
+benchmark or training result is claimed yet. The original `experiment/` tracked files are unchanged.
 `PLAN.md` contains the preregistered predictions and research gates.
 
 ## Model-free verification
@@ -51,6 +52,15 @@ file `Qwen3-1.7B-Q8_0.gguf`. It verifies SHA-256
 It installs E0 dependencies only. `SN_PYTHON` and `TOOLS_DIR` override the Python executable and tools
 root; export `TOOLS_DIR` in both terminals if overriding it.
 
+With `--jinja`, this pinned server lowers standard `response_format` through its GBNF autoparser.
+E0 therefore sends the explicit `grammar` payload `%llguidance {}\nstart: %json <schema>` to select
+llguidance while preserving the same chat prompts. Standard `response_format` remains supported
+for compatible endpoints and synthetic tests; it is a distinct transport and is recorded in results.
+
+The pinned llama.cpp bundles llguidance **1.0.1**, commit
+`d795912fedc7d393de740177ea9ea761e7905774`; the standalone stage-0 audit used 1.9.1.
+Preflight records and checks the bundled engine commit. These are distinct engine conditions.
+
 The server stays in the foreground and logs to `runs/server.8080.log`. It never kills an existing
 server. If port 8080 is occupied, stop the server you own before proceeding.
 Wait until this succeeds, then in terminal 2, from `schema-native/`:
@@ -67,6 +77,7 @@ preflight and the full E0. Smoke outputs are not accuracy evidence. Online prefl
 - GGUF checksum, clean pinned llama.cpp source, build flags, running build identity and model path;
 - server log evidence of Metal and GPU layer offload;
 - two adversarial constant/bounds probes to detect ignored constraints;
+- detection of fresh `llg error` log entries, including HTTP-200 silent enforcement fallback;
 - all 70 unique actual envelopes through the real server/tokenizer, with explicit engine refusals saved;
 - each unique benchmark prompt through `/apply-template` and `/tokenize`, reserving all 512 output
   tokens within the actual context size. There are no silent truncation or fallback changes.
@@ -127,7 +138,7 @@ need run-specific memory measurements.
 
 ## Research gates and limits
 
-E0 is code-ready, not empirically complete. Read the real E0 before E1: ≥95% constrained accuracy
+E0 is instrumented and runtime-tested, but the benchmark readout is not yet complete. Read the real E0 before E1: ≥95% constrained accuracy
 means harder tasks first; constrained below free means inspect engine faults and run a second engine.
 Even a positive E0 does not establish unseen-schema learning. Test v2 (250 new intents), keyword stress
 and impossible-request tasks remain to be authored and validated before a powered training claim.
