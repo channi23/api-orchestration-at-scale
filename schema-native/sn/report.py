@@ -23,7 +23,7 @@ import analyze as exp_analyze  # type: ignore  # noqa: E402
 
 
 def pct(rows, key):
-    return 100 * sum(bool(key(r)) for r in rows) / len(rows) if rows else float("nan")
+    return 100 * sum(bool(key(r)) for r in rows) / len(rows) if rows else None
 
 
 def quantile(xs, q):
@@ -47,7 +47,7 @@ def cell(rows: list[dict]) -> dict:
             "schema_valid": pct(rows, lambda r: r["eval"]["schema_valid"]),
             "semantic": pct(rows, lambda r: r["eval"]["semantic_correct"]),
             "arg_em": pct(rows, lambda r: r["eval"]["arg_exact_match"]),
-            "field_acc": 100 * sum(r["eval"]["field_acc"] for r in rows) / len(rows) if rows else float("nan"),
+            "field_acc": 100 * sum(r["eval"]["field_acc"] for r in rows) / len(rows) if rows else None,
             "e2e": pct(rows, lambda r: r["eval"]["e2e_success"]),
             "e2e_strict": pct(rows, lambda r: r["eval"]["e2e_strict"]),
             "e2e_engine_ok": pct(ok_engine, lambda r: r["eval"]["e2e_success"]),
@@ -112,7 +112,7 @@ def run(run_id: str, server_log: str | None = None) -> dict:
     out = os.path.join(paths.ANALYSIS, run_id)
     os.makedirs(out, exist_ok=True)
     with open(os.path.join(out, "report.json"), "w") as f:
-        json.dump(res, f, indent=2)
+        json.dump(res, f, indent=2, allow_nan=False)
     L = [f"# Report — run `{run_id}`", "", f"Evidence kind: {res['result_kind']}. Status: {'COMPLETE' if complete else 'PARTIAL: no paired inference'}. Requests: {res['n']}/{len(expected)}. Infrastructure failures: {infra}. Evaluation is against the raw schema. "
          "Engine refusals are counted separately from model errors.", "",
          "Cached sequential latency is descriptive. Taxonomy excludes request failures. p99 appears in JSON only for cells with at least 200 responses.", "",
@@ -122,7 +122,7 @@ def run(run_id: str, server_log: str | None = None) -> dict:
     for c in res["cells"]:
         k = c["classes"]
         L.append(f"| {c['family']} | {c['size']} | {c['arm']} | {c['n']} | {c['tool']:.1f} | {c['schema_valid']:.1f} | {c['semantic']:.1f} | "
-                 f"{c['e2e']:.1f} | {c['e2e_engine_ok']:.1f} | {c['engine_errors']} | {k['malformed']} | {k['wrong_tool']} | "
+                 f"{c['e2e']:.1f} | {format(c['e2e_engine_ok'], '.1f') if c['e2e_engine_ok'] is not None else 'NA'} | {c['engine_errors']} | {k['malformed']} | {k['wrong_tool']} | "
                  f"{k['invalid_only']} | {k['invalid_wrong']} | {k['valid_wrong']} | {c['in_tokens']:.0f} | {c['out_tokens']:.0f} | "
                  f"{(c['lat_p50'] or 0):.0f} | {(c['lat_p95'] or 0):.0f} |")
     if res["comparisons"]:

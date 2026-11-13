@@ -121,3 +121,5 @@ def test_infrastructure_errors_are_not_model_failures():
     c = report.cell([{"http_status": 400, "engine_error": True, "request_error": "engine_error",
                      "eval": ev, "usage": {}, "wall_latency_ms": 1}])
     assert c["engine_errors"] == 1 and sum(c["classes"].values()) == 0
+    assert c["e2e_engine_ok"] is None
+    json.dumps(c, allow_nan=False)
