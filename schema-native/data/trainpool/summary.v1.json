@@ -1,0 +1,68 @@
+{
+  "params": {
+    "jaccard_vs_test": 0.5,
+    "family_jaccard": 0.5,
+    "holdout_subsets": [
+      "WashingtonPost"
+    ],
+    "valid_fraction": 0.1,
+    "seed": 20261112
+  },
+  "filter_counts": {
+    "kept": 1983,
+    "not_eligible": 5339,
+    "near_duplicate_of_test_tool": 566,
+    "is_test_tool": 300,
+    "same_glaive_function_as_test_tool": 1370
+  },
+  "families": 1402,
+  "split_counts": {
+    "train": 1761,
+    "valid": 207,
+    "holdout_family": 15
+  },
+  "split_by_stratum": {
+    "train": {
+      "structured": 991,
+      "flat": 770
+    },
+    "valid": {
+      "structured": 113,
+      "flat": 94
+    },
+    "holdout_family": {
+      "structured": 8,
+      "flat": 7
+    }
+  },
+  "train_keyword_counts": {
+    "properties": 1761,
+    "type": 1758,
+    "required": 1279,
+    "additionalProperties": 790,
+    "items": 494,
+    "enum": 379,
+    "pattern": 235,
+    "maxLength": 197,
+    "minimum": 193,
+    "minLength": 190,
+    "minItems": 92,
+    "maximum": 79,
+    "oneOf": 53,
+    "anyOf": 43,
+    "patternProperties": 35,
+    "maxItems": 34,
+    "allOf": 14,
+    "dependencies": 14,
+    "multipleOf": 13,
+    "minProperties": 13,
+    "additionalItems": 11,
+    "const": 8,
+    "maxProperties": 8,
+    "exclusiveMinimum": 5,
+    "else": 1,
+    "if": 1,
+    "then": 1,
+    "not": 1
+  }
+}

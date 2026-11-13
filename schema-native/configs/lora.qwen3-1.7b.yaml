@@ -1,0 +1,29 @@
+# MLX-LM LoRA config for a 16 GB Apple Silicon Mac. Keys checked against mlx-lm 0.32.2 (lora.py CONFIG_DEFAULTS).
+# Run:  mlx_lm.lora --config configs/lora.qwen3-1.7b.yaml --data data/mlx/minified --adapter-path adapters/lora-minified
+# NOT executed in the authoring environment (no Apple Silicon there). Memory figures in the README are estimates.
+model: "Qwen/Qwen3-1.7B"        # full-precision safetensors; converted to MLX on load. Needed so the fused model can become a GGUF.
+train: true
+fine_tune_type: lora
+seed: 0
+num_layers: 16                  # last 16 of 28 transformer blocks
+batch_size: 1
+grad_accumulation_steps: 8      # effective batch 8
+iters: 3000                     # about 0.85 epoch per 3.5k examples at effective batch 8; set from the kept example count
+learning_rate: 2.0e-5         # library default is 1e-5 with scale 20; tune on validation loss only
+optimizer: adamw
+lr_schedule:
+  name: cosine_decay
+  warmup: 100
+  warmup_init: 1.0e-7
+  arguments: [2.0e-5, 3000, 1.0e-7]   # [initial lr, decay steps, final lr]
+max_seq_length: 3072            # longer rows are truncated by MLX-LM: mlxdata keeps catalogs <= 5 tools so rows fit
+mask_prompt: true               # loss on the assistant tool call only
+grad_checkpoint: true           # trades speed for memory; keep on for 16 GB
+val_batches: 25
+steps_per_report: 20
+steps_per_eval: 200
+save_every: 200
+lora_parameters:
+  rank: 16
+  scale: 20.0                   # MLX-LM multiplies the low-rank update by this number directly (library default); it is NOT alpha/rank
+  dropout: 0.05

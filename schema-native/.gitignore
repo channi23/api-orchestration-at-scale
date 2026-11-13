@@ -1,0 +1,11 @@
+.venv/
+models/
+adapters/
+logs/
+data/synth/
+data/mlx/
+runs/*
+!runs/.gitkeep
+__pycache__/
+*.pyc
+.pytest_cache/

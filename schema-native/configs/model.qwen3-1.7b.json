@@ -1,0 +1,26 @@
+{
+  "label": "schema-native prototype; same base model, quantization and decoding as experiment/config/model.json",
+  "model_name": "Qwen3-1.7B",
+  "license": "Apache-2.0 (per the Qwen/Qwen3-1.7B model card; re-check before publishing)",
+  "hf_repo_safetensors": "Qwen/Qwen3-1.7B",
+  "hf_repo_gguf": "Qwen/Qwen3-1.7B-GGUF",
+  "gguf_file": "Qwen3-1.7B-Q8_0.gguf",
+  "hf_revision_gguf": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
+  "gguf_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+  "llama_cpp_commit": "11fe02151f79c41d0d4af7da708755d73b9c0da6",
+  "llama_cpp_cmake_flags": ["-DGGML_METAL=ON", "-DLLAMA_LLGUIDANCE=ON", "-DLLAMA_CURL=OFF", "-DLLAMA_BUILD_TESTS=OFF"],
+  "server_args": ["-c", "16384", "-np", "1", "-ngl", "99", "--jinja", "--seed", "0", "-b", "2048", "-ub", "512", "--cache-ram", "0"],
+  "request_params": {
+    "temperature": 0.0,
+    "top_k": 1,
+    "top_p": 1.0,
+    "min_p": 0.0,
+    "seed": 0,
+    "max_tokens": 512,
+    "chat_template_kwargs": {"enable_thinking": false}
+  },
+  "notes": [
+    "Context is 16384 here (catalog sizes up to 50 fit: about 13.5k tokens raw). Use 32768 only for the 100-tool cells; see README for the memory estimate.",
+    "Greedy decoding, thinking disabled: identical to the finished experiment so arm A is a replication of its Raw arm on new hardware."
+  ]
+}

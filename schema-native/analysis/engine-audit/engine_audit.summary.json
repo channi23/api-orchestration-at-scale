@@ -1,0 +1,39 @@
+{
+  "n_tools": 300,
+  "n_targets": 50,
+  "engines": {
+    "llguidance": {
+      "version": "1.9.1",
+      "tools": 300,
+      "compile_ok": 292,
+      "compile_ok_with_warnings": 0,
+      "targets": 50,
+      "targets_compile_ok": 50,
+      "gold_accept_either": 50,
+      "gold_accept_compact": 50,
+      "gold_accept_spaced": 50
+    },
+    "xgrammar": {
+      "version": "0.2.9",
+      "tools": 300,
+      "compile_ok": 298,
+      "compile_ok_with_warnings": 0,
+      "targets": 50,
+      "targets_compile_ok": 49,
+      "gold_accept_either": 47,
+      "gold_accept_compact": 47,
+      "gold_accept_spaced": 47
+    },
+    "outlines_core": {
+      "version": "0.2.14",
+      "tools": 300,
+      "compile_ok": 287,
+      "compile_ok_with_warnings": 0,
+      "targets": 50,
+      "targets_compile_ok": 48,
+      "gold_accept_either": 46,
+      "gold_accept_compact": 46,
+      "gold_accept_spaced": 46
+    }
+  }
+}
