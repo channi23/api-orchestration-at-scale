@@ -1,0 +1,8 @@
+Selected startup and macOS time -l evidence; workspace paths redacted.
+0.01.450.100 I load_tensors: offloaded 29/29 layers to GPU
+0.01.452.057 I ggml_metal_init: found device: Apple M4
+0.01.666.864 I llama_kv_cache:       MTL0 KV buffer size =  1792.00 MiB
+0.01.743.143 I sched_reserve:       MTL0 compute buffer size =   102.21 MiB
+0.01.743.145 I sched_reserve:        CPU compute buffer size =    24.01 MiB
+          3907026944  maximum resident set size
+          2112114288  peak memory footprint
