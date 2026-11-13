@@ -68,5 +68,6 @@
   "task_ids": [
     "T106_p0"
   ],
-  "result_kind": "smoke"
+  "result_kind": "smoke",
+  "constraint_transport": "llguidance_grammar"
 }

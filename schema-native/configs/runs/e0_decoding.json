@@ -75,5 +75,6 @@
   ],
   "expected_requests": 1200,
   "requires_preflight": true,
-  "result_kind": "benchmark"
+  "result_kind": "benchmark",
+  "constraint_transport": "llguidance_grammar"
 }

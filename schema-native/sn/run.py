@@ -81,6 +81,16 @@ def response_format(schema: dict) -> dict:
     return {"type": "json_schema", "json_schema": {"name": "tool_call", "strict": True, "schema": schema}}
 
 
+def constraint_payload(schema, transport="response_format"):
+    if transport == "llguidance_grammar":
+        # --jinja's autoparser lowers response_format through GBNF at this pinned commit.
+        # An explicit grammar avoids that path and selects the llguidance sampler directly.
+        return {"grammar": "%llguidance {}\nstart: %json " + json.dumps(schema, ensure_ascii=False)}
+    if transport == "response_format":
+        return {"response_format": response_format(schema)}
+    raise ValueError("Unknown constraint transport: " + transport)
+
+
 def build_requests(rc: dict, tasks: list[dict], cats: dict) -> list[tuple]:
     sel = [t for t in tasks if t["replicate"] in rc["replicates"]
            and (not rc.get("task_ids") or t["task_id"] in rc["task_ids"])
@@ -138,7 +148,7 @@ def main():
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         headers = {"Authorization": f"Bearer {a.api_key}"} if a.api_key else {}
-    
+
         st, props = http_json(a.server + "/props", headers=headers)     # llama-server; optional elsewhere
         if receipt and (st != 200 or props != receipt["server_checks"]["props"]):
             raise ValueError("Server properties changed since preflight; run preflight again")
@@ -157,15 +167,15 @@ def main():
                        "server_props": props if st == 200 else None,
                        "system_template": prompts.SYSTEM_TEMPLATE, "arggen_suffix": prompts.ARGGEN_SUFFIX},
                       open(manifest, "w"), indent=2, default=str)
-    
+
         tasks, pool, cats = paths.tasks(), paths.pool(), paths.catalogs()
         raw = {}
-    
+
         def raw_schema(tid):
             if tid not in raw:
                 raw[tid] = su.load_schema(pool[tid]["schema_id"])
             return raw[tid]
-    
+
         res_path = os.path.join(rdir, "results.jsonl")
         existing = paths.jsonl(res_path) if os.path.exists(res_path) else []
         provenance.validate_rows(existing, expected)
@@ -192,9 +202,10 @@ def main():
                 payload = dict(base, messages=msgs)
                 if arm.get("model"):
                     payload["model"] = arm["model"]
+                constraint_schema = None
                 if arm["decoding"] == "constrained":
-                    payload["response_format"] = response_format(
-                        env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids]))
+                    constraint_schema = env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids])
+                    payload.update(constraint_payload(constraint_schema, rc.get("constraint_transport", "response_format")))
                 log_path = receipt["runtime"]["server_log_path"] if receipt else None
                 log_offset = os.path.getsize(log_path) if log_path else 0
                 t0 = time.perf_counter()
@@ -219,7 +230,7 @@ def main():
                 violation = None
                 if status == 200 and not failure and arm["decoding"] == "constrained" and finish != "length":
                     try:
-                        jsonschema.Draft7Validator(payload["response_format"]["json_schema"]["schema"]).validate(json.loads(content))
+                        jsonschema.Draft7Validator(constraint_schema).validate(json.loads(content))
                     except (ValueError, jsonschema.ValidationError) as e:
                         failure = "constraint_violation"
                         engine_err = True
@@ -230,7 +241,9 @@ def main():
                 if failure:
                     ev["e2e_success"] = ev["e2e_strict"] = False
                 rec = {"request_key": key, "raw_evaluator_e2e": raw_e2e,
-                       "engine_log_errors": log_errors, "constraint_violation": violation, "run_id": run_id, "family": fam, "arm": arm_name,
+                       "engine_log_errors": log_errors, "constraint_violation": violation,
+                       "constraint_transport": rc.get("constraint_transport", "response_format") if constraint_schema else None,
+                       "constraint_schema_sha256": provenance.digest(constraint_schema) if constraint_schema else None, "run_id": run_id, "family": fam, "arm": arm_name,
                        "representation": rep, "decoding": arm["decoding"], "model_alias": arm.get("model"),
                        "catalog_id": cat["catalog_id"] if cat else None, "size": cat["size"] if cat else 1,
                        "replicate": t["replicate"], "task_id": t["task_id"], "intent_id": t["intent_id"],

@@ -163,3 +163,11 @@ def test_http_200_silent_fallback_is_not_accepted_by_preflight(tmp_path, monkeyp
     checks = preflight.online('http://fake', {'request_params': {}}, {'catalog': {}}, server_log=str(log))
     assert checks['envelopes_accepted'] == 0
     assert checks['envelope_refusals']['catalog']['http_status'] == 200
+
+
+def test_explicit_llguidance_transport_bypasses_jinja_schema_lowering():
+    schema = {"type": "object", "properties": {"a": {"const": 1}}}
+    payload = run.constraint_payload(schema, "llguidance_grammar")
+    assert set(payload) == {"grammar"}
+    assert payload["grammar"].startswith("%llguidance {}\nstart: %json ")
+    assert json.loads(payload["grammar"].split("%json ", 1)[1]) == schema

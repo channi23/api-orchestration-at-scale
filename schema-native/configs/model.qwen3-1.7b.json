@@ -29,7 +29,9 @@
     "-ub",
     "512",
     "--cache-ram",
-    "0"
+    "0",
+    "-lv",
+    "4"
   ],
   "request_params": {
     "temperature": 0.0,
@@ -47,5 +49,6 @@
     "Greedy decoding, thinking disabled: identical to the finished experiment so arm A is a replication of its Raw arm on new hardware."
   ],
   "llguidance_commit": "d795912fedc7d393de740177ea9ea761e7905774",
-  "llguidance_version": "1.0.1 (bundled by pinned llama.cpp; standalone stage-0 audit used 1.9.1)"
+  "llguidance_version": "1.0.1 (bundled by pinned llama.cpp; standalone stage-0 audit used 1.9.1)",
+  "constraint_transport": "llguidance_grammar"
 }
