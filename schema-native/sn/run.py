@@ -34,7 +34,7 @@ from . import paths, provenance, resources
 from .preflight import plan, request_key
 import prompts  # type: ignore  # noqa: E402
 import schema_utils as su  # type: ignore  # noqa: E402
-from evaluate import evaluate  # type: ignore  # noqa: E402
+from evaluate import evaluate, schema_errors  # type: ignore  # noqa: E402
 
 
 def http_json(url, payload=None, timeout=3600, headers=None):
@@ -236,7 +236,14 @@ def main():
                 violation = None
                 if status == 200 and not failure and arm["decoding"] == "constrained" and finish != "length":
                     try:
-                        jsonschema.Draft7Validator(constraint_schema).validate(json.loads(content))
+                        call = json.loads(content)
+                        jsonschema.Draft7Validator(constraint_schema).validate(call)
+                        selected_id = next(i for i in cat_ids if pool[i]["tool_name"] == call["tool"])
+                        raw_errors = schema_errors(call["arguments"], raw_schema(selected_id))
+                        if raw_errors:
+                            failure = "constraint_violation"
+                            engine_err = True
+                            violation = "Raw selected-tool schema: " + json.dumps(raw_errors)[:1000]
                     except (ValueError, jsonschema.ValidationError) as e:
                         failure = "constraint_violation"
                         engine_err = True

@@ -98,3 +98,43 @@ def test_serious_thermal_state_stops_before_inference(monkeypatch):
     monkeypatch.setattr(resources,'thermal_state',lambda:2)
     with pytest.raises(RuntimeError,match='Thermal state 2'):
         resources.check({'require_normal_memory_pressure':True,'require_acceptable_thermal_state':True},{})
+
+
+def test_constrained_raw_schema_violation_is_an_engine_fault(tmp_path,monkeypatch):
+    import sys
+    from pathlib import Path
+    from sn import run
+    cfg=json.loads(Path(paths.ROOT,'configs/runs/smoke.json').read_text())
+    cfg['requires_zero_engine_refusals']=True
+    path=tmp_path/'config.json';path.write_text(json.dumps(cfg))
+    monkeypatch.setattr(paths,'RUNS',str(tmp_path/'runs'))
+    monkeypatch.setattr(envelope,'envelope',lambda *a,**k:{'type':'object'})
+    task=next(t for t in paths.tasks() if t['replicate']==0 and t['paraphrase_index']==0)
+    def fake(url,payload=None,**kwargs):
+        if url.endswith('/props'):return 404,{}
+        return 200,{'choices':[{'message':{'content':json.dumps({'tool':task['tool_name'],'arguments':{}})},'finish_reason':'stop'}]}
+    monkeypatch.setattr(run,'http_json',fake)
+    monkeypatch.setattr(sys,'argv',['run','--config',str(path),'--run-id','raw-invalid'])
+    with pytest.raises(RuntimeError,match='constraint_violation'):run.main()
+    row=paths.jsonl(tmp_path/'runs/raw-invalid/results.jsonl')[-1]
+    assert row['engine_error'] and 'Raw selected-tool schema' in row['constraint_violation']
+
+
+def test_valid_wrong_tool_is_not_mislabeled_as_engine_fault(tmp_path,monkeypatch):
+    import sys
+    from pathlib import Path
+    from sn import run
+    cfg=json.loads(Path(paths.ROOT,'configs/runs/smoke.json').read_text())
+    cfg['families']=['select'];cfg['requires_zero_engine_refusals']=True
+    path=tmp_path/'config.json';path.write_text(json.dumps(cfg))
+    monkeypatch.setattr(paths,'RUNS',str(tmp_path/'runs'))
+    task=[t for t in paths.tasks() if t['replicate']==0 and t['paraphrase_index']==0][1]
+    def fake(url,payload=None,**kwargs):
+        if url.endswith('/props'):return 404,{}
+        return 200,{'choices':[{'message':{'content':json.dumps({'tool':task['tool_name'],'arguments':task['gold_args']})},'finish_reason':'stop'}]}
+    monkeypatch.setattr(run,'http_json',fake)
+    monkeypatch.setattr(sys,'argv',['run','--config',str(path),'--run-id','wrong-tool'])
+    run.main()
+    rows=paths.jsonl(tmp_path/'runs/wrong-tool/results.jsonl')
+    assert any(not r['eval']['tool_correct'] for r in rows)
+    assert all(r['request_error'] is None and not r['engine_error'] for r in rows)
