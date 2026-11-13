@@ -166,3 +166,15 @@ final authority. Gold-envelope checks do not prove full language equivalence or 
 The [E0 validation record](analysis/e0-readiness/VALIDATION.md) includes the standalone byte-tokenizer
 check: 67/70 envelopes compile under llguidance 1.9.1, with three explicit refusals. This is a known
 readiness limitation, not model inference; the real server may differ and must be checked online.
+
+## Corrected E0 protocol
+
+The explicit `annotation-dependencies-v1` policy resolves the earlier format/dependency refusals
+while matching the unchanged raw evaluator. The corrected model-free audit compiles 70/70 envelopes
+and reaches all 300 gold pairs; the corrected real 12-request smoke has zero engine errors.
+See [compatibility validation](analysis/e0-compatibility/VALIDATION.md).
+
+For a fresh corrected run, start the 8K server with
+`scripts/serve.sh --config configs/model.qwen3-1.7b.sustainable.json`, then run
+`scripts/run_e0_clean.sh e0-clean-v1` in another terminal. This protocol has memory/swap/thermal
+guards and stops on any engine fault. It never resumes or overwrites the original checkpoint.

@@ -107,3 +107,16 @@ and may change valid-but-wrong outputs too. H1's valid-wrong prediction remains 
 E0 has mandatory offline/online preflight, content-pinned resume, explicit run completeness, and a
 12-request smoke separate from the 1,200-request benchmark. E1 training/export commands stay gated
 until the real E0 readout and unseen-schema v2/stress data are reviewed. E2 remains deferred.
+
+## Corrected E0 run, specified 2026-11-14 IST before fresh full inference
+
+Use `configs/runs/e0_clean.json`, with `annotation-dependencies-v1` constraint preparation and the
+separate paced 8K model profile. Format assertions match the frozen evaluator's disabled FormatChecker;
+legacy dependencies are retained by equivalent implication guards. Prompts, raw schemas, gold values,
+selection order, four arms and primary/secondary comparisons remain frozen. Zero engine refusals are
+required by preflight; any runtime engine fault stops the clean run. Resource checks require normal
+memory pressure, no sustained swap writes, and nominal/fair thermal state.
+
+The 588-request pilot and its resource stop remain public and separate. This is a corrective rerun
+informed by that pilot. Original hypotheses/readout gates are retained; no training or contrastive
+claim follows from a syntax/decoding result. See `analysis/e0-compatibility/VALIDATION.md`.

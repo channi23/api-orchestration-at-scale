@@ -30,13 +30,13 @@ scripts/serve.sh --config configs/model.qwen3-1.7b.sustainable.json
 
 # Terminal 2: offline / online checks, then a bounded smoke
 source .venv/bin/activate
-python -m sn.preflight --config configs/runs/e0_sustainable_smoke.json --output runs/e0-8k-smoke-preflight.json
-python -m sn.run --config configs/runs/e0_sustainable_smoke.json --preflight runs/e0-8k-smoke-preflight.json --run-id e0-8k-smoke-v1
+python -m sn.preflight --config configs/runs/e0_clean_smoke.json --output runs/e0-8k-smoke-preflight.json
+python -m sn.run --config configs/runs/e0_clean_smoke.json --preflight runs/e0-8k-smoke-preflight.json --run-id e0-8k-smoke-v1
 python -m sn.report --run e0-8k-smoke-v1
 
 # Only after reviewing smoke and host pressure: a new, separate benchmark
-python -m sn.preflight --config configs/runs/e0_sustainable.json --output runs/e0-8k-preflight.json
-python -m sn.run --config configs/runs/e0_sustainable.json --preflight runs/e0-8k-preflight.json --run-id e0-8k-v1 --limit 25
+python -m sn.preflight --config configs/runs/e0_clean.json --output runs/e0-8k-preflight.json
+python -m sn.run --config configs/runs/e0_clean.json --preflight runs/e0-8k-preflight.json --run-id e0-8k-v1 --limit 25
 ```
 
 Repeat the last command to add the next 25 requests. Allow an idle break and check pressure between
@@ -68,3 +68,7 @@ No system utilities were installed, and no global power/security settings were c
 Sources: [Apple memory-pressure guidance](https://support.apple.com/en-au/guide/activity-monitor/-actmntr1004/mac),
 [Apple thermal-state guidance](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/RespondToThermalStateChanges.html),
 [Apple ventilation guidance](https://support.apple.com/en-au/102336).
+
+The corrected configs additionally use the explicit annotation/dependency preparation policy and
+require zero engine refusals. They read public Foundation thermal state before generation/probes;
+serious or critical states stop new work. No fan, power or thermal-protection setting is changed.

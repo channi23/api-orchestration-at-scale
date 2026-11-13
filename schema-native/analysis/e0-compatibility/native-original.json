@@ -1,0 +1,24 @@
+{
+  "kind": "exact bundled C engine, byte tokenizer; not model inference",
+  "engine_commit": "d795912fedc7d393de740177ea9ea761e7905774",
+  "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+  "helper_sha256": "85804a3b3db6e37f138814416f9047eddae04c71e54ea10cec1b060f80b111b7",
+  "constraint_policy": "original-v0",
+  "envelopes": 70,
+  "compiled": 59,
+  "refused": {
+    "C005_R00": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "C020_R00": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "C020_R02": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "C005_R05": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "C020_R05": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"dependencies\"]",
+    "C020_R06": "at 2(8): failed to compile JSON schema: Unknown format: cidr",
+    "C005_R09": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "C020_R09": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "single:T103": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "single:T089": "at 2(8): failed to compile JSON schema: Unknown format: uri",
+    "single:T172": "at 2(8): failed to compile JSON schema: Unknown format: uri"
+  },
+  "gold_pairs_checked": 214,
+  "unreachable": []
+}
