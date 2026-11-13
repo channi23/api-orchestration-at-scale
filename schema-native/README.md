@@ -1,123 +1,152 @@
-# schema-native — stage 0
+# JSON Schema-native model research
 
-Follow-up to `experiment/` (representation experiment v1). Nothing in `experiment/` is changed.
-This folder reuses its frozen tasks, catalogs, prompts, evaluator and statistics by import.
+E0 asks whether constrained decoding changes the untuned Qwen3-1.7B result on the frozen
+benchmark. It uses one pinned model and server for all four conditions: raw/free, raw/constrained,
+minified/free, minified/constrained. There are 1,200 requests: 100 tasks × four arms ×
+(two selection catalogs, 5 and 20 tools, plus the fixed-tool argument condition).
 
-**Question.** Can a small local model learn JSON Schema semantics that transfer to schemas it has
-never seen, and does that add anything once constrained decoding is already in place?
+**Current status:** Claude's model-free stage 0 is merged. E0 integrity and fake-server tests pass;
+new model inference and Apple Metal execution have **not** been performed. No new accuracy,
+latency, memory, or training result is claimed. The original `experiment/` tracked files are unchanged.
+`PLAN.md` contains the preregistered predictions and research gates.
 
-**Status.** Stage 0 is done and tested. Stages 1–3 are written but need an Apple Silicon Mac and
-model weights, which the authoring environment did not have. The table says which is which.
+## Model-free verification
 
-| Part | File | State |
-|---|---|---|
-| What constrained decoding could fix (from stored outputs) | `sn/ceiling.py` → `analysis/ceiling-full-v2/` | **run, real numbers** |
-| Engine audit: can each engine produce the gold call? | `sn/engine_audit.py` → `analysis/engine-audit/` | **run, real numbers** |
-| BM25 shortlist floor for tool selection | `sn/shortlist.py` → `analysis/shortlist-bm25/` | **run, real numbers** |
-| Leakage-safe training schema pool | `sn/trainpool.py` → `data/trainpool/` | **run, real numbers** |
-| Tool-call envelope for constrained decoding | `sn/envelope.py` | tested |
-| Runner with free / constrained arms | `sn/run.py` | tested against a fake server only |
-| Report (tables, paired statistics) | `sn/report.py` | tested against fake data only |
-| Confidence metrics (ECE, Brier, risk–coverage) | `sn/calibration.py` | tested |
-| Training-data synthesis with a local teacher | `sn/synth.py` | tested against a fake teacher only |
-| MLX-LM chat training files | `sn/mlxdata.py` | tested on toy rows only |
-| Chat-template check before training | `sn/preflight_template.py` | **not run** |
-| Mac setup, serving, LoRA training, GGUF export | `scripts/*.sh`, `configs/lora.qwen3-1.7b.yaml` | **not run** |
-| Demo CLI | `sn/demo.py` | run against a fake server only |
-
-No model was run for this stage. No accuracy number for a new arm exists yet.
-
-## Stage 0 findings (measured)
-
-All from the 3,000 stored outputs of `experiment/runs/full-v2` or from model-free checks.
-
-1. **The finished experiment's headline numbers reproduce** from the raw result file
-   (Raw 82.4%, TSCG 56.6%, selection 96–98%). `tests/test_ceiling.py` asserts this.
-2. **Constrained decoding has a hard upper bound of about +7.6 points on Raw.**
-   Of 88 Raw failures: 11 malformed, 27 schema-invalid, 8 wrong tool, 42 schema-valid with a wrong value.
-   A grammar can only touch the first two groups. Best case 82.4% → 90.0%. If it only rescues outputs
-   whose values were already right: 82.4% → 83.0%. See `analysis/ceiling-full-v2/CEILING.md`.
-3. **About half of the remaining errors are semantic and out of reach of any grammar** (42 of 88).
-   Examples: `"GERMANY"` where the request implied `"DE"`, `name` used where `title` was meant,
-   `"null"` as a string, `"acme/webapp"` in a field that wanted `"webapp"`.
-4. **Engines differ before any model runs.** On the 50 target tools, the gold call can be produced by
-   llguidance 1.9.1 for 50/50, by xgrammar 0.2.9 for 47/50, by outlines_core 0.2.14 for 46/50.
-   Across all 300 tools they compile 292, 298 and 287 schemas. See `analysis/engine-audit/ENGINE_AUDIT.md`.
-   (outlines_core was checked through its generated regular expression with Python's `re`; confirm in-engine.)
-5. **Tool selection on this benchmark is lexically easy.** BM25 over tool name + description puts the
-   gold tool first for 93% of tasks at 100 tools and in the top 3 for 100%. The model scored 92% there.
-   A learned selector cannot show an accuracy gain on these catalogs. See `analysis/shortlist-bm25/SHORTLIST.md`.
-6. **The task set is small for training comparisons.** 50 target tools, intra-tool correlation 0.44,
-   effective sample size about 102 of 500. Five tools hold 47% of all Raw failures.
-7. **The frozen pool does not contain the hard keywords.** `if/then/else`, `not`, `unevaluated*` and
-   recursion appear in 0 of 300 tools; `oneOf` in 5 (1 target, 0/10 correct). Any claim about those
-   keywords needs a new stress set.
-8. **1,983 schemas are safe to train on** (1,761 train / 207 validation / 15 held-out source), in 1,402
-   families, after removing the 300 test tools and everything close to them.
-
-## Run the model-free part (any machine)
+Python 3.13 is the recommended Mac environment. Python 3.14 was used for the local tests.
+Run from `schema-native/`:
 
 ```bash
-cd schema-native
-pip install -r requirements.txt
+python3.13 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-e0.txt
 ../experiment/dataset/fetch_jsonschemabench.sh
-python -m pytest -q                 # 21 tests
-python -m sn.ceiling                # analysis/ceiling-full-v2/
-python -m sn.engine_audit           # analysis/engine-audit/      (about 4 minutes)
-python -m sn.shortlist              # analysis/shortlist-bm25/
-python -m sn.trainpool              # data/trainpool/
+python -m pytest -q
+python -m pytest -q ../experiment/tests/test_evaluate.py
+python -m sn.preflight --offline --output runs/e0-offline.json
 ```
 
-## Run on the Mac (not yet executed — report what breaks)
+The offline check verifies all 1,200 unique requests, matching tasks across arms, catalog membership,
+unique tool names, raw-schema gold validity and envelope gold validity. It cannot authorize inference.
+The dataset is pinned at `9a94995b9279ae3af3aed4b2629172790b968d14`.
+
+## Run E0 on a 16 GB Apple Silicon Mac
+
+Prerequisites: Xcode command-line tools (`xcode-select --install`), Python 3.13, CMake and Rust/Cargo
+(for example `brew install python@3.13 cmake rust`). Docker cannot expose Apple Metal here.
+Close memory-heavy apps. Disk must hold the dataset, build, environment and about 1.8 GB GGUF.
+Memory estimates in the source report remain estimates until this is run.
+
+Get current main, preserve any local changes, then enter `schema-native/`. In terminal 1:
 
 ```bash
-scripts/setup_mac.sh                        # venv, pinned llama.cpp with Metal + llguidance, base GGUF, tests, template check
-scripts/serve.sh                            # base Qwen3-1.7B Q8_0 on :8080
+scripts/setup_mac.sh
+scripts/serve.sh
+```
 
-# E0 — untuned model, free vs constrained decoding (1,200 requests)
-python -m sn.run --config configs/runs/e0_decoding.json --run-id e0-v1
+Setup uses a project-local `.tools/llama.cpp` checkout, refuses tracked edits there, builds commit
+`11fe02151f79c41d0d4af7da708755d73b9c0da6` with Metal and llguidance, and downloads
+`Qwen/Qwen3-1.7B-GGUF`, revision `90862c4b9d2787eaed51d12237eafdfe7c5f6077`,
+file `Qwen3-1.7B-Q8_0.gguf`. It verifies SHA-256
+`061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a`.
+It installs E0 dependencies only. `SN_PYTHON` and `TOOLS_DIR` override the Python executable and tools
+root; export `TOOLS_DIR` in both terminals if overriding it.
+
+The server stays in the foreground and logs to `runs/server.8080.log`. It never kills an existing
+server. If port 8080 is occupied, stop the server you own before proceeding.
+Wait until this succeeds, then in terminal 2, from `schema-native/`:
+
+```bash
+source .venv/bin/activate
+curl -fsS http://127.0.0.1:8080/health
+scripts/run_e0.sh e0-v1
+```
+
+The wrapper first runs online preflight and a **12-request path smoke**, then a separate online
+preflight and the full E0. Smoke outputs are not accuracy evidence. Online preflight checks:
+
+- GGUF checksum, clean pinned llama.cpp source, build flags, running build identity and model path;
+- server log evidence of Metal and GPU layer offload;
+- two adversarial constant/bounds probes to detect ignored constraints;
+- all 70 unique actual envelopes through the real server/tokenizer, with explicit engine refusals saved;
+- each unique benchmark prompt through `/apply-template` and `/tokenize`, reserving all 512 output
+  tokens within the actual context size. There are no silent truncation or fallback changes.
+
+An explicit schema/grammar refusal is recorded separately from model failures. Auth, network,
+context, malformed API-response and generic server failures stop a run after saving the failed
+request. Correct the cause and use a **new run ID** for a clean result. Do not delete failed rows to
+improve scores. If the process merely stops between requests, run the same command to resume.
+Identical settings, input hashes, dependencies and server properties are required. Existing rows are
+never overwritten; duplicate or unknown request keys are rejected. Concurrent writers are locked out.
+A torn final JSONL line is rejected for manual inspection; never automatically discard experiment data.
+
+Equivalent individual commands (useful when diagnosing a failure):
+
+```bash
+python -m sn.preflight --config configs/runs/e0_decoding.json --output runs/e0-preflight.json
+python -m sn.run --config configs/runs/e0_decoding.json --preflight runs/e0-preflight.json --run-id e0-v1
 python -m sn.report --run e0-v1
+```
 
-# one request, with everything shown
+For a one-task demo (outside the benchmark):
+
+```bash
 python -m sn.demo --task T008_p0 --catalog C020_R00 --constrained
 ```
 
-Training (only after E0 is read; see `PLAN.md` for the gate):
+## Read the results
+
+`runs/<id>/manifest.json` records configuration, source/input hashes, package versions, runtime
+preflight evidence, expected request keys and server properties. `results.jsonl` preserves raw output,
+finish reason, usage, latency, request failures and unchanged raw-schema evaluator results.
+Prompts are stored compressed in the run directory.
+
+`python -m sn.report --run <id>` writes `analysis/<id>/REPORT.md` and `report.json`:
+tool accuracy, argument exact match, field accuracy, schema validity, semantic correctness, E2E,
+strict E2E, tokens, p50/p95, and p99 only for cells with at least 200 returned requests. The five-way
+model failure split is malformed, wrong tool, invalid only, invalid plus wrong value, valid but wrong
+value. HTTP/context/engine/transport/response failures are separate, and all count as system failures.
+The evaluator's semantic matching intentionally accepts specified variants and some scalar coercions;
+exact match and strict E2E should be read alongside it.
+
+Partial runs get descriptive tables and **no paired inference**. Complete runs get paired exact
+McNemar and 95% catalog-replicate bootstrap intervals, pooled and by catalog size. The preregistered
+primary pooled selection contrast is unadjusted; Holm correction covers secondary comparisons.
+Catalog sizes/paraphrases share tools, so 1,200 requests are not 1,200 independent intents.
+Cached, sequential latency is descriptive and must not be presented as an uncached speed comparison.
+
+Stop the dedicated server with Ctrl+C after E0. `/usr/bin/time -l` then appends its lifetime maximum
+RSS to the server log. Re-render with that measured value:
 
 ```bash
-scripts/serve.sh /path/to/teacher.gguf 8081            # a larger local teacher, e.g. a 4-bit 8B model
-python -m sn.synth --server http://127.0.0.1:8081 --split train --per-schema 2
-python -m sn.synth --server http://127.0.0.1:8081 --split valid --per-schema 1
-python -m sn.mlxdata --representation raw && python -m sn.mlxdata --representation minified
-scripts/train_lora.sh minified && scripts/fuse_to_gguf.sh minified
-scripts/train_lora.sh raw      && scripts/fuse_to_gguf.sh raw
-
-python -m sn.run --config configs/runs/e1_lora.json --run-id e1-v1 --arms A_raw_free B_raw_cd Bm_min_cd
-scripts/serve.sh models/qwen3-1.7b-lora-raw-Q8_0.gguf
-python -m sn.run --config configs/runs/e1_lora.json --run-id e1-v1 --arms C_raw_lora_free
-scripts/serve.sh models/qwen3-1.7b-lora-minified-Q8_0.gguf
-python -m sn.run --config configs/runs/e1_lora.json --run-id e1-v1 --arms D_min_lora_free E_min_lora_cd
-python -m sn.report --run e1-v1
+python -m sn.report --run e0-v1 --server-log runs/server.8080.log
 ```
 
-## Memory on 16 GB (estimates, not measurements)
+RSS is process resident memory, not a Metal allocator peak. Without that evidence the report says
+memory is unrecorded. Preserve the server log with run artifacts; separate server sessions if you
+need run-specific memory measurements.
 
-- Qwen3-1.7B weights: about 3.4 GB at 16-bit, about 1.8 GB as Q8_0 GGUF.
-- Inference context: roughly 0.1 MB per token of key/value cache at 16-bit, so about 1.6 GB at 16k
-  tokens and about 3.2 GB at 32k. The 100-tool Raw prompt is 27k tokens; it fits, but close other apps.
-- LoRA training at batch 1, 3,072 tokens, 16 layers, gradient checkpointing: expected well under 10 GB.
-  `scripts/train_lora.sh` records the real peak with `/usr/bin/time -l`. Report that number.
-- The teacher for data synthesis is the largest item. A 4-bit 8B model needs about 5–6 GB. Do not run
-  the teacher and training at the same time.
+## Research gates and limits
 
-## Design choices that differ from the brief, and why
+E0 is code-ready, not empirically complete. Read the real E0 before E1: ≥95% constrained accuracy
+means harder tasks first; constrained below free means inspect engine faults and run a second engine.
+Even a positive E0 does not establish unseen-schema learning. Test v2 (250 new intents), keyword stress
+and impossible-request tasks remain to be authored and validated before a powered training claim.
 
-- **Arm D's "lossless representation" is minified JSON.** It is lossless by construction, it is the
-  strongest baseline the finished experiment found (same accuracy, about 40% fewer tokens), and it adds
-  no new syntax. A newly invented notation would confound "understands schemas" with "learned a new
-  format"; the finished experiment already measured a format penalty of −5.8 points at equal
-  information. A compact typed notation stays an optional later ablation.
-- **Inference for every arm goes through one server (llama.cpp, Metal).** MLX-LM is used for training.
-  `mlx_lm.server` 0.32.2 has no JSON-Schema constraint, so mixing back-ends would mix engines.
-- **Arm F (decision model + LLM) is not built yet.** Finding 5 says this benchmark cannot show a
-  selection gain. `sn.shortlist` is the floor any selector must beat; `sn.calibration` is ready for it.
+The original `sn.synth`, `sn.mlxdata`, calibration, train-pool and E1 configuration are retained as
+**unvalidated training scaffolding**. Training/export scripts intentionally stop with the gate message.
+No new E1 work or E2 contrastive training has been performed. Revisit the Qwen3 thinking-template
+mismatch check, training model/tokenizer revision pins, MLX API compatibility and fused GGUF export
+when E0 and the new datasets are sound. E2 additionally needs unseen-schema invariance/sensitivity
+pairs with independently checked gold answers; a validator alone cannot infer the user's intended value.
+
+Stage 0 analyses remain in `analysis/ceiling-full-v2`, `analysis/engine-audit`, and
+`analysis/shortlist-bm25`. `requirements.txt` installs the optional engine-audit dependencies;
+`requirements-mac.txt` is deferred MLX training material. The earlier “90% ceiling” is a
+classification-based rescue estimate, **not a mathematical bound**: token masking can also change
+already-valid answers, for better or worse. The unchanged-valid-wrong count is a testable prediction.
+The pool mixes dialects and engine keyword support is incomplete; raw-schema validation remains the
+final authority. Gold-envelope checks do not prove full language equivalence or engine completeness.
+
+The [E0 validation record](analysis/e0-readiness/VALIDATION.md) includes the standalone byte-tokenizer
+check: 67/70 envelopes compile under llguidance 1.9.1, with three explicit refusals. This is a known
+readiness limitation, not model inference; the real server may differ and must be checked online.

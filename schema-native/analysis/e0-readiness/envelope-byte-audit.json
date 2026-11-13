@@ -1,0 +1,13 @@
+{
+  "kind": "model-free byte-tokenizer audit; not inference",
+  "engine_version": "1.9.1",
+  "envelopes": 70,
+  "compiled": 67,
+  "refused": {
+    "C020_R05": "Unimplemented keys: [\"dependencies\"]",
+    "C020_R06": "Unknown format: cidr",
+    "C020_R09": "Unknown format: path"
+  },
+  "checked_gold_pairs": 270,
+  "unreachable": []
+}

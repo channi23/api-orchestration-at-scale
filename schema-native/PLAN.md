@@ -97,3 +97,13 @@ a shortlist, not in place of it.
 - E2 shows the contrastive adapter is no better than ordinary data on sensitivity.
 - A larger untuned model that fits in 16 GB (for example a 4-bit 4B model) with constrained decoding
   matches the tuned 1.7B system at similar latency. Then the result is "use a bigger model".
+
+## E0 implementation clarification (before any new inference)
+
+The historical structural-rescue “upper bound” is a descriptive estimate from the stored free
+outputs, not a mathematical limit on constrained accuracy. Constraints change token probabilities
+and may change valid-but-wrong outputs too. H1's valid-wrong prediction remains empirical.
+
+E0 has mandatory offline/online preflight, content-pinned resume, explicit run completeness, and a
+12-request smoke separate from the 1,200-request benchmark. E1 training/export commands stay gated
+until the real E0 readout and unseen-schema v2/stress data are reviewed. E2 remains deferred.
