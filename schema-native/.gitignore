@@ -9,3 +9,8 @@ runs/*
 __pycache__/
 *.pyc
 .pytest_cache/
+
+.tools/
+
+# Path smoke reports are QA artifacts, not benchmark publications.
+analysis/*-smoke/

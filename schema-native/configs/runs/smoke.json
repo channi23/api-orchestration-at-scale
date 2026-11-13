@@ -2,15 +2,40 @@
   "run_prefix": "_smoke",
   "purpose": "pipeline smoke test against the experiment's fake server. Never a result.",
   "model_config": "configs/model.qwen3-1.7b.json",
-  "replicates": [0],
-  "sizes": [5],
-  "families": ["select", "arggen"],
-  "paraphrases": [0],
+  "replicates": [
+    0
+  ],
+  "sizes": [
+    5
+  ],
+  "families": [
+    "select",
+    "arggen"
+  ],
+  "paraphrases": [
+    0
+  ],
   "cache_prompt": true,
-  "arms": ["A_raw_free", "B_raw_cd"],
+  "arms": [
+    "A_raw_free",
+    "B_raw_cd"
+  ],
   "arm_defs": {
-    "A_raw_free": {"representation": "raw", "decoding": "free"},
-    "B_raw_cd":   {"representation": "raw", "decoding": "constrained"}
+    "A_raw_free": {
+      "representation": "raw",
+      "decoding": "free"
+    },
+    "B_raw_cd": {
+      "representation": "raw",
+      "decoding": "constrained"
+    }
   },
-  "comparisons": [["constrained vs free, raw", "A_raw_free", "B_raw_cd"]]
+  "comparisons": [
+    [
+      "constrained vs free, raw",
+      "A_raw_free",
+      "B_raw_cd"
+    ]
+  ],
+  "result_kind": "synthetic"
 }

@@ -17,7 +17,7 @@ import time
 from . import envelope as env
 from . import paths
 from . import shortlist as sl
-from .run import http_json, response_format
+from .run import error_kind, http_json, constraint_payload
 import prompts  # type: ignore  # noqa: E402
 import render  # type: ignore  # noqa: E402
 import schema_utils as su  # type: ignore  # noqa: E402
@@ -54,14 +54,13 @@ def main():
     if a.model:
         payload["model"] = a.model
     if a.constrained:
-        payload["response_format"] = response_format(env.envelope([(pool[i]["tool_name"], raw[i]) for i in ids]))
+        payload.update(constraint_payload(env.envelope([(pool[i]["tool_name"], raw[i]) for i in ids]), model.get("constraint_transport", "response_format")))
     t0 = time.perf_counter()
     st, resp = http_json(a.server + "/v1/chat/completions", payload)
     ms = (time.perf_counter() - t0) * 1000
     if st != 200:
         print(f"HTTP {st}: {json.dumps(resp)[:500]}")
-        if a.constrained:
-            print("-> the engine refused this schema. This is an ENGINE limit, not a model error.")
+        print("-> request failure:", error_kind(st, resp, "constrained" if a.constrained else "free"))
         return
     content = resp["choices"][0]["message"].get("content") or ""
     print(f"\n--- model output ({'constrained' if a.constrained else 'free'}, {a.representation}, {len(ids)} tools)\n{content}\n")

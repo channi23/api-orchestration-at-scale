@@ -5,10 +5,12 @@
 # so Qwen3 goes through llama.cpp's converter. NOT executed in the authoring environment.
 set -euo pipefail
 SN="$(cd "$(dirname "$0")/.." && pwd)"
-TOOLS="${TOOLS_DIR:-$HOME/tools}"
+TOOLS="${TOOLS_DIR:-$SN/.tools}"
 REP="${1:?give raw or minified}"
 source "$SN/.venv/bin/activate"
 cd "$SN"
+echo "E1 is deferred: requires a reviewed real E0 readout and unseen-schema datasets." >&2
+exit 1
 FUSED="models/fused-lora-$REP"
 mlx_lm.fuse --model Qwen/Qwen3-1.7B --adapter-path "adapters/lora-$REP" --save-path "$FUSED" --dequantize
 python3 "$TOOLS/llama.cpp/convert_hf_to_gguf.py" "$FUSED" --outtype f16 --outfile "models/qwen3-1.7b-lora-$REP-f16.gguf"

@@ -7,6 +7,8 @@ SN="$(cd "$(dirname "$0")/.." && pwd)"
 REP="${1:?give raw or minified}"
 source "$SN/.venv/bin/activate"
 cd "$SN"
+echo "E1 is deferred: requires a reviewed real E0 readout and unseen-schema datasets." >&2
+exit 1
 python3 -m sn.preflight_template --model Qwen/Qwen3-1.7B
 mkdir -p adapters logs
 # /usr/bin/time -l prints "maximum resident set size" (bytes) on macOS: that is the peak-memory measurement to report.
