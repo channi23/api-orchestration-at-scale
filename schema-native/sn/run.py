@@ -262,7 +262,8 @@ def main():
                 fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 fout.flush()
                 n_new += 1
-                if failure in ("transport_error", "http_error", "context_error", "response_error"):
+                if (failure in ("transport_error", "http_error", "context_error", "response_error")
+                        or (rc.get("requires_zero_engine_refusals") and engine_err)):
                     raise RuntimeError(f"Recorded {failure} for {key}; stopping. Inspect before starting a new run.")
                 if n_new % 25 == 0:
                     print(f"[{run_id}] {n_new} requests (last {key}, {wall:.0f} ms)", flush=True)

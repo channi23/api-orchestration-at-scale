@@ -80,5 +80,6 @@
   "request_cooldown_seconds": 2,
   "require_normal_memory_pressure": true,
   "constraint_policy": "annotation-dependencies-v1",
-  "requires_zero_engine_refusals": true
+  "requires_zero_engine_refusals": true,
+  "require_acceptable_thermal_state": true
 }
