@@ -55,3 +55,14 @@ def validate_rows(rows, expected):
         raise ValueError("Duplicate request keys; refusing ambiguous results")
     if set(keys) - set(expected):
         raise ValueError("Unexpected request keys; configuration or results changed")
+
+
+def engine_log_errors(path, offset):
+    """Pinned llama.cpp can log llg failure and continue without a matcher. Detect that fallback."""
+    if os.path.getsize(path) < offset:
+        raise ValueError('Server log was truncated or rotated during a request')
+    with open(path, 'rb') as f:
+        f.seek(offset)
+        lines = f.read().decode(errors='replace').splitlines()
+    return [line for line in lines if 'llg error:' in line.lower() or
+            ('llguidance' in line.lower() and 'not enabled' in line.lower())]

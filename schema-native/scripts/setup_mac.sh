@@ -12,10 +12,13 @@ source .venv/bin/activate
 python -m pip install -r requirements-e0.txt
 ../experiment/dataset/fetch_jsonschemabench.sh
 mkdir -p "$TOOLS"
-[ -d "$TOOLS/llama.cpp/.git" ] || git clone https://github.com/ggml-org/llama.cpp.git "$TOOLS/llama.cpp"
+if [ ! -d "$TOOLS/llama.cpp/.git" ]; then
+  git init "$TOOLS/llama.cpp"
+  git -C "$TOOLS/llama.cpp" remote add origin https://github.com/ggml-org/llama.cpp.git
+fi
 [ -z "$(git -C "$TOOLS/llama.cpp" status --porcelain --untracked-files=no)" ] || { echo 'llama.cpp has tracked edits; preserve them and use another TOOLS_DIR'; exit 1; }
 COMMIT=$(python -c 'import json; print(json.load(open("configs/model.qwen3-1.7b.json"))["llama_cpp_commit"])')
-git -C "$TOOLS/llama.cpp" fetch origin "$COMMIT"
+git -C "$TOOLS/llama.cpp" fetch --depth 1 origin "$COMMIT"
 git -C "$TOOLS/llama.cpp" checkout --detach "$COMMIT"
 cmake -S "$TOOLS/llama.cpp" -B "$TOOLS/llama.cpp/build-metal" -DCMAKE_BUILD_TYPE=Release -DGGML_METAL=ON -DLLAMA_LLGUIDANCE=ON -DLLAMA_CURL=OFF -DLLAMA_BUILD_TESTS=OFF
 cmake --build "$TOOLS/llama.cpp/build-metal" -j4 --target llama-server llama-quantize

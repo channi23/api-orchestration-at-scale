@@ -100,3 +100,66 @@ def test_offline_receipt_cannot_authorize_real_run(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, 'argv', ['run', '--config', 'configs/runs/e0_decoding.json', '--preflight', str(receipt)])
     with pytest.raises(ValueError, match='Preflight is offline'):
         run.main()
+
+
+def test_engine_only_cells_render_valid_json(tmp_path, monkeypatch):
+    monkeypatch.setattr(paths, 'RUNS', str(tmp_path / 'runs'))
+    monkeypatch.setattr(paths, 'ANALYSIS', str(tmp_path / 'analysis'))
+    def fake(url, payload=None, **kwargs):
+        if url.endswith('/props'):
+            return 404, {}
+        if 'response_format' in payload:
+            return 400, {'error': 'grammar schema refused'}
+        return 200, {'choices': [{'message': {'content': 'not JSON'}, 'finish_reason': 'stop'}]}
+    monkeypatch.setattr(run, 'http_json', fake)
+    monkeypatch.setattr(sys, 'argv', ['run', '--config', 'configs/runs/smoke.json', '--run-id', 'errors'])
+    run.main()
+    res = report.run('errors')
+    assert res['complete'] and not res['inference_ready']
+    assert res['infrastructure_failures'] == 10
+    assert sum(sum(c['classes'].values()) for c in res['cells']) == 10
+    assert 'NaN' not in (tmp_path / 'analysis/errors/report.json').read_text()
+    assert 'NA' in (tmp_path / 'analysis/errors/REPORT.md').read_text()
+
+
+def test_transport_failure_is_saved_before_stopping(tmp_path, monkeypatch):
+    monkeypatch.setattr(paths, 'RUNS', str(tmp_path / 'runs'))
+    monkeypatch.setattr(run, 'http_json', lambda url, *a, **kw: (404, {}) if url.endswith('/props') else (0, {'error': 'offline'}))
+    monkeypatch.setattr(sys, 'argv', ['run', '--config', 'configs/runs/smoke.json', '--run-id', 'offline'])
+    with pytest.raises(RuntimeError, match='transport_error'):
+        run.main()
+    rows = paths.jsonl(tmp_path / 'runs/offline/results.jsonl')
+    assert len(rows) == 1 and rows[0]['request_error'] == 'transport_error'
+
+
+def test_silent_llguidance_fallback_is_detected(tmp_path, monkeypatch):
+    log = tmp_path / 'server.log'
+    log.write_text('old llg error: ignore this old request\n')
+    offset = log.stat().st_size
+    assert provenance.engine_log_errors(log, offset) == []
+    with log.open('a') as f:
+        f.write('llg error: Unimplemented keys: [dependencies]\n')
+    assert provenance.engine_log_errors(log, offset)
+    log.write_text('')
+    with pytest.raises(ValueError, match='truncated'):
+        provenance.engine_log_errors(log, offset)
+
+
+def test_http_200_silent_fallback_is_not_accepted_by_preflight(tmp_path, monkeypatch):
+    log = tmp_path / 'server.log'
+    log.write_text('')
+    def fake(url, payload=None, **kw):
+        if url.endswith('/props'):
+            return 200, {}
+        if payload['max_tokens'] == 1:
+            with log.open('a') as f:
+                f.write('llg error: unsupported schema\n')
+            obj = {}
+        else:
+            schema = payload['response_format']['json_schema']['schema']
+            obj = {'answer': 'SCHEMA_ONLY_739'} if 'answer' in schema['properties'] else {'n': 7}
+        return 200, {'choices': [{'message': {'content': json.dumps(obj)}, 'finish_reason': 'stop'}]}
+    monkeypatch.setattr(run, 'http_json', fake)
+    checks = preflight.online('http://fake', {'request_params': {}}, {'catalog': {}}, server_log=str(log))
+    assert checks['envelopes_accepted'] == 0
+    assert checks['envelope_refusals']['catalog']['http_status'] == 200

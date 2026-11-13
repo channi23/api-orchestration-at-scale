@@ -22,6 +22,7 @@ import datetime as dt
 import gzip
 import fcntl
 import json
+import jsonschema
 import os
 import subprocess
 import time
@@ -193,10 +194,15 @@ def main():
             if arm["decoding"] == "constrained":
                 payload["response_format"] = response_format(
                     env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids]))
+            log_path = receipt["runtime"]["server_log_path"] if receipt else None
+            log_offset = os.path.getsize(log_path) if log_path else 0
             t0 = time.perf_counter()
             status, resp = http_json(a.server + "/v1/chat/completions", payload, headers=headers)
             wall = (time.perf_counter() - t0) * 1000
+            log_errors = provenance.engine_log_errors(log_path, log_offset) if log_path else []
             failure = error_kind(status, resp, arm["decoding"])
+            if log_errors and arm["decoding"] == "constrained":
+                failure = "engine_error"
             ctx_err = failure == "context_error"
             engine_err = failure == "engine_error"
             content, finish, usage, timings = "", None, {}, {}
@@ -209,9 +215,21 @@ def main():
                     finish, usage, timings = ch.get("finish_reason"), resp.get("usage", {}), resp.get("timings", {})
                 except (KeyError, IndexError, TypeError, ValueError):
                     failure = "response_error"
+            violation = None
+            if status == 200 and not failure and arm["decoding"] == "constrained" and finish != "length":
+                try:
+                    jsonschema.Draft7Validator(payload["response_format"]["json_schema"]["schema"]).validate(json.loads(content))
+                except (ValueError, jsonschema.ValidationError) as e:
+                    failure = "constraint_violation"
+                    engine_err = True
+                    violation = str(e)[:1000]
             names = {pool[i]["tool_name"] for i in cat_ids}
             ev = evaluate(content, t, raw_schema(t["tool_id"]), names, context_error=ctx_err)
-            rec = {"request_key": key, "run_id": run_id, "family": fam, "arm": arm_name,
+            raw_e2e = ev["e2e_success"]
+            if failure:
+                ev["e2e_success"] = ev["e2e_strict"] = False
+            rec = {"request_key": key, "raw_evaluator_e2e": raw_e2e,
+                   "engine_log_errors": log_errors, "constraint_violation": violation, "run_id": run_id, "family": fam, "arm": arm_name,
                    "representation": rep, "decoding": arm["decoding"], "model_alias": arm.get("model"),
                    "catalog_id": cat["catalog_id"] if cat else None, "size": cat["size"] if cat else 1,
                    "replicate": t["replicate"], "task_id": t["task_id"], "intent_id": t["intent_id"],
