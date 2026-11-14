@@ -5,12 +5,18 @@ benchmark. It uses one pinned model and server for all four conditions: raw/free
 minified/free, minified/constrained. There are 1,200 requests: 100 tasks × four arms ×
 (two selection catalogs, 5 and 20 tools, plus the fixed-tool argument condition).
 
-**Current status:** Claude's stage 0 is merged. The pinned server and Q8_0 model run on a
-16 GiB M4; 40 package tests pass; the 12-request real path smoke completes with four recorded engine failures. Bundled llguidance 1.0.1
-refuses 11/70 envelopes. The original E0 stopped at **588/1,200** saved requests for host resource
-constraints; [the partial report](analysis/e0-v1/REPORT.md) has no paired inference. No training ran.
-A separate 8K profile halves KV allocation, but still produced warning pressure with the existing
-app workload and was unloaded before benchmark requests. See [the resource guide](RESOURCE_GUIDE.md).
+**Current status:** Claude's stage 0 is merged. Corrected E0 completed **1,200/1,200** requests
+on a 16 GiB M4, including a successful pause/resume at 493 saved requests. The
+[full report](analysis/e0-clean-v1/REPORT.md) records pooled raw selection E2E of 85.5% free
+versus 70.5% constrained. There are no engine/request/raw-constraint faults, but 95/600 constrained
+outputs hit the token limit (versus 1/600 free). Read the
+[interpretation](analysis/e0-clean-v1/INTERPRETATION.md) and
+[separate whitespace diagnosis](analysis/e0-whitespace-diagnostic-v1/REPORT.md) before drawing
+research conclusions. Compact JSON is only a partial workaround; a second engine needs broader
+coverage before training. All recorded clean-run resource checks were normal; the model is unloaded.
+52 package tests and 12 original evaluator tests pass. No training ran.
+The [earlier 588-request pilot](analysis/e0-v1/REPORT.md) remains separate and unchanged.
+See [the resource guide](RESOURCE_GUIDE.md).
 The original `experiment/` tracked files are unchanged.
 `PLAN.md` contains the preregistered predictions and research gates.
 
