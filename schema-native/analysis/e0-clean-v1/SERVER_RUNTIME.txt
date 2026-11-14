@@ -1,0 +1,13 @@
+Only corrected-run server sessions (initial plus resumed). Includes preflight work.
+0.00.217.065 I common_memory_breakdown_print: |   - MTL0 (Apple M4)    | 12124 = 12123 + (2686 =  1743 +     896 +      47) +       -2686 |
+0.00.267.328 I llama_prepare_model_devices: using device MTL0 (Apple M4) (unknown id) - 12123 MiB free
+0.01.350.336 I load_tensors: offloaded 29/29 layers to GPU
+0.01.479.676 I llama_kv_cache:       MTL0 KV buffer size =   896.00 MiB
+48.56.778.087 I common_memory_breakdown_print: |   - MTL0 (Apple M4)    | 12124 = 9436 + (2686 =  1743 +     896 +      47) +           0 |
+          2980265984  maximum resident set size
+0.00.247.972 I common_memory_breakdown_print: |   - MTL0 (Apple M4)    | 12124 = 12123 + (2686 =  1743 +     896 +      47) +       -2686 |
+0.00.306.386 I llama_prepare_model_devices: using device MTL0 (Apple M4) (unknown id) - 12123 MiB free
+0.01.472.388 I load_tensors: offloaded 29/29 layers to GPU
+0.01.608.334 I llama_kv_cache:       MTL0 KV buffer size =   896.00 MiB
+58.24.928.745 I common_memory_breakdown_print: |   - MTL0 (Apple M4)    | 12124 = 9436 + (2686 =  1743 +     896 +      47) +           0 |
+          2940534784  maximum resident set size
