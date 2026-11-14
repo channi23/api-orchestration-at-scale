@@ -39,9 +39,11 @@ def tools_for(cat, task):
 
 
 def prepare(rc):
-    expected_cap = {'benchmark':1000,'path-smoke':0}.get(rc['result_kind'])
-    if rc['protocol'] != 'e0b-locked-v1' or expected_cap is None or rc['benchmark_request_cap'] != expected_cap:
+    expected_cap = {'benchmark':700,'path-smoke':0}.get(rc['result_kind'])
+    if rc['protocol'] != 'e0b-locked-v1-amendment1' or expected_cap is None or rc['benchmark_request_cap'] != expected_cap:
         raise ValueError('Not a locked E0b configuration')
+    if rc['arms'] != ['F0','C0','C1','C2','V'] or set(rc['arm_defs']) != set(rc['arms']):
+        raise ValueError('Amendment 1 permits only F0/C0/C1/C2/V; no C3 or subset substitution')
     if rc['result_kind']=='benchmark' and (rc['determinism']['requests']!=30 or rc['determinism']['per_arm']!=15):
         raise ValueError('Locked determinism check requires 15 F0 plus 15 C0 requests')
     if rc['preflight_smoke_request_cap'] != 60 or rc['retry_cap'] != 70:
@@ -78,7 +80,7 @@ def prepare(rc):
         units.append({'key': preflight.request_key(family, 'UNIT', cat, task), 'family': family,
                       'cat': cat, 'task': task, 'tools': tools, 'messages': msgs,
                       'F0': free, 'C0': cd, 'C1_schema': apply(base, FIXED),
-                      'C2_schema': apply(oracle, FIXED), 'C3_schema': base,
+                      'C2_schema': apply(oracle, FIXED), 'schema_order_schema': base,
                       'oracle_flags': flags,
                       'router': route(free['raw_content'], tools, truncated=free['truncated'])})
     if sum(u['router']['retry'] for u in units) > rc['retry_cap']:
@@ -90,13 +92,13 @@ def prepare(rc):
                      'expected_content_sha256': hashlib.sha256(u[arm]['raw_content'].encode()).hexdigest()}
                     for u in ranked[:15]]
     return {'config': rc, 'model': model, 'units': units, 'determinism': samples,
-            'new_benchmark_requests': 3*len(units) + len(samples) + sum(u['router']['retry'] for u in units) if rc['result_kind'] == 'benchmark' else 0,
+            'new_benchmark_requests': 2*len(units) + len(samples) + sum(u['router']['retry'] for u in units) if rc['result_kind'] == 'benchmark' else 0,
             'source_results_sha256': rc['source_results_sha256']}
 
 
 class Budget:
     """Durable before-send reservations. Crashed/failed requests still consume the cap."""
-    def __init__(self, path, benchmark_cap=1000, readiness_cap=60):
+    def __init__(self, path, benchmark_cap=700, readiness_cap=60):
         self.path = Path(path)
         self.caps = {'benchmark': benchmark_cap, 'readiness': readiness_cap}
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -118,12 +120,14 @@ class Budget:
 
 def payload_for(plan, unit, arm):
     from .run import constraint_payload
+    if arm not in plan['config']['arms']:
+        raise ValueError('Arm is not in the amended protocol: '+arm)
     payload = dict(plan['model']['request_params'], cache_prompt=plan['config']['cache_prompt'], messages=unit['messages'])
     if arm != 'F0':
         definition = plan['config']['arm_defs'][arm]
         schema = unit['C1_schema'] if arm == 'V' else unit.get(arm + '_schema')
         if arm == 'C0':
-            schema = unit['C3_schema']
+            schema = unit['schema_order_schema']
         payload.update(constraint_payload(schema, definition['transport']))
     return payload
 
@@ -283,8 +287,8 @@ def execute(rc, args):
                 (directory / 'STOPPED.json').write_text(json.dumps({'reason': 'determinism_failed', 'key': result['request_key']}))
                 raise RuntimeError('Determinism failed; STOP. F0/C0 will not be rerun.')
         # Baselines are explicitly reused only after all 30 exact checks pass.
-        for unit in plan['units']:
-            for arm in ('F0', 'C0', 'C1', 'C2', 'C3', 'V'):
+        for arm in ('F0', 'C0', 'C1', 'C2', 'V'):
+            for unit in plan['units']:
                 key = arm + '|' + unit['key']
                 if key in done:
                     continue

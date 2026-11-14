@@ -117,24 +117,25 @@ def test_plan_determinism_selection_reused_arms_and_replay(locked_plan):
     assert [s['arm'] for s in samples].count('F0') == 15
     assert [s['arm'] for s in samples].count('C0') == 15
     assert samples == prepare(config())['determinism']
-    assert locked_plan['new_benchmark_requests'] == 962
+    assert locked_plan['new_benchmark_requests'] == 662
     assert replay(locked_plan['units'])['select']['routed'] == 18
     assert replay(locked_plan['units'])['arggen']['routed'] == 14
     assert config()['arm_defs']['F0']['status'] == config()['arm_defs']['C0']['status'] == 'reused'
-    assert 'response_format' in payload_for(locked_plan, locked_plan['units'][0], 'C3')
+    with pytest.raises(ValueError,match='not in the amended protocol'):
+        payload_for(locked_plan,locked_plan['units'][0],'C3')
     assert 'grammar' in payload_for(locked_plan, locked_plan['units'][0], 'C1')
 
 
 def test_budget_reserves_before_send_and_failed_attempts_cannot_be_retried(tmp_path):
     ledger = tmp_path / 'budget.jsonl'
-    ledger.write_text(''.join(json.dumps({'category': 'benchmark', 'key': str(i)}) + '\n' for i in range(999)))
+    ledger.write_text(''.join(json.dumps({'category': 'benchmark', 'key': str(i)}) + '\n' for i in range(699)))
     budget = Budget(ledger)
     budget.reserve('benchmark', 'last')
     with pytest.raises(ValueError, match='cap reached'): budget.reserve('benchmark', 'overflow')
     with pytest.raises(ValueError, match='already reserved'): budget.reserve('benchmark', 'last')
     for i in range(60): budget.reserve('readiness', 'preflight:' + str(i))
     with pytest.raises(ValueError, match='cap reached'): budget.reserve('readiness', 'smoke:overflow')
-    assert len(ledger.read_text().splitlines()) == 1060
+    assert len(ledger.read_text().splitlines()) == 760
 
 
 def test_named_fixed_option_and_lookalike_flags_do_not_mutate_values():
@@ -188,24 +189,24 @@ def test_failed_native_coverage_blocks_before_network_or_model_access(monkeypatc
     from sn import e0b_preflight
     native={'config_sha256':ordered_hash(locked_plan['config']),
             'plan_sha256':ordered_hash(locked_plan),
-            'C3_unsupported':{'catalog':'enforcement failure'}}
+            'C1':{},'C2':[]}
     f=tmp_path/'native.json';f.write_text(json.dumps(native))
     monkeypatch.setattr(e0b_preflight,'prepare',lambda rc:locked_plan)
     monkeypatch.setattr(e0b_preflight,'http_json',lambda *a,**k:pytest.fail('Network contacted despite failed native gate'))
     monkeypatch.setattr(e0b_preflight.preflight,'runtime',lambda *a,**k:pytest.fail('Model file accessed despite failed native gate'))
-    with pytest.raises(ValueError,match='C3 unsupported'):
+    with pytest.raises(ValueError,match='coverage is incomplete'):
         e0b_preflight.online(locked_plan['config'],run_id='e0b-test',server='http://fake',
                             output=tmp_path/'receipt',native_path=f)
 
 
 def test_two_primary_tests_and_secondary_tests_use_separate_holm_families(monkeypatch):
     from sn import e0b_report
-    values=iter([.04,.01,.02,.03,.04])
+    values=iter([.04,.01,.02,.03])
     monkeypatch.setattr(e0b_report.statistics,'paired',lambda *a,**k:{'mcnemar_exact_p':next(values),
                         'diff_pp':8,'ci95_diff_pp':[1,12]})
     result=e0b_report.comparisons([],config())
     assert [r['p_holm'] for r in result['comparisons'][:2]]==[.04,.02]
-    assert [r['p_holm'] for r in result['comparisons'][2:]]==[.06,.06,.06]
+    assert [r['p_holm'] for r in result['comparisons'][2:]]==[.04,.04]
     assert result['order_effect_rule_met']
 
 
@@ -259,3 +260,42 @@ def test_reused_flags_preserve_original_evaluator_and_raw_bytes(locked_plan):
     flags=reused_diagnostics(unit,'C0',row)
     assert 'lookalike_key' in flags['diagnostic_flags']
     assert json.dumps(row)==before
+
+
+@pytest.mark.parametrize('key,flagged', [
+    ('parent_id": "r-101", ',True), ('parent_id:other',True), ('parent_id_extra',True),
+    ('parent_id-other',True), ('parent_idx',False), ('parent_id2',False),
+    ('parent_id٢',False), ('parent_id',False)])
+def test_undeclared_key_declared_prefix_requires_nonalphanumeric_boundary(key,flagged):
+    schema={'properties':{'parent_id':{'type':'string'}}}
+    value={key:'unchanged'};before=json.dumps(value)
+    assert bool(key_flags(value,schema)) is flagged
+    assert json.dumps(value)==before
+
+
+def test_amendment_preserves_original_text_configs_and_C3_evidence():
+    import subprocess,hashlib
+    base='7d19beddeffe491cec769c761d9ba6fa940ce7f6'
+    original=subprocess.check_output(['git','show',base+':schema-native/E0B_PLAN.md'],cwd=paths.REPO,text=True)
+    assert Path(paths.ROOT,'E0B_PLAN.md').read_text().startswith(original)
+    for filename in ('e0b','e0b_smoke'):
+        current=config('configs/runs/'+filename+'.json')
+        text=subprocess.check_output(['git','show',base+':schema-native/configs/runs/'+filename+'.json'],cwd=paths.REPO,text=True)
+        assert current['original_locked_text']==text
+        assert 'C3' not in current['arms'] and 'C3' not in current['arm_defs']
+        assert len(current['comparisons'])==4
+        assert len(current['analysis']['secondary_holm'])==2
+        assert current['execution_order']==['F0','C0','C1','C2','V']
+    raw=Path(paths.ANALYSIS,'e0b-readiness/native-original-lock.json').read_bytes()
+    expected=subprocess.check_output(['git','show',base+':schema-native/analysis/e0b-readiness/native.json'],cwd=paths.REPO)
+    assert raw==expected
+    assert hashlib.sha256(raw).hexdigest()==config()['excluded_arms']['C3']['evidence_sha256']
+
+
+def test_amendment_rejects_original_cap_or_C3_reintroduction():
+    bad=config();bad['benchmark_request_cap']=1000
+    with pytest.raises(ValueError,match='locked E0b'):
+        prepare(bad)
+    bad=config();bad['arms'].append('C3')
+    with pytest.raises(ValueError,match='no C3'):
+        prepare(bad)

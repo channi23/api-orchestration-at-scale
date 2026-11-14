@@ -19,12 +19,10 @@ from .constraint_options import FIXED
 def validate_native(plan, native):
     if native['config_sha256'] != ordered_hash(plan['config']) or native['plan_sha256'] != ordered_hash(plan):
         raise ValueError('Native readiness evidence is stale')
-    if native['C3_unsupported']:
-        raise ValueError('C3 unsupported envelopes declared: ' + ', '.join(native['C3_unsupported']))
-    if plan['config']['c3']['unsupported_envelopes']:
-        raise ValueError('Locked C3 unsupported list requires an explicit protocol revision')
-    if len(native['C1']) != 70 or len(native['C3']) != 70 or len(native['C2']) != 300:
+    if len(native['C1']) != 70 or len(native['C2']) != 300:
         raise ValueError('Native readiness coverage is incomplete')
+    if not native.get('V', {}).get('native_gate_ok'):
+        raise ValueError('V native routing gate failed')
     if any(not v['compile_ok'] or v['invalid_accepted'] for v in native['C2']):
         raise ValueError('C2 compilation/enforcement gate failed')
     for name, value in native['verification_source_sha256'].items():
@@ -63,7 +61,7 @@ def _online(rc, *, run_id, server, output, native_path):
         raise ValueError('Running server model differs from the checked GGUF')
     source = json.loads((root/'analysis/e0-clean-v1/manifest.public.json').read_text())
     if props.get('chat_template') != source['server_props']['chat_template']:
-        raise ValueError('Chat template differs from model-free C3 audit')
+        raise ValueError('Chat template differs from recorded E0 profile')
     if props.get('default_generation_settings', {}).get('n_ctx') != 8192:
         raise ValueError('Running server context differs from locked 8K profile')
     # The runtime binary/model is checked above; request and context settings remain frozen.
@@ -84,7 +82,7 @@ def _online(rc, *, run_id, server, output, native_path):
         results.append(record)
         time.sleep(rc['request_cooldown_seconds'])
         return response
-    for arm in ('C0', 'C1', 'C3'):
+    for arm in ('C0', 'C1'):
         for index, schema in enumerate([
                 {'type':'object','properties':{'answer':{'const':'SCHEMA_ONLY_739'}},'required':['answer'],'additionalProperties':False},
                 {'type':'object','properties':{'n':{'type':'integer','minimum':7,'maximum':7}},'required':['n'],'additionalProperties':False}]):
@@ -101,7 +99,7 @@ def _online(rc, *, run_id, server, output, native_path):
     context = preflight.context_checks(server, model, rc, reqs, props)
     smoke_plan = prepare(config('configs/runs/e0b_smoke.json'))
     for unit in smoke_plan['units']:
-        for arm in ('C1', 'C2', 'C3'):
+        for arm in ('C1', 'C2'):
             response = send('smoke|' + arm + '|' + unit['key'], payload_for(plan, unit, arm))
             result = score_response(unit, arm, response, 200, [])
             if result['engine_error'] or result['truncated']:

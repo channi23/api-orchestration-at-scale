@@ -23,6 +23,9 @@ def key_flags(value, schema, path=''):
             child_path = path + '/' + key.replace('~', '~0').replace('/', '~1')
             if key not in props:
                 candidate = next((name for name in props if normalized(name) == normalized(key)), None)
+                if candidate is None:
+                    candidate = next((name for name in props if name and key.startswith(name)
+                                      and len(key) > len(name) and not key[len(name)].isalnum()), None)
                 if candidate is not None or any(char in QUOTES for char in key):
                     flags.append((child_path, candidate))
             child_schema = props.get(key, schema.get('additionalProperties', {}))

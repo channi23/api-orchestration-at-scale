@@ -98,19 +98,8 @@ def audit(rc):
     for checkout in (engine,bundled):
         if subprocess.check_output(['git','-C',str(checkout),'status','--porcelain','--untracked-files=no'],text=True).strip():
             raise ValueError('Native engine has tracked source changes')
-    gbnf = root / '.tools/native-gbnf-audit'
-    gbnf_build = json.loads(gbnf.with_suffix('.build.json').read_text())
-    for name in gbnf_build:
-        p = gbnf if name == gbnf.name else engine / 'build-metal/bin' / name
-        if provenance.file_sha(p) != gbnf_build[name]:
-            raise ValueError('GBNF helper/shared library changed; rebuild audit helper')
-    if subprocess.check_output(['git', '-C', str(engine), 'rev-parse', 'HEAD'], text=True).strip() != rc['c3']['llama_cpp_commit']:
-        raise ValueError('C3 backend is not pinned commit')
-    manifest = json.loads((root / 'analysis/e0-clean-v1/manifest.public.json').read_text())
-    template = manifest['server_props']['chat_template']
     native = Native(llg)
-    other = Native(gbnf, template)
-    c1 = {}; c3 = {}; c2 = []; tuple_paths = []; gold_count = 0
+    c1 = {}; c2 = []; tuple_paths = []; gold_count = 0
     def tuples(node, path):
         if not isinstance(node, dict): return
         if isinstance(node.get('items'), list) or isinstance(node.get('prefixItems'), list): tuple_paths.append(path)
@@ -159,7 +148,6 @@ def audit(rc):
                 for i, text in enumerate(invalid_calls(gold, unit['tools'])):
                     samples.append(text); labels.append(unit['key'] + '|invalid:' + str(i))
             c1[name] = summarize(native.check(schema, samples), n_gold, n_free, labels, samples)
-            c3[name] = summarize(other.check(group[0]['C3_schema'], samples), n_gold, n_free, labels, samples)
         for unit in plan['units']:
             free = unit['F0']; decision = unit['router']
             text = envelope.dumps_spaced(decision['call']) if not decision['retry'] else ''
@@ -197,20 +185,36 @@ def audit(rc):
                                   'order_rejected_before': row['request_key'] in order_rejected,
                                   'accepted': result['compile_ok'] and result['accepts'][0]})
     finally:
-        native.close(); other.close()
-    unsupported = {name: value for name, value in c3.items() if not value['compile_ok'] or value['gold_accepted'] != value['gold_checked'] or value['invalid_accepted'] or 'conversion was incomplete' in value['conversion_diagnostics']}
-    return {'kind': 'MODEL-FREE: native matcher checks, not inference', 'config_sha256': ordered_hash(rc),
-            'plan_sha256': ordered_hash(plan), 'llguidance_build': build, 'gbnf_build': gbnf_build,
-            'tuple_array_paths': sorted(set(tuple_paths)), 'C1': c1, 'C2': c2, 'C3': c3,
-            'C3_unsupported': unsupported, 'gold_units': gold_count, 'router_replay': replay(plan['units']),
-            'all_representation_compatibility': compatibility,
-            'lookalike_flags_by_arm': {arm: sum(bool(lookalike_key_flag(r)) for r in all_rows if r['arm'] == arm) for arm in rc_source_arms()},
-            'determinism_selection': plan['determinism'],
-            'verification_source_sha256': {name: provenance.file_sha(root/name) for name in
+        native.close()
+    excluded = rc['excluded_arms']['C3']
+    historical = root / excluded['evidence']
+    if provenance.file_sha(historical) != excluded['evidence_sha256']:
+        raise ValueError('Published historical C3 finding changed')
+    routing = replay(plan['units'])
+    c1_ok = len(c1)==70 and all(v['compile_ok'] and v['gold_accepted']==v['gold_checked'] and not v['invalid_accepted'] for v in c1.values())
+    c2_ok = len(c2)==300 and all(v['compile_ok'] and not v['invalid_accepted'] for v in c2)
+    v_ok = routing['select']['routed']==18 and routing['arggen']['routed']==14 and sum(v['routed'] for v in routing.values()) <= rc['retry_cap']
+    return {'kind':'MODEL-FREE Amendment 1 readiness; not inference', 'config_sha256':ordered_hash(rc),
+            'plan_sha256':ordered_hash(plan), 'llguidance_build':build,
+            'tuple_array_paths':sorted(set(tuple_paths)), 'C1':c1, 'C2':c2,
+            'V':{'native_gate_ok':v_ok, 'backend':'C1 retry only', 'retry_count':sum(v['routed'] for v in routing.values())},
+            'excluded_engine_finding':{'arm':'C3','kind':'historical model-free engine finding; excluded, not rerun',
+                                       'path':excluded['evidence'],'sha256':excluded['evidence_sha256'],
+                                       'failing_envelopes':30,'gold_reachable':246,'gold_total':300,
+                                       'invalid_accepted':120,'invalid_checked':6696},
+            'native_capability_ok':c1_ok and c2_ok and v_ok,
+            'gold_units':gold_count, 'router_replay':routing,
+            'all_representation_compatibility':compatibility,
+            'lookalike_flags_by_arm':{arm:sum(bool(lookalike_key_flag(r)) for r in all_rows if r['arm']==arm) for arm in rc_source_arms()},
+            'determinism_selection':plan['determinism'],
+            'verification_source_sha256':{name:provenance.file_sha(root/name) for name in
                 ['sn/e0b.py','sn/e0b_readiness.py','sn/router.py','sn/oracle_order.py','sn/constraint_options.py',
-                 'scripts/native_gbnf_audit.cpp','scripts/native_llg_audit.cpp']},
-            'online_ok': False, 'launch_clear': False,
-            'not_verified': ['model-tokenizer enforcement', '30-request byte-identical determinism', 'live smoke', 'inference accuracy/latency', 'exhaustive schema enforcement']}
+                 'sn/lookalike.py','sn/report.py','scripts/native_llg_audit.cpp']},
+            'online_ok':False,'launch_clear':False,
+            'not_verified':['model-tokenizer enforcement','30-request byte-identical determinism','live smoke',
+                            'inference accuracy/latency','exhaustive schema enforcement'],
+            'approval_gate':'STOP for user review before any model work'}
+
 
 
 def rc_source_arms():
@@ -223,7 +227,7 @@ def main():
     args = parser.parse_args(); result = audit(config(args.config))
     output = Path(paths.ROOT, args.output); output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + '\n')
-    print('C1', len(result['C1']), 'C2', len(result['C2']), 'C3 unsupported', len(result['C3_unsupported']))
+    print('C1',len(result['C1']),'C2',len(result['C2']),'C1/C2/V native gate',result['native_capability_ok'])
 
 
 if __name__ == '__main__': main()
