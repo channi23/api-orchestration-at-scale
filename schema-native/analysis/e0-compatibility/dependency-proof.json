@@ -1,0 +1,6 @@
+{
+  "kind": "exact native C engine, bounded dependency property-presence check",
+  "cases": 128,
+  "compile_ok": true,
+  "mismatches": []
+}

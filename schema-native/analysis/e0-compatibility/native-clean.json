@@ -1,0 +1,12 @@
+{
+  "kind": "exact bundled C engine, byte tokenizer; not model inference",
+  "engine_commit": "d795912fedc7d393de740177ea9ea761e7905774",
+  "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+  "helper_sha256": "85804a3b3db6e37f138814416f9047eddae04c71e54ea10cec1b060f80b111b7",
+  "constraint_policy": "annotation-dependencies-v1",
+  "envelopes": 70,
+  "compiled": 70,
+  "refused": {},
+  "gold_pairs_checked": 300,
+  "unreachable": []
+}

@@ -1,0 +1,972 @@
+{
+  "run": "e0-clean-v1",
+  "n": 1200,
+  "cells": [
+    {
+      "family": "select",
+      "size": 5,
+      "arm": "A_raw_free",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 1,
+      "tool": 97.0,
+      "schema_valid": 96.0,
+      "semantic": 91.0,
+      "arg_em": 78.0,
+      "field_acc": 95.16190476190476,
+      "e2e": 91.0,
+      "e2e_strict": 79.0,
+      "e2e_engine_ok": 91.0,
+      "classes": {
+        "malformed": 3,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 1,
+        "valid_wrong": 5,
+        "cd_truncated": 0
+      },
+      "in_tokens": 1498.48,
+      "out_tokens": 59.9,
+      "lat_p50": 1298.8893750007264,
+      "lat_p95": 2773.7710410001455,
+      "lat_p99": null
+    },
+    {
+      "family": "select",
+      "size": 5,
+      "arm": "B_raw_cd",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 14,
+      "tool": 86.0,
+      "schema_valid": 86.0,
+      "semantic": 76.0,
+      "arg_em": 67.0,
+      "field_acc": 82.59523809523812,
+      "e2e": 76.0,
+      "e2e_strict": 67.0,
+      "e2e_engine_ok": 76.0,
+      "classes": {
+        "malformed": 0,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 0,
+        "valid_wrong": 10,
+        "cd_truncated": 14
+      },
+      "in_tokens": 1498.48,
+      "out_tokens": 119.19,
+      "lat_p50": 1362.8963749943068,
+      "lat_p95": 11560.00500000664,
+      "lat_p99": null
+    },
+    {
+      "family": "select",
+      "size": 5,
+      "arm": "A2_min_free",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 0,
+      "tool": 99.0,
+      "schema_valid": 95.0,
+      "semantic": 88.0,
+      "arg_em": 82.0,
+      "field_acc": 95.7079365079365,
+      "e2e": 88.0,
+      "e2e_strict": 83.0,
+      "e2e_engine_ok": 88.0,
+      "classes": {
+        "malformed": 1,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 4,
+        "valid_wrong": 7,
+        "cd_truncated": 0
+      },
+      "in_tokens": 924.78,
+      "out_tokens": 55.01,
+      "lat_p50": 1248.0335409927648,
+      "lat_p95": 2295.4418330045883,
+      "lat_p99": null
+    },
+    {
+      "family": "select",
+      "size": 5,
+      "arm": "B2_min_cd",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 16,
+      "tool": 84.0,
+      "schema_valid": 84.0,
+      "semantic": 74.0,
+      "arg_em": 68.0,
+      "field_acc": 80.75238095238095,
+      "e2e": 74.0,
+      "e2e_strict": 68.0,
+      "e2e_engine_ok": 74.0,
+      "classes": {
+        "malformed": 0,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 0,
+        "valid_wrong": 10,
+        "cd_truncated": 16
+      },
+      "in_tokens": 924.78,
+      "out_tokens": 127.52,
+      "lat_p50": 1299.3624579976313,
+      "lat_p95": 11179.249458000413,
+      "lat_p99": null
+    },
+    {
+      "family": "select",
+      "size": 20,
+      "arm": "A_raw_free",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 0,
+      "tool": 97.0,
+      "schema_valid": 90.0,
+      "semantic": 81.0,
+      "arg_em": 72.0,
+      "field_acc": 91.85079365079363,
+      "e2e": 80.0,
+      "e2e_strict": 73.0,
+      "e2e_engine_ok": 80.0,
+      "classes": {
+        "malformed": 3,
+        "wrong_tool": 0,
+        "invalid_only": 1,
+        "invalid_wrong": 6,
+        "valid_wrong": 10,
+        "cd_truncated": 0
+      },
+      "in_tokens": 5638.88,
+      "out_tokens": 56.97,
+      "lat_p50": 1611.8046249903273,
+      "lat_p95": 8181.108500008122,
+      "lat_p99": null
+    },
+    {
+      "family": "select",
+      "size": 20,
+      "arm": "B_raw_cd",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 17,
+      "tool": 83.0,
+      "schema_valid": 83.0,
+      "semantic": 65.0,
+      "arg_em": 59.0,
+      "field_acc": 77.11746031746031,
+      "e2e": 65.0,
+      "e2e_strict": 60.0,
+      "e2e_engine_ok": 65.0,
+      "classes": {
+        "malformed": 0,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 0,
+        "valid_wrong": 18,
+        "cd_truncated": 17
+      },
+      "in_tokens": 5638.88,
+      "out_tokens": 132.86,
+      "lat_p50": 1738.8821249915054,
+      "lat_p95": 14225.606749998406,
+      "lat_p99": null
+    },
+    {
+      "family": "select",
+      "size": 20,
+      "arm": "A2_min_free",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 0,
+      "tool": 97.0,
+      "schema_valid": 91.0,
+      "semantic": 84.0,
+      "arg_em": 80.0,
+      "field_acc": 92.73650793650793,
+      "e2e": 84.0,
+      "e2e_strict": 81.0,
+      "e2e_engine_ok": 84.0,
+      "classes": {
+        "malformed": 3,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 6,
+        "valid_wrong": 7,
+        "cd_truncated": 0
+      },
+      "in_tokens": 3357.98,
+      "out_tokens": 54.34,
+      "lat_p50": 1428.5750840062974,
+      "lat_p95": 4921.267917001387,
+      "lat_p99": null
+    },
+    {
+      "family": "select",
+      "size": 20,
+      "arm": "B2_min_cd",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 15,
+      "tool": 85.0,
+      "schema_valid": 85.0,
+      "semantic": 65.0,
+      "arg_em": 62.0,
+      "field_acc": 77.42222222222222,
+      "e2e": 65.0,
+      "e2e_strict": 62.0,
+      "e2e_engine_ok": 65.0,
+      "classes": {
+        "malformed": 0,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 0,
+        "valid_wrong": 20,
+        "cd_truncated": 15
+      },
+      "in_tokens": 3357.98,
+      "out_tokens": 122.82,
+      "lat_p50": 1553.2897090015467,
+      "lat_p95": 12913.258165994193,
+      "lat_p99": null
+    },
+    {
+      "family": "arggen",
+      "size": 1,
+      "arm": "A_raw_free",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 0,
+      "tool": 94.0,
+      "schema_valid": 90.0,
+      "semantic": 87.0,
+      "arg_em": 76.0,
+      "field_acc": 91.41428571428571,
+      "e2e": 85.0,
+      "e2e_strict": 78.0,
+      "e2e_engine_ok": 85.0,
+      "classes": {
+        "malformed": 6,
+        "wrong_tool": 0,
+        "invalid_only": 2,
+        "invalid_wrong": 2,
+        "valid_wrong": 5,
+        "cd_truncated": 0
+      },
+      "in_tokens": 398.68,
+      "out_tokens": 54.95,
+      "lat_p50": 1245.2059169881977,
+      "lat_p95": 2253.531374997692,
+      "lat_p99": null
+    },
+    {
+      "family": "arggen",
+      "size": 1,
+      "arm": "B_raw_cd",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 17,
+      "tool": 83.0,
+      "schema_valid": 83.0,
+      "semantic": 70.0,
+      "arg_em": 62.0,
+      "field_acc": 76.66666666666667,
+      "e2e": 70.0,
+      "e2e_strict": 63.0,
+      "e2e_engine_ok": 70.0,
+      "classes": {
+        "malformed": 0,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 0,
+        "valid_wrong": 13,
+        "cd_truncated": 17
+      },
+      "in_tokens": 398.68,
+      "out_tokens": 132.87,
+      "lat_p50": 1428.559124993626,
+      "lat_p95": 10663.635167002212,
+      "lat_p99": null
+    },
+    {
+      "family": "arggen",
+      "size": 1,
+      "arm": "A2_min_free",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 0,
+      "tool": 97.0,
+      "schema_valid": 93.0,
+      "semantic": 87.0,
+      "arg_em": 81.0,
+      "field_acc": 94.26190476190476,
+      "e2e": 87.0,
+      "e2e_strict": 82.0,
+      "e2e_engine_ok": 87.0,
+      "classes": {
+        "malformed": 3,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 4,
+        "valid_wrong": 6,
+        "cd_truncated": 0
+      },
+      "in_tokens": 284.74,
+      "out_tokens": 55.52,
+      "lat_p50": 1191.2226249987725,
+      "lat_p95": 2156.4637500123354,
+      "lat_p99": null
+    },
+    {
+      "family": "arggen",
+      "size": 1,
+      "arm": "B2_min_cd",
+      "n": 100,
+      "engine_errors": 0,
+      "request_errors": {},
+      "truncated": 16,
+      "tool": 84.0,
+      "schema_valid": 84.0,
+      "semantic": 73.0,
+      "arg_em": 64.0,
+      "field_acc": 79.82380952380953,
+      "e2e": 73.0,
+      "e2e_strict": 65.0,
+      "e2e_engine_ok": 73.0,
+      "classes": {
+        "malformed": 0,
+        "wrong_tool": 0,
+        "invalid_only": 0,
+        "invalid_wrong": 0,
+        "valid_wrong": 11,
+        "cd_truncated": 16
+      },
+      "in_tokens": 284.74,
+      "out_tokens": 127.89,
+      "lat_p50": 1273.9025829941966,
+      "lat_p95": 10474.850500002503,
+      "lat_p99": null
+    }
+  ],
+  "comparisons": [
+    {
+      "name": "PRIMARY: constrained vs free, raw",
+      "family": "select",
+      "size": null,
+      "primary": true,
+      "a": "A_raw_free",
+      "b": "B_raw_cd",
+      "n_pairs": 200,
+      "acc_a": 0.855,
+      "acc_b": 0.705,
+      "diff_pp": -15.000000000000002,
+      "rel_improvement_pct": -17.54385964912281,
+      "ci95_diff_pp": [
+        -25.5,
+        -5.0
+      ],
+      "discordant_a_only": 37,
+      "discordant_b_only": 7,
+      "mcnemar_exact_p": 5.299581744111492e-06,
+      "discordant_odds_ratio": 0.2,
+      "or_ci95": [
+        0.09131520992466295,
+        0.43804312592612865
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 31,
+        "both_complete_n": 168,
+        "both_complete_a_pct": 87.5,
+        "both_complete_b_pct": 83.33333333333333,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": null
+    },
+    {
+      "name": "PRIMARY: constrained vs free, raw",
+      "family": "select",
+      "size": 5,
+      "primary": false,
+      "a": "A_raw_free",
+      "b": "B_raw_cd",
+      "n_pairs": 100,
+      "acc_a": 0.91,
+      "acc_b": 0.76,
+      "diff_pp": -15.000000000000002,
+      "rel_improvement_pct": -16.483516483516485,
+      "ci95_diff_pp": [
+        -27.0,
+        -4.0
+      ],
+      "discordant_a_only": 18,
+      "discordant_b_only": 3,
+      "mcnemar_exact_p": 0.0014896392822265625,
+      "discordant_odds_ratio": 0.1891891891891892,
+      "or_ci95": [
+        0.060356603311628294,
+        0.5930179523400555
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 14,
+        "both_complete_n": 85,
+        "both_complete_a_pct": 91.76470588235294,
+        "both_complete_b_pct": 88.23529411764706,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 0.019365310668945312
+    },
+    {
+      "name": "PRIMARY: constrained vs free, raw",
+      "family": "select",
+      "size": 20,
+      "primary": false,
+      "a": "A_raw_free",
+      "b": "B_raw_cd",
+      "n_pairs": 100,
+      "acc_a": 0.8,
+      "acc_b": 0.65,
+      "diff_pp": -15.000000000000002,
+      "rel_improvement_pct": -18.75,
+      "ci95_diff_pp": [
+        -25.0,
+        -4.0
+      ],
+      "discordant_a_only": 19,
+      "discordant_b_only": 4,
+      "mcnemar_exact_p": 0.002599477767944336,
+      "discordant_odds_ratio": 0.23076923076923078,
+      "or_ci95": [
+        0.08279639682735221,
+        0.6431975292459783
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 17,
+        "both_complete_n": 83,
+        "both_complete_a_pct": 83.13253012048193,
+        "both_complete_b_pct": 78.3132530120482,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 0.03092193603515625
+    },
+    {
+      "name": "PRIMARY: constrained vs free, raw",
+      "family": "arggen",
+      "size": 1,
+      "primary": false,
+      "a": "A_raw_free",
+      "b": "B_raw_cd",
+      "n_pairs": 100,
+      "acc_a": 0.85,
+      "acc_b": 0.7,
+      "diff_pp": -15.000000000000002,
+      "rel_improvement_pct": -17.647058823529413,
+      "ci95_diff_pp": [
+        -23.0,
+        -8.0
+      ],
+      "discordant_a_only": 21,
+      "discordant_b_only": 6,
+      "mcnemar_exact_p": 0.005924612283706665,
+      "discordant_odds_ratio": 0.3023255813953488,
+      "or_ci95": [
+        0.12573571448970014,
+        0.7269275681693681
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 17,
+        "both_complete_n": 83,
+        "both_complete_a_pct": 87.95180722891567,
+        "both_complete_b_pct": 84.33734939759036,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 0.05924612283706665
+    },
+    {
+      "name": "constrained vs free, minified",
+      "family": "select",
+      "size": null,
+      "primary": false,
+      "a": "A2_min_free",
+      "b": "B2_min_cd",
+      "n_pairs": 200,
+      "acc_a": 0.86,
+      "acc_b": 0.695,
+      "diff_pp": -16.500000000000004,
+      "rel_improvement_pct": -19.18604651162791,
+      "ci95_diff_pp": [
+        -25.0,
+        -9.0
+      ],
+      "discordant_a_only": 39,
+      "discordant_b_only": 6,
+      "mcnemar_exact_p": 5.417768988991156e-07,
+      "discordant_odds_ratio": 0.16455696202531644,
+      "or_ci95": [
+        0.07178214279015532,
+        0.37723858188746123
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 31,
+        "both_complete_n": 169,
+        "both_complete_a_pct": 85.79881656804734,
+        "both_complete_b_pct": 82.24852071005917,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 8.126653483486734e-06
+    },
+    {
+      "name": "constrained vs free, minified",
+      "family": "select",
+      "size": 5,
+      "primary": false,
+      "a": "A2_min_free",
+      "b": "B2_min_cd",
+      "n_pairs": 100,
+      "acc_a": 0.88,
+      "acc_b": 0.74,
+      "diff_pp": -14.000000000000002,
+      "rel_improvement_pct": -15.909090909090912,
+      "ci95_diff_pp": [
+        -22.0,
+        -6.0
+      ],
+      "discordant_a_only": 17,
+      "discordant_b_only": 3,
+      "mcnemar_exact_p": 0.0025768280029296875,
+      "discordant_odds_ratio": 0.2,
+      "or_ci95": [
+        0.06347580951261621,
+        0.630161321409375
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 16,
+        "both_complete_n": 84,
+        "both_complete_a_pct": 89.28571428571429,
+        "both_complete_b_pct": 88.0952380952381,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 0.03092193603515625
+    },
+    {
+      "name": "constrained vs free, minified",
+      "family": "select",
+      "size": 20,
+      "primary": false,
+      "a": "A2_min_free",
+      "b": "B2_min_cd",
+      "n_pairs": 100,
+      "acc_a": 0.84,
+      "acc_b": 0.65,
+      "diff_pp": -18.999999999999993,
+      "rel_improvement_pct": -22.61904761904761,
+      "ci95_diff_pp": [
+        -28.000000000000004,
+        -12.0
+      ],
+      "discordant_a_only": 22,
+      "discordant_b_only": 3,
+      "mcnemar_exact_p": 0.00015652179718017578,
+      "discordant_odds_ratio": 0.15555555555555556,
+      "or_ci95": [
+        0.050440675574607845,
+        0.47972257683992486
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 15,
+        "both_complete_n": 85,
+        "both_complete_a_pct": 82.3529411764706,
+        "both_complete_b_pct": 76.47058823529412,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 0.002191305160522461
+    },
+    {
+      "name": "constrained vs free, minified",
+      "family": "arggen",
+      "size": 1,
+      "primary": false,
+      "a": "A2_min_free",
+      "b": "B2_min_cd",
+      "n_pairs": 100,
+      "acc_a": 0.87,
+      "acc_b": 0.73,
+      "diff_pp": -14.000000000000002,
+      "rel_improvement_pct": -16.091954022988507,
+      "ci95_diff_pp": [
+        -25.0,
+        -3.0
+      ],
+      "discordant_a_only": 19,
+      "discordant_b_only": 5,
+      "mcnemar_exact_p": 0.006610751152038574,
+      "discordant_odds_ratio": 0.28205128205128205,
+      "or_ci95": [
+        0.10948548555523074,
+        0.7266070502709769
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 16,
+        "both_complete_n": 84,
+        "both_complete_a_pct": 88.0952380952381,
+        "both_complete_b_pct": 86.9047619047619,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 0.05949676036834717
+    },
+    {
+      "name": "minified vs raw, free (replication of the finished experiment)",
+      "family": "select",
+      "size": null,
+      "primary": false,
+      "a": "A_raw_free",
+      "b": "A2_min_free",
+      "n_pairs": 200,
+      "acc_a": 0.855,
+      "acc_b": 0.86,
+      "diff_pp": 0.5000000000000004,
+      "rel_improvement_pct": 0.5847953216374274,
+      "ci95_diff_pp": [
+        -3.0,
+        3.5000000000000004
+      ],
+      "discordant_a_only": 8,
+      "discordant_b_only": 9,
+      "mcnemar_exact_p": 1.0,
+      "discordant_odds_ratio": 1.1176470588235294,
+      "or_ci95": [
+        0.44301290079899985,
+        2.8196356039383894
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 0,
+        "both_complete_n": 199,
+        "both_complete_a_pct": 85.42713567839196,
+        "both_complete_b_pct": 86.4321608040201,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    },
+    {
+      "name": "minified vs raw, free (replication of the finished experiment)",
+      "family": "select",
+      "size": 5,
+      "primary": false,
+      "a": "A_raw_free",
+      "b": "A2_min_free",
+      "n_pairs": 100,
+      "acc_a": 0.91,
+      "acc_b": 0.88,
+      "diff_pp": -3.0000000000000027,
+      "rel_improvement_pct": -3.2967032967032996,
+      "ci95_diff_pp": [
+        -10.0,
+        2.0
+      ],
+      "discordant_a_only": 6,
+      "discordant_b_only": 3,
+      "mcnemar_exact_p": 0.5078125,
+      "discordant_odds_ratio": 0.5384615384615384,
+      "or_ci95": [
+        0.14682607515481394,
+        1.9747230054106681
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 0,
+        "both_complete_n": 99,
+        "both_complete_a_pct": 90.9090909090909,
+        "both_complete_b_pct": 88.88888888888889,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    },
+    {
+      "name": "minified vs raw, free (replication of the finished experiment)",
+      "family": "select",
+      "size": 20,
+      "primary": false,
+      "a": "A_raw_free",
+      "b": "A2_min_free",
+      "n_pairs": 100,
+      "acc_a": 0.8,
+      "acc_b": 0.84,
+      "diff_pp": 3.9999999999999925,
+      "rel_improvement_pct": 4.99999999999999,
+      "ci95_diff_pp": [
+        0.0,
+        9.0
+      ],
+      "discordant_a_only": 2,
+      "discordant_b_only": 6,
+      "mcnemar_exact_p": 0.2890625,
+      "discordant_odds_ratio": 2.6,
+      "or_ci95": [
+        0.6046309338777188,
+        11.180374045114851
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 0,
+        "both_complete_n": 100,
+        "both_complete_a_pct": 80.0,
+        "both_complete_b_pct": 84.0,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    },
+    {
+      "name": "minified vs raw, free (replication of the finished experiment)",
+      "family": "arggen",
+      "size": 1,
+      "primary": false,
+      "a": "A_raw_free",
+      "b": "A2_min_free",
+      "n_pairs": 100,
+      "acc_a": 0.85,
+      "acc_b": 0.87,
+      "diff_pp": 2.0000000000000018,
+      "rel_improvement_pct": 2.3529411764705905,
+      "ci95_diff_pp": [
+        -4.0,
+        8.0
+      ],
+      "discordant_a_only": 5,
+      "discordant_b_only": 7,
+      "mcnemar_exact_p": 0.7744140625,
+      "discordant_odds_ratio": 1.3636363636363635,
+      "or_ci95": [
+        0.4537736047651359,
+        4.0978675548875225
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 0,
+        "both_complete_n": 100,
+        "both_complete_a_pct": 85.0,
+        "both_complete_b_pct": 87.0,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    },
+    {
+      "name": "minified vs raw, constrained",
+      "family": "select",
+      "size": null,
+      "primary": false,
+      "a": "B_raw_cd",
+      "b": "B2_min_cd",
+      "n_pairs": 200,
+      "acc_a": 0.705,
+      "acc_b": 0.695,
+      "diff_pp": -1.0000000000000009,
+      "rel_improvement_pct": -1.4184397163120581,
+      "ci95_diff_pp": [
+        -5.0,
+        2.5
+      ],
+      "discordant_a_only": 8,
+      "discordant_b_only": 6,
+      "mcnemar_exact_p": 0.79052734375,
+      "discordant_odds_ratio": 0.7647058823529411,
+      "or_ci95": [
+        0.2754023406025577,
+        2.123348281012247
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 31,
+        "b_truncated": 31,
+        "both_complete_n": 159,
+        "both_complete_a_pct": 87.42138364779875,
+        "both_complete_b_pct": 83.64779874213836,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    },
+    {
+      "name": "minified vs raw, constrained",
+      "family": "select",
+      "size": 5,
+      "primary": false,
+      "a": "B_raw_cd",
+      "b": "B2_min_cd",
+      "n_pairs": 100,
+      "acc_a": 0.76,
+      "acc_b": 0.74,
+      "diff_pp": -2.0000000000000018,
+      "rel_improvement_pct": -2.6315789473684235,
+      "ci95_diff_pp": [
+        -8.0,
+        3.0
+      ],
+      "discordant_a_only": 4,
+      "discordant_b_only": 2,
+      "mcnemar_exact_p": 0.6875,
+      "discordant_odds_ratio": 0.5555555555555556,
+      "or_ci95": [
+        0.11837999702085755,
+        2.607213913464298
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 14,
+        "b_truncated": 16,
+        "both_complete_n": 82,
+        "both_complete_a_pct": 91.46341463414635,
+        "both_complete_b_pct": 87.8048780487805,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    },
+    {
+      "name": "minified vs raw, constrained",
+      "family": "select",
+      "size": 20,
+      "primary": false,
+      "a": "B_raw_cd",
+      "b": "B2_min_cd",
+      "n_pairs": 100,
+      "acc_a": 0.65,
+      "acc_b": 0.65,
+      "diff_pp": 0.0,
+      "rel_improvement_pct": 0.0,
+      "ci95_diff_pp": [
+        -4.0,
+        4.0
+      ],
+      "discordant_a_only": 4,
+      "discordant_b_only": 4,
+      "mcnemar_exact_p": 1.0,
+      "discordant_odds_ratio": 1.0,
+      "or_ci95": [
+        0.27072095723989387,
+        3.693840366831558
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 17,
+        "b_truncated": 15,
+        "both_complete_n": 77,
+        "both_complete_a_pct": 83.11688311688312,
+        "both_complete_b_pct": 79.22077922077922,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    },
+    {
+      "name": "minified vs raw, constrained",
+      "family": "arggen",
+      "size": 1,
+      "primary": false,
+      "a": "B_raw_cd",
+      "b": "B2_min_cd",
+      "n_pairs": 100,
+      "acc_a": 0.7,
+      "acc_b": 0.73,
+      "diff_pp": 3.0000000000000027,
+      "rel_improvement_pct": 4.28571428571429,
+      "ci95_diff_pp": [
+        -6.0,
+        11.0
+      ],
+      "discordant_a_only": 4,
+      "discordant_b_only": 7,
+      "mcnemar_exact_p": 0.548828125,
+      "discordant_odds_ratio": 1.6666666666666667,
+      "or_ci95": [
+        0.5179417097607845,
+        5.363108870032338
+      ],
+      "truncation_sensitivity": {
+        "a_truncated": 17,
+        "b_truncated": 16,
+        "both_complete_n": 77,
+        "both_complete_a_pct": 87.01298701298701,
+        "both_complete_b_pct": 88.31168831168831,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
+      "p_holm": 1.0
+    }
+  ],
+  "complete": true,
+  "expected_n": 1200,
+  "missing_n": 0,
+  "infrastructure_failures": 0,
+  "result_kind": "benchmark",
+  "inference_ready": true,
+  "server_peak_rss_bytes": 2980265984,
+  "memory_note": "Maximum of macOS time -l RSS measurements in the supplied log; supply only this run's server sessions. Includes server lifetimes, not Metal allocator peak",
+  "notes": [
+    "Partial runs have descriptive tables only; no paired inference.",
+    "Cached sequential latencies are descriptive, not uncached speed benchmarks.",
+    "Failure taxonomy covers returned model outputs; request errors are separate."
+  ],
+  "key_order_audit": {
+    "kind": "post-hoc native byte-token order diagnostic; no inference",
+    "tested_free_correct": 501,
+    "all_free_correct": 515,
+    "split": {
+      "pooled": {
+        "order_only_rejection|correct": 140,
+        "order_only_rejection|truncated": 72,
+        "accepted_original_order|correct": 249,
+        "order_only_rejection|wrong": 40
+      },
+      "A_raw_free": {
+        "order_only_rejection|correct": 66,
+        "order_only_rejection|truncated": 34,
+        "accepted_original_order|correct": 126,
+        "order_only_rejection|wrong": 22
+      },
+      "select:5": {
+        "order_only_rejection|correct": 51,
+        "order_only_rejection|truncated": 25,
+        "accepted_original_order|correct": 89,
+        "order_only_rejection|wrong": 10
+      },
+      "A2_min_free": {
+        "accepted_original_order|correct": 123,
+        "order_only_rejection|truncated": 38,
+        "order_only_rejection|correct": 74,
+        "order_only_rejection|wrong": 18
+      },
+      "select:20": {
+        "order_only_rejection|correct": 41,
+        "order_only_rejection|truncated": 25,
+        "accepted_original_order|correct": 80,
+        "order_only_rejection|wrong": 16
+      },
+      "arggen:1": {
+        "order_only_rejection|correct": 48,
+        "accepted_original_order|correct": 80,
+        "order_only_rejection|truncated": 22,
+        "order_only_rejection|wrong": 14
+      }
+    },
+    "engine_build": {
+      "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+      "helper_sha256": "cffc49dd1282b4b738e45a8b6e4c18794ef93049b3312eb289ed00d3f3a9d5ff"
+    }
+  }
+}

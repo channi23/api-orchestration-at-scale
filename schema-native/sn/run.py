@@ -24,6 +24,7 @@ import fcntl
 import json
 import jsonschema
 import os
+import re
 import subprocess
 import time
 import urllib.error
@@ -34,7 +35,7 @@ from . import paths, provenance, resources
 from .preflight import plan, request_key
 import prompts  # type: ignore  # noqa: E402
 import schema_utils as su  # type: ignore  # noqa: E402
-from evaluate import evaluate  # type: ignore  # noqa: E402
+from evaluate import evaluate, schema_errors  # type: ignore  # noqa: E402
 
 
 def http_json(url, payload=None, timeout=3600, headers=None):
@@ -60,12 +61,16 @@ def error_kind(status, resp, decoding):
     """Keep infrastructure failures out of the model failure taxonomy."""
     if status == 200:
         return None
-    msg = json.dumps(resp).lower()
-    if "context" in msg and status in (400, 413):
+    error = resp.get('error', {}) if isinstance(resp, dict) else {}
+    code = error.get('code') or error.get('type') if isinstance(error, dict) else None
+    msg = str(error.get('message', '') if isinstance(error, dict) else error).lower()
+    context_codes = {'context_length_exceeded', 'exceed_context_size_error'}
+    context_message = re.search(r'context (?:length|window|size)?\s*(?:too (?:large|long)|exceeded|exceeds)|exceeds? (?:the )?(?:available )?context (?:size|length|window)', msg)
+    if (code in context_codes or context_message) and status in (400, 413):
         return "context_error"
-    if status in (400, 422) and decoding == "constrained" and any(
-        word in msg for word in ("schema", "grammar", "llguidance", "constraint")
-    ):
+    engine_codes = {'invalid_json_schema', 'invalid_grammar', 'unsupported_json_schema'}
+    engine_message = re.search(r'(?:grammar|schema|constraint) (?:refused|rejected|unsupported|invalid)|(?:invalid|unsupported|failed to (?:parse|compile)) (?:json )?(?:schema|grammar)|(?:parse|compile) (?:error|failure).*?(?:schema|grammar)', msg)
+    if status in (400, 422) and decoding == "constrained" and (code in engine_codes or engine_message):
         return "engine_error"
     return "transport_error" if status == 0 else "http_error"
 
@@ -210,7 +215,7 @@ def main():
                     payload["model"] = arm["model"]
                 constraint_schema = None
                 if arm["decoding"] == "constrained":
-                    constraint_schema = env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids])
+                    constraint_schema = env.envelope([(pool[i]["tool_name"], raw_schema(i)) for i in cat_ids], rc.get("constraint_policy", "original-v0"))
                     payload.update(constraint_payload(constraint_schema, rc.get("constraint_transport", "response_format")))
                 log_path = receipt["runtime"]["server_log_path"] if receipt else None
                 log_offset = os.path.getsize(log_path) if log_path else 0
@@ -236,7 +241,14 @@ def main():
                 violation = None
                 if status == 200 and not failure and arm["decoding"] == "constrained" and finish != "length":
                     try:
-                        jsonschema.Draft7Validator(constraint_schema).validate(json.loads(content))
+                        call = json.loads(content)
+                        jsonschema.Draft7Validator(constraint_schema).validate(call)
+                        selected_id = next(i for i in cat_ids if pool[i]["tool_name"] == call["tool"])
+                        raw_errors = schema_errors(call["arguments"], raw_schema(selected_id))
+                        if raw_errors:
+                            failure = "constraint_violation"
+                            engine_err = True
+                            violation = "Raw selected-tool schema: " + json.dumps(raw_errors)[:1000]
                     except (ValueError, jsonschema.ValidationError) as e:
                         failure = "constraint_violation"
                         engine_err = True
@@ -262,7 +274,8 @@ def main():
                 fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 fout.flush()
                 n_new += 1
-                if failure in ("transport_error", "http_error", "context_error", "response_error"):
+                if (failure in ("transport_error", "http_error", "context_error", "response_error")
+                        or (rc.get("requires_zero_engine_refusals") and engine_err)):
                     raise RuntimeError(f"Recorded {failure} for {key}; stopping. Inspect before starting a new run.")
                 if n_new % 25 == 0:
                     print(f"[{run_id}] {n_new} requests (last {key}, {wall:.0f} ms)", flush=True)

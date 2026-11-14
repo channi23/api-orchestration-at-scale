@@ -30,7 +30,7 @@ Read-out and gate:
 |---|---|---|
 | Constrained ≥ 95% | The benchmark is nearly solved by decoding alone. No room to show a training effect. | Build the harder task set first (stage 2a), then train. |
 | Constrained 86–95%, valid-wrong share ≥ half of failures | Remaining errors are semantic. | Go to stage 2. |
-| Constrained < free | Constraint tax or engine fault. | Check `engine_error` rows and the engine audit; repeat with a second engine before any conclusion. |
+| Constrained < free | Constraint tax or engine fault. | Check engine errors and key-order reachability; run an oracle-order control as well as a second engine before attributing the gap to semantics. See E0B_PLAN.md. |
 
 Also report: engine refusals, tokens, p50/p95 latency, and the same table for minified.
 
@@ -65,6 +65,8 @@ Controls that must be reported next to it:
 - A LoRA trained on a public flat tool-calling corpus of equal token count, to separate "learned the
   output contract" from "learned schemas".
 - Training loss on the answer only (`mask_prompt: true`), one seed first, then 3 seeds for the primary.
+- An order control alongside any constrained training gain: an adapter can improve by learning
+  the engine's property order without learning new schema semantics. Resolve the E0b order effect first.
 
 ## Stage 3 — E2: schema-contrastive training (the novel part)
 
@@ -107,3 +109,25 @@ and may change valid-but-wrong outputs too. H1's valid-wrong prediction remains 
 E0 has mandatory offline/online preflight, content-pinned resume, explicit run completeness, and a
 12-request smoke separate from the 1,200-request benchmark. E1 training/export commands stay gated
 until the real E0 readout and unseen-schema v2/stress data are reviewed. E2 remains deferred.
+
+## Corrected E0 run, specified 2026-11-14 IST before fresh full inference
+
+Use `configs/runs/e0_clean.json`, with `annotation-dependencies-v1` constraint preparation and the
+separate paced 8K model profile. Format assertions match the frozen evaluator's disabled FormatChecker;
+legacy dependencies are retained by equivalent implication guards. Prompts, raw schemas, gold values,
+selection order, four arms and primary/secondary comparisons remain frozen. Zero engine refusals are
+required by preflight; any runtime engine fault stops the clean run. Resource checks require normal
+memory pressure, no sustained swap writes, and nominal/fair thermal state.
+
+The 588-request pilot and its resource stop remain public and separate. This is a corrective rerun
+informed by that pilot. Original hypotheses/readout gates are retained; no training or contrastive
+claim follows from a syntax/decoding result. See `analysis/e0-compatibility/VALIDATION.md`.
+
+## Post-E0 readout and prospective follow-up (2026-11-14 IST)
+
+The completed clean run measures a 15-point raw pooled selection deficit under constraints.
+The exact-engine audit and independently supplied review support an order-related explanation,
+not causal proof. A second engine can enforce the same order and cannot settle this by itself.
+The original E0 rows and hypotheses remain recorded; H1's semantic interpretation is confounded
+by order, truncation and look-alike keys. E1/E2 remain gated. See `E0B_PLAN.md` for the proposed
+follow-up and its explicit preflight, budget and analysis decisions still required before inference.

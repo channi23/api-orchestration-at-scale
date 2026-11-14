@@ -51,7 +51,7 @@ def plan(rc):
             raise ValueError('Duplicate tool names')
         ck = cat['catalog_id'] if cat else 'single:' + t['tool_id']
         if ck not in checked:
-            checked[ck] = envelope.envelope([(pool[i]['tool_name'], su.load_schema(pool[i]['schema_id'])) for i in ids])
+            checked[ck] = envelope.envelope([(pool[i]['tool_name'], su.load_schema(pool[i]['schema_id'])) for i in ids], rc.get('constraint_policy', 'original-v0'))
             jsonschema.Draft7Validator.check_schema(checked[ck])
         raw = su.load_schema(pool[t['tool_id']]['schema_id'])
         V = jsonschema.validators.validator_for(raw, default=jsonschema.Draft7Validator)
@@ -186,6 +186,10 @@ def main():
         token = os.environ.get('SN_API_KEY')
         headers = {'Authorization': 'Bearer ' + token} if token else None
         receipt['server_checks'] = online(a.server, model, schemas, headers, a.server_log, rc.get("constraint_transport", "response_format"), resource_config=rc)
+        if rc.get('requires_zero_engine_refusals') and receipt['server_checks']['envelope_refusals']:
+            Path(a.output).parent.mkdir(parents=True, exist_ok=True)
+            Path(a.output).write_text(json.dumps(receipt, indent=2) + '\n')
+            raise ValueError('Clean E0 requires zero engine refusals; failed receipt preserved')
         receipt['context_checks'] = context_checks(a.server, model, rc, reqs, receipt['server_checks']['props'], headers)
         props = receipt['server_checks']['props']
         if model['llama_cpp_commit'][:7] not in str(props.get('build_info', '')):

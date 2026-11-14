@@ -14,3 +14,5 @@ __pycache__/
 
 # Path smoke reports are QA artifacts, not benchmark publications.
 analysis/*-smoke/
+
+analysis/*smoke*/
