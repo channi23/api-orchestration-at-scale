@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "thermal_state": 0,
+      "memory_pressure_dispatch_level": 1,
+      "swapout_mib_per_sec_since_previous_check": null
+    },
+    {
+      "thermal_state": 0,
+      "memory_pressure_dispatch_level": 1,
+      "swapout_mib_per_sec_since_previous_check": 0.0
+    }
+  ],
+  "approved_source_commit": "c5f560abf3e74e352d9d5510035e7afe7fa20df2",
+  "native_evidence_sha256": "006d807e89263408218afc75c32e2c72be133b7ef50a2e50f71eeed607446ee6",
+  "server_log_start_byte": 6139214
+}

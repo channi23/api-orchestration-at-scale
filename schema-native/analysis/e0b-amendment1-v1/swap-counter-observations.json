@@ -1,0 +1,22 @@
+{
+  "scope": "system-wide counters, not process attribution",
+  "page_size_bytes": 16384,
+  "pre_load_swapouts_pages": 4272431,
+  "post_unload_swapouts_pages": 4303467,
+  "swapout_delta_mib": 484.9375,
+  "pre_load_accumulated_swap_used_mib": 3091.75,
+  "post_unload_accumulated_swap_used_mib": 3448.69,
+  "note": "Counts come from actual vm_stat/sysctl tool observations. Recorded pre-generation intervals reported zero writes, but those intervals do not cover the entire model-load/runtime-verification window. These global counters cannot establish timing, duration or which process caused the delta.",
+  "post_unload_sampled_checks": [
+    {
+      "thermal_state": 0,
+      "memory_pressure_dispatch_level": 1,
+      "swapout_mib_per_sec_since_previous_check": null
+    },
+    {
+      "thermal_state": 0,
+      "memory_pressure_dispatch_level": 1,
+      "swapout_mib_per_sec_since_previous_check": 0.0
+    }
+  ]
+}

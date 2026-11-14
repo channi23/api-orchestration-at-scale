@@ -1,0 +1,21 @@
+{
+  "inference_source_commit": "c5f560abf3e74e352d9d5510035e7afe7fa20df2",
+  "original_hashes": {
+    "CAMPAIGN.json": "6573f5b3524fee58acb4ca8f37c259780c8e9b6ef69d8bbe8ea5abd4a7d2aa5a",
+    "request-budget.jsonl": "d36547bcf449cf9693f60069488c2616cbaee006388d92ed4e90eefdef84e3e6",
+    "frozen-plan.json": "46dbe2510971fc2ede94b2578a10547bfab6c371ce7d5e164b6f1cec9e50fe01",
+    "before-loading.json": "0fcb44ee507840f47f3f14f0c356b8ebd547c80c44d9bf87282ea6f4f4cc1513",
+    "STOPPED.json": "cba814e6aa1943c21e2d2deaa05bcd9ed399018e2163ef7f74cf99f0f6918a07",
+    "readiness-results.jsonl": "3276dcfba3b0e1dacacd78b10a962f36bb404f4e16d131057379f1de50dea34c",
+    "loaded-health.json": "cd514f89686b77b0a9e2f8d013a41397aab1d101a60b3b78efd195a2c6e4d86b",
+    "online-preflight.log": "639cad1a7ab72028baee4bc7459367590104e625f4a0d38cc9a31f41222622e3",
+    "results.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run-config.json": "ab35ffb237b716521db4ce3d1e291553922ef2b306e33a957ae4fe987612db39",
+    "after-unload.json": "26273e910433984b9e8d9c21e43cb13e854f09e27c008fe3e6fc5b5e4392f1b0",
+    "model-profile.json": "757b5d8da501f0cbf0bbc8c5dc743b801d3b13332a28e0934267d6fd6786b17a",
+    "manifest.json": "2e4947b5e5f4d75ba2c3ddd37856931e0bda0a428e6fb9ff8ef5553ca1c8510e",
+    "server-session.log": "d7075811fb753d853f66c5c1ccd404eba3c9857435d959d63e3dade8026fb02d",
+    "swap-counter-observations.json": "b1739f82acaca2c5b6eefc1145fd05b27062f134cd94230f278e0ac467d2e15d"
+  },
+  "note": "Published text is a path-redacted derivative where necessary; original run files remain local. Empty benchmark results means no benchmark requests, not synthetic data."
+}
