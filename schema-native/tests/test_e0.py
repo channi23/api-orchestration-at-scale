@@ -94,6 +94,23 @@ def test_changed_config_refuses_resume_and_partial_report(tmp_path, monkeypatch)
         srv.server_close()
 
 
+def test_report_uses_largest_peak_across_resumed_server_sessions(tmp_path, monkeypatch):
+    from test_pipeline_smoke import Recording, _serve
+    srv, url = _serve(Recording)
+    monkeypatch.setattr(paths, 'RUNS', str(tmp_path / 'runs'))
+    monkeypatch.setattr(paths, 'ANALYSIS', str(tmp_path / 'analysis'))
+    monkeypatch.setattr(sys, 'argv', ['run', '--config', 'configs/runs/smoke.json',
+                                     '--run-id', 'resumed', '--server', url, '--limit', '1'])
+    try:
+        run.main()
+        log = tmp_path / 'server.log'
+        log.write_text('3000000 maximum resident set size\n2000000 maximum resident set size\n')
+        assert report.run('resumed', str(log))['server_peak_rss_bytes'] == 3000000
+    finally:
+        srv.shutdown()
+        srv.server_close()
+
+
 def test_offline_receipt_cannot_authorize_real_run(tmp_path, monkeypatch):
     receipt = tmp_path / 'offline.json'
     receipt.write_text(json.dumps({'online_ok': False}))

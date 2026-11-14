@@ -66,7 +66,7 @@ def run(run_id: str, server_log: str | None = None) -> dict:
     if server_log:
         with open(server_log) as log:
             peaks = re.findall(r"(\d+)\s+maximum resident set size", log.read())
-        memory = int(peaks[-1]) if peaks else None
+        memory = max(map(int, peaks)) if peaks else None
     arms = list(man["run_config"]["arms"])
     expected = man.get("expected_request_keys")
     if expected is None:
@@ -80,7 +80,7 @@ def run(run_id: str, server_log: str | None = None) -> dict:
            "result_kind": man["run_config"].get("result_kind", "synthetic"),
            "inference_ready": complete and not infra and bool(man.get("preflight", {}).get("online_ok") if man.get("preflight") else False) and man["run_config"].get("result_kind") == "benchmark",
            "server_peak_rss_bytes": memory,
-           "memory_note": "macOS time -l maximum RSS after server exit; includes server lifetime, not Metal allocator peak",
+           "memory_note": "Maximum of macOS time -l RSS measurements in the supplied log; supply only this run's server sessions. Includes server lifetimes, not Metal allocator peak",
            "notes": ["Partial runs have descriptive tables only; no paired inference.",
                      "Cached sequential latencies are descriptive, not uncached speed benchmarks.",
                      "Failure taxonomy covers returned model outputs; request errors are separate."]}
