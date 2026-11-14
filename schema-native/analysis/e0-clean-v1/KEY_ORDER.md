@@ -10,6 +10,9 @@ serialized compactly in both cases. An output is classified as rejected *only fo
 original order is rejected but reordering the same value makes it accepted. This includes envelope
 and nested argument object order, not just the outermost object. It does not prove that order
 caused a particular sampled token decision.
+The reordering helper follows `properties` and `items` only. It does not resolve ordering through
+arbitrary combinator branches; such a failure to rescue a value would fall under `other_rejection`.
+The observed zero count in that category does not establish general combinator support.
 
 | Free-correct output category | Requests | CD correct | CD wrong | CD truncated |
 |---|---:|---:|---:|---:|
