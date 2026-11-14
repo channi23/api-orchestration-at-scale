@@ -1,95 +1,148 @@
 # E0b: separate order effects from deployment performance
 
-Status: prospective design after the completed E0 and external review, **not an executed or fully
-locked experiment**. No E0b model inference has run. E1/LoRA and E2 remain gated. Preserve E0's
-1,200 rows; never pool E0b rows with them or change an existing run's inference parameters.
+**LOCKED — 2026-11-14 (Asia/Kolkata), protocol e0b-locked-v1.** Base: main 45e786b.
+Machine-readable definitions: configs/runs/e0b.json and e0b_smoke.json. No E0b inference has run.
+E0 rows and experiment/ remain immutable. E1/E2 stay gated. This locks the design, not a claim that
+all backend capabilities have passed: see analysis/e0b-readiness/VALIDATION.md for the C3 launch gate.
 
-## Proposed conditions
+## Conditions and fixed budget
 
-Raw representation only, the same 300 request units (200 select, 100 fixed-tool argument generation):
+Raw representation only, the same 300 units: 200 selection (5/20 tools) and 100 fixed-tool argument
+units. The approximately **50 intents**, not 300 units or 1,000 requests, are independent.
 
-| Arm | Condition | Evidence needed |
+| Arm | Condition | Status |
 |---|---|---|
-| F0 | Original free decoding | Reuse only after a prospectively selected 30-request determinism check shared with C0 |
-| C0 | Original schema order, flexible llguidance whitespace | Same conditional reuse; label every reused row |
-| C1 | Schema order, fixed comma-space and colon-space separators | 300 new requests |
-| C2 | C1 with property order derived from F0's strict output | 300 new requests; oracle diagnostic only |
-| C3 | A pinned second engine in schema order | 300 new requests, after full coverage/enforcement preflight |
-| V | Strict validation of F0, then at most one C1 retry if invalid | Only routed retries are new; total cost includes both attempts |
+| F0 | Original free decoding | Reused after the 30-request determinism gate |
+| C0 | Original llguidance, schema order, flexible whitespace | Reused after the same gate |
+| C1 | llguidance, schema order, fixed readable separators | 300 new requests |
+| C2 | C1 with property order from that unit's F0 output | 300 new requests; oracle diagnostic only |
+| C3 | Pinned llama.cpp GBNF Jinja response_format autoparser, schema order | 300 new requests, subject to capability gate |
+| V | Strict validation of F0, then at most one C1 retry if invalid | Up to 70 new retries, all units scored |
 
-Retain the model, quantization, context, greedy settings, output cap, thinking setting, batch,
-offload, concurrency and resource guards of E0. Fixed readable separators are supported by a
-model-free bundled-engine check, not yet by a full accuracy run. Record every changed grammar option.
-A second engine may share the same key-order restriction, so C3 alone cannot answer the order question.
+**Hard cap: 1,000 benchmark generation requests = 900 C1/C2/C3 + 30 determinism + up to 70 retries.**
+A **separate shared allowance of 60 generation requests** covers online preflight and smoke together.
+Both use one durable campaign ledger. A reservation is written and synced before sending; failures
+and uncertain in-flight attempts consume budget and are not automatically retried. Importing reused
+rows is not a model request. Health/props, template rendering and tokenizer API calls do not generate
+output and are recorded separately from these generation budgets. No server/model is started by code.
 
-## Oracle rules and verification required before C2
+The frozen strict router projects 32 retries, hence 962 benchmark requests; the unused 38 requests
+are not an adaptive exploration allowance. More than 70 routed units is a STOP condition, never a
+reason to omit units. The path smoke has six units (T106_p0 and T103_p0 across 5/20/fixed-tool),
+18 C1/C2/C3 requests and 3 V retries. Six adversarial requests plus this smoke total 27 of the 60.
+Smoke is not benchmark accuracy evidence and does not authorize baseline reuse.
 
-- Use only the order and named tool in that request's F0 output, never gold values or the gold tool.
-  Reorder only the named tool's constraint branch; do not reorder catalog branches or prune alternatives.
-- At each object, observed declared properties come first in observed order, followed by unobserved
-  declared properties in original order. Preserve every assertion and required list.
-- Recurse through properties and every combinator branch without choosing a branch. For homogeneous
-  array items, use the first element's order and flag disagreement as `oracle_incomplete`; define tuple
-  arrays explicitly before execution. The current audit helper does not implement these general rules.
-- Invalid, wrapped or truncated F0 outputs fall back to original schema order. Record `oracle_not_applied`
-  separately from failure classes and keep all 300 units in the primary comparison.
-- Key-sorted serialization of the schema before and after reordering must be identical, including
-  assertions and array order. Check original/raw validity and exact-engine acceptance independently.
-- External review reports 250/252 order-rejected free-correct values reachable after its oracle rule;
-  two T062 cases involve required-but-undeclared id. Verify with the bundled binary and report exceptions;
-  do not add a property or relax the schema to make the oracle pass.
+Retain Qwen3-1.7B Q8_0, context 8192, batch 512, microbatch 128, all 29 GPU layers, one request at a
+time, greedy seed 0, thinking disabled, output cap 512 and two-second pacing. Keep memory/swap/thermal
+guards. Record json-fixed-readable-v1: whitespace_flexible=false, item_separator=", ", key_separator=": ".
+These restrict output serialization, not JSON value assertions or prompts.
 
-C2 is an optimistic diagnostic: exposing F0's observed order can steer the model toward its free answer.
-It is not a deployable oracle or proof of a universally order-insensitive decoder.
+## Determinism gate — final
 
-## Strict deployment router and cost accounting
+**30 requests total: 15 F0 and 15 C0.** Independently rank each arm's 300 source request keys by
+SHA-256(seed + NUL + source_request_key), ascending; take the first 15 in each arm. Seed:
+e0b-lock-2026-11-14-v1. Selection is made and published before any model run in
+analysis/e0b-readiness/determinism-selection.json. No scores influence selection.
 
-V sees only strict JSON parsing (reject wrappers, duplicate keys and nonfinite constants), exact
-envelope shape, named-tool catalog membership and the selected tool's original raw-schema validity.
-No gold values, semantic correctness or gold-tool identity may influence routing. Keep format assertions
-consistent with the frozen evaluator. A failed retry is final; do not loop until success.
+Pass only if **all 30 raw_content strings are byte-identical in UTF-8** to E0. Do not trim, normalize,
+or compare parsed values. Any mismatch, engine fault or malformed response: save the attempt, write
+a STOP record, and STOP. Do not auto-rerun F0/C0 or consume the spare budget to try again. Report the
+failure for a new protocol decision. Reuse has this bounded reproducibility check, not proof of
+identical behavior on all other units. Reused rows/timings are explicitly labeled.
 
-Score every unit. Sum both attempts' latency and tokens on routed units; report prompt caching policy,
-reused versus fresh timings, and scheduled execution order. A stored-row replay is a projection, never
-measured deployment latency or a fresh inference result.
+## Strict router — final
 
-The strict-router replay using C0 as retry was independently checked locally against saved E0 rows:
+sn/router.py accepts only raw text, the current catalog's name-to-original-schema mapping and a
+truncation flag. It has no access to gold values, gold tool identity or evaluator fields.
+Reject wrappers, duplicate keys at any depth, NaN/Infinity and non-finite numeric overflow. Require
+exact tool/arguments envelope keys, a named tool in the current catalog and raw-schema validity for
+that named tool. Format assertions remain disabled as in E0. Truncated free outputs route to retry.
+Semantic correctness and the gold tool never affect routing. A schema-valid wrong answer is not retried.
 
-| Slice | Free E2E | Replay E2E | Routed | Total-token ratio | Summed recorded-latency ratio |
-|---|---:|---:|---:|---:|---:|
-| Raw select | 85.5% | 88.5% | 18/200 | 1.107 | 1.270 |
-| Raw fixed tool | 85.0% | 89.0% | 14/100 | 1.204 | 1.519 |
+At most one C1 retry; a failed retry is final and counted. V costs sum free plus retry tokens and
+recorded latency for every routed unit, with reuse labels. A stored-row replay is a projection,
+not measured deployment latency. Using stored C0 as retry projects 88.5% select and 89.0% fixed-tool,
+with 18/200 and 14/100 routed. Four wrapped free-correct outputs per slice route under this strict
+contract; that choice is final and is not revised after observing retry outcomes.
 
-Four wrapped outputs per slice are free-correct under the lenient evaluator but routed by this strict
-contract. Lock that parser choice before inference; do not change it after seeing retry outcomes.
+## Oracle C2 rules — final
 
-## Analysis, stopping and unresolved launch decisions
+Use only F0's strictly parsed named tool and observed key order for the same unit, never gold data.
+Only that tool's envelope branch is reordered; catalog/tool branches are neither reordered nor pruned.
+Observed declared properties first in observed order; unobserved declared properties follow in their
+original order. Preserve every assertion, property, required list and list/branch order.
 
-- Proposed co-primary select-pooled contrasts: C2 minus C1 (order intervention) and V minus F0
-  (deployment). Use paired exact McNemar and catalog-replicate bootstrap intervals. Predeclare
-  multiplicity control for the two primary tests and the secondary family before launch.
-- Secondary: C1 minus C0, C3 minus C1, C2 minus F0; describe remaining formatting/engine differences.
-  Keep all-pair outcomes primary. Conditioned both-finished tables are descriptive only.
-- Report correct, cd_truncated (between tokens versus inside string), lookalike_key, valid wrong value,
-  wrong tool, invalid output and engine refusal. Define precedence and retain overlapping diagnostic
-  flags. `oracle_not_applied` is an intervention-status flag, not necessarily a model error.
-- Add and test look-alike-key reporting before E0b: an undeclared key normalizing to a declared one,
-  or a typographic quote in an undeclared key. Do not silently rename keys or re-score frozen rows.
-- A fixed run size, no interim accuracy looks and stop-on-engine-fault are required. Normal memory
-  pressure, no sustained active swap writes and nominal/fair thermals remain admission guards.
-- The suggested order-effect gate is at least +8 points with an interval excluding zero. Lock the
-  exact inferential rule and acknowledge the small number of independent intents before execution.
+Recurse through properties and **every** allOf/anyOf/oneOf/not/if/then/else branch without selecting or
+pruning a branch. For homogeneous arrays the first element supplies items order. If later elements
+disagree in nested object-key order/shape, retain first-element order and flag oracle_incomplete.
+For tuple arrays, reorder each position from its corresponding observed element; absent positions
+remain in original order. Prefix-items and additional homogeneous tails follow the same rules.
+**No tuple arrays were found in the 70 frozen envelopes**; tuple behavior is covered by synthetic tests.
 
-**Budget must be corrected before launch:** 900 new C1/C2/C3 requests + 30 proposed determinism requests
-+ 32 retries projected by the frozen router = about 962 requests, excluding preflight/smoke. A 950
-hard cap cannot cover that plan. The determinism sample must specify whether 30 means total requests
-or 30 units per arm; the latter raises the count again. If reuse fails, rerunning F0/C0 adds 600 requests.
-Freeze a sufficient budget and a separate preflight/smoke allowance before any E0b model work.
+Invalid, wrapped, truncated or out-of-catalog F0 output: preserve schema order and flag
+oracle_not_applied. Required keys stay required; unknown observed keys do not become declared
+properties. Key-sorted serialization of the complete constraint copy before/after must be identical.
+Test validator verdicts on gold and stored F0 values; separately test exact-engine acceptance.
 
-Pin C3's actual backend/version and serialization; preflight all 70 envelopes, schema-ordered gold
-reachability and acceptance of original F0 order. Declare unsupported envelopes before inference.
-Never treat refusal or silent fallback as a model error. A more general order-insensitive matcher
-remains a research proposal; no support or complexity claim is established here.
+C2 is an optimistic oracle diagnostic, not a deployable baseline or a universal order-insensitive
+matcher. The all-representation compatibility check is distinct from E0b's raw-only denominator:
+499/501 strict free-correct values reachable; among the previously order-rejected subset, 250/252.
+Both exceptions are T062_p0 (select C005_R03 and fixed-tool), involving required-but-undeclared id.
+Do not relax schemas to pass. Raw-only F0: 246/248 strict free-correct values reachable under C2.
 
-This file records the review's design and known launch gaps. A locked machine-readable config,
-tested routing/oracle code, determinism receipt and successful preflight are still required.
+## C3 — one fixed backend and serialization
+
+**llama.cpp 11fe02151f79c41d0d4af7da708755d73b9c0da6, native GBNF through response_format with --jinja.**
+Use the unchanged corrected constraint schema (no x-guidance options), pinned native GBNF defaults,
+and its actual Jinja/autoparser wrapper serialization. The server default reasoning format is deepseek;
+enable_thinking=false. The model's recorded chat template is SHA-256 pinned in config. The native
+check invokes the same template/autoparser implementation, primes the grammar with its generation
+prompt as common/sampling.cpp does, and uses the actual GBNF matcher libraries. This is not a claim
+of equivalent model-tokenizer behavior; that remains an online gate. Helpers load no model or server.
+
+All 70 envelopes are checked before inference. Compile success alone does not establish enforcement:
+record schema-ordered gold reachability and validator-rejected mutation witnesses. Publish every
+unsupported/failing envelope in the config and readiness evidence before any run. **The full run
+must STOP before network generation if any C3 envelope fails coverage/enforcement.** No silent
+exclusions, second-backend substitution, schema relaxation or automatic version upgrade is permitted.
+Resolving a backend capability deficit requires an explicit protocol revision, not an opportunistic run.
+
+## Analysis and failure taxonomy — final
+
+Co-primary tests on pooled selection, paired exact McNemar, replicate-bootstrap 95% intervals:
+P1 C2 minus C1; P2 V minus F0. **Holm across these two tests.** Secondary pooled-selection tests:
+C1 minus C0, C3 minus C1, C2 minus F0, with a **separate Holm family** of three. Argument generation
+and catalog-size tables are descriptive; no undeclared extra significance tests. Keep all pairs in
+primary outcomes; both-finished subsets are biased descriptive summaries only.
+
+**Order-effect rule: C2 minus C1 >= +8 percentage points and the replicate-bootstrap 95% interval's
+lower endpoint > 0 on pooled selection.** Report adjusted p-values too. Acknowledge the roughly 50
+independent intents and limited power. Fixed size; no interim accuracy looks. Stop on any engine fault.
+
+Exclusive precedence:
+**engine_refusal > cd_truncated > invalid > wrong_tool > lookalike_key > valid_wrong_value > correct.**
+Keep overlapping flags in separate columns, including oracle_not_applied and oracle_incomplete;
+these oracle statuses are not automatically model failures. Report truncation inside versus outside
+strings where it can be identified. Look-alike flags use an undeclared key whose NFKC-normalized,
+trimmed, case-folded form matches a declared key, or a typographic quote in an undeclared key. They
+never rename a key or re-score an E0 row. Preserve the historical E0 metrics alongside new flags.
+
+## Execution gates and commands
+
+Model-free preparation/validation (safe now; no model/server):
+
+```bash
+bash scripts/build_gbnf_audit.sh
+scripts/build_native_audit.sh
+python -m sn.e0b_readiness
+python -m pytest -q --ignore-glob='* 2.py'
+```
+
+After the documented native C3 capability gate has been resolved under a new approved protocol,
+and only when inference is explicitly authorized, use a new e0b- campaign ID with an already
+running pinned server. sn.e0b_preflight performs the shared-budget online checks/smoke and issues
+a receipt; sn.run requires that receipt before the 30 determinism requests. It never starts a server.
+A failed determinism check writes STOPPED.json and prevents auto-resumption. Uncertain charged
+requests require inspection; no automatic replay. Reports are generated by sn.e0b_report.
+
+For this task, **STOP after the code/tests/evidence PR. Do not start E0b. E1/E2 remain gated.**
