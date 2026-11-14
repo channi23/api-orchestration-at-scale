@@ -4,20 +4,20 @@ Evidence kind: benchmark. Status: COMPLETE. Requests: 1200/1200. Infrastructure 
 
 Cached sequential latency is descriptive. Taxonomy excludes request failures. p99 appears in JSON only for cells with at least 200 responses.
 
-| Family | Tools | Arm | n | Tool % | Schema valid % | Semantic % | E2E % | E2E % (engine ok) | Engine errors | malformed | wrong tool | invalid only | invalid+wrong | valid, wrong | In tok | Out tok | p50 ms | p95 ms |
-|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| select | 5 | A_raw_free | 100 | 97.0 | 96.0 | 91.0 | 91.0 | 91.0 | 0 | 3 | 0 | 0 | 1 | 5 | 1498 | 60 | 1299 | 2774 |
-| select | 5 | B_raw_cd | 100 | 86.0 | 86.0 | 76.0 | 76.0 | 76.0 | 0 | 14 | 0 | 0 | 0 | 10 | 1498 | 119 | 1363 | 11560 |
-| select | 5 | A2_min_free | 100 | 99.0 | 95.0 | 88.0 | 88.0 | 88.0 | 0 | 1 | 0 | 0 | 4 | 7 | 925 | 55 | 1248 | 2295 |
-| select | 5 | B2_min_cd | 100 | 84.0 | 84.0 | 74.0 | 74.0 | 74.0 | 0 | 16 | 0 | 0 | 0 | 10 | 925 | 128 | 1299 | 11179 |
-| select | 20 | A_raw_free | 100 | 97.0 | 90.0 | 81.0 | 80.0 | 80.0 | 0 | 3 | 0 | 1 | 6 | 10 | 5639 | 57 | 1612 | 8181 |
-| select | 20 | B_raw_cd | 100 | 83.0 | 83.0 | 65.0 | 65.0 | 65.0 | 0 | 17 | 0 | 0 | 0 | 18 | 5639 | 133 | 1739 | 14226 |
-| select | 20 | A2_min_free | 100 | 97.0 | 91.0 | 84.0 | 84.0 | 84.0 | 0 | 3 | 0 | 0 | 6 | 7 | 3358 | 54 | 1429 | 4921 |
-| select | 20 | B2_min_cd | 100 | 85.0 | 85.0 | 65.0 | 65.0 | 65.0 | 0 | 15 | 0 | 0 | 0 | 20 | 3358 | 123 | 1553 | 12913 |
-| arggen | 1 | A_raw_free | 100 | 94.0 | 90.0 | 87.0 | 85.0 | 85.0 | 0 | 6 | 0 | 2 | 2 | 5 | 399 | 55 | 1245 | 2254 |
-| arggen | 1 | B_raw_cd | 100 | 83.0 | 83.0 | 70.0 | 70.0 | 70.0 | 0 | 17 | 0 | 0 | 0 | 13 | 399 | 133 | 1429 | 10664 |
-| arggen | 1 | A2_min_free | 100 | 97.0 | 93.0 | 87.0 | 87.0 | 87.0 | 0 | 3 | 0 | 0 | 4 | 6 | 285 | 56 | 1191 | 2156 |
-| arggen | 1 | B2_min_cd | 100 | 84.0 | 84.0 | 73.0 | 73.0 | 73.0 | 0 | 16 | 0 | 0 | 0 | 11 | 285 | 128 | 1274 | 10475 |
+| Family | Tools | Arm | n | Tool % | Schema valid % | Semantic % | E2E % | E2E % (engine ok) | Engine errors | CD truncated | malformed | wrong tool | invalid only | invalid+wrong | valid, wrong | In tok | Out tok | p50 ms | p95 ms |
+|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| select | 5 | A_raw_free | 100 | 97.0 | 96.0 | 91.0 | 91.0 | 91.0 | 0 | 0 | 3 | 0 | 0 | 1 | 5 | 1498 | 60 | 1299 | 2774 |
+| select | 5 | B_raw_cd | 100 | 86.0 | 86.0 | 76.0 | 76.0 | 76.0 | 0 | 14 | 0 | 0 | 0 | 0 | 10 | 1498 | 119 | 1363 | 11560 |
+| select | 5 | A2_min_free | 100 | 99.0 | 95.0 | 88.0 | 88.0 | 88.0 | 0 | 0 | 1 | 0 | 0 | 4 | 7 | 925 | 55 | 1248 | 2295 |
+| select | 5 | B2_min_cd | 100 | 84.0 | 84.0 | 74.0 | 74.0 | 74.0 | 0 | 16 | 0 | 0 | 0 | 0 | 10 | 925 | 128 | 1299 | 11179 |
+| select | 20 | A_raw_free | 100 | 97.0 | 90.0 | 81.0 | 80.0 | 80.0 | 0 | 0 | 3 | 0 | 1 | 6 | 10 | 5639 | 57 | 1612 | 8181 |
+| select | 20 | B_raw_cd | 100 | 83.0 | 83.0 | 65.0 | 65.0 | 65.0 | 0 | 17 | 0 | 0 | 0 | 0 | 18 | 5639 | 133 | 1739 | 14226 |
+| select | 20 | A2_min_free | 100 | 97.0 | 91.0 | 84.0 | 84.0 | 84.0 | 0 | 0 | 3 | 0 | 0 | 6 | 7 | 3358 | 54 | 1429 | 4921 |
+| select | 20 | B2_min_cd | 100 | 85.0 | 85.0 | 65.0 | 65.0 | 65.0 | 0 | 15 | 0 | 0 | 0 | 0 | 20 | 3358 | 123 | 1553 | 12913 |
+| arggen | 1 | A_raw_free | 100 | 94.0 | 90.0 | 87.0 | 85.0 | 85.0 | 0 | 0 | 6 | 0 | 2 | 2 | 5 | 399 | 55 | 1245 | 2254 |
+| arggen | 1 | B_raw_cd | 100 | 83.0 | 83.0 | 70.0 | 70.0 | 70.0 | 0 | 17 | 0 | 0 | 0 | 0 | 13 | 399 | 133 | 1429 | 10664 |
+| arggen | 1 | A2_min_free | 100 | 97.0 | 93.0 | 87.0 | 87.0 | 87.0 | 0 | 0 | 3 | 0 | 0 | 4 | 6 | 285 | 56 | 1191 | 2156 |
+| arggen | 1 | B2_min_cd | 100 | 84.0 | 84.0 | 73.0 | 73.0 | 73.0 | 0 | 16 | 0 | 0 | 0 | 0 | 11 | 285 | 128 | 1274 | 10475 |
 
 ## Paired comparisons (B − A, E2E)
 
@@ -73,6 +73,39 @@ Cached sequential latency is descriptive. Taxonomy excludes request failures. p9
 | arggen | 1 | B_raw_cd | {} | 17 |
 | arggen | 1 | A2_min_free | {} | 0 |
 | arggen | 1 | B2_min_cd | {} | 16 |
+
+## Truncation sensitivity (descriptive only)
+
+The primary comparison above includes every pair. The subset below conditions on both outputs finishing; it is biased by output behavior and is not a causal estimate.
+
+| Comparison | Family | Tools | A truncated | B truncated | Both finished pairs | A E2E % | B E2E % |
+|---|---|---:|---:|---:|---:|---:|---:|
+| PRIMARY: constrained vs free, raw | select | pooled | 1 | 31 | 168 | 87.5 | 83.3 |
+| PRIMARY: constrained vs free, raw | select | 5 | 1 | 14 | 85 | 91.8 | 88.2 |
+| PRIMARY: constrained vs free, raw | select | 20 | 0 | 17 | 83 | 83.1 | 78.3 |
+| PRIMARY: constrained vs free, raw | arggen | 1 | 0 | 17 | 83 | 88.0 | 84.3 |
+| constrained vs free, minified | select | pooled | 0 | 31 | 169 | 85.8 | 82.2 |
+| constrained vs free, minified | select | 5 | 0 | 16 | 84 | 89.3 | 88.1 |
+| constrained vs free, minified | select | 20 | 0 | 15 | 85 | 82.4 | 76.5 |
+| constrained vs free, minified | arggen | 1 | 0 | 16 | 84 | 88.1 | 86.9 |
+| minified vs raw, free (replication of the finished experiment) | select | pooled | 1 | 0 | 199 | 85.4 | 86.4 |
+| minified vs raw, free (replication of the finished experiment) | select | 5 | 1 | 0 | 99 | 90.9 | 88.9 |
+| minified vs raw, free (replication of the finished experiment) | select | 20 | 0 | 0 | 100 | 80.0 | 84.0 |
+| minified vs raw, free (replication of the finished experiment) | arggen | 1 | 0 | 0 | 100 | 85.0 | 87.0 |
+| minified vs raw, constrained | select | pooled | 31 | 31 | 159 | 87.4 | 83.6 |
+| minified vs raw, constrained | select | 5 | 14 | 16 | 82 | 91.5 | 87.8 |
+| minified vs raw, constrained | select | 20 | 17 | 15 | 77 | 83.1 | 79.2 |
+| minified vs raw, constrained | arggen | 1 | 17 | 16 | 77 | 87.0 | 88.3 |
+
+## Post-hoc exact-engine key-order audit
+
+Strict-contract JSON checked: 501/515 free-correct outputs. Remaining outputs are excluded from this diagnostic, not from benchmark accuracy. Byte-token reachability is not model-token sampling or causal proof.
+
+| Free output category | Constrained correct | Constrained wrong | Constrained truncated |
+|---|---:|---:|---:|
+| accepted_original_order | 249 | 0 | 0 |
+| order_only_rejection | 140 | 40 | 72 |
+| other_rejection | 0 | 0 | 0 |
 
 Server peak RSS: 2980265984 bytes. See JSON memory_note for scope.
 

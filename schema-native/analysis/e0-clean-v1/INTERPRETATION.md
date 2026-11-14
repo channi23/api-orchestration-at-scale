@@ -10,3 +10,5 @@ All 1,200 recorded pre-request checks show normal memory pressure, nominal therm
 The report uses the maximum across both corrected-run server lifetimes. Maximum RSS was 2980265984 bytes; those lifetimes also include readiness/preflight work. This is process RSS, not total unified-memory or Metal allocator peak.
 
 Follow-up: [targeted whitespace diagnosis](../e0-whitespace-diagnostic-v1/REPORT.md), kept separate from this benchmark.
+
+The [exact-engine clean-run key-order audit](KEY_ORDER.md) supports a deeper order-related mechanism: 252/501 eligible free-correct calls are outside the grammar only due to order; all 249 already accepted calls remain correct. A causal control is still needed before E1.

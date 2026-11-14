@@ -17,6 +17,9 @@ Evidence (model-free): the exact native C library bundled into the server compil
 E0 envelopes and 70/70 corrected envelopes. All 300 corrected task/catalog gold pairs are reachable
 with a byte tokenizer. All 128 property-presence combinations in the frozen dependency schema agree
 with the raw validator, with zero mismatches. These checks do not replace real model-tokenizer probes.
+Gold reachability uses schema-ordered object keys. It establishes a witness in the grammar,
+not acceptance of every valid key permutation or the order preferred by the model. The completed-run
+[key-order audit](../e0-clean-v1/KEY_ORDER.md) measures this distinction directly with the bundled engine.
 
 Real runtime evidence: the corrected 12-request paced smoke completed with zero engine/request
 errors, zero truncations and zero selected-tool raw-schema violations. This is a path check, not an

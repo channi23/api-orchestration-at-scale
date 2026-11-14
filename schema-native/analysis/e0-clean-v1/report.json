@@ -23,7 +23,8 @@
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 1,
-        "valid_wrong": 5
+        "valid_wrong": 5,
+        "cd_truncated": 0
       },
       "in_tokens": 1498.48,
       "out_tokens": 59.9,
@@ -48,11 +49,12 @@
       "e2e_strict": 67.0,
       "e2e_engine_ok": 76.0,
       "classes": {
-        "malformed": 14,
+        "malformed": 0,
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 0,
-        "valid_wrong": 10
+        "valid_wrong": 10,
+        "cd_truncated": 14
       },
       "in_tokens": 1498.48,
       "out_tokens": 119.19,
@@ -81,7 +83,8 @@
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 4,
-        "valid_wrong": 7
+        "valid_wrong": 7,
+        "cd_truncated": 0
       },
       "in_tokens": 924.78,
       "out_tokens": 55.01,
@@ -106,11 +109,12 @@
       "e2e_strict": 68.0,
       "e2e_engine_ok": 74.0,
       "classes": {
-        "malformed": 16,
+        "malformed": 0,
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 0,
-        "valid_wrong": 10
+        "valid_wrong": 10,
+        "cd_truncated": 16
       },
       "in_tokens": 924.78,
       "out_tokens": 127.52,
@@ -139,7 +143,8 @@
         "wrong_tool": 0,
         "invalid_only": 1,
         "invalid_wrong": 6,
-        "valid_wrong": 10
+        "valid_wrong": 10,
+        "cd_truncated": 0
       },
       "in_tokens": 5638.88,
       "out_tokens": 56.97,
@@ -164,11 +169,12 @@
       "e2e_strict": 60.0,
       "e2e_engine_ok": 65.0,
       "classes": {
-        "malformed": 17,
+        "malformed": 0,
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 0,
-        "valid_wrong": 18
+        "valid_wrong": 18,
+        "cd_truncated": 17
       },
       "in_tokens": 5638.88,
       "out_tokens": 132.86,
@@ -197,7 +203,8 @@
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 6,
-        "valid_wrong": 7
+        "valid_wrong": 7,
+        "cd_truncated": 0
       },
       "in_tokens": 3357.98,
       "out_tokens": 54.34,
@@ -222,11 +229,12 @@
       "e2e_strict": 62.0,
       "e2e_engine_ok": 65.0,
       "classes": {
-        "malformed": 15,
+        "malformed": 0,
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 0,
-        "valid_wrong": 20
+        "valid_wrong": 20,
+        "cd_truncated": 15
       },
       "in_tokens": 3357.98,
       "out_tokens": 122.82,
@@ -255,7 +263,8 @@
         "wrong_tool": 0,
         "invalid_only": 2,
         "invalid_wrong": 2,
-        "valid_wrong": 5
+        "valid_wrong": 5,
+        "cd_truncated": 0
       },
       "in_tokens": 398.68,
       "out_tokens": 54.95,
@@ -280,11 +289,12 @@
       "e2e_strict": 63.0,
       "e2e_engine_ok": 70.0,
       "classes": {
-        "malformed": 17,
+        "malformed": 0,
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 0,
-        "valid_wrong": 13
+        "valid_wrong": 13,
+        "cd_truncated": 17
       },
       "in_tokens": 398.68,
       "out_tokens": 132.87,
@@ -313,7 +323,8 @@
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 4,
-        "valid_wrong": 6
+        "valid_wrong": 6,
+        "cd_truncated": 0
       },
       "in_tokens": 284.74,
       "out_tokens": 55.52,
@@ -338,11 +349,12 @@
       "e2e_strict": 65.0,
       "e2e_engine_ok": 73.0,
       "classes": {
-        "malformed": 16,
+        "malformed": 0,
         "wrong_tool": 0,
         "invalid_only": 0,
         "invalid_wrong": 0,
-        "valid_wrong": 11
+        "valid_wrong": 11,
+        "cd_truncated": 16
       },
       "in_tokens": 284.74,
       "out_tokens": 127.89,
@@ -376,6 +388,14 @@
         0.09131520992466295,
         0.43804312592612865
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 31,
+        "both_complete_n": 168,
+        "both_complete_a_pct": 87.5,
+        "both_complete_b_pct": 83.33333333333333,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": null
     },
     {
@@ -402,6 +422,14 @@
         0.060356603311628294,
         0.5930179523400555
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 14,
+        "both_complete_n": 85,
+        "both_complete_a_pct": 91.76470588235294,
+        "both_complete_b_pct": 88.23529411764706,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 0.019365310668945312
     },
     {
@@ -428,6 +456,14 @@
         0.08279639682735221,
         0.6431975292459783
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 17,
+        "both_complete_n": 83,
+        "both_complete_a_pct": 83.13253012048193,
+        "both_complete_b_pct": 78.3132530120482,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 0.03092193603515625
     },
     {
@@ -454,6 +490,14 @@
         0.12573571448970014,
         0.7269275681693681
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 17,
+        "both_complete_n": 83,
+        "both_complete_a_pct": 87.95180722891567,
+        "both_complete_b_pct": 84.33734939759036,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 0.05924612283706665
     },
     {
@@ -480,6 +524,14 @@
         0.07178214279015532,
         0.37723858188746123
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 31,
+        "both_complete_n": 169,
+        "both_complete_a_pct": 85.79881656804734,
+        "both_complete_b_pct": 82.24852071005917,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 8.126653483486734e-06
     },
     {
@@ -506,6 +558,14 @@
         0.06347580951261621,
         0.630161321409375
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 16,
+        "both_complete_n": 84,
+        "both_complete_a_pct": 89.28571428571429,
+        "both_complete_b_pct": 88.0952380952381,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 0.03092193603515625
     },
     {
@@ -532,6 +592,14 @@
         0.050440675574607845,
         0.47972257683992486
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 15,
+        "both_complete_n": 85,
+        "both_complete_a_pct": 82.3529411764706,
+        "both_complete_b_pct": 76.47058823529412,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 0.002191305160522461
     },
     {
@@ -558,6 +626,14 @@
         0.10948548555523074,
         0.7266070502709769
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 16,
+        "both_complete_n": 84,
+        "both_complete_a_pct": 88.0952380952381,
+        "both_complete_b_pct": 86.9047619047619,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 0.05949676036834717
     },
     {
@@ -584,6 +660,14 @@
         0.44301290079899985,
         2.8196356039383894
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 0,
+        "both_complete_n": 199,
+        "both_complete_a_pct": 85.42713567839196,
+        "both_complete_b_pct": 86.4321608040201,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     },
     {
@@ -610,6 +694,14 @@
         0.14682607515481394,
         1.9747230054106681
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 1,
+        "b_truncated": 0,
+        "both_complete_n": 99,
+        "both_complete_a_pct": 90.9090909090909,
+        "both_complete_b_pct": 88.88888888888889,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     },
     {
@@ -636,6 +728,14 @@
         0.6046309338777188,
         11.180374045114851
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 0,
+        "both_complete_n": 100,
+        "both_complete_a_pct": 80.0,
+        "both_complete_b_pct": 84.0,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     },
     {
@@ -662,6 +762,14 @@
         0.4537736047651359,
         4.0978675548875225
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 0,
+        "b_truncated": 0,
+        "both_complete_n": 100,
+        "both_complete_a_pct": 85.0,
+        "both_complete_b_pct": 87.0,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     },
     {
@@ -688,6 +796,14 @@
         0.2754023406025577,
         2.123348281012247
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 31,
+        "b_truncated": 31,
+        "both_complete_n": 159,
+        "both_complete_a_pct": 87.42138364779875,
+        "both_complete_b_pct": 83.64779874213836,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     },
     {
@@ -714,6 +830,14 @@
         0.11837999702085755,
         2.607213913464298
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 14,
+        "b_truncated": 16,
+        "both_complete_n": 82,
+        "both_complete_a_pct": 91.46341463414635,
+        "both_complete_b_pct": 87.8048780487805,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     },
     {
@@ -740,6 +864,14 @@
         0.27072095723989387,
         3.693840366831558
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 17,
+        "b_truncated": 15,
+        "both_complete_n": 77,
+        "both_complete_a_pct": 83.11688311688312,
+        "both_complete_b_pct": 79.22077922077922,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     },
     {
@@ -766,6 +898,14 @@
         0.5179417097607845,
         5.363108870032338
       ],
+      "truncation_sensitivity": {
+        "a_truncated": 17,
+        "b_truncated": 16,
+        "both_complete_n": 77,
+        "both_complete_a_pct": 87.01298701298701,
+        "both_complete_b_pct": 88.31168831168831,
+        "note": "Post-hoc outcome-conditioned subset; excludes either-side truncations. Not a causal estimate or the primary comparison."
+      },
       "p_holm": 1.0
     }
   ],
@@ -781,5 +921,52 @@
     "Partial runs have descriptive tables only; no paired inference.",
     "Cached sequential latencies are descriptive, not uncached speed benchmarks.",
     "Failure taxonomy covers returned model outputs; request errors are separate."
-  ]
+  ],
+  "key_order_audit": {
+    "kind": "post-hoc native byte-token order diagnostic; no inference",
+    "tested_free_correct": 501,
+    "all_free_correct": 515,
+    "split": {
+      "pooled": {
+        "order_only_rejection|correct": 140,
+        "order_only_rejection|truncated": 72,
+        "accepted_original_order|correct": 249,
+        "order_only_rejection|wrong": 40
+      },
+      "A_raw_free": {
+        "order_only_rejection|correct": 66,
+        "order_only_rejection|truncated": 34,
+        "accepted_original_order|correct": 126,
+        "order_only_rejection|wrong": 22
+      },
+      "select:5": {
+        "order_only_rejection|correct": 51,
+        "order_only_rejection|truncated": 25,
+        "accepted_original_order|correct": 89,
+        "order_only_rejection|wrong": 10
+      },
+      "A2_min_free": {
+        "accepted_original_order|correct": 123,
+        "order_only_rejection|truncated": 38,
+        "order_only_rejection|correct": 74,
+        "order_only_rejection|wrong": 18
+      },
+      "select:20": {
+        "order_only_rejection|correct": 41,
+        "order_only_rejection|truncated": 25,
+        "accepted_original_order|correct": 80,
+        "order_only_rejection|wrong": 16
+      },
+      "arggen:1": {
+        "order_only_rejection|correct": 48,
+        "accepted_original_order|correct": 80,
+        "order_only_rejection|truncated": 22,
+        "order_only_rejection|wrong": 14
+      }
+    },
+    "engine_build": {
+      "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+      "helper_sha256": "cffc49dd1282b4b738e45a8b6e4c18794ef93049b3312eb289ed00d3f3a9d5ff"
+    }
+  }
 }

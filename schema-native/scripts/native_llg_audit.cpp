@@ -23,7 +23,7 @@ int main() {
             auto in=json::parse(line); std::string grammar="%llguidance {}\nstart: %json "+in["schema"].dump();
             auto *initial=llg_new_matcher(&ci,"lark",grammar.c_str());
             auto *err=llg_matcher_get_error(initial);
-            json out={{"compile_ok",err==nullptr},{"accepts",json::array()}};
+            json out={{"compile_ok",err==nullptr},{"accepts",json::array()},{"legal_prefix",json::array()}};
             if (err) out["error"]=err;
             else for (auto &sample:in.value("samples",json::array())) {
                 auto *m=llg_clone_matcher(initial); bool ok=true; std::string text=sample.get<std::string>();
@@ -32,7 +32,8 @@ int main() {
                     auto *mask=llg_matcher_get_mask(m);
                     if (!(mask[ch/32] & (1u<<(ch%32))) || llg_matcher_consume_token(m,ch)!=0) {ok=false;break;}
                 }
-                out["accepts"].push_back(ok && llg_matcher_is_accepting(m)); llg_free_matcher(m);
+                out["accepts"].push_back(ok && llg_matcher_is_accepting(m));
+                out["legal_prefix"].push_back(ok); llg_free_matcher(m);
             }
             llg_free_matcher(initial); std::cout<<out.dump()<<std::endl;
         } catch (const std::exception &e) { std::cout<<json({{"error",e.what()},{"compile_ok",false}}).dump()<<std::endl; }

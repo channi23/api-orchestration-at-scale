@@ -12,9 +12,10 @@ versus 70.5% constrained. There are no engine/request/raw-constraint faults, but
 outputs hit the token limit (versus 1/600 free). Read the
 [interpretation](analysis/e0-clean-v1/INTERPRETATION.md) and
 [separate whitespace diagnosis](analysis/e0-whitespace-diagnostic-v1/REPORT.md) before drawing
-research conclusions. Compact JSON is only a partial workaround; a second engine needs broader
+research conclusions. The [clean-run key-order audit](analysis/e0-clean-v1/KEY_ORDER.md) shows an order-related mechanism.
+Compact JSON is only a partial workaround; a second engine needs broader
 coverage before training. All recorded clean-run resource checks were normal; the model is unloaded.
-52 package tests and 12 original evaluator tests pass. No training ran.
+54 package tests and 12 original evaluator tests pass. No training ran.
 The [earlier 588-request pilot](analysis/e0-v1/REPORT.md) remains separate and unchanged.
 See [the resource guide](RESOURCE_GUIDE.md).
 The original `experiment/` tracked files are unchanged.
