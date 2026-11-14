@@ -175,6 +175,8 @@ def main():
     ap.add_argument('--output', default='runs/e0-preflight.json')
     a = ap.parse_args()
     rc = json.loads(Path(a.config).read_text())
+    if rc.get('protocol', '').startswith('e0b') or rc.get('run_prefix', '').startswith('e0b'):
+        raise ValueError('E0b requires sn.e0b_readiness (offline) and budgeted sn.e0b_preflight (online); generic preflight is disabled')
     model = json.loads(Path(paths.ROOT, rc['model_config']).read_text())
     reqs, schemas = plan(rc)
     receipt = {'created_utc': dt.datetime.now(dt.timezone.utc).isoformat(), 'identity': provenance.identity(rc, model), 'environment': provenance.environment(),
