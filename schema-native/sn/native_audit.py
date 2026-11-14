@@ -12,6 +12,14 @@ from . import paths, preflight, envelope, provenance
 import schema_utils as su
 
 
+def verified_build(binary, library):
+    metadata = json.loads(Path(binary).with_suffix('.build.json').read_text())
+    if (metadata['library_sha256'] != provenance.file_sha(library)
+            or metadata['helper_sha256'] != provenance.file_sha(binary)):
+        raise ValueError('Native audit build mismatch; rebuild the helper before auditing')
+    return metadata
+
+
 def audit(config, binary=None):
     requests, schemas=preflight.plan(config)
     cases={name:{} for name in schemas}
@@ -21,6 +29,8 @@ def audit(config, binary=None):
         raw=su.load_schema(pool[task['tool_id']]['schema_id'])
         cases[name][task['task_id']]=envelope.gold_call(task,raw)
     binary=binary or str(Path(paths.ROOT,'.tools/native-llg-audit'))
+    root=Path(os.environ.get('TOOLS_DIR',str(Path(paths.ROOT,'.tools'))),'llama.cpp/build-metal/llguidance/source')
+    build=verified_build(binary,root/'target/release/libllguidance.a')
     proc=subprocess.Popen([binary],stdin=subprocess.PIPE,stdout=subprocess.PIPE,text=True)
     refused={};unreachable=[];checked=0
     try:
@@ -40,10 +50,9 @@ def audit(config, binary=None):
                 checked+=1
     finally:
         proc.stdin.close();proc.wait()
-    root=Path(os.environ.get('TOOLS_DIR',str(Path(paths.ROOT,'.tools'))),'llama.cpp/build-metal/llguidance/source')
     return {'kind':'exact bundled C engine, byte tokenizer; not model inference',
             'engine_commit':subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip(),
-            'library_sha256':provenance.file_sha(root/'target/release/libllguidance.a'),
+            'library_sha256':build['library_sha256'],
             'helper_sha256':provenance.file_sha(binary),
             'constraint_policy':config.get('constraint_policy','original-v0'),
             'envelopes':len(schemas),'compiled':len(schemas)-len(refused),'refused':refused,
