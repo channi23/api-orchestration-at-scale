@@ -1,132 +1,75 @@
-# E0b readiness validation
+# E0b Amendment 1 readiness validation
 
-**2026-11-14 IST: protocol LOCKED; launch BLOCKED by C3 capability failures.**
+**2026-11-14 IST: active native capability gate PASS; user review and online gates PENDING.**
 
-No model was loaded, no inference or training ran, and no E0 data or experiment/ files were changed. These are stored-row, validator and native matcher checks, not measured E0b results. E1/E2 remain gated.
+No model loading, inference or training occurred. This report covers steps 1–3 only. Step 4 requires explicit user confirmation after review. E1/E2 stay gated.
 
-## Implementation and locked decisions
+## History and amendment
 
-- Base main: 45e786b; branch feat/e0b-lock. E0B_PLAN.md and both e0b JSON configs lock the procedure.
-- Hard 1,000 benchmark-generation cap: 900 C1/C2/C3 + 30 determinism + up to 70 retries. Separate shared 60-generation preflight/smoke allowance. A durable reservation precedes every send; failed/uncertain requests consume budget and cannot automatically retry.
-- Frozen determinism-selection.json: seeded-hash ranking, independently first 15 F0 and 15 C0. All 30 raw_content strings must match UTF-8 bytes exactly; first mismatch saves STOPPED.json and stops. No automatic full baseline rerun.
-- Strict router sees raw text, catalog schemas and truncation only. No task, gold or evaluator fields. Rejects wrappers, duplicate keys, non-finite numbers/overflow, bad envelope, out-of-catalog tool and chosen-tool raw-schema invalidity.
-- Oracle edits only named-tool property order, including every combinator branch. Homogeneous arrays use the first element and flag disagreement; tuples use each position. Invalid/wrapped/truncated F0 falls back. Sorted serialization, assertions, required lists and raw-validator verdicts are preserved.
-- Named fixed option json-fixed-readable-v1: comma-space and colon-space separators, whitespace_flexible=false. C3 is one pinned native GBNF Jinja response_format backend, not an interchangeable engine.
-- Report includes look-alike-key flags without renaming/re-scoring frozen rows. Exclusive precedence and overlapping flags are recorded. Two co-primary tests share Holm; the three secondary tests have a separate Holm family. Order gate is >=8 pp with replicate-bootstrap 95% lower bound >0; about 50 independent intents.
+E0B_PLAN.md preserves its entire original locked text as an unchanged prefix, then appends dated Amendment 1. Each config embeds the exact original locked JSON text before its amendment record. Tests compare all three originals against commit 7d19bed.
 
-## Native results
+C3 and contrast C3 minus C1 are removed from active arms, preflight, smoke, scheduling and secondary testing. No backend replaces C3 and no subset is run. The pinned GBNF finding remains published as **historical model-free engine evidence** in native-original-lock.json and VALIDATION-original-lock.md; neither is rewritten. Historical TESTS-original-lock.txt is also retained.
+
+The historical C3 finding is 30/70 failing envelopes, 246/300 schema-ordered gold reachable, and 120/6,696 invalid witnesses accepted. It shares the key-order restriction and cannot inform either co-primary contrast. The archive hash is checked by amended readiness; C3 is not rerun and no longer gates the active protocol.
+
+## Locked active protocol
+
+- Arms: F0/C0 reused only after exact determinism pass; C1, C2, V. Expected final unit-arm rows: 1,500.
+- Hard benchmark cap: **700 = 600 C1/C2 + 30 determinism + up to 70 retries**. Frozen router projects 32 retries, hence **662** requests. Reservations are durable before-send; uncertain/failed attempts consume budget and are not automatically retried.
+- Separate shared preflight/smoke allowance: **60**. Planned generations: four C0/C1 adversarial probes + 12 C1/C2 smoke requests + three V retries = **19**. All C3 readiness requests are removed.
+- The exact same frozen sample remains: 15 F0 + 15 C0, original seed/hash selection. All 30 raw_content UTF-8 byte strings must match. First mismatch writes STOPPED.json and stops; no baseline rerun.
+- After confirmed review and passing online gates, future execution is all C1 requests, then all C2 requests, then V retries. No interim accuracy looks.
+- Model profile, resource guards, strict router, oracle rules, failure precedence and co-primary Holm family are unchanged. Secondary Holm family has only C1 minus C0 and C2 minus F0.
+
+## Re-run model-free counts
 
 | Check | Result |
 |---|---:|
-| C1 envelope compiles | 70/70 |
-| C2 task-specific compiles | 300/300 |
-| Distinct C2 serialized constraint copies | 146 |
-| C1 schema-ordered gold reachability | 300/300 |
-| C1 invalid witnesses accepted | 0/6696 |
-| C2 invalid witnesses accepted | 0/6696 |
-| C2 raw-only strict free-correct F0 reachability | 246/248 |
-| Raw+minified strict free-correct compatibility | 499/501 |
+| C1 compiled envelopes | 70/70 |
+| C2 compiled task-specific constraints | 300/300 |
+| C1 gold reachable with fixed separators | 300/300 |
+| C1 invalid mutation witnesses accepted | 0/6696 |
+| C2 invalid mutation witnesses accepted | 0/6696 |
+| C2 strict free-correct raw F0 reachable | 246/248 |
+| All-representation strict free-correct compatibility | 499/501 |
 | Previously order-rejected raw+minified subset | 250/252 |
-| Tuple-array locations in 70 envelopes | 0 |
-| C3 envelope compiles | 70/70 |
-| C3 schema-ordered gold reachability | 246/300 |
-| C3 invalid witnesses accepted | 120/6696 |
-| C3 envelopes emitting conversion diagnostics | 12 |
-| C3 envelopes failing readiness | 30/70 |
-| C1: original F0 key order accepted (spaced serialization) | 137/268 |
-| C3: original F0 key order accepted (spaced serialization) | 134/268 |
+| V replay routing, select | 18/200 |
+| V replay routing, fixed-tool | 14/100 |
+| Tuple-array schema locations | 0 |
+| Active C1/C2/V native gate | PASS |
 
-The 250/252 expectation concerns the earlier **raw+minified order-rejected subset**, not E0b raw-only F0. Raw-only has 248 strict free-correct calls (256 free-correct, eight wrapped); the broader check has 501 (515 free-correct, 14 wrapped). All strict values and every exception are recorded in native.json.
+All free-correct oracle exceptions remain the two required-but-undeclared-id T062_p0 calls: select C005_R03 and fixed-tool. No schema was relaxed. The 250/252 denominator refers to the earlier raw+minified order-rejected subset, not raw-only F0. native.json retains every active compile/enforcement and reachability result.
 
-### Every oracle free-correct exception
+These are exact bundled-engine byte/character-matcher and raw-validator checks, not model-tokenizer or exhaustive language-equivalence proof. Negative witnesses repeat across catalog/paraphrase conditions and are not independent. Replayed accuracy/cost remains a stored-row projection, not fresh E0b inference.
 
-| Source key | Tool | Reason |
-|---|---|---|
-| select|A_raw_free|C005_R03|T062_p0 | T062 | Required-but-undeclared id cannot be positioned through properties; schema not relaxed. |
-| arggen|A_raw_free|single|T062_p0 | T062 | Required-but-undeclared id cannot be positioned through properties; schema not relaxed. |
+## Expanded look-alike flags, without rescoring
 
-Both raw-only exceptions are these same T062_p0 calls. C1/C2 have zero compile refusals. Native JSON additionally records all strict non-correct F0 acceptance results and oracle fallback/incomplete flags.
+In addition to existing normalization/typographic-quote rules, the new rule requires an undeclared key starting with a nonempty declared key and a literal following character that is not Unicode alphanumeric. It flags `parent_id": "r-101", `; it does not flag the exact declared key or alphanumeric continuations. It never renames a key or changes a stored evaluator field.
 
-### Every unsupported/failing C3 envelope
+| Frozen E0 arm | Before | After Amendment 1 |
+|---|---:|---:|
+| A_raw_free | 0 | 0 |
+| B_raw_cd | 6 | 11 |
+| A2_min_free | 0 | 0 |
+| B2_min_cd | 6 | 6 |
 
-Unsupported means failure of this locked coverage/enforcement gate, not inability to emit any valid value. All 70 compile. One extra envelope fails an incomplete-conversion warning; 29 fail gold reachability and/or bounded enforcement. All 30 names are frozen in both configs before inference.
+Total constrained flags are now 17 (previously 12). Source hash and before/after counts are in lookalike-amendment1.json. No E0 score is recomputed or rewritten.
 
-| Envelope | Gold accepted / checked | Invalid accepted | Incomplete conversion |
-|---|---:|---:|---|
-| C020_R00 | 10/10 | 0 | yes |
-| C005_R01 | 8/10 | 4 | yes |
-| C020_R01 | 8/10 | 4 | yes |
-| C005_R02 | 8/10 | 0 | no |
-| C020_R02 | 8/10 | 0 | no |
-| C005_R03 | 6/10 | 30 | no |
-| C020_R03 | 6/10 | 30 | yes |
-| C005_R04 | 8/10 | 2 | yes |
-| C020_R04 | 8/10 | 2 | yes |
-| C005_R05 | 8/10 | 4 | no |
-| C020_R05 | 8/10 | 4 | yes |
-| C005_R06 | 8/10 | 0 | yes |
-| C020_R06 | 8/10 | 0 | yes |
-| C005_R07 | 8/10 | 0 | no |
-| C020_R07 | 8/10 | 0 | no |
-| C005_R08 | 8/10 | 0 | no |
-| C020_R08 | 8/10 | 0 | no |
-| single:T178 | 0/2 | 0 | yes |
-| single:T286 | 2/2 | 4 | no |
-| single:T008 | 0/2 | 0 | no |
-| single:T132 | 0/2 | 0 | no |
-| single:T062 | 0/2 | 2 | no |
-| single:T220 | 2/2 | 28 | no |
-| single:T146 | 0/2 | 0 | no |
-| single:T273 | 2/2 | 2 | yes |
-| single:T055 | 2/2 | 4 | no |
-| single:T089 | 0/2 | 0 | no |
-| single:T152 | 0/2 | 0 | yes |
-| single:T009 | 0/2 | 0 | no |
-| single:T135 | 0/2 | 0 | no |
+## Tests, integrity and what remains pending
 
-native.json includes every rejected gold unit, original-F0-order rejection, all accepted-invalid witness texts and IDs, and converter diagnostics. No schema was relaxed or unit excluded.
+**90 package tests + 12 original evaluator tests passed.** TESTS.txt records commands. New tests cover the punctuation-prefix rule and its alphanumeric/Unicode boundaries, historical plan/config/C3 evidence preservation, rejecting the old 1,000 cap and any C3 reintroduction, the 700/60 caps and the amended two-test secondary Holm family. Existing strict-router, oracle, determinism-stop, byte-preservation and native-gate tests continue to pass.
 
-## Engine provenance and scope
+E0 remains 1,200 rows with SHA-256 `1e1528a8e3180e5d4d47abdcbd719d03ed0e0238fdb0c1f9c832ab3006fa8a1f`; its published compressed bytes match. experiment/ and E0 analysis artifacts remain unchanged. Original locked text, C3 evidence and all 30 selected source keys/hashes are preserved.
 
-The llguidance helper links the exact E0 bundled static library; build-time helper/library hashes are verified. The GBNF helper links the pinned libllama-common and libllama shared libraries and invokes the actual Jinja/template/autoparser implementation with the recorded Qwen template. It primes the grammar with its generation prompt as common/sampling.cpp does, using the pinned server default deepseek reasoning format with thinking disabled. Both engine checkouts must have no tracked modifications. Helpers load no weights and create no server.
+**STOP FOR REVIEW.** Native capability passing is not online readiness or authorization to load Qwen. Online preflight/smoke, all 30 real determinism comparisons, actual E0b inference, measured latency/accuracy and thermal behavior are not run. Only after explicit confirmation may those run, in the specified order, under the unchanged E0 model/resource profile and amended budgets. E1/E2 remain gated.
 
-- llama.cpp `11fe02151f79c41d0d4af7da708755d73b9c0da6`; llguidance `d795912fedc7d393de740177ea9ea761e7905774`.
-- Static llguidance SHA-256 `fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a`.
-- Shared-library/helper hashes, verification-code hashes, config hash and order-sensitive plan hash: native.json.
-- 6,696 negative checks per condition are finite gold-derived mutation witnesses rejected by the original validator/router. Repeated catalog/paraphrase witnesses are not independent. This is not exhaustive schema-language equivalence or Qwen-tokenizer mask verification.
-- Zero tuple-array schemas were found. Draft-7 tuple items and 2020 prefixItems behavior are covered by synthetic tests.
-
-## Stored-row replay and diagnostic flags
-
-| Slice | Routed | Free | C0-retry projection | Token ratio | Recorded-latency ratio |
-|---|---:|---:|---:|---:|---:|
-| select | 18/200 | 85.5% | 88.5% | 1.107 | 1.270 |
-| arggen | 14/100 | 85.0% | 89.0% | 1.204 | 1.519 |
-
-These are projections using saved C0 rows, not new V measurements. Actual V would make a fresh C1 retry. Four wrapped free-correct outputs per slice route under the final strict contract. Projected benchmark requests: 962; none were sent. Planned shared readiness generations: 6 adversarial + 18 C-arm smoke + 3 V smoke retries = 27/60.
-
-Look-alike output flags: `{"A_raw_free": 0, "B_raw_cd": 6, "A2_min_free": 0, "B2_min_cd": 6}`. Rule: undeclared key matching a declared key after NFKC/trim/casefold, or a typographic quote in an undeclared key. This is not every Unicode confusable. Raw text and recorded evaluator scores are preserved.
-
-## Tests and integrity
-
-**80 package tests + 12 original evaluator tests passed.** Commands and excluded untouched duplicate files are recorded in TESTS.txt. Tests cover strict parsing/no gold access, named branch and every combinator, array disagreement/tuple positions, sorted-schema identity, raw-validator verdicts on 300 gold/F0 units, exact router counts, both hard budgets, stop-on-first-determinism mismatch without baseline rerun, generic-preflight bypass prevention, separate Holm families, full failure precedence, retry cost sums and frozen-row preservation.
-
-E0 results remain 1,200 rows with SHA-256 `1e1528a8e3180e5d4d47abdcbd719d03ed0e0238fdb0c1f9c832ab3006fa8a1f`; published compressed bytes match. experiment/ and E0 analysis artifacts remain unchanged from base 45e786b. Untracked duplicate files are untouched.
-
-## Not verified and launch status
-
-**DO NOT START E0b.** C3 fails the declared native capability gate for 30 envelopes. Online readiness rejects that evidence before network generation or model-file access. This requires an explicit protocol/backend decision; it is not permission to drop cases, switch backend, relax schemas or spend the spare budget.
-
-Not run: the real 30-request determinism check, tokenizer-aware online probes, live smoke, E0b inference accuracy/latency/thermal measurements, or training. Even after a reviewed native capability resolution, online checks must still pass. E1/E2 remain gated.
-
-## Reproduce without a model/server
+## Reproduce current model-free checks
 
 ```bash
-bash scripts/build_gbnf_audit.sh
 scripts/build_native_audit.sh
 python -m sn.e0b_readiness
 python -m pytest -q --ignore-glob='* 2.py'
 python -m pytest -q ../experiment/tests/test_evaluate.py
 ```
 
-Uses the existing pinned checkout/libraries and frozen dataset; no model download, GPU model allocation or server is needed. Native helpers target the requested Apple Silicon Mac.
+Do not invoke online preflight or sn.run for this review step. GBNF is excluded and is not rebuilt/rerun by amended readiness.
