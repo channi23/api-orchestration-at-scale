@@ -24,6 +24,7 @@ import fcntl
 import json
 import jsonschema
 import os
+import re
 import subprocess
 import time
 import urllib.error
@@ -60,12 +61,16 @@ def error_kind(status, resp, decoding):
     """Keep infrastructure failures out of the model failure taxonomy."""
     if status == 200:
         return None
-    msg = json.dumps(resp).lower()
-    if "context" in msg and status in (400, 413):
+    error = resp.get('error', {}) if isinstance(resp, dict) else {}
+    code = error.get('code') or error.get('type') if isinstance(error, dict) else None
+    msg = str(error.get('message', '') if isinstance(error, dict) else error).lower()
+    context_codes = {'context_length_exceeded', 'exceed_context_size_error'}
+    context_message = re.search(r'context (?:length|window|size)?\s*(?:too (?:large|long)|exceeded|exceeds)|exceeds? (?:the )?(?:available )?context (?:size|length|window)', msg)
+    if (code in context_codes or context_message) and status in (400, 413):
         return "context_error"
-    if status in (400, 422) and decoding == "constrained" and any(
-        word in msg for word in ("schema", "grammar", "llguidance", "constraint")
-    ):
+    engine_codes = {'invalid_json_schema', 'invalid_grammar', 'unsupported_json_schema'}
+    engine_message = re.search(r'(?:grammar|schema|constraint) (?:refused|rejected|unsupported|invalid)|(?:invalid|unsupported|failed to (?:parse|compile)) (?:json )?(?:schema|grammar)|(?:parse|compile) (?:error|failure).*?(?:schema|grammar)', msg)
+    if status in (400, 422) and decoding == "constrained" and (code in engine_codes or engine_message):
         return "engine_error"
     return "transport_error" if status == 0 else "http_error"
 

@@ -11,6 +11,34 @@ def config(name='e0_decoding'):
     return json.loads(Path(paths.ROOT, f'configs/runs/{name}.json').read_text())
 
 
+def test_truncation_taxonomy_and_conditioned_subset_do_not_hide_primary_failures():
+    def row(task, ok, truncated, decoding):
+        return {'family': 'select', 'catalog_id': 'c', 'task_id': task,
+                'eval': {'e2e_success': ok}, 'truncated': truncated, 'decoding': decoding}
+    a = [row('one', True, False, 'free'), row('two', False, False, 'free')]
+    b = [row('two', True, False, 'constrained'), row('one', False, True, 'constrained')]
+    result = report.truncation_sensitivity(a, b)
+    assert result['b_truncated'] == 1 and result['both_complete_n'] == 1
+    assert result['both_complete_a_pct'] == 0 and result['both_complete_b_pct'] == 100
+    assert len(a) == len(b) == 2  # no pair removed from the original comparison
+    r = b[1]
+    r.update(engine_error=False, http_status=200, request_error=None, wall_latency_ms=10,
+             usage={}, eval={'e2e_success': False, 'e2e_strict': False,
+             'tool_correct': False, 'schema_valid': False, 'semantic_correct': False,
+             'arg_exact_match': False, 'field_acc': 0, 'json_valid': False})
+    cell = report.cell([r])
+    assert cell['classes']['cd_truncated'] == 1 and cell['classes']['malformed'] == 0
+    assert cell['e2e'] == 0
+
+
+def test_error_classification_uses_codes_or_specific_failure_messages():
+    for message in ('account context missing', 'schema service quota reached',
+                    'context profile unavailable', 'schema registry authentication required'):
+        assert run.error_kind(400, {'error': message}, 'constrained') == 'http_error'
+    assert run.error_kind(400, {'error': {'code': 'context_length_exceeded', 'message': 'limit'}}, 'free') == 'context_error'
+    assert run.error_kind(422, {'error': {'code': 'invalid_json_schema', 'message': 'bad'}}, 'constrained') == 'engine_error'
+
+
 def test_frozen_e0_pairing_and_smoke_coverage():
     rc = config()
     reqs, schemas = preflight.plan(rc)
