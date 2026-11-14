@@ -1,0 +1,188 @@
+{
+  "locked_date": "2026-11-14",
+  "seed": "e0b-lock-2026-11-14-v1",
+  "algorithm": "SHA-256(seed + NUL + source request key), ascending, independently first 15 per arm",
+  "source_results_sha256": "1e1528a8e3180e5d4d47abdcbd719d03ed0e0238fdb0c1f9c832ab3006fa8a1f",
+  "requests": [
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R08|T135_p0",
+      "source_key": "select|A_raw_free|C020_R08|T135_p0",
+      "expected_content_sha256": "3458a53a20427d8b16913eb651a29e2a0c99d9cad7e8510adeb28bfc893f8a46"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R06|T248_p1",
+      "source_key": "select|A_raw_free|C020_R06|T248_p1",
+      "expected_content_sha256": "9c2075cf4be4294a17059b84a209b6be9b0a15b0ef2a7791f87f7091ee433ab6"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R08|T135_p1",
+      "source_key": "select|A_raw_free|C020_R08|T135_p1",
+      "expected_content_sha256": "3458a53a20427d8b16913eb651a29e2a0c99d9cad7e8510adeb28bfc893f8a46"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R02|T188_p1",
+      "source_key": "select|A_raw_free|C020_R02|T188_p1",
+      "expected_content_sha256": "9da49d1b090e3a12978ca6775354a9099b1778148eb01d2daf07c936fd05b146"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C005_R07|T295_p1",
+      "source_key": "select|A_raw_free|C005_R07|T295_p1",
+      "expected_content_sha256": "a99077d14dd75a831ee3dff3f4ed98e6f4fcf99cec504c014ab4a8e1b4e7e653"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C005_R07|T203_p0",
+      "source_key": "select|A_raw_free|C005_R07|T203_p0",
+      "expected_content_sha256": "59de88c33bedf2389fd13ed7392ee7ac75129aec07a3f80913aa8154ed3052b4"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R09|T057_p0",
+      "source_key": "select|A_raw_free|C020_R09|T057_p0",
+      "expected_content_sha256": "15f7efed943b83c9f1f4bb9a685fa3ecdde9c13f77a82d2f5287fad85715e762"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "arggen|UNIT|single|T203_p1",
+      "source_key": "arggen|A_raw_free|single|T203_p1",
+      "expected_content_sha256": "59de88c33bedf2389fd13ed7392ee7ac75129aec07a3f80913aa8154ed3052b4"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C005_R06|T279_p1",
+      "source_key": "select|A_raw_free|C005_R06|T279_p1",
+      "expected_content_sha256": "91e18b3c8086dca6ad0b15d3ade75e51cf42cc8844f1ad82803918b74dfe0233"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R08|T176_p0",
+      "source_key": "select|A_raw_free|C020_R08|T176_p0",
+      "expected_content_sha256": "a8885c222a2c32e83755ea408ce41f4835a4698edc967d1bbcda01c328195465"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R04|T218_p1",
+      "source_key": "select|A_raw_free|C020_R04|T218_p1",
+      "expected_content_sha256": "d5a28799a247a78afa31333b29cda3fc04638923d78c9d3150f2fd678678d08d"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "arggen|UNIT|single|T239_p0",
+      "source_key": "arggen|A_raw_free|single|T239_p0",
+      "expected_content_sha256": "8719995ed0dac72cb92dcd1ecedd4b31651598ff18e3f69076ad376442f2aff0"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C005_R07|T158_p0",
+      "source_key": "select|A_raw_free|C005_R07|T158_p0",
+      "expected_content_sha256": "2d5a8449e8937ad585ea35e6619e604679164701f8b33be45238304fd7680b23"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R09|T240_p1",
+      "source_key": "select|A_raw_free|C020_R09|T240_p1",
+      "expected_content_sha256": "3f3d0acb786eb947cdb21549feb0cd440627495b21e8c760088ae160d3449f14"
+    },
+    {
+      "arm": "F0",
+      "unit_key": "select|UNIT|C020_R04|T051_p0",
+      "source_key": "select|A_raw_free|C020_R04|T051_p0",
+      "expected_content_sha256": "3c35c4f1872692b5b8950d66c3c3664d6ddfd647c99e72a22e03f591c3e983f2"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C020_R02|T188_p0",
+      "source_key": "select|B_raw_cd|C020_R02|T188_p0",
+      "expected_content_sha256": "84c989c2e5c698702b464117f36cd1bf60a260f3c9b670a69705f4d95c52f7c0"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C020_R09|T240_p1",
+      "source_key": "select|B_raw_cd|C020_R09|T240_p1",
+      "expected_content_sha256": "3f3d0acb786eb947cdb21549feb0cd440627495b21e8c760088ae160d3449f14"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C020_R03|T132_p1",
+      "source_key": "select|B_raw_cd|C020_R03|T132_p1",
+      "expected_content_sha256": "7bc1508fc4f70e996f00aba5c0f9f6fe6331f95e84dbed177048cfeaa2dad6d2"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "arggen|UNIT|single|T172_p1",
+      "source_key": "arggen|B_raw_cd|single|T172_p1",
+      "expected_content_sha256": "2b29ec4169cfdde37294e815196244bb90b8bf7162b48db1a04b9f23fcec3429"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "arggen|UNIT|single|T248_p0",
+      "source_key": "arggen|B_raw_cd|single|T248_p0",
+      "expected_content_sha256": "9c2075cf4be4294a17059b84a209b6be9b0a15b0ef2a7791f87f7091ee433ab6"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "arggen|UNIT|single|T152_p1",
+      "source_key": "arggen|B_raw_cd|single|T152_p1",
+      "expected_content_sha256": "50cf3cf2253f39de1eea0552ecff45770d40aeac69a42d044ee25bf6a5e32286"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C020_R09|T240_p0",
+      "source_key": "select|B_raw_cd|C020_R09|T240_p0",
+      "expected_content_sha256": "3f3d0acb786eb947cdb21549feb0cd440627495b21e8c760088ae160d3449f14"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C020_R00|T151_p0",
+      "source_key": "select|B_raw_cd|C020_R00|T151_p0",
+      "expected_content_sha256": "18e34dc7342a319049cfb7634b98f9cfe46533133e07d2d2db91721ede6de755"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C005_R02|T120_p0",
+      "source_key": "select|B_raw_cd|C005_R02|T120_p0",
+      "expected_content_sha256": "89b4ef2380ee92770a6a6275aef0f1e6c78bdb9ebd716eb84df9a5defba22329"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C020_R01|T262_p1",
+      "source_key": "select|B_raw_cd|C020_R01|T262_p1",
+      "expected_content_sha256": "52958caf5720683e1e67a79aa0f265e410f83dc650f1a80fad732e0aad6643ce"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C005_R09|T172_p0",
+      "source_key": "select|B_raw_cd|C005_R09|T172_p0",
+      "expected_content_sha256": "2b29ec4169cfdde37294e815196244bb90b8bf7162b48db1a04b9f23fcec3429"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "arggen|UNIT|single|T239_p0",
+      "source_key": "arggen|B_raw_cd|single|T239_p0",
+      "expected_content_sha256": "8719995ed0dac72cb92dcd1ecedd4b31651598ff18e3f69076ad376442f2aff0"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C005_R05|T028_p1",
+      "source_key": "select|B_raw_cd|C005_R05|T028_p1",
+      "expected_content_sha256": "df9873aa2d783776b2ce7fbdae54949b13598b8ea54ba67d5092c8d244b14e67"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C005_R03|T220_p0",
+      "source_key": "select|B_raw_cd|C005_R03|T220_p0",
+      "expected_content_sha256": "b6075eb602405d939192b15f37769b71a6cb41834261246eba2407933d338614"
+    },
+    {
+      "arm": "C0",
+      "unit_key": "select|UNIT|C005_R07|T158_p0",
+      "source_key": "select|B_raw_cd|C005_R07|T158_p0",
+      "expected_content_sha256": "607b7a3ba0cc99d80fb3ed626ce1e9850bb2e3d4e16ac3a4c969475f7ee6e551"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+Local model-free validation, 2026-11-14 IST
+
+python -m pytest -q --ignore-glob='* 2.py'
+80 passed in 10.92s
+
+python -m pytest -q ../experiment/tests/test_evaluate.py
+12 passed in 0.04s
+
+Untracked duplicate files were left untouched and excluded from collection. Existing HTTP tests use fake servers; E0b determinism tests use mocked transport. No model inference.

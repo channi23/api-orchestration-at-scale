@@ -86,7 +86,9 @@ def response_format(schema: dict) -> dict:
     return {"type": "json_schema", "json_schema": {"name": "tool_call", "strict": True, "schema": schema}}
 
 
-def constraint_payload(schema, transport="response_format"):
+def constraint_payload(schema, transport="response_format", option="json-flexible-v1"):
+    from .constraint_options import apply
+    schema = apply(schema, option)
     if transport == "llguidance_grammar":
         # --jinja's autoparser lowers response_format through GBNF at this pinned commit.
         # An explicit grammar avoids that path and selects the llguidance sampler directly.
@@ -130,6 +132,9 @@ def main():
 
     cfg_path = a.config if os.path.isabs(a.config) else os.path.join(paths.ROOT, a.config)
     rc = json.load(open(cfg_path))
+    if rc.get('protocol', '').startswith('e0b') or rc.get('run_prefix', '').startswith('e0b'):
+        from .e0b import execute
+        return execute(rc, a)
     model = json.load(open(os.path.join(paths.ROOT, rc.get("model_config", "configs/model.qwen3-1.7b.json"))))
     cooldown = float(rc.get("request_cooldown_seconds", 0))
     if cooldown < 0:

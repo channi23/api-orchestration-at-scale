@@ -1,0 +1,173 @@
+{
+  "original_locked_text": "{\n  \"run_prefix\": \"e0b-smoke\",\n  \"purpose\": \"Separate E0b path smoke charged to shared 60-request preflight/smoke ledger; never benchmark evidence\",\n  \"model_config\": \"configs/model.qwen3-1.7b.sustainable.json\",\n  \"replicates\": [\n    0\n  ],\n  \"sizes\": [\n    5,\n    20\n  ],\n  \"families\": [\n    \"select\",\n    \"arggen\"\n  ],\n  \"paraphrases\": [\n    0\n  ],\n  \"cache_prompt\": true,\n  \"arms\": [\n    \"F0\",\n    \"C0\",\n    \"C1\",\n    \"C2\",\n    \"C3\",\n    \"V\"\n  ],\n  \"arm_defs\": {\n    \"F0\": {\n      \"representation\": \"raw\",\n      \"decoding\": \"free\",\n      \"status\": \"reused\",\n      \"source_arm\": \"A_raw_free\"\n    },\n    \"C0\": {\n      \"representation\": \"raw\",\n      \"decoding\": \"constrained\",\n      \"status\": \"reused\",\n      \"source_arm\": \"B_raw_cd\",\n      \"transport\": \"llguidance_grammar\",\n      \"constraint_option\": \"json-flexible-v1\"\n    },\n    \"C1\": {\n      \"representation\": \"raw\",\n      \"decoding\": \"constrained\",\n      \"status\": \"new\",\n      \"transport\": \"llguidance_grammar\",\n      \"constraint_option\": \"json-fixed-readable-v1\"\n    },\n    \"C2\": {\n      \"representation\": \"raw\",\n      \"decoding\": \"constrained\",\n      \"status\": \"new\",\n      \"transport\": \"llguidance_grammar\",\n      \"constraint_option\": \"json-fixed-readable-v1\",\n      \"oracle_order\": true\n    },\n    \"C3\": {\n      \"representation\": \"raw\",\n      \"decoding\": \"constrained\",\n      \"status\": \"new\",\n      \"transport\": \"response_format\",\n      \"constraint_option\": \"json-flexible-v1\",\n      \"backend\": \"llama.cpp-gbnf-jinja-autoparser\"\n    },\n    \"V\": {\n      \"representation\": \"raw\",\n      \"decoding\": \"constrained\",\n      \"status\": \"routed\",\n      \"transport\": \"llguidance_grammar\",\n      \"constraint_option\": \"json-fixed-readable-v1\",\n      \"router\": \"strict-v1\",\n      \"retry_arm\": \"C1\"\n    }\n  },\n  \"comparisons\": [\n    [\n      \"P1: order effect\",\n      \"C1\",\n      \"C2\"\n    ],\n    [\n      \"P2: deployment\",\n      \"F0\",\n      \"V\"\n    ],\n    [\n      \"S1: separators\",\n      \"C0\",\n      \"C1\"\n    ],\n    [\n      \"S2: engine\",\n      \"C1\",\n      \"C3\"\n    ],\n    [\n      \"S3: oracle versus free\",\n      \"F0\",\n      \"C2\"\n    ]\n  ],\n  \"expected_requests\": 36,\n  \"requires_preflight\": true,\n  \"result_kind\": \"path-smoke\",\n  \"constraint_transport\": \"llguidance_grammar\",\n  \"request_cooldown_seconds\": 2,\n  \"require_normal_memory_pressure\": true,\n  \"constraint_policy\": \"annotation-dependencies-v1\",\n  \"requires_zero_engine_refusals\": true,\n  \"require_acceptable_thermal_state\": true,\n  \"protocol\": \"e0b-locked-v1\",\n  \"locked_date\": \"2026-11-14\",\n  \"base_commit\": \"45e786b0308b0ffdc07bc420a5f2082920ec50af\",\n  \"source_run\": \"e0-clean-v1\",\n  \"source_results_sha256\": \"1e1528a8e3180e5d4d47abdcbd719d03ed0e0238fdb0c1f9c832ab3006fa8a1f\",\n  \"benchmark_request_cap\": 0,\n  \"preflight_smoke_request_cap\": 60,\n  \"retry_cap\": 70,\n  \"determinism\": {\n    \"requests\": 0,\n    \"per_arm\": 0,\n    \"inherits_full_campaign_30_request_gate\": true,\n    \"seed\": \"e0b-lock-2026-11-14-v1\"\n  },\n  \"c3\": {\n    \"llama_cpp_commit\": \"11fe02151f79c41d0d4af7da708755d73b9c0da6\",\n    \"backend\": \"GBNF through --jinja response_format autoparser\",\n    \"serialization\": \"Pinned native GBNF defaults; response_format JSON schema; optional wrapper whitespace/fences from pinned chat autoparser; no x-guidance options\",\n    \"unsupported_policy\": \"STOP; no silent exclusions or schema relaxation\",\n    \"chat_template_sha256\": \"57f1fd00f0013a2be96aa79b857391f27e23df5b5f847072b524c897e24d0361\",\n    \"unsupported_envelopes\": [\n      \"C020_R00\",\n      \"C005_R01\",\n      \"C020_R01\",\n      \"C005_R02\",\n      \"C020_R02\",\n      \"C005_R03\",\n      \"C020_R03\",\n      \"C005_R04\",\n      \"C020_R04\",\n      \"C005_R05\",\n      \"C020_R05\",\n      \"C005_R06\",\n      \"C020_R06\",\n      \"C005_R07\",\n      \"C020_R07\",\n      \"C005_R08\",\n      \"C020_R08\",\n      \"single:T178\",\n      \"single:T286\",\n      \"single:T008\",\n      \"single:T132\",\n      \"single:T062\",\n      \"single:T220\",\n      \"single:T146\",\n      \"single:T273\",\n      \"single:T055\",\n      \"single:T089\",\n      \"single:T152\",\n      \"single:T009\",\n      \"single:T135\"\n    ],\n    \"reasoning_format\": \"deepseek (pinned server default), enable_thinking=false\"\n  },\n  \"analysis\": {\n    \"primary_family\": \"select\",\n    \"primary_size\": \"pooled\",\n    \"co_primary_holm\": [\n      \"P1: order effect\",\n      \"P2: deployment\"\n    ],\n    \"secondary_holm\": [\n      \"S1: separators\",\n      \"S2: engine\",\n      \"S3: oracle versus free\"\n    ],\n    \"bootstrap\": \"catalog replicate\",\n    \"order_effect_min_pp\": 8,\n    \"order_effect_ci95_lower_gt\": 0,\n    \"independent_intents_approx\": 50,\n    \"failure_precedence\": [\n      \"engine_refusal\",\n      \"cd_truncated\",\n      \"invalid\",\n      \"wrong_tool\",\n      \"lookalike_key\",\n      \"valid_wrong_value\",\n      \"correct\"\n    ]\n  },\n  \"task_ids\": [\n    \"T106_p0\",\n    \"T103_p0\"\n  ]\n}\n",
+  "run_prefix": "e0b-smoke",
+  "purpose": "Separate E0b path smoke charged to shared 60-request preflight/smoke ledger; never benchmark evidence",
+  "model_config": "configs/model.qwen3-1.7b.sustainable.json",
+  "replicates": [
+    0
+  ],
+  "sizes": [
+    5,
+    20
+  ],
+  "families": [
+    "select",
+    "arggen"
+  ],
+  "paraphrases": [
+    0
+  ],
+  "cache_prompt": true,
+  "arms": [
+    "F0",
+    "C0",
+    "C1",
+    "C2",
+    "V"
+  ],
+  "arm_defs": {
+    "F0": {
+      "representation": "raw",
+      "decoding": "free",
+      "status": "reused",
+      "source_arm": "A_raw_free"
+    },
+    "C0": {
+      "representation": "raw",
+      "decoding": "constrained",
+      "status": "reused",
+      "source_arm": "B_raw_cd",
+      "transport": "llguidance_grammar",
+      "constraint_option": "json-flexible-v1"
+    },
+    "C1": {
+      "representation": "raw",
+      "decoding": "constrained",
+      "status": "new",
+      "transport": "llguidance_grammar",
+      "constraint_option": "json-fixed-readable-v1"
+    },
+    "C2": {
+      "representation": "raw",
+      "decoding": "constrained",
+      "status": "new",
+      "transport": "llguidance_grammar",
+      "constraint_option": "json-fixed-readable-v1",
+      "oracle_order": true
+    },
+    "V": {
+      "representation": "raw",
+      "decoding": "constrained",
+      "status": "routed",
+      "transport": "llguidance_grammar",
+      "constraint_option": "json-fixed-readable-v1",
+      "router": "strict-v1",
+      "retry_arm": "C1"
+    }
+  },
+  "comparisons": [
+    [
+      "P1: order effect",
+      "C1",
+      "C2"
+    ],
+    [
+      "P2: deployment",
+      "F0",
+      "V"
+    ],
+    [
+      "S1: separators",
+      "C0",
+      "C1"
+    ],
+    [
+      "S3: oracle versus free",
+      "F0",
+      "C2"
+    ]
+  ],
+  "expected_requests": 30,
+  "requires_preflight": true,
+  "result_kind": "path-smoke",
+  "constraint_transport": "llguidance_grammar",
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true,
+  "constraint_policy": "annotation-dependencies-v1",
+  "requires_zero_engine_refusals": true,
+  "require_acceptable_thermal_state": true,
+  "protocol": "e0b-locked-v1-amendment1",
+  "locked_date": "2026-11-14",
+  "base_commit": "45e786b0308b0ffdc07bc420a5f2082920ec50af",
+  "source_run": "e0-clean-v1",
+  "source_results_sha256": "1e1528a8e3180e5d4d47abdcbd719d03ed0e0238fdb0c1f9c832ab3006fa8a1f",
+  "benchmark_request_cap": 0,
+  "preflight_smoke_request_cap": 60,
+  "retry_cap": 70,
+  "determinism": {
+    "requests": 0,
+    "per_arm": 0,
+    "inherits_full_campaign_30_request_gate": true,
+    "seed": "e0b-lock-2026-11-14-v1"
+  },
+  "analysis": {
+    "primary_family": "select",
+    "primary_size": "pooled",
+    "co_primary_holm": [
+      "P1: order effect",
+      "P2: deployment"
+    ],
+    "secondary_holm": [
+      "S1: separators",
+      "S3: oracle versus free"
+    ],
+    "bootstrap": "catalog replicate",
+    "order_effect_min_pp": 8,
+    "order_effect_ci95_lower_gt": 0,
+    "independent_intents_approx": 50,
+    "failure_precedence": [
+      "engine_refusal",
+      "cd_truncated",
+      "invalid",
+      "wrong_tool",
+      "lookalike_key",
+      "valid_wrong_value",
+      "correct"
+    ]
+  },
+  "task_ids": [
+    "T106_p0",
+    "T103_p0"
+  ],
+  "amendment": 1,
+  "execution_order": [
+    "F0",
+    "C0",
+    "C1",
+    "C2",
+    "V"
+  ],
+  "excluded_arms": {
+    "C3": {
+      "reason": "Pinned GBNF failed the pre-declared capability gate (30/70 envelopes; 246/300 gold reachable; 120/6696 invalid witnesses accepted) and shares key-order restriction, so it cannot inform either co-primary contrast. No substitute or subset run.",
+      "finding_kind": "model-free engine finding, not E0b inference",
+      "evidence": "analysis/e0b-readiness/native-original-lock.json",
+      "evidence_sha256": "cb83142628da0481e8973eb48a0b131be3af28b69658a7d55e116a0e258d190e"
+    }
+  },
+  "amendments": [
+    {
+      "number": 1,
+      "date": "2026-11-14",
+      "timing": "before any E0b inference",
+      "reason": "Pinned GBNF failed the pre-declared capability gate (30/70 envelopes; 246/300 gold reachable; 120/6696 invalid witnesses accepted) and shares key-order restriction, so it cannot inform either co-primary contrast. No substitute or subset run.",
+      "benchmark_cap": 700,
+      "preflight_smoke_cap": 60,
+      "secondary_holm": [
+        "C1 - C0",
+        "C2 - F0"
+      ],
+      "original_locked_text_preserved": true
+    }
+  ]
+}
