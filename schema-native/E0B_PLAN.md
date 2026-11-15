@@ -268,3 +268,50 @@ explicit user confirmation may Qwen be loaded under the unchanged profile for on
 the frozen 30-request exact determinism check, C1/C2/V, sn.e0b_report and model unloading. Any
 byte mismatch saves STOPPED.json and stops without baseline rerun. Publish and stop. E1/E2 remain
 gated; no training.
+
+
+## Amendment 3 — LOCKED 2026-11-15 (before determinism or benchmark inference)
+
+Resource handling only. All earlier locked text above and both stopped campaigns
+`e0b-amendment1-v1` and `e0b-amendment2-v1` remain unchanged. No change to model, prompts,
+sampling, selections, router, oracle, analysis, budgets or the 512-token truncation rule.
+The new campaign ID is **e0b-amendment3-v1**, importing the same 11 historical readiness
+charges: 49 readiness requests remain within 60; benchmark cap stays 700, with zero spent.
+
+Before starting the dedicated server, require normal memory pressure and report free, inactive
+and purgeable bytes, their sum, and the ten largest resident processes (names and sizes only).
+If that sum is below **5 GiB**, do not load; report and stop. This is the requested admission
+estimate: purgeable pages can overlap other page categories, so the sum is not a guarantee of
+allocatable memory. No other apps are closed. Reports are local; do not publish app inventories.
+
+After load, send no inference or metadata HTTP request. Sample pressure every **5 seconds** for
+at most **90 seconds**; proceed only after **three consecutive normal readings**. Otherwise
+unload the owned dedicated model server and stop. The cumulative system swapout counter is
+also checked during loading/settling; its original pre-load baseline is never reset on resume.
+
+During execution, memory-pressure, **non-nominal thermal**, and sustained swap-rate warnings
+pause before any new inference request. Allow any in-flight request to finish and persist; idle
+the model and check every **30 seconds**. Continue only after **three consecutive clean checks**.
+If recovery is not established within **15 minutes**, unload and stop for a later resource-only
+resume. The **greater-than-1-GiB cumulative system swapout growth** limit stays a hard stop.
+Resource observations are sampled before and after each generation, including the last one;
+this is not continuous sampling inside a blocking HTTP request.
+
+A resource timeout/admission stop may resume under the same run ID only after fresh admission,
+settling and unchanged scientific/runtime identity checks. Archive its original STOPPED.json
+unchanged and append timestamped pause/resume events. Read the durable results and charged
+request ledger: completed keys are never re-sent, frozen order is kept, and an uncertain charged
+request without a durable response fails closed rather than being sent again. Smoke completions,
+determinism completions, C1/C2 completions and V retry attempts all follow this rule. A completed
+30-request determinism gate is not restarted on resume. Engine/request faults, constraint
+violations, illegal-prefix truncations and determinism mismatches remain final stops with no
+resume. The cumulative swapout hard limit and baseline identity failures are also final.
+
+Greedy decoding with a fixed seed and independent requests makes resource-driven pause/resume timing outcome-independent; no accuracy is read between segments. Fixed seed and greedy decoding do not establish byte-identical execution across server restarts; the frozen determinism gate remains required and is not reset or re-run on resume.
+
+A server restart is recorded as a segment boundary. Model, build, request profile, chat template,
+context and scientific identity must remain unchanged; only the text-only server's random unused
+`media_marker` may differ. No already completed generation is repeated to test a restart.
+Steps 1–2 are model-free. **STOP for review after publishing validation; no model loading,
+inference or training until the user separately confirms review and that the Mac is freed up.**
+E1/E2 remain gated.
