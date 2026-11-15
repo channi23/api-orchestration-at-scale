@@ -1,0 +1,33 @@
+{
+  "kind": "MODEL-FREE retrospective prefix verification; no new inference",
+  "request_key": "smoke|C1|select|UNIT|C020_R00|T103_p0",
+  "original_http_status": 200,
+  "original_finish_reason": "length",
+  "prefix_proof": {
+    "legal_prefix": true,
+    "accepting": false,
+    "grammar_sha256": "c005bb666f9af7c20a619df41863a29d52642cb9fd61d74acc4736aaec7f4702",
+    "text_sha256": "1079595c18651440956190b19eeb2ba3ed4250c51eef25dc7cf11135d8ef9688",
+    "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+    "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01"
+  },
+  "amendment2_gate": {
+    "passed": true,
+    "outcome": "cd_truncated",
+    "native_prefix": {
+      "legal_prefix": true,
+      "accepting": false,
+      "grammar_sha256": "c005bb666f9af7c20a619df41863a29d52642cb9fd61d74acc4736aaec7f4702",
+      "text_sha256": "1079595c18651440956190b19eeb2ba3ed4250c51eef25dc7cf11135d8ef9688",
+      "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+      "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01"
+    }
+  },
+  "constraint_copy_unchanged": true,
+  "frozen_E0_reference": {
+    "request_key": "select|B_raw_cd|C020_R00|T103_p0",
+    "finish_reason": "length",
+    "completion_tokens": 512
+  },
+  "note": "Same capped outcome on the frozen unit; no claim that the two output byte strings are identical."
+}
