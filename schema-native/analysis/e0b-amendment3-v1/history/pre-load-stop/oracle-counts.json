@@ -1,0 +1,10 @@
+{
+  "run_id": "e0b-amendment3-v1",
+  "C2_generated_outputs": 0,
+  "observed_oracle_not_applied": null,
+  "observed_oracle_incomplete": null,
+  "planned_units": 300,
+  "planned_oracle_not_applied": 32,
+  "planned_oracle_incomplete": 0,
+  "note": "Observed output-side flags were not measured. Planned flags are not inference observations."
+}

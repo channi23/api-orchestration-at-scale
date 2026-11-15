@@ -1,0 +1,4 @@
+{"passed": true, "probes": 3, "helper_invocations": 1, "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a", "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01", "utc": "2026-11-15T08:24:18.350570+00:00", "event": "prefix_helper_self_test"}
+{"free": 82460672, "inactive": 2344370176, "purgeable": 30130176, "available_bytes": 2456961024, "available_definition": "free + inactive + purgeable; accounting estimate, purgeable may overlap other page categories", "memory_pressure_dispatch_level": 2, "utc": "2026-11-15T08:24:18.381195+00:00", "event": "admission"}
+{"phase": "server_resource", "reason": "Pre-load admission needs normal pressure and at least 5 GiB free + inactive + purgeable", "resumable": true, "utc": "2026-11-15T08:24:18.381582+00:00", "event": "stop"}
+{"reason": "No owned server registration; no other process touched", "utc": "2026-11-15T08:24:18.381690+00:00", "event": "unload_unavailable"}

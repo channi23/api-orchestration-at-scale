@@ -1,10 +1,10 @@
 {
-  "free": 82460672,
-  "inactive": 2344370176,
-  "purgeable": 30130176,
-  "available_bytes": 2456961024,
+  "free": 1122385920,
+  "inactive": 4883857408,
+  "purgeable": 281346048,
+  "available_bytes": 6287589376,
   "available_definition": "free + inactive + purgeable; accounting estimate, purgeable may overlap other page categories",
-  "memory_pressure_dispatch_level": 2,
-  "utc": "2026-11-15T08:24:18.381195+00:00",
+  "memory_pressure_dispatch_level": 1,
+  "utc": "2026-11-15T16:14:52.653305+00:00",
   "event": "admission"
 }

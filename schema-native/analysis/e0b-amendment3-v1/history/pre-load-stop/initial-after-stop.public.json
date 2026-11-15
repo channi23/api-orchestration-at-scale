@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-15T08:25:26.398369+00:00",
+  "memory_pressure_dispatch_level": 2,
+  "thermal_state": 0,
+  "system_swapout_bytes": 76585156608,
+  "swapout_sample_seconds": 2.015697791997809,
+  "swapout_sample_growth_bytes": 0,
+  "swapout_bytes_per_second": 0.0,
+  "free": 88489984,
+  "inactive": 3592503296,
+  "purgeable": 163840,
+  "available_bytes": 3681157120,
+  "available_definition": "free + inactive + purgeable; accounting estimate, purgeable may overlap other page categories"
+}

@@ -1,0 +1,9 @@
+{
+  "utc": "2026-11-15T17:11:11.489014+00:00",
+  "memory_pressure_dispatch_level": 1,
+  "thermal_state": 0,
+  "system_swapout_growth_bytes": 0,
+  "sample_seconds": 2.012371000018902,
+  "swapout_sample_growth_bytes": 0,
+  "swapout_bytes_per_second": 0.0
+}
