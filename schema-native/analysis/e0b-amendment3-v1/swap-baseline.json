@@ -1,0 +1,7 @@
+{
+  "run_id": "e0b-amendment3-v1",
+  "system_swapout_bytes": 78093074432,
+  "boot": "{ sec = 1794330949, usec = 311492 } Tue Nov 10 22:45:49 2026",
+  "created_unix": 1794759292.6577122,
+  "scope": "system-wide; initialize immediately before model load"
+}

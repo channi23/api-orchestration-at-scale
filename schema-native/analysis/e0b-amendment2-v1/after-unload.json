@@ -1,0 +1,8 @@
+{
+  "memory_pressure": 1,
+  "thermal_state": 0,
+  "page_size": 16384,
+  "swapouts_pages": 4605635,
+  "system_swapout_growth_bytes": 326238208,
+  "post_unload_swapout_delta_bytes_over_2_seconds": 0
+}

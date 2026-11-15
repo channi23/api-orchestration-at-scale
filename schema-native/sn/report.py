@@ -16,6 +16,7 @@ import collections
 import json
 import os
 import re
+from .lookalike import key_flags
 
 from . import ceiling
 from . import paths, provenance
@@ -41,7 +42,8 @@ def cell(rows: list[dict]) -> dict:
     cd_truncated = [r for r in model_rows if r.get('decoding') == 'constrained' and r.get('truncated')]
     untruncated = [r for r in model_rows if not (r.get('decoding') == 'constrained' and r.get('truncated'))]
     d = ceiling.decompose(untruncated) if untruncated else dict.fromkeys(ceiling.CLASSES, 0)
-    return {"n": len(rows), "engine_errors": len(rows) - len(ok_engine),
+    lookalike = sum(bool(lookalike_key_flag(r)) for r in rows)
+    return {"n": len(rows), 'lookalike_key': lookalike, "engine_errors": len(rows) - len(ok_engine),
             "request_errors": dict(collections.Counter(r.get("request_error") or "http_error"
                                                        for r in rows if r["http_status"] != 200 or r.get("request_error"))),
             "truncated": sum(bool(r.get("truncated")) for r in rows),
@@ -58,6 +60,23 @@ def cell(rows: list[dict]) -> dict:
             "out_tokens": sum(r["usage"].get("completion_tokens", 0) for r in rows) / len(rows) if rows else 0,
             "lat_p50": quantile(lat, 0.5), "lat_p95": quantile(lat, 0.95),
             "lat_p99": quantile(lat, 0.99) if len(lat) >= 200 else None}
+
+
+def lookalike_key_flag(row):
+    """A parallel diagnostic; frozen eval fields and raw outputs are never modified."""
+    from .router import strict_loads
+    from . import envelope
+    import schema_utils as su
+    try:
+        call = strict_loads(row.get('raw_content', ''))
+        if not isinstance(call, dict) or not isinstance(call.get('tool'), str):
+            return []
+        tool = next((t for t in paths.pool().values() if t['tool_name'] == call['tool']), None)
+        if tool is None:
+            return []
+        return key_flags(call.get('arguments'), envelope.argument_schema(su.load_schema(tool['schema_id'])))
+    except (ValueError, TypeError):
+        return []
 
 
 def truncation_sensitivity(ra, rb):
@@ -188,6 +207,11 @@ def run(run_id: str, server_log: str | None = None, order_audit: str | None = No
         for category in ('accepted_original_order', 'order_only_rejection', 'other_rejection'):
             L.append('| ' + category + ' | ' + ' | '.join(str(split.get(category + '|' + outcome, 0)) for outcome in ('correct', 'wrong', 'truncated')) + ' |')
     L += ["", f"Server peak RSS: {memory if memory is not None else 'unrecorded'} bytes. See JSON memory_note for scope."]
+    L += ['', '## Look-alike-key flags (overlapping diagnostic)', '',
+          'No keys are renamed and no evaluator scores are changed.', '',
+          '| Family | Tools | Arm | Flagged outputs |', '|---|---:|---|---:|']
+    for c in res['cells']:
+        L.append(f"| {c['family']} | {c['size']} | {c['arm']} | {c['lookalike_key']} |")
     L += ["", "E1 remains gated on a complete, infrastructure-clean E0 readout, inspection of engine errors, "
           "and unseen-schema v2/stress tasks. E2 is deferred until those datasets exist."]
     with open(os.path.join(out, "REPORT.md"), "w") as f:

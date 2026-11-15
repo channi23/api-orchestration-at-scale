@@ -1,0 +1,17 @@
+{
+  "phase": "STOPPED_AFTER_MODEL_LOAD_BEFORE_INFERENCE",
+  "stop": {
+    "phase": "after_model_load",
+    "reason": "Memory pressure level 2: no new inference request started. Stop the dedicated model to release memory."
+  },
+  "new_readiness_generation_requests": 0,
+  "historical_readiness_spent": 11,
+  "readiness_cap": 60,
+  "readiness_remaining": 49,
+  "determinism_requests": 0,
+  "benchmark_generation_requests": 0,
+  "benchmark_cap": 700,
+  "benchmark_remaining": 700,
+  "model_unloaded": true,
+  "manifest_note": "Exact identity snapshot captured before model load copied to standard manifest during stop finalization; empty results file means no benchmark generation."
+}

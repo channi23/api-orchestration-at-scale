@@ -1,0 +1,5 @@
+{
+  "phase": "online_preflight_smoke",
+  "reason": "ValueError: Smoke constraint/truncation fault; stop",
+  "utc": "2026-11-14T10:20:31.157730+00:00"
+}

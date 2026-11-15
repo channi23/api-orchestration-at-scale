@@ -1,0 +1,12 @@
+{
+  "run_id": "e0b-amendment1-v1",
+  "inference_git_commit": "c5f560abf3e74e352d9d5510035e7afe7fa20df2",
+  "phase": "stopped_online_preflight_smoke",
+  "manifest_note": "Identity manifest finalized after preflight stop from the unchanged frozen source/environment/profile; benchmark runner was never started. Empty results.jsonl represents zero benchmark rows, not synthetic measurements.",
+  "receipt_issued": false,
+  "model_unloaded": true,
+  "baseline_reused": false,
+  "determinism_requests": 0,
+  "benchmark_requests": 0,
+  "final_comparisons_permitted": false
+}

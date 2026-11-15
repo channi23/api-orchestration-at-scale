@@ -1,0 +1,17 @@
+{
+  "kind": "diagnostic flags on frozen E0 only; not rescoring",
+  "source_results_sha256": "1e1528a8e3180e5d4d47abdcbd719d03ed0e0238fdb0c1f9c832ab3006fa8a1f",
+  "rule_amendment": "undeclared literal declared-key prefix followed by non-alphanumeric Unicode character",
+  "before": {
+    "A_raw_free": 0,
+    "B_raw_cd": 6,
+    "A2_min_free": 0,
+    "B2_min_cd": 6
+  },
+  "after": {
+    "A_raw_free": 0,
+    "B_raw_cd": 11,
+    "A2_min_free": 0,
+    "B2_min_cd": 6
+  }
+}

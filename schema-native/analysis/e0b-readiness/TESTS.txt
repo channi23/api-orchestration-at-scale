@@ -1,0 +1,26 @@
+Amendment 3 pending-prefix clarification — model-free, 2026-11-15 IST
+
+$ .venv/bin/python -m pytest -q --ignore-glob='* 2.py'
+........................................................................ [ 46%]
+........................................................................ [ 93%]
+..........                                                               [100%]
+154 passed in 19.77s
+
+$ .venv/bin/python -m pytest -q ../experiment/tests/test_evaluate.py
+............                                                             [100%]
+12 passed in 0.04s
+
+$ .venv/bin/python -m sn.e0b_readiness
+C1 70 C2 300 C1/C2/V native gate True
+
+Bundled native helper self-test (one invocation, three fixed probes):
+{
+  "passed": true,
+  "probes": 3,
+  "helper_invocations": 1,
+  "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+  "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01"
+}
+
+Current native plan/source fingerprints: PASS
+No real Amendment 3 campaign initialized; model unloaded.

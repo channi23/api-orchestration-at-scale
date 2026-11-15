@@ -1,0 +1,6 @@
+{
+  "thermal_state": 0,
+  "memory_pressure_dispatch_level": 1,
+  "swapout_mib_per_sec_since_previous_check": null,
+  "system_swapout_growth_bytes": 0
+}

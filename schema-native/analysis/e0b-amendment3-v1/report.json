@@ -1,0 +1,115 @@
+{
+  "run": "e0b-amendment3-v1",
+  "complete": true,
+  "missing_n": 0,
+  "n": 1500,
+  "note": "Intervals are replicate-bootstrap intervals; only approximately 50 independent intents. Primary outcomes include all units.",
+  "comparisons": [
+    {
+      "name": "P1: order effect",
+      "a": "C1",
+      "b": "C2",
+      "family": "select",
+      "size": "pooled",
+      "multiplicity_family": "co_primary",
+      "n_pairs": 200,
+      "acc_a": 0.7,
+      "acc_b": 0.88,
+      "diff_pp": 18.000000000000004,
+      "rel_improvement_pct": 25.714285714285722,
+      "ci95_diff_pp": [
+        10.0,
+        26.5
+      ],
+      "discordant_a_only": 1,
+      "discordant_b_only": 37,
+      "mcnemar_exact_p": 2.837623469531536e-10,
+      "discordant_odds_ratio": 25.0,
+      "or_ci95": [
+        4.888324864427567,
+        127.8556596244527
+      ],
+      "p_holm": 5.675246939063072e-10
+    },
+    {
+      "name": "P2: deployment",
+      "a": "F0",
+      "b": "V",
+      "family": "select",
+      "size": "pooled",
+      "multiplicity_family": "co_primary",
+      "n_pairs": 200,
+      "acc_a": 0.855,
+      "acc_b": 0.88,
+      "diff_pp": 2.500000000000002,
+      "rel_improvement_pct": 2.9239766081871372,
+      "ci95_diff_pp": [
+        0.0,
+        5.5
+      ],
+      "discordant_a_only": 0,
+      "discordant_b_only": 5,
+      "mcnemar_exact_p": 0.0625,
+      "discordant_odds_ratio": 11.0,
+      "or_ci95": [
+        0.6082212318439559,
+        198.9407696820482
+      ],
+      "p_holm": 0.0625
+    },
+    {
+      "name": "S1: separators",
+      "a": "C0",
+      "b": "C1",
+      "family": "select",
+      "size": "pooled",
+      "multiplicity_family": "secondary",
+      "n_pairs": 200,
+      "acc_a": 0.705,
+      "acc_b": 0.7,
+      "diff_pp": -0.5000000000000004,
+      "rel_improvement_pct": -0.7092198581560291,
+      "ci95_diff_pp": [
+        -1.5,
+        0.0
+      ],
+      "discordant_a_only": 1,
+      "discordant_b_only": 0,
+      "mcnemar_exact_p": 1.0,
+      "discordant_odds_ratio": 0.3333333333333333,
+      "or_ci95": [
+        0.013578347020067305,
+        8.18296298856562
+      ],
+      "p_holm": 1.0
+    },
+    {
+      "name": "S3: oracle versus free",
+      "a": "F0",
+      "b": "C2",
+      "family": "select",
+      "size": "pooled",
+      "multiplicity_family": "secondary",
+      "n_pairs": 200,
+      "acc_a": 0.855,
+      "acc_b": 0.88,
+      "diff_pp": 2.500000000000002,
+      "rel_improvement_pct": 2.9239766081871372,
+      "ci95_diff_pp": [
+        0.0,
+        5.5
+      ],
+      "discordant_a_only": 0,
+      "discordant_b_only": 5,
+      "mcnemar_exact_p": 0.0625,
+      "discordant_odds_ratio": 11.0,
+      "or_ci95": [
+        0.6082212318439559,
+        198.9407696820482
+      ],
+      "p_holm": 0.125
+    }
+  ],
+  "order_effect_rule_met": true,
+  "independent_intents_approx": 50
+}

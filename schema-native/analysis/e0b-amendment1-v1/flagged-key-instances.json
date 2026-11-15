@@ -1,0 +1,185 @@
+{
+  "note": "Mechanical diagnostic only; matched key is the classifier-selected declared key, not proof of a semantic error. Frozen reference rows are not E0b attempts. Complete-JSON diagnostic is unavailable for truncated/unparseable text.",
+  "instances": [
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B_raw_cd|C005_R02|T120_p0",
+      "arm": "B_raw_cd",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B_raw_cd|C005_R02|T120_p1",
+      "arm": "B_raw_cd",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B_raw_cd|C020_R02|T199_p0",
+      "arm": "B_raw_cd",
+      "json_pointer": "/con_date”: ",
+      "flagged_key": "con_date”: ",
+      "matched_declared_key": "con_date",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B_raw_cd|C020_R02|T120_p0",
+      "arm": "B_raw_cd",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B_raw_cd|C020_R02|T120_p1",
+      "arm": "B_raw_cd",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B_raw_cd|C020_R07|T158_p0",
+      "arm": "B_raw_cd",
+      "json_pointer": "/s”: [0, 50], ",
+      "flagged_key": "s”: [0, 50], ",
+      "matched_declared_key": "s",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B_raw_cd|C020_R07|T158_p1",
+      "arm": "B_raw_cd",
+      "json_pointer": "/s': [0, 50], ",
+      "flagged_key": "s': [0, 50], ",
+      "matched_declared_key": "s",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B2_min_cd|C020_R07|T158_p0",
+      "arm": "B2_min_cd",
+      "json_pointer": "/s”: [0, 50], ",
+      "flagged_key": "s”: [0, 50], ",
+      "matched_declared_key": "s",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B2_min_cd|C020_R07|T158_p1",
+      "arm": "B2_min_cd",
+      "json_pointer": "/s”: [0, 50], ",
+      "flagged_key": "s”: [0, 50], ",
+      "matched_declared_key": "s",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B2_min_cd|C020_R09|T172_p0",
+      "arm": "B2_min_cd",
+      "json_pointer": "/mjs_access_whitelist/0/url”: ",
+      "flagged_key": "url”: ",
+      "matched_declared_key": "url",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "select|B2_min_cd|C020_R09|T172_p0",
+      "arm": "B2_min_cd",
+      "json_pointer": "/mjs_access_whitelist/1/url”: ",
+      "flagged_key": "url”: ",
+      "matched_declared_key": "url",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B_raw_cd|single|T199_p0",
+      "arm": "B_raw_cd",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "match_rule": "normalized_equal"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B_raw_cd|single|T199_p1",
+      "arm": "B_raw_cd",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "match_rule": "normalized_equal"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B_raw_cd|single|T158_p1",
+      "arm": "B_raw_cd",
+      "json_pointer": "/o”: { ",
+      "flagged_key": "o”: { ",
+      "matched_declared_key": "o",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B_raw_cd|single|T158_p1",
+      "arm": "B_raw_cd",
+      "json_pointer": "/s”: [0, 50], ",
+      "flagged_key": "s”: [0, 50], ",
+      "matched_declared_key": "s",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B_raw_cd|single|T135_p0",
+      "arm": "B_raw_cd",
+      "json_pointer": "/userId”: ",
+      "flagged_key": "userId”: ",
+      "matched_declared_key": "userId",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B2_min_cd|single|T199_p0",
+      "arm": "B2_min_cd",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "match_rule": "normalized_equal"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B2_min_cd|single|T199_p1",
+      "arm": "B2_min_cd",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "match_rule": "normalized_equal"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B2_min_cd|single|T172_p0",
+      "arm": "B2_min_cd",
+      "json_pointer": "/mjs_access_whitelist/0/url”: ",
+      "flagged_key": "url”: ",
+      "matched_declared_key": "url",
+      "match_rule": "declared_prefix_boundary"
+    },
+    {
+      "dataset": "frozen_E0_reference",
+      "request_key": "arggen|B2_min_cd|single|T172_p0",
+      "arm": "B2_min_cd",
+      "json_pointer": "/mjs_access_whitelist/1/url”: ",
+      "flagged_key": "url”: ",
+      "matched_declared_key": "url",
+      "match_rule": "declared_prefix_boundary"
+    }
+  ]
+}

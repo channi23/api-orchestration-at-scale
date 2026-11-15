@@ -1,0 +1,788 @@
+{
+  "instances": [
+    {
+      "request_key": "determinism|C0|select|UNIT|C005_R02|T120_p0",
+      "arm": "C0",
+      "evidence_kind": "fresh",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "determinism_generation"
+    },
+    {
+      "request_key": "C0|select|UNIT|C005_R02|T120_p0",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|select|UNIT|C005_R02|T120_p1",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|select|UNIT|C020_R02|T199_p0",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/con_date\u201d: ",
+      "flagged_key": "con_date\u201d: ",
+      "matched_declared_key": "con_date",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|select|UNIT|C020_R02|T120_p0",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|select|UNIT|C020_R02|T120_p1",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|select|UNIT|C020_R07|T158_p0",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|select|UNIT|C020_R07|T158_p1",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/s': [0, 50], ",
+      "flagged_key": "s': [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|arggen|UNIT|single|T199_p0",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|arggen|UNIT|single|T199_p1",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|arggen|UNIT|single|T158_p1",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/o\u201d: { ",
+      "flagged_key": "o\u201d: { ",
+      "matched_declared_key": "o",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|arggen|UNIT|single|T158_p1",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C0|arggen|UNIT|single|T135_p0",
+      "arm": "C0",
+      "evidence_kind": "reused",
+      "json_pointer": "/userId\u201d: ",
+      "flagged_key": "userId\u201d: ",
+      "matched_declared_key": "userId",
+      "record_role": "reused_reference"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R02|T199_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/con_date\u201d: ",
+      "flagged_key": "con_date\u201d: ",
+      "matched_declared_key": "con_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R02|T199_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/con_date\u201d: ",
+      "flagged_key": "con_date\u201d: ",
+      "matched_declared_key": "con_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R02|T120_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R02|T120_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R02|T199_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/con_date\u201d: ",
+      "flagged_key": "con_date\u201d: ",
+      "matched_declared_key": "con_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R02|T199_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/con_date\u201d: ",
+      "flagged_key": "con_date\u201d: ",
+      "matched_declared_key": "con_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R02|T120_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/editions\": [",
+      "flagged_key": "editions\": [",
+      "matched_declared_key": "editions",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R02|T120_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R02|T120_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/parent_id\": \"r-101\", ",
+      "flagged_key": "parent_id\": \"r-101\", ",
+      "matched_declared_key": "parent_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R03|T062_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/message ",
+      "flagged_key": "message ",
+      "matched_declared_key": "message",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R07|T022_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/comments\u201d: ",
+      "flagged_key": "comments\u201d: ",
+      "matched_declared_key": "comments",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R07|T022_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/end_date\u201d: ",
+      "flagged_key": "end_date\u201d: ",
+      "matched_declared_key": "end_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R07|T022_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/start_date\u201d: ",
+      "flagged_key": "start_date\u201d: ",
+      "matched_declared_key": "start_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R07|T158_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R07|T158_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s': [0, 50], ",
+      "flagged_key": "s': [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R08|T135_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/userId\u201d: ",
+      "flagged_key": "userId\u201d: ",
+      "matched_declared_key": "userId",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R08|T135_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/userId\u201d: ",
+      "flagged_key": "userId\u201d: ",
+      "matched_declared_key": "userId",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R08|T135_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/userId\u201d: ",
+      "flagged_key": "userId\u201d: ",
+      "matched_declared_key": "userId",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R09|T172_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/0/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R09|T172_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/1/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R09|T172_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/0/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R09|T172_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/1/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R09|T057_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C005_R09|T057_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R09|T057_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|select|UNIT|C020_R09|T057_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/1/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T262_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/birthDate\u201d: ",
+      "flagged_key": "birthDate\u201d: ",
+      "matched_declared_key": "birthDate",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T262_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/breed\u201d: ",
+      "flagged_key": "breed\u201d: ",
+      "matched_declared_key": "breed",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T199_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T199_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/con_date ",
+      "flagged_key": "con_date ",
+      "matched_declared_key": "con_date",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T120_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/parent_id\u201d: ",
+      "flagged_key": "parent_id\u201d: ",
+      "matched_declared_key": "parent_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T120_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/revision_id\u201d: ",
+      "flagged_key": "revision_id\u201d: ",
+      "matched_declared_key": "revision_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T120_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/parent_id\u201d: ",
+      "flagged_key": "parent_id\u201d: ",
+      "matched_declared_key": "parent_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T120_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/revision_id\u201d: ",
+      "flagged_key": "revision_id\u201d: ",
+      "matched_declared_key": "revision_id",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T062_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/message ",
+      "flagged_key": "message ",
+      "matched_declared_key": "message",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T158_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T158_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T135_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/userId\u201d: ",
+      "flagged_key": "userId\u201d: ",
+      "matched_declared_key": "userId",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T135_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/userId\u201d: ",
+      "flagged_key": "userId\u201d: ",
+      "matched_declared_key": "userId",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T172_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/0/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T172_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/1/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T172_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/0/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T172_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/mjs_access_whitelist/1/url\u201d: ",
+      "flagged_key": "url\u201d: ",
+      "matched_declared_key": "url",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T057_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T057_p0",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T057_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C1|arggen|UNIT|single|T057_p1",
+      "arm": "C1",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|select|UNIT|C020_R07|T158_p0",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|select|UNIT|C020_R09|T057_p1",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|select|UNIT|C020_R09|T057_p1",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/1/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|arggen|UNIT|single|T158_p0",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|arggen|UNIT|single|T158_p1",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|arggen|UNIT|single|T057_p0",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|arggen|UNIT|single|T057_p0",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|arggen|UNIT|single|T057_p1",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "C2|arggen|UNIT|single|T057_p1",
+      "arm": "C2",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "benchmark_generation"
+    },
+    {
+      "request_key": "retry|V|select|UNIT|C020_R07|T158_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "V|select|UNIT|C020_R07|T158_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "retry|V|select|UNIT|C020_R09|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "retry|V|select|UNIT|C020_R09|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/1/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "V|select|UNIT|C020_R09|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "V|select|UNIT|C020_R09|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/1/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "retry|V|arggen|UNIT|single|T158_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "V|arggen|UNIT|single|T158_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "retry|V|arggen|UNIT|single|T158_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "V|arggen|UNIT|single|T158_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/s\u201d: [0, 50], ",
+      "flagged_key": "s\u201d: [0, 50], ",
+      "matched_declared_key": "s",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "retry|V|arggen|UNIT|single|T057_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "retry|V|arggen|UNIT|single|T057_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "V|arggen|UNIT|single|T057_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "V|arggen|UNIT|single|T057_p0",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "retry|V|arggen|UNIT|single|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "retry|V|arggen|UNIT|single|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "V_retry_generation"
+    },
+    {
+      "request_key": "V|arggen|UNIT|single|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/name\u201d: ",
+      "flagged_key": "name\u201d: ",
+      "matched_declared_key": "name",
+      "record_role": "V_retry_aggregate"
+    },
+    {
+      "request_key": "V|arggen|UNIT|single|T057_p1",
+      "arm": "V",
+      "evidence_kind": "fresh",
+      "json_pointer": "/extensions/0/typeName\u201d: ",
+      "flagged_key": "typeName\u201d: ",
+      "matched_declared_key": "typeName",
+      "record_role": "V_retry_aggregate"
+    }
+  ],
+  "note": "Every saved benchmark/control record and tool-call smoke record is scanned. Reused and aggregate records are labelled; aggregate retry records duplicate their underlying attempt evidence. Flags are mechanical, may match legitimate distinct keys, and do not rename keys or rescore frozen rows."
+}

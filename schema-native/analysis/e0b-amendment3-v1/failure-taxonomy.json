@@ -1,0 +1,106 @@
+{
+  "F0": {
+    "n": 300,
+    "e2e_success_n": 256,
+    "e2e_success_pct": 85.33333333333333,
+    "failure_classes": {
+      "correct": 248,
+      "invalid": 32,
+      "valid_wrong_value": 20
+    },
+    "truncated_n": 1,
+    "overlapping_flags": {
+      "engine_refusal": 0,
+      "cd_truncated": 0,
+      "invalid": 32,
+      "wrong_tool": 12,
+      "lookalike_key": 0,
+      "oracle_not_applied": 0,
+      "oracle_incomplete": 0
+    }
+  },
+  "C0": {
+    "n": 300,
+    "e2e_success_n": 211,
+    "e2e_success_pct": 70.33333333333333,
+    "failure_classes": {
+      "correct": 211,
+      "cd_truncated": 48,
+      "valid_wrong_value": 30,
+      "lookalike_key": 11
+    },
+    "truncated_n": 48,
+    "overlapping_flags": {
+      "engine_refusal": 0,
+      "cd_truncated": 48,
+      "invalid": 48,
+      "wrong_tool": 48,
+      "lookalike_key": 11,
+      "oracle_not_applied": 0,
+      "oracle_incomplete": 0
+    }
+  },
+  "C1": {
+    "n": 300,
+    "e2e_success_n": 210,
+    "e2e_success_pct": 70.0,
+    "failure_classes": {
+      "correct": 210,
+      "cd_truncated": 22,
+      "valid_wrong_value": 35,
+      "lookalike_key": 33
+    },
+    "truncated_n": 22,
+    "overlapping_flags": {
+      "engine_refusal": 0,
+      "cd_truncated": 22,
+      "invalid": 22,
+      "wrong_tool": 22,
+      "lookalike_key": 33,
+      "oracle_not_applied": 0,
+      "oracle_incomplete": 0
+    }
+  },
+  "C2": {
+    "n": 300,
+    "e2e_success_n": 266,
+    "e2e_success_pct": 88.66666666666667,
+    "failure_classes": {
+      "correct": 266,
+      "valid_wrong_value": 22,
+      "cd_truncated": 6,
+      "lookalike_key": 6
+    },
+    "truncated_n": 6,
+    "overlapping_flags": {
+      "engine_refusal": 0,
+      "cd_truncated": 6,
+      "invalid": 6,
+      "wrong_tool": 6,
+      "lookalike_key": 6,
+      "oracle_not_applied": 32,
+      "oracle_incomplete": 0
+    }
+  },
+  "V": {
+    "n": 300,
+    "e2e_success_n": 265,
+    "e2e_success_pct": 88.33333333333333,
+    "failure_classes": {
+      "correct": 265,
+      "valid_wrong_value": 23,
+      "cd_truncated": 6,
+      "lookalike_key": 6
+    },
+    "truncated_n": 6,
+    "overlapping_flags": {
+      "engine_refusal": 0,
+      "cd_truncated": 6,
+      "invalid": 6,
+      "wrong_tool": 6,
+      "lookalike_key": 6,
+      "oracle_not_applied": 0,
+      "oracle_incomplete": 0
+    }
+  }
+}

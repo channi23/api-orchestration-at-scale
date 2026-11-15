@@ -1,0 +1,25 @@
+{
+  "admission_available_bytes": 6287589376,
+  "admission_pressure": 1,
+  "monitor_samples": 103,
+  "observed_pressure_levels": [
+    1
+  ],
+  "observed_thermal_states": [
+    0
+  ],
+  "max_sampled_swapout_growth_bytes": 0,
+  "max_sampled_swapout_bytes_per_second": 0,
+  "in_run_pauses": 0,
+  "resource_resumes": 1,
+  "unloaded": true,
+  "after_unload": {
+    "utc": "2026-11-15T17:11:11.489014+00:00",
+    "memory_pressure_dispatch_level": 1,
+    "thermal_state": 0,
+    "system_swapout_growth_bytes": 0,
+    "sample_seconds": 2.012371000018902,
+    "swapout_sample_growth_bytes": 0,
+    "swapout_bytes_per_second": 0.0
+  }
+}

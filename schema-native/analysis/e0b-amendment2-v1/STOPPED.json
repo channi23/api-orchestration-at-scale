@@ -1,0 +1,4 @@
+{
+  "phase": "after_model_load",
+  "reason": "Memory pressure level 2: no new inference request started. Stop the dedicated model to release memory."
+}

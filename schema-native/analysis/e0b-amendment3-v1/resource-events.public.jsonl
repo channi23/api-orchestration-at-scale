@@ -1,0 +1,13 @@
+{"passed": true, "probes": 3, "helper_invocations": 1, "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a", "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01", "utc": "2026-11-15T08:24:18.350570+00:00", "event": "prefix_helper_self_test"}
+{"free": 82460672, "inactive": 2344370176, "purgeable": 30130176, "available_bytes": 2456961024, "available_definition": "free + inactive + purgeable; accounting estimate, purgeable may overlap other page categories", "memory_pressure_dispatch_level": 2, "utc": "2026-11-15T08:24:18.381195+00:00", "event": "admission"}
+{"phase": "server_resource", "reason": "Pre-load admission needs normal pressure and at least 5 GiB free + inactive + purgeable", "resumable": true, "utc": "2026-11-15T08:24:18.381582+00:00", "event": "stop"}
+{"reason": "No owned server registration; no other process touched", "utc": "2026-11-15T08:24:18.381690+00:00", "event": "unload_unavailable"}
+{"passed": true, "probes": 3, "helper_invocations": 1, "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a", "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01", "utc": "2026-11-15T16:14:52.629229+00:00", "event": "prefix_helper_self_test"}
+{"free": 1122385920, "inactive": 4883857408, "purgeable": 281346048, "available_bytes": 6287589376, "available_definition": "free + inactive + purgeable; accounting estimate, purgeable may overlap other page categories", "memory_pressure_dispatch_level": 1, "utc": "2026-11-15T16:14:52.653305+00:00", "event": "admission"}
+{"memory_pressure_dispatch_level": 1, "consecutive_normal": 1, "utc": "2026-11-15T16:14:53.692097+00:00", "event": "settle_sample"}
+{"memory_pressure_dispatch_level": 1, "consecutive_normal": 2, "utc": "2026-11-15T16:14:58.722636+00:00", "event": "settle_sample"}
+{"memory_pressure_dispatch_level": 1, "consecutive_normal": 3, "utc": "2026-11-15T16:15:03.750778+00:00", "event": "settle_sample"}
+{"utc": "2026-11-15T16:15:03.751353+00:00", "event": "settled"}
+{"stopped_record": "1794759329988968000.json", "utc": "2026-11-15T16:15:29.989110+00:00", "event": "resume"}
+{"pid": 87748, "utc": "2026-11-15T17:10:49.516988+00:00", "event": "unload"}
+{"utc": "2026-11-15T17:10:50.577637+00:00", "event": "unloaded"}

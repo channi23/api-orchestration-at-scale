@@ -1,0 +1,35 @@
+{
+  "run": "e0b-amendment1-v1",
+  "status": "STOPPED_DURING_ONLINE_SMOKE",
+  "inference_source_commit": "c5f560abf3e74e352d9d5510035e7afe7fa20df2",
+  "readiness_generation_requests": 11,
+  "readiness_cap": 60,
+  "determinism_requests": 0,
+  "benchmark_generation_requests": 0,
+  "benchmark_cap": 700,
+  "baseline_rows_imported": 0,
+  "passing_receipt_issued": false,
+  "failed_request_key": "smoke|C1|select|UNIT|C020_R00|T103_p0",
+  "http_status": 200,
+  "finish_reason": "length",
+  "completion_tokens": 512,
+  "fresh_engine_log_errors": 0,
+  "server_peak_rss_bytes": 2943205376,
+  "model_unloaded": true,
+  "STOPPED": {
+    "phase": "online_preflight_smoke",
+    "reason": "ValueError: Smoke constraint/truncation fault; stop",
+    "utc": "2026-11-14T10:20:31.157730+00:00"
+  },
+  "no_comparisons": true,
+  "what_was_not_verified": [
+    "live smoke pass",
+    "all 30 exact determinism comparisons",
+    "any C1/C2/V benchmark result",
+    "co-primary/secondary comparisons",
+    "order-effect decision rule",
+    "training"
+  ],
+  "system_wide_swapout_delta_mib": 484.9375,
+  "swap_sampling_limitation": "Counts come from actual vm_stat/sysctl tool observations. Recorded pre-generation intervals reported zero writes, but those intervals do not cover the entire model-load/runtime-verification window. These global counters cannot establish timing, duration or which process caused the delta."
+}

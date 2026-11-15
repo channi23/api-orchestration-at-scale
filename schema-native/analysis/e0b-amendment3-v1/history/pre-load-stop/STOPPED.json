@@ -1,0 +1,6 @@
+{
+  "phase": "server_resource",
+  "reason": "Pre-load admission needs normal pressure and at least 5 GiB free + inactive + purgeable",
+  "resumable": true,
+  "utc": "2026-11-15T08:24:18.381361+00:00"
+}

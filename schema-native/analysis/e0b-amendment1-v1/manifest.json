@@ -1,0 +1,49 @@
+{
+  "plan_sha256": "72f38856fef8e718846bf9c0d5e615f6d6899b746db3714877fb7478ed21bfa2",
+  "source_hashes": {
+    "sn/constraint_policy.py": "78a8d2bac7f288c783c333464e73725e216f067d61bbd7df83c2ba33e79acfe3",
+    "sn/native_audit.py": "db2b7c0d41379d91759abb0e46cc0daffc69354023acf59ca4a85c35a56063f6",
+    "sn/synth.py": "528fc0714565751ffc1f3d4bbb499bfd209efa5594014266e4e964893e198361",
+    "sn/run.py": "311b685470c80d5aab1516e9b2411c3bfeecfeac78ec6f409589afdc803e5ffb",
+    "sn/server.py": "2dade36ee2813a557a7d5dbe03dcd9ca2a856cb5e6887f0122145f3c1e2b5618",
+    "sn/lookalike.py": "b40d706b3ca409f58ece5bbc88d72f0c33c6f7df4ce099b7bef0707b3e76c23a",
+    "sn/paths.py": "d1bc461cbc3cc4852f19fbac00010024a2ecf04ccfbc98d372105a5cc9a3b41e",
+    "sn/ceiling.py": "50ae0e944fde2d46c1e0b95080339ec99edce94a58dbfc8e8417e6f9b87fdcf6",
+    "sn/engine_audit.py": "9438128decdc3dc926f2df66b558bfc9c8e915f5e71b569890ab6b501f0f1779",
+    "sn/oracle_order.py": "86b1b41f2bd9a76c1816d283bb8c73bd8679b981b0925de43b357c93de099b47",
+    "sn/preflight_template.py": "0c82ddafbcae7eec6e863b0a09284583315268eeed415e7583c672322829d63c",
+    "sn/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sn/e0b.py": "d518415690a90a63baa49fc477b5795e6ebed58bbd4acf540e8bf18d2c66cf00",
+    "sn/mlxdata.py": "e94137c7b18a2f7023b4d2b444e4a3693eb97e1be23e93299c513ec73e4e38df",
+    "sn/trainpool.py": "ac80478492cc47ac200f052ccaea552ebb96b06ef4e195193062ddf77219ab5b",
+    "sn/e0b_preflight.py": "dd9516eda3c78fe4f4c081345f0f2e06b183c3ea4aa1fe3388cff4b8b99a4330",
+    "sn/e0b_readiness.py": "a23de68019809da2dbd1acbcc1b2e9628b30bef0a8d303d205a063c44ff2fe00",
+    "sn/order_audit.py": "8dff7b2ca38113b214a5f185f87eb5534fb8283af1b64df74ab17b15fc98ed5c",
+    "sn/resources.py": "c2cc73e479dc610c47beb183ffd0f75ba100f17c81725aa1edba92a45a9623a3",
+    "sn/provenance.py": "3ff0c7260a558b7aceb98d76db412f3734a31511848700b217ac0826447c24a8",
+    "sn/router.py": "2f31a4ad86163586e5be793e8a30aff253c74a5dcc4825fbddbba5deeb76bb56",
+    "sn/demo.py": "89c7771fa2789db83c9a1c5181afe750a28eb99636f8c95028ae92cab6d374ac",
+    "sn/e0b_report.py": "7bfffb795844be2110a7ff82af6f4762f8e4e09c16e4bac71ba05f225fddef2d",
+    "sn/diagnose_whitespace.py": "92655c3c1b978a4a4ab006e671d4f41cc7b9f3e6e56e4a158f11333765651874",
+    "sn/audit_e0.py": "99a504ceba7b5a449a2c3f5c3c05c3e5d4264d02cda7c7764750f4f0e9bfdc00",
+    "sn/shortlist.py": "63c5b98204419beafe3d891b0845efacd76741fd860c00ba243bf5fcb42842b4",
+    "sn/report.py": "aa1b5b320febf689d2acf37414866e96c8022b386928f2a158394755b274711a",
+    "sn/calibration.py": "19e5e09fd0b3932486f44ac97c0d4a306a8dabba018a4b56ae0e9abf7028d08d",
+    "sn/envelope.py": "5a1aa384eab1cbcd613bb1555682f5c69f5af09e483f362c5d07fd36034ab5d7",
+    "sn/preflight.py": "f3f3a5b4d8fdeaa22ec5e7c14c6daf4701d5a442f68ba3dd8d65171787780e49",
+    "sn/constraint_options.py": "314895db3231e67877b0c6dfbc5e00e1d0f84244bf886d04e1c50965093d2286"
+  },
+  "environment": {
+    "python": "3.14.2",
+    "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "jsonschema": "4.26.0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pytest": "9.1.1",
+      "llguidance": "1.9.1",
+      "xgrammar": "0.2.9",
+      "outlines_core": "0.2.14"
+    }
+  }
+}
