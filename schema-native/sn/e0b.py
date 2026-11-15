@@ -42,7 +42,7 @@ def tools_for(cat, task):
 
 def prepare(rc):
     expected_cap = {'benchmark':700,'path-smoke':0}.get(rc['result_kind'])
-    if rc['protocol'] != 'e0b-locked-v1-amendment2' or expected_cap is None or rc['benchmark_request_cap'] != expected_cap:
+    if rc['protocol'] != 'e0b-locked-v1-amendment3' or expected_cap is None or rc['benchmark_request_cap'] != expected_cap:
         raise ValueError('Not a locked E0b configuration')
     if rc['arms'] != ['F0','C0','C1','C2','V'] or set(rc['arm_defs']) != set(rc['arms']):
         raise ValueError('Amendment 1 permits only F0/C0/C1/C2/V; no C3 or subset substitution')
@@ -246,7 +246,7 @@ def score_response(unit, arm, response, status, errors):
                                             lookalike_key=flags['lookalike_key'], correct=ev['e2e_success'])}
 
 
-def execute(rc, args):
+def _execute(rc, args):
     from .run import http_json
     if rc['result_kind'] != 'benchmark':
         raise ValueError('Use E0b readiness smoke phase with its shared campaign ledger')
@@ -264,7 +264,7 @@ def execute(rc, args):
     validate_native(plan, json.loads(Path(native_path).read_text()))
     run_id = args.run_id
     if run_id != rc['run_id']:
-        raise ValueError('Amendment 2 requires the new configured run ID')
+        raise ValueError('Amendment 3 requires the new configured run ID')
     directory = Path(paths.RUNS, run_id)
     if readiness.get('run_id') != run_id:
         raise ValueError('Preflight/smoke budget must belong to this same campaign')
@@ -275,8 +275,9 @@ def execute(rc, args):
         if manifest_path.exists() and json.loads(manifest_path.read_text()) != identity:
             raise ValueError('E0b resume identity changed')
         manifest_path.write_text(json.dumps(identity, indent=2) + '\n')
-        if (directory / 'STOPPED.json').exists():
-            raise ValueError('Campaign stopped; inspect failure. No automatic baseline rerun.')
+        from . import e0b_resources as lifecycle
+        lifecycle.require_session(directory,rc)
+        lifecycle.resume(directory)
         budget = campaign_budget(directory,rc)
         output = directory / 'results.jsonl'
         saved = paths.jsonl(output) if output.exists() else []
@@ -296,10 +297,9 @@ def execute(rc, args):
             if key in done:
                 return done[key]
             try:
-                health = resources.check(rc, health_state)
+                health = lifecycle.guard(rc, health_state, directory)
             except RuntimeError as exc:
-                with (directory/'STOPPED.json').open('x') as stream:
-                    stream.write(json.dumps({'phase':'resource_guard','reason':str(exc)},indent=2)+'\n')
+                lifecycle.stop(directory,exc,'resource_guard')
                 raise
             offset = log.stat().st_size
             budget.reserve(category, key)
@@ -321,6 +321,10 @@ def execute(rc, args):
             if result['engine_error']:
                 (directory / 'STOPPED.json').write_text(json.dumps({'reason': 'engine_or_request_fault', 'key': key}))
                 raise RuntimeError('Engine/request fault saved; stop')
+            try:
+                lifecycle.guard(rc, health_state, directory)
+            except RuntimeError as exc:
+                lifecycle.stop(directory,exc,'resource_guard'); raise
             time.sleep(rc['request_cooldown_seconds'])
             return result
 
@@ -353,6 +357,16 @@ def execute(rc, args):
                 with output.open('a') as stream:
                     stream.write(json.dumps(result) + '\n'); stream.flush(); os.fsync(stream.fileno())
                 done[result['request_key']] = result
+
+
+def execute(rc, args):
+    from . import e0b_resources as lifecycle
+    try:
+        return _execute(rc,args)
+    except Exception as exc:
+        directory=Path(paths.RUNS,args.run_id)
+        if directory.exists(): lifecycle.stop(directory,exc,'benchmark')
+        raise
 
 
 def main():

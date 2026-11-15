@@ -161,11 +161,13 @@ def test_determinism_failure_stops_after_one_request_without_rerunning_baselines
     monkeypatch.setattr(e0b_preflight, 'validate_native', lambda *a: None)
     monkeypatch.setattr(paths, 'RUNS', str(tmp_path))
     monkeypatch.setattr(e0b.resources, 'check', lambda *a: {})
+    from sn import e0b_resources
+    monkeypatch.setattr(e0b_resources,'require_session',lambda *a: {})
     native = tmp_path/'native.json'; native.write_text('{}')
     log = tmp_path/'server.log'; log.write_text('')
     receipt = tmp_path/'receipt.json'
     receipt.write_text(json.dumps({'online_ok':True,'identity':e0b.identity_for(locked_plan),
-        'run_id':'e0b-amendment2-v1','server':'http://fake','server_props':{},'server_log':str(log),
+        'run_id':'e0b-amendment3-v1','server':'http://fake','server_props':{},'server_log':str(log),
         'native_evidence_path':str(native),'native_evidence_sha256':file_sha(native)}))
     first = locked_plan['determinism'][0]
     unit = next(u for u in locked_plan['units'] if u['key']==first['unit_key'])
@@ -175,11 +177,11 @@ def test_determinism_failure_stops_after_one_request_without_rerunning_baselines
         calls.append(payload)
         return 200, {'choices':[{'message':{'content':unit['F0']['raw_content']+' '},'finish_reason':'stop'}]}
     monkeypatch.setattr(run,'http_json',fake)
-    args=SimpleNamespace(preflight=str(receipt),server='http://fake',run_id='e0b-amendment2-v1')
+    args=SimpleNamespace(preflight=str(receipt),server='http://fake',run_id='e0b-amendment3-v1')
     with pytest.raises(RuntimeError,match='Determinism failed'):
         e0b.execute(locked_plan['config'],args)
     assert len(calls)==1
-    assert json.loads((tmp_path/'e0b-amendment2-v1/STOPPED.json').read_text())['reason']=='determinism_failed'
+    assert json.loads((tmp_path/'e0b-amendment3-v1/STOPPED.json').read_text())['reason']=='determinism_failed'
     with pytest.raises(ValueError,match='Campaign stopped'):
         e0b.execute(locked_plan['config'],args)
     assert len(calls)==1
@@ -195,7 +197,7 @@ def test_failed_native_coverage_blocks_before_network_or_model_access(monkeypatc
     monkeypatch.setattr(e0b_preflight,'http_json',lambda *a,**k:pytest.fail('Network contacted despite failed native gate'))
     monkeypatch.setattr(e0b_preflight.preflight,'runtime',lambda *a,**k:pytest.fail('Model file accessed despite failed native gate'))
     with pytest.raises(ValueError,match='coverage is incomplete'):
-        e0b_preflight.online(locked_plan['config'],run_id='e0b-amendment2-v1',server='http://fake',
+        e0b_preflight.online(locked_plan['config'],run_id='e0b-amendment3-v1',server='http://fake',
                             output=tmp_path/'receipt',native_path=f)
 
 

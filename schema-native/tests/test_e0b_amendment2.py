@@ -98,7 +98,8 @@ def test_amendment2_history_and_stopped_campaign_are_preserved():
     for name in ('e0b','e0b_smoke'):
         old=subprocess.check_output(['git','show',base+':schema-native/configs/runs/'+name+'.json'],cwd=paths.REPO,text=True)
         rc=config('configs/runs/'+name+'.json');assert rc['amendment1_locked_text']==old
-        assert rc['amendment']==2 and rc['run_id']=='e0b-amendment2-v1'
+        assert json.loads(rc['amendment2_locked_text'])['amendment']==2
+        assert rc['amendment']==3 and rc['run_id']=='e0b-amendment3-v1'
     subprocess.run(['git','diff','--exit-code',base,'--','schema-native/analysis/e0b-amendment1-v1'],cwd=paths.REPO,check=True,capture_output=True)
 
 
@@ -138,6 +139,7 @@ def test_benchmark_finished_constraint_violation_is_an_engine_fault():
 def test_e0b_fair_thermal_state_is_a_stop(monkeypatch):
     monkeypatch.setattr(resources.subprocess,'check_output',lambda *a,**k:'1')
     monkeypatch.setattr(resources,'thermal_state',lambda:1)
+    monkeypatch.setattr(resources,'swap_snapshot',lambda:(16384,0))
     with pytest.raises(RuntimeError,match='Thermal state 1'):
         resources.check({'protocol':'e0b-locked-v1-amendment2','require_normal_memory_pressure':True,
                          'require_acceptable_thermal_state':True},{})

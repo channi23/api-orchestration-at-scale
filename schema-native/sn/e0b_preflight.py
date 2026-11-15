@@ -13,6 +13,7 @@ import datetime
 import jsonschema
 
 from . import paths, preflight, provenance, resources
+from . import e0b_resources as lifecycle
 from .e0b import config, prepare, ordered_hash, identity_for, campaign_budget, payload_for
 from .run import http_json, constraint_payload
 from .router import strict_loads
@@ -70,17 +71,16 @@ def _online(rc, *, run_id, server, output, native_path):
     native = json.loads(Path(native_path).read_text())
     validate_native(plan, native)
     if run_id!=rc['run_id']:
-        raise ValueError('Amendment 2 requires the new configured run ID')
+        raise ValueError('Amendment 3 requires the new configured run ID')
     directory = Path(paths.RUNS, run_id); directory.mkdir(exist_ok=True)
     receipt_path = Path(output)
-    if receipt_path.exists():
-        raise ValueError('Never overwrite an existing online receipt')
+    previous_receipt=json.loads(receipt_path.read_text()) if receipt_path.exists() else None
     identity = identity_for(plan)
     model = plan['model']; root = Path(paths.ROOT)
     runtime = preflight.runtime(model, str(root/'models'/model['gguf_file']), str(root/'.tools/llama.cpp'))
     log = root / 'runs/server.8080.log'
     text = log.read_text()
-    resources.check(rc, {})
+    lifecycle.guard(rc, {}, directory)
     if 'offloaded 29/29' not in text:
         raise ValueError('No Metal offload evidence')
     status, props = http_json(server + '/props')
@@ -97,9 +97,23 @@ def _online(rc, *, run_id, server, output, native_path):
         raise ValueError('Running server context differs from locked 8K profile')
     # The runtime binary/model is checked above; request and context settings remain frozen.
     budget = campaign_budget(directory,rc)
+    if previous_receipt:
+        if previous_receipt['identity'] != identity or previous_receipt['run_id'] != run_id:
+            raise ValueError('Resume receipt identity changed')
+        # Text-only E0 uses none of the random multimodal sentinel bytes. All other props must match.
+        stable=lambda value:{k:v for k,v in value.items() if k != 'media_marker'}
+        if stable(previous_receipt['server_props']) != stable(props):
+            raise ValueError('Server profile changed on resume')
     state = {}; results = []
+    completed=lifecycle.completed(directory,'readiness-results.jsonl','key')
     def send(key, payload, unit=None, arm=None):
-        health = resources.check(rc, state); offset = log.stat().st_size
+        if key in completed:
+            record=completed[key]
+            if record['status']!=200 or record['engine_log_errors'] or (unit is not None and not record.get('smoke_gate',{}).get('passed')):
+                raise ValueError('Saved readiness fault cannot be resumed')
+            results.append(record)
+            return record['response']
+        health = lifecycle.guard(rc, state, directory); offset = log.stat().st_size
         budget.reserve('readiness', key)
         started = time.monotonic()
         status, response = http_json(server + '/v1/chat/completions', payload)
@@ -119,6 +133,7 @@ def _online(rc, *, run_id, server, output, native_path):
         if status != 200 or errors:
             raise ValueError('Readiness engine/request fault; stop')
         results.append(record)
+        lifecycle.guard(rc,state,directory)
         time.sleep(rc['request_cooldown_seconds'])
         return response
     for arm in ('C0', 'C1'):
@@ -153,6 +168,9 @@ def _online(rc, *, run_id, server, output, native_path):
     receipt.update(readiness_spent_before=rc['budget_carryover']['readiness_spent'],
                    readiness_spent_cumulative=spent,readiness_remaining=60-spent)
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    if previous_receipt:
+        archive=directory/'receipt-history';archive.mkdir(exist_ok=True)
+        (archive/(str(time.time_ns())+'.json')).write_text(json.dumps(previous_receipt,indent=2)+'\n')
     receipt_path.write_text(json.dumps(receipt, indent=2)+'\n')
     return receipt
 
@@ -161,17 +179,16 @@ def online(rc, *, run_id, server, output, native_path):
     # Fail before creating campaign state or accessing a model file when native coverage fails.
     validate_native(prepare(rc), json.loads(Path(native_path).read_text()))
     if run_id!=rc['run_id']:
-        raise ValueError('Amendment 2 requires the new configured run ID')
+        raise ValueError('Amendment 3 requires the new configured run ID')
     directory=Path(paths.RUNS,run_id);directory.mkdir(exist_ok=True)
     with (directory/'.writer.lock').open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        if (directory/'STOPPED.json').exists():raise ValueError('Campaign is stopped')
+        lifecycle.require_session(directory,rc)
+        lifecycle.resume(directory)
         try:
             return _online(rc,run_id=run_id,server=server,output=output,native_path=native_path)
         except BaseException as exc:
-            with (directory/'STOPPED.json').open('x') as stream:
-                stream.write(json.dumps({'phase':'online_preflight_smoke','reason':type(exc).__name__+': '+str(exc),
-                                         'utc':datetime.datetime.now(datetime.timezone.utc).isoformat()},indent=2)+'\n')
+            lifecycle.stop(directory,exc,'online_preflight_smoke')
             raise
 
 
