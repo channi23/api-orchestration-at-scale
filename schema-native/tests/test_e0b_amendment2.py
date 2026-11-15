@@ -119,3 +119,25 @@ def test_missing_swap_baseline_stops_before_generation(tmp_path):
         'max_system_swapout_growth_bytes':1073741824}
     with pytest.raises(RuntimeError,match='before loading Qwen'):
         resources.check_swap_growth(rc,0)
+
+
+def test_benchmark_illegal_prefix_is_an_engine_fault(monkeypatch):
+    monkeypatch.setattr('sn.e0b.check_prefix',lambda *a,**k:{'legal_prefix':False})
+    unit=prepare(config())['units'][0]
+    row=score_response(unit,'C1',response('illegal','length'),200,[])
+    assert row['engine_error'] and row['constraint_violation']
+
+
+def test_benchmark_finished_constraint_violation_is_an_engine_fault():
+    unit=copy.deepcopy(prepare(config())['units'][0]);unit['C1_schema']=False
+    text=json.dumps({'tool':unit['task']['tool_name'],'arguments':unit['task']['gold_args']})
+    row=score_response(unit,'C1',response(text),200,[])
+    assert row['engine_error'] and row['constraint_violation']
+
+
+def test_e0b_fair_thermal_state_is_a_stop(monkeypatch):
+    monkeypatch.setattr(resources.subprocess,'check_output',lambda *a,**k:'1')
+    monkeypatch.setattr(resources,'thermal_state',lambda:1)
+    with pytest.raises(RuntimeError,match='Thermal state 1'):
+        resources.check({'protocol':'e0b-locked-v1-amendment2','require_normal_memory_pressure':True,
+                         'require_acceptable_thermal_state':True},{})

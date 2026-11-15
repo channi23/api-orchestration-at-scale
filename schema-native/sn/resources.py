@@ -74,7 +74,7 @@ def check(config, state):
     thermal = None
     if config.get('require_acceptable_thermal_state'):
         thermal = thermal_state()
-        if thermal not in (0, 1):
+        if thermal not in (0, 1) or (config.get('protocol','').startswith('e0b') and thermal!=0):
             raise RuntimeError(f'Thermal state {thermal}: no new inference request started. Allow the dedicated model to cool.')
     page_size,swaps=swap_snapshot()
     growth=check_swap_growth(config,page_size*swaps)

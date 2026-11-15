@@ -99,3 +99,7 @@ experiment/ files were altered.
 **STOP FOR REVIEW.** Not run: new online preflight/smoke, real determinism checks, benchmark
 inference, actual swap-window initialization, model accuracy/latency readout or training. Only
 explicit user confirmation authorizes the future model sequence. E1/E2 remain gated.
+
+## Confirmed-execution guard audit (before model loading, 2026-11-15 IST)
+
+The user confirmed execution and explicitly required stopping on an illegal benchmark truncation, a finished constraint-copy violation and any thermal warning. The benchmark path now uses the same pinned native prefix proof for length finishes, validates finished outputs against the constraint copy as well as the named raw schema, and treats non-nominal E0b thermal states as stops. Legal-prefix truncation remains a scored model outcome. Prompts, model/sampling settings, sample selection, budgets and analysis rules are unchanged. Model-free validation: 108 package tests and 12 evaluator tests passed; active native capability passes. Native verification time falls within the runner's recorded request wall time, which already includes response evaluation. These are enforcement fixes made before the new run.

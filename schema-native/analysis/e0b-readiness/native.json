@@ -8644,7 +8644,7 @@
     "readiness_remaining": 49
   },
   "verification_source_sha256": {
-    "sn/e0b.py": "6c38d5f574ab7845fa60119bd644b8a00c898d2af33366e8d73f4bea73ed425b",
+    "sn/e0b.py": "1bad49f7180541d681a80b2a458d0dd240483c3916b75833224464b30f7d1f2a",
     "sn/e0b_readiness.py": "6efccedb9abfeebbd88dd9b2dd1004c7f70bb054b41b220b87a45f0faa5ba785",
     "sn/router.py": "2f31a4ad86163586e5be793e8a30aff253c74a5dcc4825fbddbba5deeb76bb56",
     "sn/oracle_order.py": "86b1b41f2bd9a76c1816d283bb8c73bd8679b981b0925de43b357c93de099b47",
@@ -8653,7 +8653,7 @@
     "sn/report.py": "aa1b5b320febf689d2acf37414866e96c8022b386928f2a158394755b274711a",
     "sn/e0b_preflight.py": "e1f643d9a0b686e657bad7cdc7bc22225e9921868017f04c8598a27cf50862d2",
     "sn/native_prefix.py": "ee8108315962b0042ce855a80caee8d7c7e50d514225c9a5e8bc8d51dc31fe35",
-    "sn/resources.py": "e31e63a7aed786cd1cbfcf8cec573cf2531a3f0bbb8f952d4f92cd009221a98d",
+    "sn/resources.py": "df79f7a65adc3002547050c8ceed7158bbd9a603888c96195347ddf26192dfde",
     "sn/e0b_swap.py": "898ae0b63968f991a3fdc8286466b8acdbafebb9b2805e8ae966f1d169cc272a",
     "scripts/native_llg_audit.cpp": "97e40106c8796768702d7b206dca30a6d7b77bcf62a1774cdad75c3b08a262f2"
   },

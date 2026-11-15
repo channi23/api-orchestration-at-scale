@@ -1,12 +1,5 @@
-Amendment 2 model-free verification, 2026-11-15 IST
-
-python -m sn.e0b_readiness
-C1 70 C2 300 C1/C2/V native gate True
-
-python -m pytest -q --ignore-glob='* 2.py'
-105 passed in 11.63s
-
-python -m pytest -q ../experiment/tests/test_evaluate.py
-12 passed in 0.05s
-
-The actual stopped output was replayed only into the native byte matcher, not into a model. Prefix proof: legal=True, accepting=False; amended smoke outcome=cd_truncated. validate_native passed without online operations. All 30 selections unchanged. No future run directory/swap baseline initialized.
+Confirmed-execution enforcement validation, 2026-11-15 IST
+python -m pytest -q --ignore-glob='* 2.py': 108 passed
+python -m pytest -q ../experiment/tests/test_evaluate.py: 12 passed
+python -m sn.e0b_readiness: active native gate PASS
+No model loaded for these tests. Frozen 30 selections unchanged.

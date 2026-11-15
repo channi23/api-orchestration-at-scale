@@ -22,6 +22,8 @@ from .lookalike import key_flags, failure_class
 import prompts
 import schema_utils as su
 from evaluate import evaluate
+import jsonschema
+from .native_prefix import check_prefix
 
 
 def ordered_hash(value):
@@ -206,13 +208,27 @@ def score_response(unit, arm, response, status, errors):
     except (KeyError, IndexError, TypeError, ValueError):
         choice = {}; content = ''; malformed = True
     truncated = choice.get('finish_reason') == 'length'
+    prefix_proof=None;constraint_error=None
+    if arm!='F0' and not malformed and status==200 and not errors:
+        schema=unit['C1_schema'] if arm=='V' else (unit['schema_order_schema'] if arm=='C0' else unit[arm+'_schema'])
+        try:
+            if truncated:
+                from .run import constraint_payload
+                prefix_proof=check_prefix(schema,content,grammar=constraint_payload(schema,'llguidance_grammar')['grammar'])
+                if not prefix_proof['legal_prefix']:
+                    constraint_error='Truncated output is not a legal grammar prefix'
+            else:
+                from .router import strict_loads
+                jsonschema.Draft7Validator(schema).validate(strict_loads(content))
+        except Exception as exc:
+            constraint_error=type(exc).__name__+': '+str(exc)
     routed = route(content, unit['tools'], truncated=truncated)
     call = routed['call']
     lookalikes = key_flags(call['arguments'], envelope.argument_schema(unit['tools'][call['tool']])) if call and call['tool'] in unit['tools'] else []
     task = unit['task']
     target = paths.pool()[task['tool_id']]
     ev = evaluate(content, task, su.load_schema(target['schema_id']), set(unit['tools']))
-    engine_fault = malformed or status != 200 or bool(errors) or (arm != 'F0' and not truncated and routed['retry'])
+    engine_fault = malformed or status != 200 or bool(errors) or bool(constraint_error) or (arm != 'F0' and not truncated and routed['retry'])
     if engine_fault:
         ev['e2e_success'] = ev['e2e_strict'] = False
     flags = {'engine_refusal': engine_fault, 'cd_truncated': truncated and arm != 'F0',
@@ -221,6 +237,7 @@ def score_response(unit, arm, response, status, errors):
              'oracle_incomplete': arm == 'C2' and unit['oracle_flags']['oracle_incomplete'],
              'truncation_location': truncation_location(content) if truncated else None}
     return {'raw_content': content, 'finish_reason': choice.get('finish_reason'), 'truncated': truncated,
+            'native_prefix':prefix_proof,'constraint_violation':constraint_error,
             'http_status': status, 'engine_error': engine_fault, 'engine_log_errors': errors,
             'request_error': 'engine_or_request_fault' if engine_fault else None,
             'usage': response.get('usage', {}), 'eval': ev, 'diagnostic_flags': flags,
