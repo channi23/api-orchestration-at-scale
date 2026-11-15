@@ -1,105 +1,147 @@
-# E0b Amendment 2: model-free review validation
+# E0b Amendment 3 — model-free review validation
 
-**2026-11-15 IST — native capability gate PASS; STOP for user review before model work.**
+**LOCKED 2026-11-15 IST. Steps 1–2 complete; STOP for review and confirmation that the Mac is freed up.**
 
-No model was loaded, no new model inference or training ran, and no future run directory or swap
-baseline was initialized. E1/E2 remain gated. Amendment 2 is appended after all earlier plan text;
-both configs preserve verbatim Amendment 1 text and its earlier locked history. The stopped
-`e0b-amendment1-v1` campaign, including STOPPED.json and all 11 charged attempts, is unchanged.
+No model was loaded, no generation or training ran, and no real `e0b-amendment3-v1` run directory,
+swap baseline, ledger or online receipt was created. All request activity in lifecycle tests uses
+synthetic responses and temporary directories. E1/E2 remain gated.
 
-## Actual stopped-output verification
+## Scope and preservation
 
-- Request: `smoke|C1|select|UNIT|C020_R00|T103_p0`.
-- Original response: HTTP 200, finish_reason length, 512 completion tokens, no fresh engine-error log.
-- The native helper consumed the stored text under the **exact request grammar**, with its C1
-  constraint-copy identity checked against the frozen prior plan. **Legal prefix: true; complete
-  accepting value: false.** This passes the amended gate as **cd_truncated**.
-- The frozen E0 `select|B_raw_cd|C020_R00|T103_p0` also finished by length at 512 tokens. This is
-  the same capped outcome on the same unit; equality of the two output byte strings is not claimed.
-- No schema, tokenizer/model setting, output cap, router, oracle, contrast or analysis threshold
-  was changed. The helper links the exact recorded bundled llguidance static library, not a PyPI
-  approximation. `amendment2-prefix-proof.json` records grammar/text/helper/library hashes.
+Amendment 3 is appended to the plan after its exact previous contents at `d26feb9`. Both configs
+retain their exact previous serialized text in `amendment2_locked_text`, including all earlier
+snapshots and amendment records. The only active changes are amendment/run identity, the
+corresponding swap-baseline path and resource lifecycle policy. Tests compare every other config
+field with `d26feb9`. Model profile, prompts, sampling, source rows, selected requests, schemas,
+router, oracle and analysis rules are unchanged.
 
-## Gate semantics and tests
+Both published stopped campaigns, `analysis/e0b-amendment1-v1` and
+`analysis/e0b-amendment2-v1`, are byte-for-byte unchanged, as are `analysis/e0-clean-v1` and
+`experiment/`. The preceding readiness artifacts are retained separately as
+`native-amendment2.json`, `TESTS-amendment2.txt` and `VALIDATION-amendment2.md`.
 
-C1/C2/V smoke requires HTTP 200 and no fresh engine-error entry. A finished response must strict-parse
-and validate against both the actual constraint copy and the selected tool's original raw schema.
-A length finish instead requires native legal-prefix proof; it is not parsed as complete JSON.
-Invalid prefixes, engine/HTTP errors, malformed or non-strict responses, constraint violations and
-raw-schema violations stop and save evidence. Successful truncations persist their prefix proof.
-The adversarial constant/bounds probes still must finish and validate.
+## Resource lifecycle implemented
 
-Benchmark truncation alone remains a recorded/scored cd_truncated outcome, not an engine-fault stop.
-Tests verify this independently of smoke. No original E0 response, key or evaluator score is modified.
+- Dedicated campaign server launch requires normal pressure and **at least 5 GiB** of the requested
+  free + inactive + purgeable sum. Admission reports each component and the ten largest processes
+  by resident bytes, names and sizes only. This sum is an accounting estimate: purgeable pages may
+  overlap other categories. Admission inventories stay local rather than being published.
+- No server process is started after failed admission. The campaign launcher enforces the frozen
+  model path/profile, refuses an occupied port, imports the eleven historical readiness charges
+  and records the scientific identity before starting its own server process group.
+- After load, TCP readiness is followed by pressure sampling every **5 seconds**, for **90 seconds**
+  maximum. **Three consecutive normal samples** are required before any inference or metadata HTTP
+  request. Settle failure writes a resumable stop and unloads only the owned dedicated server.
+- Before and after each fresh generation, memory, thermal and active-swap-rate checks run. A warning
+  idles the model and logs a pause; checks repeat every **30 seconds**. Three consecutive checks
+  clean on all guards permit continuation. Recovery timeout is **15 minutes**, followed by a
+  resumable resource stop and graceful unload.
+- **System swapout growth strictly greater than 1 GiB remains a final hard stop**, including during
+  warning recovery, loading and settling. The original baseline is never reset on resume; changed
+  boot/counter identity also fails closed. Accumulated swap allocation is not used as swap-write rate.
+- Every pause, clean/warning check, continuation, stop and resume is timestamped and fsynced. Resource
+  STOPPED.json files are archived unchanged before resume. A later final fault cannot leave an old
+  resumable marker active. Engine/request faults, finished constraint violations, illegal-prefix
+  truncations and determinism failures remain final stops. Legal-prefix truncation still records
+  cd_truncated, with no protocol change.
+- Fresh admission/settling and unchanged manifest/config/runtime identity are required on server
+  restart. Preflight rechecks runtime and server metadata; only the pinned text-only server's unused
+  random `media_marker` may differ. Original receipts are archived before refresh. Completed smoke,
+  determinism, C1/C2 and V retry keys are read from durable records and never sent or charged again.
+  Frozen generation order remains intact. An already charged key without a durable response fails
+  closed; it is not automatically retried.
 
-## Cumulative allowance and new run identity
+Checks are sampled at boundaries, not continuous telemetry inside a blocking HTTP call. A request
+already in flight may finish and persist before the pause begins. Graceful unload verifies the
+registered process identity and process group and waits for exit; it never closes other apps.
 
-New configured run: **e0b-amendment2-v1**. The old run ID is refused; its STOPPED.json is never removed
-or overwritten. The actual published prior budget ledger is SHA-pinned in both configs. It contains
-**11 readiness charges and zero benchmark charges**. These are imported once under historical
-namespaced keys into the future new ledger; new repeated probes are separate charges. Missing or
-altered prior charges stop rather than resetting the budget.
+Greedy decoding, fixed seed and independent requests make resource-driven scheduling independent
+of outcomes. No interim accuracy is read. These settings do **not** prove byte identity across
+server restarts; the frozen 30-request determinism gate remains mandatory, and completed comparisons
+are never repeated to reset it. No claim of hardware-independent determinism is made.
 
-- Readiness/smoke cap: **60 total, 11 already spent, 49 remaining**.
-- Benchmark cap: **700 total, zero spent**. Expected unchanged benchmark count: **662**.
-- The 19 planned new readiness generations would bring cumulative spending to 30/60, not 19/60.
-- The frozen 15 F0 plus 15 C0 sample is unchanged. Any byte mismatch still writes STOPPED.json and
-  stops without rerunning baselines. C1 then C2 then V and the Holm/threshold rules are unchanged.
+## Model-free tests
 
-Budget tests seed all 11 charges, allow exactly 49 further readiness reservations, reject the 50th,
-preserve the original source bytes, and reject an existing ledger that omits the historical charges.
-No real new-run ledger is created during this review.
+**128 package tests + 12 original evaluator tests = 140 passed.** Twenty Amendment 3 cases cover:
 
-## Observation disclosure
+- Settle pass, reset after a warning, and exact 90-second timeout.
+- Warning pause, three clean checks after the last warning, and exact 15-minute timeout/unload.
+- Admission at the 5-GiB boundary, below the boundary, and with abnormal pressure; inventory shape.
+- Actual launcher control flow with a fake process: admission failure never calls process launch;
+  settle pass permits readiness and settle failure calls unload. No model subprocess is created.
+- Hard swap cap precedence even under memory warning, and final-fault non-resumability.
+- A synthetic full benchmark transport stops after its first durable C1 response, then resumes:
+  **662 unique generation keys sent exactly once**, in frozen order (30 determinism, 300 C1,
+  300 C2, 32 V). Saved result bytes remain an unchanged prefix, and charges are not duplicated.
+- A synthetic smoke resume skips one durable adversarial probe: 18 additional synthetic calls
+  complete the planned 19, and cumulative charges are **30/60 including the historical 11**.
+- Exact prior plan/config history and protected-directory preservation.
 
-Smoke units are benchmark units. **Seven C1/C2 outputs were observed before the benchmark**. This
-control-gate correction is informed by that observation; no analysis decision rule was changed.
-The forthcoming benchmark must disclose this and must not be described as a blinded independent
-replication of those units. The prior stopped campaign remains published as it occurred.
+Commands (run from `schema-native/`):
 
-## Cumulative system swapout guard prepared for the future confirmed run
+```sh
+.venv/bin/python -m pytest -q --ignore-glob='* 2.py'
+.venv/bin/python -m pytest -q ../experiment/tests/test_evaluate.py
+.venv/bin/python -m sn.e0b_readiness
+```
 
-The new code requires an explicit pre-load baseline (`python -m sn.e0b_swap`) immediately before
-loading Qwen, only after review confirmation. No baseline is initialized now. The same system-wide
-counter baseline persists through preflight and benchmark and includes the loading window. Growth
-**strictly greater than 1 GiB** stops at the next admission check; exactly 1 GiB does not satisfy the
-"more than" condition. Boot/counter-reset identity mismatch or a missing baseline also stops.
-Existing pressure, active-write-rate and thermal guards remain. This is admission sampling, not a
-claim of continuous monitoring or process-specific swap attribution.
+The full package suite uses temporary localhost fake HTTP servers. Existing untracked sync copies
+with names ending ` 2.py` are excluded and left untouched. `TESTS.txt` records the final passing
+outputs. Native evidence is revalidated against the current plan and verification-source hashes.
 
-Tests cover the exact threshold, threshold plus one byte, reboot identity and missing baseline.
-No resource or model setting is changed beyond the explicitly requested cumulative stop guard.
-
-## Native readiness counts
+## Refreshed native engine evidence — no model or tokenizer inference
 
 | Check | Result |
-|---|---:|
-| C1 compiled | 70/70 |
-| C2 compiled | 300/300 |
-| C1 gold reachable | 300/300 |
-| C1 invalid witnesses accepted | 0/6696 |
-| C2 invalid witnesses accepted | 0/6696 |
-| V select routed | 18/200 |
-| V fixed-tool routed | 14/100 |
+| --- | --- |
+| C1 envelope compilation | 70/70; zero refusals |
+| C2 unit-specific compilation | 300/300; zero refusals |
+| C1 schema-ordered gold reachability | 300/300 |
+| Bounded invalid witnesses accepted | C1: 0/6,696; C2: 0/6,696 |
+| Strict free-correct outputs accepted under their oracle constraint, both representations | 499/501 |
+| Of those, formerly order-rejected subset | 250/252 |
+| Raw F0 strict free-correct outputs accepted under C2 | 246/248 |
+| Strict stored router replay | select 18/200; arggen 14/100 |
+| V native capability gate | PASS; 32 planned retries through C1 |
+| Planned oracle flags | oracle_not_applied 32; oracle_incomplete 0 |
+| Tuple-array positions in the frozen envelopes | None |
+| Frozen look-alike output flags | Raw CD 11; minified CD 6; both free arms 0 |
+| Overall native C1/C2/V gate | PASS |
 
-These remain finite model-free witnesses, not exhaustive schema-language or live-tokenizer proof.
-C3 remains excluded and its original model-free finding is preserved unchanged. Earlier readiness
-reports and native evidence are archived as VALIDATION-amendment1.md and native-amendment1.json;
-all earlier C3 archives remain published. No analysis of new model performance has been performed.
+Every reachability exception remains unchanged and is **not** relaxed:
+`select|A_raw_free|C005_R03|T062_p0` and `arggen|A_raw_free|single|T062_p0`.
+These are the known required-but-undeclared `id` T062 cases. C3 stays excluded, with its original
+failed model-free gate retained as historical engine evidence; no C3 subset or replacement is run.
 
-## Test totals and final state
+## Budget and future execution — NOT authorized by this validation
 
-**105 package tests + 12 original evaluator tests passed.** TESTS.txt records exact commands. New
-tests prove legal-prefix truncation passes; illegal-prefix truncation, engine errors and each schema
-violation stop; finished valid JSON passes; and benchmark truncation remains a model outcome.
-History/cumulative-budget/swap tests passed, and all existing oracle/router/decision-rule tests passed.
-The 30 frozen selections and earlier stopped-campaign files remain unchanged. No E0 rows or
-experiment/ files were altered.
+New run: **e0b-amendment3-v1**. Cumulative caps remain **60 readiness (11 spent, 49 remaining)** and
+**700 benchmark (zero spent)**. Projected benchmark generation count remains 662. All 30 selected
+F0/C0 comparison keys are unchanged. No new readiness or benchmark request was charged here.
 
-**STOP FOR REVIEW.** Not run: new online preflight/smoke, real determinism checks, benchmark
-inference, actual swap-window initialization, model accuracy/latency readout or training. Only
-explicit user confirmation authorizes the future model sequence. E1/E2 remain gated.
+Only after review passes **and** the user confirms the Mac is freed up, use the following sequence.
+Do not run the commands now. Start the server in a separate terminal:
 
-## Confirmed-execution guard audit (before model loading, 2026-11-15 IST)
+```sh
+.venv/bin/python -m sn.server --config configs/model.qwen3-1.7b.sustainable.json --campaign-config configs/runs/e0b.json
+```
 
-The user confirmed execution and explicitly required stopping on an illegal benchmark truncation, a finished constraint-copy violation and any thermal warning. The benchmark path now uses the same pinned native prefix proof for length finishes, validates finished outputs against the constraint copy as well as the named raw schema, and treats non-nominal E0b thermal states as stops. Legal-prefix truncation remains a scored model outcome. Prompts, model/sampling settings, sample selection, budgets and analysis rules are unchanged. Model-free validation: 108 package tests and 12 evaluator tests passed; active native capability passes. Native verification time falls within the runner's recorded request wall time, which already includes response evaluation. These are enforcement fixes made before the new run.
+Wait for its `settled` event before proceeding. In another terminal, execute each step only if the
+preceding one passed. The runner enforces determinism before C1, then C2, then V:
+
+```sh
+.venv/bin/python -m sn.e0b_preflight --run-id e0b-amendment3-v1 --output runs/e0b-amendment3-v1/online-preflight.json
+.venv/bin/python -m sn.run --config configs/runs/e0b.json --run-id e0b-amendment3-v1 --preflight runs/e0b-amendment3-v1/online-preflight.json
+.venv/bin/python -m sn.e0b_report --run e0b-amendment3-v1
+.venv/bin/python -m sn.e0b_resources --unload
+```
+
+On an allowed resource stop, later repeat the same server/preflight/runner commands with the same
+run ID and unchanged checkout. Successful requests are skipped, not repeated. Do not resume a
+final fault or delete a ledger/STOPPED.json to bypass it. The report is produced after completion,
+not between segments. Unload also follows any stop. Publish redacted resource observations, not
+private app inventories, when future execution is authorized.
+
+**Not verified here:** actual current Mac headroom, physical post-load settling or recovery, real
+process signaling/unloading, online runtime checks, live smoke, 30 byte-identical model responses,
+model/tokenizer enforcement, benchmark results, accuracy/latency or decision-rule outcomes. Fake
+transport totals are software-control proofs, not measured inference results. E1/E2 stay gated.

@@ -1,7 +1,7 @@
 {
   "kind": "MODEL-FREE Amendment 2 readiness; not inference",
-  "config_sha256": "f3c8991fed4b9bfd1b26a4588a5d45d2dfe0637a7b08ecf1e1f9d30a2998fdae",
-  "plan_sha256": "1e0e189eec525c4ad00b6bce8628202f242a74364f9700ffce43100fd641dc41",
+  "config_sha256": "62c6fbec7de246fa9f4edbf797a817659d3db29bfbbbcf0b25c6672b280b15c1",
+  "plan_sha256": "9f6acfc8eab7ca790bfb44d1472efca0496c28d83ad3e0bd7fa8669c11d8f4eb",
   "llguidance_build": {
     "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
     "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01"
@@ -8644,17 +8644,19 @@
     "readiness_remaining": 49
   },
   "verification_source_sha256": {
-    "sn/e0b.py": "1bad49f7180541d681a80b2a458d0dd240483c3916b75833224464b30f7d1f2a",
-    "sn/e0b_readiness.py": "6efccedb9abfeebbd88dd9b2dd1004c7f70bb054b41b220b87a45f0faa5ba785",
+    "sn/e0b.py": "ac6bded39eceed5d70dc5420e0af0574664eb6a02102e3c8c5e1d7437c46818b",
+    "sn/e0b_readiness.py": "909613bea55751e7f8c320ec69ea95d774d90f5e34185dd247154ede252b7b99",
     "sn/router.py": "2f31a4ad86163586e5be793e8a30aff253c74a5dcc4825fbddbba5deeb76bb56",
     "sn/oracle_order.py": "86b1b41f2bd9a76c1816d283bb8c73bd8679b981b0925de43b357c93de099b47",
     "sn/constraint_options.py": "314895db3231e67877b0c6dfbc5e00e1d0f84244bf886d04e1c50965093d2286",
     "sn/lookalike.py": "b40d706b3ca409f58ece5bbc88d72f0c33c6f7df4ce099b7bef0707b3e76c23a",
     "sn/report.py": "aa1b5b320febf689d2acf37414866e96c8022b386928f2a158394755b274711a",
-    "sn/e0b_preflight.py": "e1f643d9a0b686e657bad7cdc7bc22225e9921868017f04c8598a27cf50862d2",
+    "sn/e0b_preflight.py": "7fd09980e8932a205e44c7a1602f7b62f474b43f0b98a2efab30af7bf7802efb",
     "sn/native_prefix.py": "ee8108315962b0042ce855a80caee8d7c7e50d514225c9a5e8bc8d51dc31fe35",
-    "sn/resources.py": "df79f7a65adc3002547050c8ceed7158bbd9a603888c96195347ddf26192dfde",
+    "sn/resources.py": "f4765c3a68589d930c44aab38fa7698fd04b6cc1e296eb3eddb529848a597911",
     "sn/e0b_swap.py": "898ae0b63968f991a3fdc8286466b8acdbafebb9b2805e8ae966f1d169cc272a",
+    "sn/e0b_resources.py": "d381beb819b2cf0927776c1defa1c7bc4bfda1b3f5931a48c06f0cb59d69f011",
+    "sn/server.py": "7deaef380c5d2ef0b139db74fc9e02203ff220ac581fc34006370f1efe2e0288",
     "scripts/native_llg_audit.cpp": "97e40106c8796768702d7b206dca30a6d7b77bcf62a1774cdad75c3b08a262f2"
   },
   "online_ok": false,

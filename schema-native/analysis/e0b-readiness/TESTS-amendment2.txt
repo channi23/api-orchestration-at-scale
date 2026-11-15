@@ -1,0 +1,5 @@
+Confirmed-execution enforcement validation, 2026-11-15 IST
+python -m pytest -q --ignore-glob='* 2.py': 108 passed
+python -m pytest -q ../experiment/tests/test_evaluate.py: 12 passed
+python -m sn.e0b_readiness: active native gate PASS
+No model loaded for these tests. Frozen 30 selections unchanged.
