@@ -301,3 +301,16 @@ def test_amendment_rejects_original_cap_or_C3_reintroduction():
     bad=config();bad['arms'].append('C3')
     with pytest.raises(ValueError,match='no C3'):
         prepare(bad)
+
+
+@pytest.mark.parametrize('diff,lower,expected',[(18.0,10.0,True),(7.99,1.0,False),(18.0,0.0,False),(8.0,0.01,True)])
+def test_rule_flag_from_numpy_statistics_is_json_serializable(monkeypatch,diff,lower,expected):
+    import numpy as np
+    from sn import e0b_report
+    monkeypatch.setattr(e0b_report.statistics,'paired',lambda *a,**k:{
+        'mcnemar_exact_p':0.1,'diff_pp':np.float64(diff),
+        'ci95_diff_pp':[np.float64(lower),np.float64(28.0)]})
+    result=e0b_report.comparisons([],config())
+    assert type(result['order_effect_rule_met']) is bool
+    assert result['order_effect_rule_met'] is expected
+    assert json.loads(json.dumps(result))['order_effect_rule_met'] is expected

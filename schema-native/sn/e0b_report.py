@@ -22,7 +22,7 @@ def comparisons(rows, rc):
             row['p_holm'] = adjusted
     p1 = results[0]
     return {'comparisons': results,
-            'order_effect_rule_met': p1['diff_pp'] >= 8 and p1['ci95_diff_pp'][0] > 0,
+            'order_effect_rule_met': bool(p1['diff_pp'] >= 8 and p1['ci95_diff_pp'][0] > 0),
             'independent_intents_approx': 50,
             'note': 'Intervals are replicate-bootstrap intervals; only approximately 50 independent intents. Primary outcomes include all units.'}
 
