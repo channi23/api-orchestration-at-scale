@@ -204,3 +204,67 @@ review may the existing model profile be loaded for: (a) budgeted online preflig
 (b) the frozen 30-request determinism check, and, only on an exact pass, (c) C1, C2, V and the final
 sn.e0b_report readout under the 700 cap. Native capability passing does not authorize model work.
 E1/E2 remain gated.
+
+
+## Amendment 2 — 2026-11-15 IST, before any determinism or benchmark inference
+
+All earlier text above is preserved unchanged. The stopped campaign **e0b-amendment1-v1**, including
+STOPPED.json, its 11 attempts and all published evidence, remains immutable. Both configs retain
+verbatim Amendment 1 locked text and append the new amendment record. New run ID:
+**e0b-amendment2-v1**. No new model work is authorized during implementation/review of this amendment.
+
+### Reason and observation disclosure
+
+The smoke gate treated truncation as an infrastructure fault. A constrained response reaching the
+unchanged 512-token cap while still a legal grammar prefix is a model outcome, **cd_truncated**, which
+E0b is intended to measure. The stopped request
+`smoke|C1|select|UNIT|C020_R00|T103_p0` reproduces the capped outcome of frozen E0
+`select|B_raw_cd|C020_R00|T103_p0`; identical output bytes between those two conditions are not asserted.
+
+**Disclosure:** smoke units are benchmark units. Seven C1/C2 smoke outputs were observed before the
+benchmark, including the stopped one. The gate correction is informed by that observation. No
+analysis contrast, threshold, decision rule, router, oracle or model setting is changed in response.
+E0b is not a blinded independent replication of those observed units.
+
+### New smoke pass rule — C1, C2 and V retries
+
+Require HTTP 200 and no fresh engine-error log entry, and either:
+
+1. Finished response: strict JSON parse, validation against the actual request constraint copy,
+   and validation against the named tool's original raw schema; or
+2. Truncated response: the pinned native helper confirms the text is a **legal prefix of the exact
+   request grammar**. Persist the proof, grammar/text hashes and helper/library identity, and record
+   the outcome as cd_truncated. Do not attempt to parse incomplete JSON as a finished call.
+
+Any other condition stops the campaign and preserves evidence. Native verification is model-free;
+it does not load weights. The same constant/bounds adversarial probes must still finish and validate.
+
+**In the benchmark, truncation alone is never a stop condition.** It is recorded and scored. Fresh
+engine errors, transport/response faults, constraint violations on finished calls and resource
+warnings still stop. The 512-token cap is unchanged; no retry or cap increase is introduced.
+
+### Cumulative budgets and frozen protocol
+
+- Preflight/smoke allowance remains **60 total**, with **11 already spent**, leaving **49**. Import
+  the immutable prior ledger into the new run's ledger under historical namespaced keys. Preserve
+  both ledgers; do not reset the allowance when changing run ID. New repeated probes are new charges.
+- Benchmark cap remains **700**, with **0 spent**. The original 30 selected determinism requests and
+  exact-byte pass rule remain unchanged; no baseline rerun follows a mismatch.
+- C1 then C2 then V ordering, co-primary tests, two-test secondary Holm family, +8-point/interval
+  threshold, strict router, oracle rules, look-alike diagnostic and all model settings remain unchanged.
+- The earlier STOPPED.json is never deleted, overwritten or used as permission to resume that run.
+
+### Swap protection and review stop
+
+For the future confirmed run, record a system-wide swapout baseline **immediately before model
+loading** using `python -m sn.e0b_swap`. Do not initialize that run window during this model-free
+review. The baseline persists across online preflight and benchmark stages, includes loading, and
+is checked with boot identity; if cumulative system swapout grows by **more than 1 GiB**, stop and
+report. Existing pressure, active-swap-rate and thermal guards remain. This is system-wide activity,
+not attribution to Qwen. A missing/reset baseline also stops rather than silently restarting the count.
+
+**STOP after model-free prefix verification, tests, validation update and pushing PR #5.** Only after
+explicit user confirmation may Qwen be loaded under the unchanged profile for online preflight/smoke,
+the frozen 30-request exact determinism check, C1/C2/V, sn.e0b_report and model unloading. Any
+byte mismatch saves STOPPED.json and stops without baseline rerun. Publish and stop. E1/E2 remain
+gated; no training.

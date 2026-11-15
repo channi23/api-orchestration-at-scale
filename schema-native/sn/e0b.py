@@ -40,7 +40,7 @@ def tools_for(cat, task):
 
 def prepare(rc):
     expected_cap = {'benchmark':700,'path-smoke':0}.get(rc['result_kind'])
-    if rc['protocol'] != 'e0b-locked-v1-amendment1' or expected_cap is None or rc['benchmark_request_cap'] != expected_cap:
+    if rc['protocol'] != 'e0b-locked-v1-amendment2' or expected_cap is None or rc['benchmark_request_cap'] != expected_cap:
         raise ValueError('Not a locked E0b configuration')
     if rc['arms'] != ['F0','C0','C1','C2','V'] or set(rc['arm_defs']) != set(rc['arms']):
         raise ValueError('Amendment 1 permits only F0/C0/C1/C2/V; no C3 or subset substitution')
@@ -116,6 +116,29 @@ class Budget:
             stream.write(json.dumps({'category': category, 'key': key}) + '\n')
             stream.flush()
             os.fsync(stream.fileno())
+
+
+def campaign_budget(directory, rc):
+    """Import the immutable eleven prior charges once, without changing the old ledger."""
+    source=Path(paths.ROOT,rc['budget_carryover']['ledger'])
+    raw=source.read_bytes();spec=rc['budget_carryover']
+    if hashlib.sha256(raw).hexdigest()!=spec['ledger_sha256']:
+        raise ValueError('Historical budget ledger changed')
+    old=[json.loads(line) for line in raw.splitlines()]
+    for category,field in [('readiness','readiness_spent'),('benchmark','benchmark_spent')]:
+        if sum(row['category']==category for row in old)!=spec[field]:
+            raise ValueError('Historical budget count differs from amendment')
+    carried=[dict(row,key='historical|'+spec['prior_run_id']+'|'+row['key'],origin_run_id=spec['prior_run_id']) for row in old]
+    ledger=Path(directory)/'request-budget.jsonl';ledger.parent.mkdir(parents=True,exist_ok=True)
+    try:
+        with ledger.open('x') as stream:
+            for row in carried:stream.write(json.dumps(row)+'\n')
+            stream.flush();os.fsync(stream.fileno())
+    except FileExistsError:
+        rows=[json.loads(line) for line in ledger.read_text().splitlines()]
+        if rows[:len(carried)]!=carried:
+            raise ValueError('Cumulative budget is missing or has changed prior charges')
+    return Budget(ledger)
 
 
 def payload_for(plan, unit, arm):
@@ -223,8 +246,8 @@ def execute(rc, args):
         raise ValueError('Native readiness evidence changed')
     validate_native(plan, json.loads(Path(native_path).read_text()))
     run_id = args.run_id
-    if not run_id or not run_id.startswith('e0b-') or Path(run_id).name != run_id:
-        raise ValueError('Use a new e0b- run ID')
+    if run_id != rc['run_id']:
+        raise ValueError('Amendment 2 requires the new configured run ID')
     directory = Path(paths.RUNS, run_id)
     if readiness.get('run_id') != run_id:
         raise ValueError('Preflight/smoke budget must belong to this same campaign')
@@ -237,7 +260,7 @@ def execute(rc, args):
         manifest_path.write_text(json.dumps(identity, indent=2) + '\n')
         if (directory / 'STOPPED.json').exists():
             raise ValueError('Campaign stopped; inspect failure. No automatic baseline rerun.')
-        budget = Budget(directory / 'request-budget.jsonl')
+        budget = campaign_budget(directory,rc)
         output = directory / 'results.jsonl'
         saved = paths.jsonl(output) if output.exists() else []
         expected = {arm+'|'+u['key'] for u in plan['units'] for arm in rc['arms']}
@@ -255,7 +278,12 @@ def execute(rc, args):
         def request(unit, arm, key, category='benchmark'):
             if key in done:
                 return done[key]
-            health = resources.check(rc, health_state)
+            try:
+                health = resources.check(rc, health_state)
+            except RuntimeError as exc:
+                with (directory/'STOPPED.json').open('x') as stream:
+                    stream.write(json.dumps({'phase':'resource_guard','reason':str(exc)},indent=2)+'\n')
+                raise
             offset = log.stat().st_size
             budget.reserve(category, key)
             started = time.monotonic()

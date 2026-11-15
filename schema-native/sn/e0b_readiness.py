@@ -194,7 +194,7 @@ def audit(rc):
     c1_ok = len(c1)==70 and all(v['compile_ok'] and v['gold_accepted']==v['gold_checked'] and not v['invalid_accepted'] for v in c1.values())
     c2_ok = len(c2)==300 and all(v['compile_ok'] and not v['invalid_accepted'] for v in c2)
     v_ok = routing['select']['routed']==18 and routing['arggen']['routed']==14 and sum(v['routed'] for v in routing.values()) <= rc['retry_cap']
-    return {'kind':'MODEL-FREE Amendment 1 readiness; not inference', 'config_sha256':ordered_hash(rc),
+    return {'kind':'MODEL-FREE Amendment 2 readiness; not inference', 'config_sha256':ordered_hash(rc),
             'plan_sha256':ordered_hash(plan), 'llguidance_build':build,
             'tuple_array_paths':sorted(set(tuple_paths)), 'C1':c1, 'C2':c2,
             'V':{'native_gate_ok':v_ok, 'backend':'C1 retry only', 'retry_count':sum(v['routed'] for v in routing.values())},
@@ -207,9 +207,11 @@ def audit(rc):
             'all_representation_compatibility':compatibility,
             'lookalike_flags_by_arm':{arm:sum(bool(lookalike_key_flag(r)) for r in all_rows if r['arm']==arm) for arm in rc_source_arms()},
             'determinism_selection':plan['determinism'],
+            'budget_carryover':rc['budget_carryover'],
             'verification_source_sha256':{name:provenance.file_sha(root/name) for name in
                 ['sn/e0b.py','sn/e0b_readiness.py','sn/router.py','sn/oracle_order.py','sn/constraint_options.py',
-                 'sn/lookalike.py','sn/report.py','scripts/native_llg_audit.cpp']},
+                 'sn/lookalike.py','sn/report.py','sn/e0b_preflight.py','sn/native_prefix.py','sn/resources.py',
+                 'sn/e0b_swap.py','scripts/native_llg_audit.cpp']},
             'online_ok':False,'launch_clear':False,
             'not_verified':['model-tokenizer enforcement','30-request byte-identical determinism','live smoke',
                             'inference accuracy/latency','exhaustive schema enforcement'],

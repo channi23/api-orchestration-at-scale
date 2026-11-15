@@ -20,7 +20,7 @@ int main() {
     std::string line;
     while (std::getline(std::cin,line)) {
         try {
-            auto in=json::parse(line); std::string grammar="%llguidance {}\nstart: %json "+in["schema"].dump();
+            auto in=json::parse(line); std::string grammar=in.value("grammar", "%llguidance {}\nstart: %json "+in["schema"].dump());
             auto *initial=llg_new_matcher(&ci,"lark",grammar.c_str());
             auto *err=llg_matcher_get_error(initial);
             json out={{"compile_ok",err==nullptr},{"accepts",json::array()},{"legal_prefix",json::array()}};
