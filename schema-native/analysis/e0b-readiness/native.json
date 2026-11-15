@@ -8655,7 +8655,7 @@
     "sn/native_prefix.py": "ee8108315962b0042ce855a80caee8d7c7e50d514225c9a5e8bc8d51dc31fe35",
     "sn/resources.py": "f4765c3a68589d930c44aab38fa7698fd04b6cc1e296eb3eddb529848a597911",
     "sn/e0b_swap.py": "898ae0b63968f991a3fdc8286466b8acdbafebb9b2805e8ae966f1d169cc272a",
-    "sn/e0b_resources.py": "d381beb819b2cf0927776c1defa1c7bc4bfda1b3f5931a48c06f0cb59d69f011",
+    "sn/e0b_resources.py": "922fa980e921fcc81e0ce96af75ce642ac2362328a5de05a28f59dfbbf835b1a",
     "sn/server.py": "7deaef380c5d2ef0b139db74fc9e02203ff220ac581fc34006370f1efe2e0288",
     "scripts/native_llg_audit.cpp": "97e40106c8796768702d7b206dca30a6d7b77bcf62a1774cdad75c3b08a262f2"
   },

@@ -99,8 +99,10 @@ def unload(directory):
     event(directory, 'unload', pid=pid)
     deadline=time.monotonic()+30
     while True:
-        status=subprocess.run(['ps','-p',str(pid),'-o','stat='],capture_output=True,text=True).stdout.strip()
-        if not status or status.startswith('Z'):
+        snapshot=subprocess.run(['ps','-axo','pgid=,stat='],capture_output=True,text=True,check=True).stdout
+        live_group=[row for row in snapshot.splitlines() if len(row.split())==2
+                    and row.split()[0]==str(pid) and not row.split()[1].startswith('Z')]
+        if not live_group:
             event(directory,'unloaded');return
         if time.monotonic()>=deadline:
             raise RuntimeError('Dedicated server did not exit after graceful unload; inspect before continuing')

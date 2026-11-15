@@ -296,3 +296,22 @@ def test_readiness_resume_skips_saved_probe_without_extra_charge(tmp_path,monkey
     rows=paths.jsonl(directory/'readiness-results.jsonl')
     assert len(rows)==19 and len({r['key'] for r in rows})==19
     assert rows[0]==historical
+
+
+
+def test_unload_waits_for_child_even_after_launcher_exits(tmp_path,monkeypatch):
+    session=dict(pid=999999,binary='/synthetic/llama-server',model='/synthetic/test.gguf')
+    (tmp_path/'server-session.json').write_text(json.dumps(session))
+    clock=Clock();calls=[]
+    snapshots=iter(['999999 S', '999999 Z'])
+    def ps(command,**kwargs):
+        if 'command=' in command:return SimpleNamespace(stdout='/usr/bin/time /synthetic/llama-server -m /synthetic/test.gguf')
+        return SimpleNamespace(stdout=next(snapshots))
+    monkeypatch.setattr(life.subprocess,'run',ps)
+    monkeypatch.setattr(life.os,'getpgid',lambda pid:pid)
+    monkeypatch.setattr(life.os,'killpg',lambda *args:calls.append(args))
+    monkeypatch.setattr(life.time,'monotonic',clock)
+    monkeypatch.setattr(life.time,'sleep',clock.sleep)
+    life.unload(tmp_path)
+    assert len(calls)==1 and clock.sleeps==[1]
+    assert events(tmp_path)[-1]['event']=='unloaded'

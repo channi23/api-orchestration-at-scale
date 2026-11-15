@@ -62,7 +62,7 @@ are never repeated to reset it. No claim of hardware-independent determinism is 
 
 ## Model-free tests
 
-**128 package tests + 12 original evaluator tests = 140 passed.** Twenty Amendment 3 cases cover:
+**129 package tests + 12 original evaluator tests = 141 passed.** 21 Amendment 3 cases cover:
 
 - Settle pass, reset after a warning, and exact 90-second timeout.
 - Warning pause, three clean checks after the last warning, and exact 15-minute timeout/unload.
@@ -70,6 +70,8 @@ are never repeated to reset it. No claim of hardware-independent determinism is 
 - Actual launcher control flow with a fake process: admission failure never calls process launch;
   settle pass permits readiness and settle failure calls unload. No model subprocess is created.
 - Hard swap cap precedence even under memory warning, and final-fault non-resumability.
+- Unload waits for the owned model child even if its launcher has already exited; only zombie
+  or absent group members permit an unloaded event. This signaling test is entirely synthetic.
 - A synthetic full benchmark transport stops after its first durable C1 response, then resumes:
   **662 unique generation keys sent exactly once**, in frozen order (30 determinism, 300 C1,
   300 C2, 32 V). Saved result bytes remain an unchanged prefix, and charges are not duplicated.
