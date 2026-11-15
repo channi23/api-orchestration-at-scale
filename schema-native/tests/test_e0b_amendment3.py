@@ -177,6 +177,7 @@ def test_benchmark_resource_resume_skips_completed_keys_and_keeps_order(tmp_path
 def test_dedicated_server_settle_gate_model_free(tmp_path,monkeypatch,settled):
     import sys
     from sn import server
+    monkeypatch.setattr('sn.native_prefix.self_test',lambda:dict(passed=True))
     rc=e0b.config();model=e0b.prepare(rc)['model']
     fake_model=tmp_path/'models'/model['gguf_file'];fake_model.parent.mkdir();fake_model.write_text('test placeholder')
     monkeypatch.setattr(e0b,'config',lambda *a:rc)
@@ -227,6 +228,7 @@ def test_dedicated_server_settle_gate_model_free(tmp_path,monkeypatch,settled):
 def test_admission_failure_never_starts_model_process(tmp_path,monkeypatch):
     import sys
     from sn import server
+    monkeypatch.setattr('sn.native_prefix.self_test',lambda:dict(passed=True))
     rc=e0b.config();model=e0b.prepare(rc)['model']
     fake_model=tmp_path/'models'/model['gguf_file'];fake_model.parent.mkdir();fake_model.write_text('test placeholder')
     monkeypatch.setattr(e0b,'config',lambda *a:rc)

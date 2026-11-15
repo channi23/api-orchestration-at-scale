@@ -69,7 +69,8 @@ def test_finished_valid_response_passes():
 
 def test_benchmark_truncation_is_scored_not_an_engine_fault():
     unit=prepare(config())['units'][0]
-    row=score_response(unit,'C1',response('{"tool":','length'),200,[])
+    row=score_response(unit,'C1',response('{"tool":','length'),200,[],
+                       prefix_checker=lambda *a,**k:{'legal_prefix':True,'accepting':False})
     assert row['failure_class']=='cd_truncated' and not row['engine_error']
     assert not row['eval']['e2e_success']
 

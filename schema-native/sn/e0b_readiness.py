@@ -211,7 +211,7 @@ def audit(rc):
             'verification_source_sha256':{name:provenance.file_sha(root/name) for name in
                 ['sn/e0b.py','sn/e0b_readiness.py','sn/router.py','sn/oracle_order.py','sn/constraint_options.py',
                  'sn/lookalike.py','sn/report.py','sn/e0b_preflight.py','sn/native_prefix.py','sn/resources.py',
-                 'sn/e0b_swap.py','sn/e0b_resources.py','sn/server.py','scripts/native_llg_audit.cpp']},
+                 'sn/e0b_swap.py','sn/e0b_resources.py','sn/prefix_pending.py','sn/server.py','scripts/native_llg_audit.cpp']},
             'online_ok':False,'launch_clear':False,
             'not_verified':['model-tokenizer enforcement','30-request byte-identical determinism','live smoke',
                             'inference accuracy/latency','exhaustive schema enforcement'],

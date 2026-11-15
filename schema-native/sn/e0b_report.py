@@ -33,7 +33,10 @@ def report(run_id, rc):
     if json.loads((directory/'manifest.json').read_text()) != identity_for(plan):
         raise ValueError('Report config/source identity differs from campaign')
     expected = {arm+'|'+u['key'] for u in plan['units'] for arm in rc['arms']}
-    saved = paths.jsonl(directory/'results.jsonl')
+    from .prefix_pending import effective_rows
+    saved = effective_rows(directory,'results.jsonl','request_key')
+    if any(r.get('prefix_check')=='pending' for r in saved):
+        raise ValueError('Resolve pending prefix checks offline before reporting')
     rows = [r for r in saved if r['request_key'] in expected]
     keys = [r['request_key'] for r in rows]
     if len(keys) != len(set(keys)):

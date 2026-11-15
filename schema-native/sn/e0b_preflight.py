@@ -18,7 +18,7 @@ from .e0b import config, prepare, ordered_hash, identity_for, campaign_budget, p
 from .run import http_json, constraint_payload
 from .router import strict_loads
 from .router import route
-from .native_prefix import check_prefix
+from .native_prefix import check_prefix, verify_prefix, PrefixCheckUnavailable
 
 
 def smoke_gate(status, response, errors, schema, tools, *, grammar, prefix_checker=None):
@@ -31,7 +31,7 @@ def smoke_gate(status, response, errors, schema, tools, *, grammar, prefix_check
     except (KeyError,IndexError,TypeError,ValueError) as exc:
         raise ValueError('Malformed smoke response') from exc
     if finish=='length':
-        proof=(prefix_checker or check_prefix)(schema,text,grammar=grammar)
+        proof=verify_prefix(schema,text,grammar=grammar,prefix_checker=prefix_checker or check_prefix)
         if not proof['legal_prefix']:
             raise ValueError('Truncated output is not a legal grammar prefix')
         return {'passed':True,'outcome':'cd_truncated','native_prefix':proof}
@@ -105,7 +105,10 @@ def _online(rc, *, run_id, server, output, native_path):
         if stable(previous_receipt['server_props']) != stable(props):
             raise ValueError('Server profile changed on resume')
     state = {}; results = []
-    completed=lifecycle.completed(directory,'readiness-results.jsonl','key')
+    from .prefix_pending import effective_rows
+    completed={r['key']:r for r in effective_rows(directory,'readiness-results.jsonl','key')}
+    if any(r.get('prefix_check')=='pending' for r in completed.values()):
+        raise PrefixCheckUnavailable('Pending smoke rows must be verified offline before resume')
     def send(key, payload, unit=None, arm=None):
         if key in completed:
             record=completed[key]
@@ -125,6 +128,11 @@ def _online(rc, *, run_id, server, output, native_path):
             schema=unit['C1_schema'] if arm=='V' else unit[arm+'_schema']
             try:
                 record['smoke_gate']=smoke_gate(status,response,errors,schema,unit['tools'],grammar=payload['grammar'])
+            except PrefixCheckUnavailable as exc:
+                record['prefix_check']='pending'
+                record['prefix_check_error']=str(exc)
+                record['prefix_request']={'schema':schema,'grammar':payload['grammar']}
+                record['smoke_gate']={'passed':False,'outcome':'prefix_check_pending'};failure=exc
             except Exception as exc:
                 record['smoke_gate']={'passed':False,'reason':str(exc)};failure=exc
         with (directory/'readiness-results.jsonl').open('a') as stream:

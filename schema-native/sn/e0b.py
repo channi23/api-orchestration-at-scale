@@ -23,7 +23,7 @@ import prompts
 import schema_utils as su
 from evaluate import evaluate
 import jsonschema
-from .native_prefix import check_prefix
+from .native_prefix import check_prefix, verify_prefix, PrefixCheckUnavailable
 
 
 def ordered_hash(value):
@@ -199,7 +199,7 @@ def reused_diagnostics(unit, arm, row):
     return {'diagnostic_flags':flags,'failure_class':label,'retry_performed':False}
 
 
-def score_response(unit, arm, response, status, errors):
+def score_response(unit, arm, response, status, errors, *, prefix_checker=None):
     malformed = False
     try:
         choice = response['choices'][0]
@@ -208,18 +208,22 @@ def score_response(unit, arm, response, status, errors):
     except (KeyError, IndexError, TypeError, ValueError):
         choice = {}; content = ''; malformed = True
     truncated = choice.get('finish_reason') == 'length'
-    prefix_proof=None;constraint_error=None
+    prefix_proof=None;constraint_error=None;prefix_pending=None;prefix_request=None
     if arm!='F0' and not malformed and status==200 and not errors:
         schema=unit['C1_schema'] if arm=='V' else (unit['schema_order_schema'] if arm=='C0' else unit[arm+'_schema'])
         try:
             if truncated:
                 from .run import constraint_payload
-                prefix_proof=check_prefix(schema,content,grammar=constraint_payload(schema,'llguidance_grammar')['grammar'])
+                grammar=constraint_payload(schema,'llguidance_grammar')['grammar']
+                prefix_request={'schema':schema,'grammar':grammar}
+                prefix_proof=verify_prefix(schema,content,grammar=grammar,prefix_checker=prefix_checker or check_prefix)
                 if not prefix_proof['legal_prefix']:
                     constraint_error='Truncated output is not a legal grammar prefix'
             else:
                 from .router import strict_loads
                 jsonschema.Draft7Validator(schema).validate(strict_loads(content))
+        except PrefixCheckUnavailable as exc:
+            prefix_pending=str(exc)
         except Exception as exc:
             constraint_error=type(exc).__name__+': '+str(exc)
     routed = route(content, unit['tools'], truncated=truncated)
@@ -238,10 +242,12 @@ def score_response(unit, arm, response, status, errors):
              'truncation_location': truncation_location(content) if truncated else None}
     return {'raw_content': content, 'finish_reason': choice.get('finish_reason'), 'truncated': truncated,
             'native_prefix':prefix_proof,'constraint_violation':constraint_error,
+            'prefix_check':'pending' if prefix_pending is not None else ('verified' if prefix_proof else None),
+            'prefix_check_error':prefix_pending,'prefix_request':prefix_request if prefix_pending is not None else None,
             'http_status': status, 'engine_error': engine_fault, 'engine_log_errors': errors,
             'request_error': 'engine_or_request_fault' if engine_fault else None,
             'usage': response.get('usage', {}), 'eval': ev, 'diagnostic_flags': flags,
-            'failure_class': failure_class(engine_refusal=engine_fault, truncated=flags['cd_truncated'],
+            'failure_class': None if prefix_pending is not None else failure_class(engine_refusal=engine_fault, truncated=flags['cd_truncated'],
                                             invalid=flags['invalid'], wrong_tool=flags['wrong_tool'],
                                             lookalike_key=flags['lookalike_key'], correct=ev['e2e_success'])}
 
@@ -280,11 +286,16 @@ def _execute(rc, args):
         lifecycle.resume(directory)
         budget = campaign_budget(directory,rc)
         output = directory / 'results.jsonl'
-        saved = paths.jsonl(output) if output.exists() else []
+        from .prefix_pending import effective_rows
+        saved = effective_rows(directory,'results.jsonl','request_key')
         expected = {arm+'|'+u['key'] for u in plan['units'] for arm in rc['arms']}
         expected |= {'retry|V|'+u['key'] for u in plan['units'] if u['router']['retry']}
         expected |= {'determinism|'+s['arm']+'|'+s['unit_key'] for s in plan['determinism']}
         provenance.validate_rows(saved, expected)
+        if any(r.get('prefix_check')=='pending' for r in saved):
+            raise PrefixCheckUnavailable('Pending rows must be verified offline before benchmark resume')
+        if any(r.get('prefix_check')=='illegal' for r in saved):
+            raise RuntimeError('Confirmed illegal prefix; final stop')
         done = {r['request_key']: r for r in saved}
         health_state = {}
         units = {u['key']: u for u in plan['units']}
@@ -318,6 +329,9 @@ def _execute(rc, args):
             with output.open('a') as stream:
                 stream.write(json.dumps(result) + '\n'); stream.flush(); os.fsync(stream.fileno())
             done[key] = result
+            if result.get('prefix_check')=='pending':
+                exc=PrefixCheckUnavailable(result['prefix_check_error'])
+                lifecycle.stop(directory,exc,'resource_guard');raise exc
             if result['engine_error']:
                 (directory / 'STOPPED.json').write_text(json.dumps({'reason': 'engine_or_request_fault', 'key': key}))
                 raise RuntimeError('Engine/request fault saved; stop')
@@ -365,7 +379,7 @@ def execute(rc, args):
         return _execute(rc,args)
     except Exception as exc:
         directory=Path(paths.RUNS,args.run_id)
-        if directory.exists(): lifecycle.stop(directory,exc,'benchmark')
+        if directory.exists(): lifecycle.stop(directory,exc,'resource_guard' if isinstance(exc,lifecycle.ResourceStop) else 'benchmark')
         raise
 
 

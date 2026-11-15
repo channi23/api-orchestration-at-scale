@@ -1,5 +1,6 @@
 """Run one dedicated server in the foreground; preserve startup and peak-memory evidence."""
 import argparse
+import fcntl
 import json
 import os
 from pathlib import Path
@@ -48,6 +49,12 @@ def main():
                 with socket.create_connection(('127.0.0.1',int(port)),timeout=1):
                     raise RuntimeError('Server port already in use; refusing to launch another model')
             except OSError: pass
+            from .native_prefix import self_test
+            from .prefix_pending import resolve_pending
+            with (directory/'.writer.lock').open('w') as lock:
+                fcntl.flock(lock,fcntl.LOCK_EX | fcntl.LOCK_NB)
+                lifecycle.event(directory,'prefix_helper_self_test',**self_test())
+                resolve_pending(directory)
             lifecycle.admission(directory)
             baseline = Path(paths.ROOT,campaign['system_swapout_baseline_file'])
             if not baseline.exists(): resources.initialize_swap_baseline(campaign)
