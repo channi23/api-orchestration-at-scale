@@ -1,0 +1,21 @@
+{
+  "original_hashes": {
+    "CAMPAIGN.json": "4a9bec11edd0ca3b6a9d7a031abb351cb5d604eb0e6b3672e0eb2b9932322549",
+    "request-budget.jsonl": "8594953adbda8a89be1e34bd1e06f571fbd997f588f79fcc13e7b8368699b78e",
+    "frozen-plan.json": "3a23703d546be1e912349cfe17f56e1966aa88368fcbd21771cc6a4813cfbf78",
+    "before-load.json": "8570ca3c4a7d704fcf70dceeee3dab7bef62ed037d5fcbd43a72ad56454e3126",
+    "STOPPED.json": "afec53b3792375f5397d1c4e45eab0e816f67298813523f03d9ae5666ace840d",
+    "identity-before-load.json": "4cf1d43fd78a45098a3f87138098cba9ec80f0f16a04a4a5c2d0824544ff8cca",
+    "swap-baseline.json": "65e4689be0b97853744a7f77fdad97e733321bb34c023e4b0ea1659efa38e37c",
+    "results.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run-config.json": "9aeae7a5f2403642cc753cfcc6def5d1ecef109cc0e5f9b52a7598db7c15bab1",
+    "after-unload.json": "97d8fb57d7d828f302fc7e84b55f869d7f46fce75545ec54e07f7835d67f7ca5",
+    "model-profile.json": "757b5d8da501f0cbf0bbc8c5dc743b801d3b13332a28e0934267d6fd6786b17a",
+    "manifest.json": "4cf1d43fd78a45098a3f87138098cba9ec80f0f16a04a4a5c2d0824544ff8cca",
+    "server-session.log": "3923327c596fd3055732d40d18ed2631c075a97ba55e7d121aa8acc26114691a",
+    "EXECUTION.json": "cfbd692019b919af7e0e12093c43b8cf1dcb82b1eb3e3f090beae9906da31486"
+  },
+  "source_commit": "cb97afff5eac5275d0140d92205759268f64bfb7",
+  "server_log_note": "Path-redacted derivative; original server log retained locally.",
+  "empty_results_note": "No generation requests were made; empty results.jsonl is the true zero-benchmark dataset."
+}

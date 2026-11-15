@@ -1,0 +1,38 @@
+{
+  "phase": "STOPPED_AFTER_MODEL_LOAD_BEFORE_INFERENCE",
+  "stop": {
+    "phase": "after_model_load",
+    "reason": "Memory pressure level 2: no new inference request started. Stop the dedicated model to release memory."
+  },
+  "new_readiness_generation_requests": 0,
+  "historical_readiness_spent": 11,
+  "readiness_cap": 60,
+  "readiness_remaining": 49,
+  "determinism_requests": 0,
+  "benchmark_generation_requests": 0,
+  "benchmark_cap": 700,
+  "benchmark_remaining": 700,
+  "model_unloaded": true,
+  "manifest_note": "Exact identity snapshot captured before model load copied to standard manifest during stop finalization; empty results file means no benchmark generation.",
+  "source_commit": "cb97afff5eac5275d0140d92205759268f64bfb7",
+  "server_peak_rss_bytes": 2841264128,
+  "post_unload": {
+    "memory_pressure": 1,
+    "thermal_state": 0,
+    "page_size": 16384,
+    "swapouts_pages": 4605635,
+    "system_swapout_growth_bytes": 326238208,
+    "post_unload_swapout_delta_bytes_over_2_seconds": 0
+  },
+  "oracle_flags": {
+    "unit_count": 300,
+    "planned_oracle_not_applied": 32,
+    "planned_oracle_incomplete": 0,
+    "C2_generation_outputs": 0,
+    "observed_oracle_not_applied": null,
+    "observed_oracle_incomplete": null,
+    "note": "Plan-side intervention flags only; actual C2 output counts are unobserved because no generation requests were made."
+  },
+  "new_lookalike_flags": 0,
+  "benchmark_final_rows": 0
+}
