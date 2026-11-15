@@ -315,3 +315,26 @@ context and scientific identity must remain unchanged; only the text-only server
 Steps 1–2 are model-free. **STOP for review after publishing validation; no model loading,
 inference or training until the user separately confirms review and that the Mac is freed up.**
 E1/E2 remain gated.
+
+### Amendment 3 clarification — 2026-11-15, before any campaign inference
+
+Clarification of resource handling only; no locked rule, budget, selection, inference setting or
+analysis change. A native prefix check that **could not run** (missing helper, build/library-hash
+failure, timeout, malformed output or unusable verifier result) is not a confirmed illegal prefix.
+Persist the original HTTP response with **prefix_check: "pending"**, its exact schema/grammar and
+the checker error. Do not label it engine_refusal or assign a final failure class. Pause as a
+resumable resource-type stop, unload the owned server and report; do not send another request.
+
+Before loading the model, run **one helper self-test invocation** with fixed complete-valid,
+incomplete-legal and illegal probes. Any unavailable check or wrong verdict stops before load.
+On resume, re-check all pending responses **offline first**, after this self-test and before model
+loading. Append native proofs to a separate durable resolution ledger, preserving the original
+response bytes and request charges. A confirmed legal prefix becomes the existing cd_truncated
+outcome and its completed key is skipped. A confirmed illegal prefix is a final, non-resumable
+stop as already locked. Another unavailable check keeps the original response pending and the
+stop resumable. No generation or baseline request is repeated to obtain a prefix verdict.
+
+No interim accuracy is read. Final reports use verified resolution overlays; unresolved pending
+checks block final analysis. Local process inventories remain unpublished. The model remains
+unloaded until the user confirms that the Mac is freed up; review has already passed and this
+exact clarification does not require another review round. E1/E2 remain gated; no training.

@@ -1,3 +1,9 @@
+> Current status, 2026-11-15: Amendment 3 review passed at `1df130c`. The narrow pending-prefix
+> clarification below is model-free and complete; **166 tests pass**. No further review round is
+> required by the user. Await explicit confirmation that the Mac is freed up before loading.
+> The earlier 141-test record below is the historical reviewed validation; final clarification
+> evidence and current totals appear at the end of this file.
+
 # E0b Amendment 3 — model-free review validation
 
 **LOCKED 2026-11-15 IST. Steps 1–2 complete; STOP for review and confirmation that the Mac is freed up.**
@@ -147,3 +153,57 @@ private app inventories, when future execution is authorized.
 process signaling/unloading, online runtime checks, live smoke, 30 byte-identical model responses,
 model/tokenizer enforcement, benchmark results, accuracy/latency or decision-rule outcomes. Fake
 transport totals are software-control proofs, not measured inference results. E1/E2 stay gated.
+
+
+## Amendment 3 clarification — pending prefix verification (2026-11-15)
+
+This is the exact requested clarification, recorded after all earlier text in E0B_PLAN.md. The
+reviewed locked configs and model profile are unchanged. Both stopped campaigns, frozen E0,
+experiment/, selections and all budgets are unchanged. No real Amendment 3 directory, swap
+baseline, online receipt or ledger was initialized. No model was loaded and no real inference,
+training, process signal or resource admission ran during this clarification.
+
+A checker failure now persists the response, usage, checker error and exact constraint
+schema/grammar with **prefix_check: "pending"**. It is **not engine_refusal**, has no final failure
+class, and causes an immediate resumable resource-type stop/unload rather than another request.
+Missing helpers, build/library hash failures, timeouts, invalid JSON, duplicate keys, non-finite
+JSON numbers and malformed/non-boolean verdict arrays all fail without claiming an illegal prefix.
+HTTP/engine faults still retain their original final-stop precedence.
+
+Before a future model load, the campaign launcher invokes one fixed helper self-test (three probes
+in one helper process: complete-valid, incomplete-legal and illegal). A failure stops before model
+launch. The self-test then precedes offline resolution of pending rows under the writer lock.
+Only after those checks pass can admission, baseline checks, model loading and settling proceed.
+A real model-free self-test against the bundled helper **passed**, recorded in
+`prefix-helper-self-test.json`. It used no model weights, tokenizer inference, GPU or server.
+
+Offline resolution appends proof-only records to **prefix-resolutions.jsonl** with the original
+response fingerprint; it never rewrites the response stream, re-scores frozen data, sends a
+request or adds a request-budget charge. A legal proof resolves to cd_truncated; smoke, benchmark
+resume and final reporting read the same resolution overlay and skip the completed request key.
+An illegal proof is preserved and makes the stop final/non-resumable before loading. Another
+unavailable proof leaves the row pending. Unresolved pending checks block final analysis, so no
+interim accuracy is read. Publish this resolution ledger with future campaign evidence if used.
+
+**Final verification: 154 package tests + 12 original evaluator tests = 166 passed.** The 25 new
+hermetic pending-prefix cases cover unavailable helper/hash/timeout/malformed paths, strict verdict
+parsing, smoke resource-stop semantics, benchmark persistence without an engine-refusal label,
+legal offline resolution for both response streams, no duplicate resolution, byte preservation,
+confirmed-illegal final stops, repeated-unavailable checks staying pending, a failed pre-load
+self-test preventing model startup, and resume skipping the already-paid verified response.
+`test_benchmark_truncation_is_scored_not_an_engine_fault` now injects its checker and depends on
+neither the installed helper nor its build state. The full suite uses temporary fake HTTP servers;
+all campaign responses in tests are synthetic.
+
+The current native evidence was refreshed and validated against current plan/source fingerprints.
+C1/C2/V native capability still passes: C1 70/70 and C2 300/300 compile, C1 gold 300/300,
+0/6,696 invalid witnesses accepted per arm, compatibility 499/501 (order subset 250/252), raw F0
+246/248, router 18/200 and 14/100, planned oracle flags 32 not-applied and 0 incomplete. The same
+two T062 exceptions remain unrelaxed. No C3 run or backend substitution occurred.
+
+Use the existing future server/preflight/runner commands above **only after Mac-ready confirmation**.
+The server automatically runs the self-test and pending offline checks before each model load.
+Run ID remains e0b-amendment3-v1; readiness remains 11 spent / 49 left, benchmark 0 spent / cap 700.
+Current Mac headroom, real process recovery, live smoke/determinism and all benchmark outcomes remain
+unverified. E1/E2 stay gated; no training. Review was accepted; execution awaits only the user's
+explicit confirmation that the Mac is freed up and the locked admission/resource checks.

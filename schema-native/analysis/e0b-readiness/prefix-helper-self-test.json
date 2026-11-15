@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "probes": 3,
+  "helper_invocations": 1,
+  "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+  "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01"
+}
