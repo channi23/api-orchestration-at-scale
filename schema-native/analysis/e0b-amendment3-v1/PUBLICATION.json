@@ -1,0 +1,9 @@
+{
+  "created_utc": "2026-11-15T08:26:48.799444+00:00",
+  "source_commit": "30d04b1a82eb0cf631b01ad6e8dca6881b95cd12",
+  "original_private_events_sha256": "e4b648c794e866b58e6adc6a2e9e5a8c3f14cd63006d9b198cbfd5257049a76f",
+  "redaction": "Private process inventory omitted from public resource events; original inventory remains local.",
+  "frozen_plan_uncompressed_sha256": "b945e94bce06df947e9aa3f135752b6bba9323dbf682c2c89d0e4df690b944ca",
+  "empty_prefix_resolutions_reason": "No prefix checks of model outputs, pending rows or resolution records exist.",
+  "no_model_session_or_swap_baseline": "Not created because pre-load admission failed"
+}
