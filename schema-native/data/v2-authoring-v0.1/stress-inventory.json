@@ -1,0 +1,218 @@
+{
+  "archive_sha256": "8bb8ab2ac1553bf7bc3ae068e615e23d776ddb0a8c2550d4cde82e206fad1132",
+  "cases": [
+    {
+      "case_id": "K2",
+      "pair_type": "validity_separable",
+      "request_sha256": "0b24736284628754625a1af35c0b6e0608f67aa8e5f4f3f80c13f3f457d1e91d",
+      "schema_hashes": [
+        "c97df180cebedcb8caf18fb7e047f697f6dba41c97d3fadf889b239eb8feab9e",
+        "2d1cbf08f17e8fa9db7e38abd3851720baad53e25a3d630b6d6fa11e2fa0bbf2"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K3",
+      "pair_type": "equivalent_rewrite",
+      "request_sha256": "71ebcbae940aee0517a9b58e0e031960fa1d1abddfc568a3af6ef26d3c910052",
+      "schema_hashes": [
+        "846b0f038458435425985be4cbc85463f5edc5b6c72dd1771e4c87e1089713d7",
+        "1b9d85d6460b2d6f038c5ff5eb31b614b59755dc1bb539141d4b75e65100b629"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K4",
+      "pair_type": "validity_separable",
+      "request_sha256": "d696aae2d8a1d3a7c368da77d2b7a22f741ebfaca339bc6f6ee60197d91f9841",
+      "schema_hashes": [
+        "fcb8e7dbb76ff9e6075853c2672dca90a97f3623b3aa0f09374c3ab088d0115b",
+        "5a353d2e26867027871cf9747aaa12eba251300b96fa999021fcd3d16182afa6"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K5",
+      "pair_type": "equivalent_rewrite",
+      "request_sha256": "fd5a55dee34780494ef63f14618b48260033ca7d07d761131b6c89ab1d1ca85f",
+      "schema_hashes": [
+        "4ad925bf7a689f2e1e813a3baa3f6b36d7db89aa4f6c834467e17020c8aaf8a2",
+        "7b9b82a8988d83236f09a438d96518a4d2bc804f6bfbed91c801735d311f5a8f"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K8",
+      "pair_type": "non_equivalent_same_answer",
+      "request_sha256": "7ec63d413a56119ddd91fe045e6956d81eaf942e77083aa9a11c8e450532557c",
+      "schema_hashes": [
+        "e5de143c170872c8c0809b9860fe2ca81108bdd3c09ed4aad75a2c6d0dabef6b",
+        "9434f57ef68e71d87edd86ca13139f5972d1a3aebd154548104f5fdd3038570b"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K13",
+      "pair_type": "validity_separable",
+      "request_sha256": "b203bfa9a1b01c6d6fae549436a1cfb6c2f274ab3b5cfc0a4f77985da4168d65",
+      "schema_hashes": [
+        "5156f7fecd203ab4530749207f8bebc53862d7e5fa165cd076230ab146831184",
+        "80f1ce076e5e7a26ed62404c73f2d7b399662b1d9972c025a4595460bca6b655"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K15",
+      "pair_type": "validity_separable",
+      "request_sha256": "2e0d176b9b6f82ad034d79b62d7ed70627af5a5444c3bc7bb871e7c502613f3d",
+      "schema_hashes": [
+        "566c4393b03e6996c9cc2e6d8d024776721189d1d1b4792a0ad7ca9f1d9f592f",
+        "f53cec837a65eba2a0dd9ad5e9ffa8a0ab8d5e1ccf9647be334f0a019dfad520"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K17",
+      "pair_type": "equivalent_rewrite",
+      "request_sha256": "6c329ed2f0a04f08f37c10c72adb257998d71b8c379aa299dc407d523e5e7dee",
+      "schema_hashes": [
+        "6bcf937f0a0b4bedc8f0638fa8d314f8497564196fccd421cbb9ea072a039f94",
+        "1c64c43aab78c95d3abce0a063e7e87bd32c4695c9c28c4f26f8d853e776eeb7"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K18",
+      "pair_type": "equivalent_rewrite",
+      "request_sha256": "f378097e23eaf6851a65ef23eef0fc1559bf8552bcc0a5ee1ee55983feab64d2",
+      "schema_hashes": [
+        "546b99a2335be851e17ce91df3b252c09f4ede1a928d26866a0e4b36e9eb90e3",
+        "546b99a2335be851e17ce91df3b252c09f4ede1a928d26866a0e4b36e9eb90e3"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "K19",
+      "pair_type": "validity_separable",
+      "request_sha256": "4ecf6d90cd4d4b53734bab92bd1824000b140bd8add465af0ad2ff0062a36e68",
+      "schema_hashes": [
+        "18882dd3ad9c4b5e2e77e50182f6d6f1b1066b5a881fcb43def7262db06cfab7",
+        "1d85f41921504c4aae39ae03e7e9161e272129660c5e9800280d3ffcea3f0992"
+      ],
+      "track": "keyword"
+    },
+    {
+      "case_id": "M1",
+      "pair_type": "meaning_only",
+      "request_sha256": "57c5000093ff69b251e16c7fecdcb945d12e8f53e6c97012146bd5b890d7030d",
+      "schema_hashes": [
+        "f23febb09dcd4130ef77ee04c6b4cd2ec5a37566dd2942ca83db8b26a9420d82",
+        "e478fcff363454d8c9b8fc54f8c415768a550c1e92a8c1d96b1fc6b38fc2e489"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M2",
+      "pair_type": "meaning_only",
+      "request_sha256": "7b9a523c3a9ab34f9ed501361f7d1b6b0e4b317a3957c94c4da5b92f39760361",
+      "schema_hashes": [
+        "ddc1da6d7d86f5b5dc42ead29604b1900f2011b47b30a8ed16bc90b74b0ecbf5",
+        "6f9cb19c81d05bc2efe3e0de585cabe034b0a41a46ad44b4099867984df71b34"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M3",
+      "pair_type": "meaning_only",
+      "request_sha256": "9ef0f5cc6a7735f536fc686f67f1d242b3918d4497857e6d8a5b2fc8be08c58e",
+      "schema_hashes": [
+        "945f2383d4028881e722c4e5f7c626cb4fa5444a1ae6b70808d95f63d2a03405",
+        "0eb8c1b16317da7fbbbec1a4d1b41c041359a682a083f2cfe0d6108de30d3cde"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M4",
+      "pair_type": "meaning_only",
+      "request_sha256": "704f39fc0b8a4ded9c7a72002ae4bd0d4e63269d15b7aefdaa7e84e8e3d4af04",
+      "schema_hashes": [
+        "754bbff0785b5c5162e3e666167eb6595f42892f009a48f0ccb5dc925fa609d0",
+        "ea665d29a8fc245ab31c3ab2258ff39322cc443fc2c52cdcee9820f97f7b8700"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M5",
+      "pair_type": "meaning_only",
+      "request_sha256": "cbe3f341a600da4903e0a7d2a466ae9ab319656e3d1f6e3e72114acc3d30a5e1",
+      "schema_hashes": [
+        "8ad9dbf1ba3eb0ea895360db0891734845b03ad639d0232c523ed4735be9ed30",
+        "b46e5eb0a1885b472a780985dd0318489e4e95730605afc4fac09d11d7a3439c"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M6",
+      "pair_type": "meaning_only",
+      "request_sha256": "3866e27830c36468e3754a15284cee8d0d7c9c22145568f902230f1ffd9978d7",
+      "schema_hashes": [
+        "6a30fdb2cfb5bbaf44513ad6bc3507db84fc8ed914314592ceec01e3ed9bfad9",
+        "77e9812c2fac14901cde4b47772496a5825a77dffe60359cf8ba9e3780ba8d7d"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M7",
+      "pair_type": "meaning_only",
+      "request_sha256": "da67bd421ba0178abd72f6dd63433d612069fa3742d51f82411d877c7d2f1f01",
+      "schema_hashes": [
+        "a95a5c11b8f4caa8404b8cc83d78e9b380bbef77d992cd2e4bf6b78891cf02db",
+        "c2980b0e69a3bbe27e5519fa2f6192372b3c92fcaf650811dc9afd461ca74b65"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M8",
+      "pair_type": "meaning_only",
+      "request_sha256": "6bec8a3c74b23d9d0cd0351418d068cb1b3f215e81c134ab33fc329d5c63b350",
+      "schema_hashes": [
+        "854956c7e887bf8b9665a7d1c63570958bed54fa000d60d6dbfd47c1a0564fd0",
+        "cbcbd30e6c70c1afcdc8f18883c9f453757becabf514c40b6db59f0e8777bc09"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M9",
+      "pair_type": "meaning_only",
+      "request_sha256": "c11c1286da33e646686a9a584a00369236b7ffe09bf8abfb61aebcf0f471d8a5",
+      "schema_hashes": [
+        "aa1dbc99f378f10a3eb816976e5934328f88cb94caae43e90d7c385439718a9b",
+        "1311967f6be28a5e47db97eecdd19320dd6cfbd3374669b2c715c0dad501f74d"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "M10",
+      "pair_type": "meaning_only",
+      "request_sha256": "62c9142a9d6f9ad23e12b9f3780e42035d9e75f00b61ec4492747976129971e4",
+      "schema_hashes": [
+        "8bf2c31d85f31a92f7382c63b8f9f1eb6361e2bd4a0cc62478275def0023b446",
+        "07073d3af33678f6ef4690c08ead953aee9156e275aa912be079e7e511ba640f"
+      ],
+      "track": "description_grounding"
+    },
+    {
+      "case_id": "FC10",
+      "pair_type": "cross_dialect_migration",
+      "request_sha256": "a84d6a9f8949e0f03d68450546b5aebd3c2a97ce4b34ec08bfb9e5556c00e8bd",
+      "schema_hashes": [
+        "b70bd7e8336d8660f8c453e9420d8fd29f07eafe59a9333c0a763d4230762235",
+        "8ebd122f9e6e5b7ccb1ecfd159c7ebf43f66c87f9693a04ecdaf49cccb3a14a9"
+      ],
+      "track": "future_control"
+    }
+  ],
+  "fixtures_member_sha256": "64b96280d7cc0970cda4d452a3429180d5cf390aa2f2abd53317fcb6a5029d36",
+  "source_url": "https://github.com/user-attachments/files/34879814/stress-fixtures-0.4.zip",
+  "status": "Exposed external examples, not a dataset; exact fingerprints only, not a lineage proof"
+}

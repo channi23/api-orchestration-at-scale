@@ -1,0 +1,37 @@
+{
+  "accepted_test_intents": 0,
+  "candidate_exposure_counts": {
+    "e0_clean": 100,
+    "original_full_v2": 246
+  },
+  "candidate_strata": {
+    "flat": 149,
+    "structured": 101
+  },
+  "candidate_tools": 250,
+  "draft_strata": {
+    "flat": 18,
+    "structured": 14
+  },
+  "drafts": 32,
+  "engine_checks_run": 0,
+  "exact_stress_schema_matches": 0,
+  "exact_trainpool_matches": 0,
+  "external_stress_cases_inventoried": 21,
+  "freeze_ready": false,
+  "gold_raw_valid": 32,
+  "independent_reviews": 0,
+  "known_v1_family_tools": [
+    "T033"
+  ],
+  "limits": [
+    "Validation does not establish semantic gold correctness or independence.",
+    "Historical inference exposure does not update weights or alone prove training leakage.",
+    "Only exact canonical training overlap is checked; semantic, renamed, structural and stress-example lineage audits remain open.",
+    "No split assignment, engine enforcement check, full dataset or cost claim is established."
+  ],
+  "old_target_tools": 50,
+  "pool_tools": 300,
+  "request_leakage_findings": 0,
+  "unverified_source_licenses": 250
+}
