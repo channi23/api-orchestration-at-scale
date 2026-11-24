@@ -1,0 +1,45 @@
+{
+  "additional_model_endpoint_requests": 0,
+  "approved_test_intents": 0,
+  "change_kinds": {
+    "ambiguity_repair": 3,
+    "answer_contract_revision": 2,
+    "request_contract_revision": 1,
+    "unchanged": 2,
+    "wording_revision": 24
+  },
+  "distractor_fraction_cap": 0.09375,
+  "freeze_ready": false,
+  "fresh_blind_reviews": 0,
+  "gold_changed_tools": [
+    "T039",
+    "T213"
+  ],
+  "gold_raw_valid": 32,
+  "max_distractor_appearances": 3,
+  "native_engine_checks": 0,
+  "near_misses_independently_verified": false,
+  "nominated_near_miss_shortfalls": [
+    "T012",
+    "T016",
+    "T033",
+    "T049",
+    "T064",
+    "T105",
+    "T232",
+    "T237",
+    "T243",
+    "T254"
+  ],
+  "target_features": {
+    "has_allOf": 1,
+    "has_anyOf": 0,
+    "has_conditional": 0,
+    "has_oneOf": 0,
+    "has_patternProperties": 0,
+    "has_ref": 2
+  },
+  "tasks": 32,
+  "training_runs": 0,
+  "version": "v2-authoring-v0.2"
+}

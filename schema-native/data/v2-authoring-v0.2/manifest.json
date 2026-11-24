@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-25",
+  "inputs_sha256": {
+    "schema-native/analysis/v2-authoring-review-v0.1/ADJUDICATION.md": "5eeb77040b18435657398257d32306decc42a6c83f5e596ff7f79b27c681c778",
+    "schema-native/data/v2-authoring-v0.1/drafts.jsonl": "104b43b02ff4b947f337dd8414e079d48daf6f9f61a719dc165c676c3712671c",
+    "schema-native/data/v2-authoring-v0.1/manifest.json": "fa17f909928d600e724125d4f2b86040ffc1678b6599033f03920d5260a84afe",
+    "schema-native/data/v2-authoring-v0.2/FRESH_REVIEW_INSTRUCTIONS.md": "616ea830b7c5b852b17481f90ef89f62b9dac282313c8963aa772462c07a8e76",
+    "schema-native/data/v2-authoring-v0.2/SYSTEM_POLICY.txt": "71cf74c503b28118f9a13ff40820a37e470843e4c8964dee1f2f5febb80cf6c7",
+    "schema-native/data/v2-authoring-v0.2/catalog-nominations.json": "df7b84fdb90b38641e15fd3e9b7540c746e92143ce7dd8a2b1dc986a6fee53b6",
+    "schema-native/data/v2-authoring-v0.2/revisions.jsonl": "015fc5619a8aa31577bd37976d31369f082ef26aa462d4a3e3da5a5a78d8f903",
+    "schema-native/sn/v2_authoring.py": "b410658bac1108f192cc692d572f5d14ebe76057dc8edefde135675e819911dd",
+    "schema-native/sn/v2_revision.py": "945098bbf88ade03876b86fa2eb42ef3946c71892996bfe87ea97d94ce81b367"
+  },
+  "parent_source_receipt_unchanged": true,
+  "raw_schemas_copied_to_git": false,
+  "scope": "authoring/review only; old E0/E0b rules and model profiles unchanged",
+  "status": "PROVISIONAL; FRESH REVIEW AND CATALOG WORK REQUIRED",
+  "version": "v2-authoring-v0.2"
+}
