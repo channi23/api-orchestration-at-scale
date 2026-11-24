@@ -21,6 +21,16 @@ See [the resource guide](RESOURCE_GUIDE.md).
 The original `experiment/` tracked files are unchanged.
 `PLAN.md` contains the preregistered predictions and research gates.
 
+## Next milestone: v2 design review
+
+E0b is complete; its [accepted interpretation](analysis/e0b-amendment3-v1/INTERPRETATION.md)
+records the order effect and limits. The next work is the [draft v2 benchmark specification](V2_DESIGN.md)
+for [issue #6](https://github.com/channi23/api-orchestration-at-scale/issues/6), with
+[model-free sample-size planning](analysis/v2-design/POWER.md) and
+[verification details](analysis/v2-design/VALIDATION.md).
+The proposed 800-test/200-development intent target is provisional, not an existing dataset or
+a power guarantee. No new inference or training is authorized; E1/E2 remain gated.
+
 ## Model-free verification
 
 Python 3.13 is the recommended Mac environment. Python 3.14 was used for the local tests.
