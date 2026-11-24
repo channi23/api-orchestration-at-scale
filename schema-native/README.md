@@ -36,6 +36,8 @@ author/reviewer agreement while retaining unresolved wording and difficulty conc
 The [joint adjudication status](analysis/v2-authoring-review-v0.1/JOINT_STATUS.md) and separate
 [v0.2 revision](data/v2-authoring-v0.2/README.md) preserve the originals, clarify the prompt contract
 and prepare a fresh review packet; catalog/coverage gaps still block test approval.
+The [fresh-context v0.2 review](analysis/v2-authoring-review-v0.2/RESPONSE.md) also matches all 32
+draft golds, while identifying eight assumption-bearing tasks and unresolved catalog concerns.
 The proposed 800-test/200-development intent target is provisional, not an existing dataset or
 a power guarantee. No new inference or training is authorized; E1/E2 remain gated.
 
