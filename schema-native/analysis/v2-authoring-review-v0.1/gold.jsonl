@@ -1,0 +1,32 @@
+{"arguments": {"NumberOfImages": 7}, "task_id": "V2A_02d9ad89eef7", "tool": "set_temporal_filter"}
+{"arguments": {"end": 18, "frameRate": 12, "loop": false, "name": "Walk east", "start": 3}, "task_id": "V2A_239ffd38aded", "tool": "configure_sprite_animation"}
+{"arguments": {"badgelist": [{"loc": "https://example.com/badges/a.json", "priority": 0.8}, {"loc": "https://example.com/badges/b.json", "priority": 0.3}]}, "task_id": "V2A_26fd074e837a", "tool": "submit_badge_list"}
+{"arguments": {"connectorId": 2, "idTag": "EV-813", "meterStart": 18420, "reservationId": 7202, "timestamp": "2027-09-11T10:15:00Z"}, "task_id": "V2A_32c030b44539", "tool": "start_charging_transaction"}
+{"arguments": {"attachments": ["/tmp/agenda.pdf", "/tmp/room-map.png"], "message": "Please review the agenda.", "recipient_email": "nia@example.com", "subject": "Workshop notes"}, "task_id": "V2A_4bd142d8e022", "tool": "send_email"}
+{"arguments": {"connectorId": 4, "expiryDate": "2027-03-18T15:30:00Z", "idTag": "EV-204", "reservationId": 7201}, "task_id": "V2A_4dcf6aff471a", "tool": "reserve_charging_connector"}
+{"arguments": {"answers": [{"value": "Morning", "votes": []}, {"value": "Afternoon", "votes": []}], "end": "2027-06-02T17:00:00Z", "question": "Which workshop time works?"}, "task_id": "V2A_5b498dab538c", "tool": "create_poll"}
+{"arguments": {"exclude": ["^internal\\."], "include": ["^public\\."], "regex": true}, "task_id": "V2A_600d4fd25755", "tool": "set_annotation_filter"}
+{"arguments": {"stream": [{"data": [12, 15, 11], "label": "North"}, {"data": [9, 14], "label": "South"}]}, "task_id": "V2A_62eb97df6add", "tool": "push_chart_update"}
+{"arguments": {"span": 7200}, "task_id": "V2A_7175209850d6", "tool": "set_data_retention"}
+{"arguments": {"StaticIPv4Address": "192.0.2.40", "StaticIPv4Gateway": "192.0.2.1", "StaticIPv4SubNetMask": "255.255.255.0", "UseDHCP": false}, "task_id": "V2A_72095f1392d7", "tool": "configure_camera_network"}
+{"arguments": {"customer_name": "Harbor Studio", "items": [{"name": "Desk lamp", "price": 35.5, "quantity": 2}, {"name": "Cable tray", "price": 12, "quantity": 3}]}, "task_id": "V2A_7e394274b213", "tool": "generate_invoice"}
+{"arguments": {"leftPlayerCharacters": "Falcon / Owl", "leftPlayerName": "Nia", "leftPlayerScore": 18, "rightPlayerCharacters": "Lynx", "rightPlayerName": "Omar", "rightPlayerScore": 23}, "task_id": "V2A_8090702bf338", "tool": "update_scoreboard"}
+{"arguments": {"StreamViewType": "NEW_AND_OLD_IMAGES", "TableName": "OrdersArchive"}, "task_id": "V2A_80b2125e94bc", "tool": "enable_table_stream"}
+{"arguments": {"firstName": "Nia", "lastName": "Patel"}, "task_id": "V2A_8235d58b1546", "tool": "set_full_name"}
+{"arguments": {"temp": 68}, "task_id": "V2A_9274a53ec79e", "tool": "record_temperature_event"}
+{"arguments": {"color": "#2468AC", "name": "Cedar lab", "school_id": "sch-27", "validation": true}, "task_id": "V2A_9c020628d6ee", "tool": "create_booking_resource"}
+{"arguments": {"food_items": [{"calories": 240, "name": "Oatmeal", "serving_size": "1 bowl"}, {"calories": 95, "name": "Apple", "serving_size": "1 medium apple"}], "target_calories": 2100}, "task_id": "V2A_a08e917a8955", "tool": "track_calories"}
+{"arguments": {"age": 13, "name": "Maya Reed", "sex": "F"}, "task_id": "V2A_a75a09270ffa", "tool": "register_youth_athlete"}
+{"arguments": {"departure_date": "2027-08-14", "destination": "BOS", "origin": "SEA", "passengers": 2}, "task_id": "V2A_ad43f9f55d1d", "tool": "book_flight"}
+{"arguments": {"correctAnswers": ["<p>2</p>", "<p>4</p>"], "incorrectAnswers": ["<p>3</p>"], "maxCorrectAnswers": 2, "minCorrectAnswers": 2, "numberAnswers": 3, "text": "<p>Which numbers are even?</p>"}, "task_id": "V2A_b06aeda7ba28", "tool": "create_multiple_choice_question"}
+{"arguments": {"Active": true, "Email": "nia@example.com", "ID": 204, "Name": "Nia Patel", "Role": "Operations"}, "task_id": "V2A_bf407e74af45", "tool": "create_team_user"}
+{"arguments": {"from_unit": "Celsius", "temperature": 22, "to_unit": "Fahrenheit"}, "task_id": "V2A_c2138ab7b4d9", "tool": "convert_temperature"}
+{"arguments": {"end_time": "2027-05-06 09:45", "meeting_title": "Launch review", "participants": ["Nia Patel", "Omar Reed"], "start_time": "2027-05-06 09:00"}, "task_id": "V2A_d026f2a3c41f", "tool": "schedule_meeting"}
+{"arguments": {"country": "Costa Rica"}, "task_id": "V2A_d349c8e21154", "tool": "select_country"}
+{"arguments": {"_id": "dGVsLTIwMjcwMjAx", "_timestamp": "2027-02-01T00:00:00+00:00", "channel": "telephone", "count": 37, "period": "day"}, "task_id": "V2A_de6e78397ddf", "tool": "record_channel_transactions"}
+{"arguments": {"check_in_date": "2027-04-09", "check_out_date": "2027-04-12", "location": "Porto", "number_of_guests": 3}, "task_id": "V2A_e27215c42b11", "tool": "search_hotels"}
+{"arguments": {"confidence": 0.94, "urls": [{"format": "WEB_VTT", "url": "https://example.com/subtitles/clip.vtt"}, {"format": "SRT", "url": "https://example.com/subtitles/clip.srt"}]}, "task_id": "V2A_e945a0d037a6", "tool": "set_video_subtitles"}
+{"arguments": {"description": "Survey route", "name": "Dock loop", "points": [{"latitude": 47.61, "longitude": -122.33}, {"latitude": 47.62, "longitude": -122.34}]}, "task_id": "V2A_e983302baf08", "tool": "create_geo_path"}
+{"arguments": {"cuisine": "Korean", "location": "Seattle", "price_range": {"max": 35, "min": 18}}, "task_id": "V2A_f05a7174f06a", "tool": "search_restaurants"}
+{"arguments": {"core.brightlight": {"name": "Reading nook", "power": 42, "state": true}}, "task_id": "V2A_f3b351c8ad4c", "tool": "set_smart_light"}
+{"arguments": {"content_type": "article", "item_id": "post-431", "method": "email"}, "task_id": "V2A_f440b3967b5f", "tool": "track_share_event"}

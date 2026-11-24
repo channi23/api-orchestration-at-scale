@@ -3,7 +3,12 @@
 **2026-11-25. Provisional assistant-authored material, not a frozen or approved benchmark.**
 The user authorized candidate authoring after the draft design in PR #7. No local model was loaded,
 no inference request was sent to a model endpoint and no training ran. These are drafts composed
-by Codex in the current chat, not human-authored or independently reviewed tasks.
+by Codex in the current chat, not human-authored; at the initial snapshot they had no independent review.
+
+**Subsequent review:** a self-reported blind solve of all 32 tasks has now been received and
+[compared against gold](../../analysis/v2-authoring-review-v0.1/RESPONSE.md). All answers agree,
+but wording/difficulty concerns remain and no test task is approved. The files and zero-review
+counts below remain the original authoring snapshot; review receipt is recorded separately.
 
 ## What exists
 
