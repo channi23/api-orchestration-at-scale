@@ -33,6 +33,9 @@ and [author self-review](analysis/v2-design/AUTHORING_REVIEW.md) are now availab
 review, with all 250 candidate tools inventoried and no accepted test intents yet.
 The [first blind-review response](analysis/v2-authoring-review-v0.1/RESPONSE.md) records 32/32
 author/reviewer agreement while retaining unresolved wording and difficulty concerns.
+The [joint adjudication status](analysis/v2-authoring-review-v0.1/JOINT_STATUS.md) and separate
+[v0.2 revision](data/v2-authoring-v0.2/README.md) preserve the originals, clarify the prompt contract
+and prepare a fresh review packet; catalog/coverage gaps still block test approval.
 The proposed 800-test/200-development intent target is provisional, not an existing dataset or
 a power guarantee. No new inference or training is authorized; E1/E2 remain gated.
 
