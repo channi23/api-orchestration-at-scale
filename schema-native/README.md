@@ -28,6 +28,9 @@ records the order effect and limits. The next work is the [draft v2 benchmark sp
 for [issue #6](https://github.com/channi23/api-orchestration-at-scale/issues/6), with
 [model-free sample-size planning](analysis/v2-design/POWER.md) and
 [verification details](analysis/v2-design/VALIDATION.md).
+The user authorized candidate authoring next; the [first 32-task draft batch](data/v2-authoring-v0.1/README.md)
+and [author self-review](analysis/v2-design/AUTHORING_REVIEW.md) are now available for independent
+review, with all 250 candidate tools inventoried and no accepted test intents yet.
 The proposed 800-test/200-development intent target is provisional, not an existing dataset or
 a power guarantee. No new inference or training is authorized; E1/E2 remain gated.
 

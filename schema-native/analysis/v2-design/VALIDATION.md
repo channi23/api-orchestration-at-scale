@@ -2,7 +2,9 @@
 
 **2026-11-25. Model-free design delivery on docs/v2-benchmark-design.**
 Base: main `778c1c1e11c14867b4ed3e3c1cbf8acd3353f0a6`.
-Scope: [V2_DESIGN.md](../../V2_DESIGN.md), sample-size planning and its tests. No v2 tasks were authored.
+Initial scope: [V2_DESIGN.md](../../V2_DESIGN.md), sample-size planning and its tests. No v2 tasks
+were authored in that initial delivery; the subsequent user-authorized authoring tranche is
+documented separately in [AUTHORING_REVIEW.md](AUTHORING_REVIEW.md).
 
 ## Verified
 

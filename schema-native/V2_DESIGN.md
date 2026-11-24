@@ -13,9 +13,11 @@ for experimentally held-out schemas. Eventually test whether training improves t
 and whether a deployable small-model system can match a stronger reference at lower total cost.
 These are separate claims. Neither was established by E0b's order diagnostic.
 
-This delivery specifies the dataset and supplies a model-free planning calculation. It does not
-author tasks, generate answers, invoke models, modify weights, create training infrastructure,
-or change any E0/E0b result, prompt, score, config or `experiment/` file. It does not authorize E1/E2.
+The initial delivery specified the dataset and supplied a model-free planning calculation. The
+user's subsequent "do that" authorizes candidate authoring and checks; the first provisional
+[authoring batch](data/v2-authoring-v0.1/README.md) is separate from dataset approval. This does not
+authorize benchmark inference, weight edits, training infrastructure or changes to any E0/E0b
+result, prompt, score, config or `experiment/` file. It does not authorize E1/E2.
 Historical PLAN.md stage-2a counts and abstention suggestions are not a launch protocol for v2;
 this reviewed, versioned design must precede any later implementation or campaign lock.
 
@@ -29,8 +31,8 @@ this reviewed, versioned design must precede any later implementation or campaig
 | Tracks | API tasks, assertion-keyword pairs, description-grounding pairs, reported separately | Do not turn grounding gains into keyword-understanding claims |
 | Training | No training until dataset and capability gates pass and a new protocol is approved | E1/E2 remain gated |
 
-All defaults are concrete review proposals, not retroactive amendments to E0b. Stop after design
-review; a later instruction is needed for task authoring and implementation.
+All defaults are concrete review proposals, not retroactive amendments to E0b. Candidate authoring
+has been authorized; independent review, dataset freeze and campaign approval remain separate gates.
 
 ## 2. Size and the independent unit
 
@@ -97,9 +99,16 @@ frame and document it. Generic names such as `name`/`id` are not duplicate edges
 
 Before any v2 authoring, inventory the frozen 300-tool pool, its 50 target intents, all 100 v1
 paraphrases, schema-native/trainpool, stress examples and any future authoring corpus. Mark v1
-and stress-example lineages as exposed development-only material. Exclude their confirmed family
+target-intent and stress-example lineages as exposed development-only material. Exclude their confirmed family
 siblings from locked test. Existing trainpool assignments must be re-audited; do not assume the
 old split is compatible with v2. Similarity scores are review candidates, not proof of identity.
+
+The initial authoring audit found prior catalog exposure for 100 of the 250 untargeted tools in E0,
+and 246 in the older full-v2 experiment. Prior inference exposure is recorded separately from
+training/development leakage: it does not update weights, but "not previously a target" must not
+be described as "never previously supplied to the model." A tool's prior distractor appearance alone
+does not establish a new intent's leakage status. All candidates remain provisional and unassigned
+unless a known target-family sibling requires development-only treatment.
 
 Use versioned exact-byte, canonical-JSON, schema-structure and normalized request comparisons;
 record thresholds and reviewed near-duplicate edges. Assign eligible components with seeded hashes
@@ -313,4 +322,5 @@ Review sequence:
    effect/cost hypotheses and full execution budgets; document unresolved gaps.
 5. **Only then consider E1/E2:** a separate training/campaign review and explicit authorization.
 
-**Current gate: design review. No v2 dataset, model campaign, cost result or training result exists.**
+**Current gate: design and independent candidate review. Provisional drafts are not a frozen v2
+dataset; no new model campaign, cost result or training result exists.**
