@@ -1,6 +1,6 @@
 # Development catalog review v0.1
 
-Three five-tool catalogs are ready for a fresh blind solve. Each version replaces one weak
+Three five-tool catalogs were reviewed with the gold withheld. Each version replaces one weak
 distractor with a source-backed candidate. The v0.3 request, gold arguments, policy, target
 position and other tool positions are preserved. `catalogs.jsonl` records the original tool
 order as a control. The packet includes only the three new catalogs, so a reviewer sees each
@@ -24,15 +24,46 @@ among all five tools. In the annotation case, T016, X008 and T263 (API-diff repo
 all accept the exact same gold arguments. X008 has `minProperties: 1` and an open root, which
 allows undeclared keys to satisfy the count without an `elements` or `archives` field. T016
 also accepts the X008 example as an object containing an undeclared key. These checks expose
-why schema validity alone cannot choose the right tool. The reviewer should test whether the
-visible descriptions and request establish a unique answer.
+why schema validity alone cannot choose the right tool. The review below records how the
+visible descriptions and request distinguish the tools.
 
 X003 shares the T131 Glaive function family and X008 shares the T016 Revapi project. Treat the
 pairs as same-source development examples. X004 was left for a distinct dated-meal scenario
 rather than adding a second calorie candidate to this one-swap comparison. X002 and X005 were
 rated only related. X006 needs a model-visible representation, and X007 could supply a second
 defensible answer to the current country request. Booking and scoreboard still have no new
-candidate. Source licence clearance and independent review remain open.
+candidate. Source licence clearance and held-out split review remain open.
+
+## Solve and adjudication
+
+The reviewer matched all three tool names and argument objects before seeing gold and confirmed
+the matches after opening the gold file. The preserved answers and notes matched the session's
+saved files byte for byte. The author reran the comparison using the schemas' original dialect
+declarations and a Draft 7 fallback. The reviewer used Draft 7 throughout and obtained the same
+catalog-level validity verdicts on these answers.
+
+The handoff disclosed the annotation task's three-way schema-validity tie before the solve.
+The reviewer reported no prior gold exposure and explained each competing tool from the visible
+request and descriptions. The annotation result therefore records agreement with advance notice of
+that tie. Use a neutral handoff if a later review needs an unprompted assessment of tool competition.
+
+For retention, the alternative requires a log-group prefix and an allowed day count. For calorie
+tracking, the alternative uses numeric quantities and calories per serving and lacks a declared
+daily target. For annotation filtering, X008 and T263 both accept the target arguments as extra
+properties, but their descriptions cover element/archive filters and report output, respectively.
+The existing comparator requires the correct tool name and exact semantic arguments.
+
+The annotation request explicitly asks for regex matching. Omitting `regex` loses that requested
+detail even though the schema permits omission. The schema's string default `"false"` is a legal
+annotation, and emitting it as the value of the boolean field fails validation. On X008,
+`_uniqueItems` is an unrecognized keyword and the repeated-pattern witness validates. Preserve
+these source behaviors in the development version.
+
+Disposition: retain all three catalogs for development. The result covers three existing
+intent lineages and leaves test approvals at zero. Source clearance and the held-out split
+remain separate requirements. The original packet and answers are preserved in the local
+review receipt. The supplied adjudication has SHA-256
+`2728173f86b39618d457535d55b14a52278bce6bc1d9c3e8fa538fa9367a50c6`.
 
 ## Reproduce
 
@@ -57,6 +88,6 @@ Give the ZIP alone to a fresh reviewer and collect the first `answers.jsonl` and
   --responses /tmp/answers.jsonl --reviewer reviewer-id --out /tmp/catalog-comparison.json
 ```
 
-Only three candidates enter these development catalogs. Zero near misses have been independently
-verified, and zero test intents have been approved. The benchmark runner does not consume these
-catalogs. E1 and E2 remain gated.
+Only three candidates enter these development catalogs. Their original generated validation
+file describes the state at export, before the review above. The benchmark runner does not
+consume these catalogs. E1 and E2 remain gated.
