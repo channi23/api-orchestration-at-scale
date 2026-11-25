@@ -1,0 +1,164 @@
+{
+  "api_calls": 0,
+  "approved_test_intents": 0,
+  "dependency_sha256": {
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "specification/DigitalOcean-public.v2.yaml": "077698af2ea18b9713399901725ed1f142200d6a1882fc213144b39c649b186e",
+    "specification/resources/droplets/droplets_list.yml": "fc2ddd322e903f4ff18be6ce1d425345ee0cf00d7c15daefd845281152910aad",
+    "specification/resources/droplets/parameters.yml": "ebffb2027289332dcc5b5a033b87dc5d87f4c6d7c93ff6f25f92ef0758003ea6",
+    "specification/resources/monitoring/monitoring_get_DropletCpuMetrics.yml": "5d429cba4f3848f0d66e67c97b6c1a756151f4894a7b3e2b9af3926f190f7787",
+    "specification/resources/monitoring/monitoring_get_dropletBandwidthMetrics.yml": "f31bcb3238f624d8802eb6760a1d48e5fab6861dbb97594e8b0ceaf399dc2c7d",
+    "specification/resources/monitoring/monitoring_get_dropletLoad5Metrics.yml": "e3ea957422f15f3a4537423fb31bb8e6d1167aff822996a871544f0b0c88eeee",
+    "specification/resources/monitoring/monitoring_get_dropletMemoryAvailableMetrics.yml": "ee9d9c8c86bb77184ff22eb44697e84c6c00bfaf30a6f0e25d42fe94b49f3322",
+    "specification/resources/monitoring/parameters.yml": "bd2dae6657c0b6c8325d6f445d1089fa643f3cecfed21789e1ef9492150527d3",
+    "specification/shared/parameters.yml": "6e084f48f0998210cb5a48c6b71a864a6c75b4de449e2494c36f96dd113ace01"
+  },
+  "index_coverage": {
+    "collection_only": 286,
+    "indexed_repository": 2002
+  },
+  "indexed_owner_matches": {},
+  "inference_calls": 0,
+  "input_sha256": {
+    "experiment/dataset/tool_pool.v1.jsonl": "20c3d1e7b0da12a950726971e91ff5b0b250b96eeceb82a794c50bc578c97042",
+    "schema-native/data/trainpool/schemas.v1.jsonl": "bd074fd59552934f1fbcaa09d2527b15c3eb2c02e9ae340edc17016e418a7463",
+    "schema-native/data/v2-digitalocean-v0.1/REVIEW_INSTRUCTIONS.md": "0a44ec594976b0a46843fdfd4229526de70a8502717269fe2424b8853ba15ac3",
+    "schema-native/data/v2-digitalocean-v0.1/drafts.jsonl": "4b1c57d0565d2ee36e80348e0cbe9cb89a3b5e3561bfe8b1737d7fc134d2c940",
+    "schema-native/data/v2-digitalocean-v0.1/operations.jsonl": "bb964356d8da714306fbb6d88f3a7b965a56549b907098138bcd34e8a202ede2",
+    "schema-native/data/v2-official-sources-v0.1/SYSTEM_POLICY.txt": "f82bad1a3e10b2526428f96be82008192c9048172000c976d8af586607cefbd1",
+    "schema-native/data/v2-source-expansion-v0.1/cards.source.jsonl": "2bd8b37aceef358a3e735b048001b6ef14c25c7de1ae3aa14ffceca604e554a5",
+    "schema-native/sn/v2_digitalocean.py": "b17de87971373cd76cacc03da453771d64f3a5228962ba32eb71a7fdfdde5551",
+    "schema-native/sn/v2_lineage.py": "6201aa8052347a57d0931696af020413cb4a045403db0b515b6445e64e2cc50c",
+    "schema-native/sn/v2_official_sources.py": "897996c2cbf582851f72ff8f6fa40a6b86d09875f56b461d16c4a1a12e341298"
+  },
+  "license": "Apache-2.0",
+  "operations": {
+    "get_droplet_bandwidth": {
+      "exact_prior_argument_schema_matches": [],
+      "operation_file": "specification/resources/monitoring/monitoring_get_dropletBandwidthMetrics.yml",
+      "operation_id": "monitoring_get_dropletBandwidthMetrics",
+      "parameter_locations": {
+        "direction": "query",
+        "end": "query",
+        "host_id": "query",
+        "interface": "query",
+        "start": "query"
+      },
+      "path": "/v2/monitoring/metrics/droplet/bandwidth",
+      "schema_sha256": "65e71b33479fb505fe8053589b97b3e2c07653ba44592eda24c76cfcc7766b29"
+    },
+    "get_droplet_cpu": {
+      "exact_prior_argument_schema_matches": [],
+      "operation_file": "specification/resources/monitoring/monitoring_get_DropletCpuMetrics.yml",
+      "operation_id": "monitoring_get_DropletCpuMetrics",
+      "parameter_locations": {
+        "end": "query",
+        "host_id": "query",
+        "start": "query"
+      },
+      "path": "/v2/monitoring/metrics/droplet/cpu",
+      "schema_sha256": "497ddfd7a87f6a94a3e1b0874828a177ef6caa751628ef7383559bc214924d3f"
+    },
+    "get_droplet_load_5": {
+      "exact_prior_argument_schema_matches": [],
+      "operation_file": "specification/resources/monitoring/monitoring_get_dropletLoad5Metrics.yml",
+      "operation_id": "monitoring_get_dropletLoad5Metrics",
+      "parameter_locations": {
+        "end": "query",
+        "host_id": "query",
+        "start": "query"
+      },
+      "path": "/v2/monitoring/metrics/droplet/load_5",
+      "schema_sha256": "497ddfd7a87f6a94a3e1b0874828a177ef6caa751628ef7383559bc214924d3f"
+    },
+    "get_droplet_memory_available": {
+      "exact_prior_argument_schema_matches": [],
+      "operation_file": "specification/resources/monitoring/monitoring_get_dropletMemoryAvailableMetrics.yml",
+      "operation_id": "monitoring_get_dropletMemoryAvailableMetrics",
+      "parameter_locations": {
+        "end": "query",
+        "host_id": "query",
+        "start": "query"
+      },
+      "path": "/v2/monitoring/metrics/droplet/memory_available",
+      "schema_sha256": "497ddfd7a87f6a94a3e1b0874828a177ef6caa751628ef7383559bc214924d3f"
+    },
+    "list_droplets": {
+      "exact_prior_argument_schema_matches": [],
+      "operation_file": "specification/resources/droplets/droplets_list.yml",
+      "operation_id": "droplets_list",
+      "parameter_locations": {
+        "name": "query",
+        "page": "query",
+        "per_page": "query",
+        "tag_name": "query",
+        "type": "query"
+      },
+      "path": "/v2/droplets",
+      "schema_sha256": "c4c12a7c20d088383cbe6d661151cc0aa4926ddb77535d9f368077432f3e3bcc"
+    }
+  },
+  "project": "digitalocean/openapi",
+  "revision": "0644e10b56a1ea9eff4e221ff35758db5037510a",
+  "source_index_sha256": "0bd4becb72ffb8fa6a0cdcef9853f0ec29ed051f7d5c247d1f98efcec5f7d72c",
+  "tasks": [
+    {
+      "approved_for_test": false,
+      "intent_id": "cpu-window",
+      "schema_valid_gold_tool_names": [
+        "get_droplet_memory_available",
+        "get_droplet_load_5",
+        "get_droplet_cpu"
+      ],
+      "task_id": "V2DO_f37c406a75f5",
+      "tool": "get_droplet_cpu"
+    },
+    {
+      "approved_for_test": false,
+      "intent_id": "available-memory-window",
+      "schema_valid_gold_tool_names": [
+        "get_droplet_cpu",
+        "get_droplet_load_5",
+        "get_droplet_memory_available"
+      ],
+      "task_id": "V2DO_43e2e4265be6",
+      "tool": "get_droplet_memory_available"
+    },
+    {
+      "approved_for_test": false,
+      "intent_id": "five-minute-load-window",
+      "schema_valid_gold_tool_names": [
+        "get_droplet_memory_available",
+        "get_droplet_load_5",
+        "get_droplet_cpu"
+      ],
+      "task_id": "V2DO_a7b1768fd0c1",
+      "tool": "get_droplet_load_5"
+    },
+    {
+      "approved_for_test": false,
+      "intent_id": "private-inbound-bandwidth",
+      "schema_valid_gold_tool_names": [
+        "get_droplet_bandwidth"
+      ],
+      "task_id": "V2DO_8bc681651846",
+      "tool": "get_droplet_bandwidth"
+    },
+    {
+      "approved_for_test": false,
+      "intent_id": "tag-filter-with-optional-name",
+      "schema_valid_description_violation": {
+        "name": "worker-01",
+        "page": 1,
+        "per_page": 25,
+        "tag_name": "batch-jobs"
+      },
+      "schema_valid_gold_tool_names": [
+        "list_droplets"
+      ],
+      "task_id": "V2DO_321f64c5b032",
+      "tool": "list_droplets"
+    }
+  ],
+  "training_runs": 0
+}

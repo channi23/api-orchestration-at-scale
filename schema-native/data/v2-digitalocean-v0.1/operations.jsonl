@@ -1,0 +1,5 @@
+{"tool":"get_droplet_cpu","operation_id":"monitoring_get_DropletCpuMetrics","path":"/v2/monitoring/metrics/droplet/cpu","description":"Read CPU utilization metrics for a Droplet over a time window."}
+{"tool":"get_droplet_memory_available","operation_id":"monitoring_get_dropletMemoryAvailableMetrics","path":"/v2/monitoring/metrics/droplet/memory_available","description":"Read available memory metrics for a Droplet over a time window."}
+{"tool":"get_droplet_load_5","operation_id":"monitoring_get_dropletLoad5Metrics","path":"/v2/monitoring/metrics/droplet/load_5","description":"Read five-minute load average metrics for a Droplet over a time window."}
+{"tool":"get_droplet_bandwidth","operation_id":"monitoring_get_dropletBandwidthMetrics","path":"/v2/monitoring/metrics/droplet/bandwidth","description":"Read bandwidth metrics for a Droplet, filtered by network interface and traffic direction."}
+{"tool":"list_droplets","operation_id":"droplets_list","path":"/v2/droplets","description":"List Droplets with optional resource filters and pagination."}
