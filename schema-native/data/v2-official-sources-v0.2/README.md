@@ -19,13 +19,16 @@ tool descriptions, since more than one tool accepts the slug. It stays in the or
 The other requests also stay there. The two revised rows have new task IDs and keep their
 underlying intent lineages. These are two follow-up development reviews with zero test approvals.
 
-The two first answers matched their inherited gold and validated on the selected tools.
-The reviewer reported working with the ZIP alone and saved answers before gold access.
-The supplied schemas resolve the requested active-only filter through the Boolean `active`
-field. Expiry and redemption limits are separate questions outside this call contract.
-The paging case specifies the index base. Continuing the same list assumes that the first
-page and requested page follow the same ordering. The alternative Pokédex lookup takes a
-single identifier and offers no pagination. Gold adjudication is pending.
+Both first answers matched their inherited gold and validated on the selected tools.
+Adjudication confirmed both matches and the original answer and note bytes. The reviewer
+reported working with the ZIP alone and saved both files before gold access. The adjudication
+SHA-256 is `f651f37753fe7a8b8d2a62eed0bdc23366ffbaabf57d0cd193318af8005727a8`.
+
+The active-only request uses the Boolean `active` field. The supplied tool exposes no separate
+expiry or redemption-count filter. The paging request specifies the index base. Continuing a
+list assumes the same ordering as the earlier results, but the call arguments stay the same.
+The alternate Pokédex lookup accepts a single identifier and offers no pagination.
+Both concerns were reviewed, and the two wording variants are settled for development.
 
 ## Reproduce
 
