@@ -1,0 +1,620 @@
+{
+  "arms": {
+    "hidden": {
+      "all": {
+        "members": 32,
+        "outcomes": {
+          "correct": 5,
+          "schema_invalid_arguments": 22,
+          "valid_wrong_arguments": 5
+        },
+        "pair_correct": 1,
+        "pairs": 16
+      },
+      "asymmetric_edit": {
+        "members": 14,
+        "outcomes": {
+          "correct": 3,
+          "schema_invalid_arguments": 10,
+          "valid_wrong_arguments": 1
+        },
+        "pair_correct": 0,
+        "pairs": 7
+      },
+      "equivalent_rewrite": {
+        "members": 4,
+        "outcomes": {
+          "correct": 2,
+          "schema_invalid_arguments": 2
+        },
+        "pair_correct": 1,
+        "pairs": 2
+      },
+      "validity_separable": {
+        "members": 14,
+        "outcomes": {
+          "schema_invalid_arguments": 10,
+          "valid_wrong_arguments": 4
+        },
+        "pair_correct": 0,
+        "pairs": 7
+      }
+    },
+    "visible": {
+      "all": {
+        "members": 32,
+        "outcomes": {
+          "correct": 18,
+          "schema_invalid_arguments": 7,
+          "valid_wrong_arguments": 7
+        },
+        "pair_correct": 5,
+        "pairs": 16
+      },
+      "asymmetric_edit": {
+        "members": 14,
+        "outcomes": {
+          "correct": 9,
+          "schema_invalid_arguments": 3,
+          "valid_wrong_arguments": 2
+        },
+        "pair_correct": 2,
+        "pairs": 7
+      },
+      "equivalent_rewrite": {
+        "members": 4,
+        "outcomes": {
+          "correct": 4
+        },
+        "pair_correct": 2,
+        "pairs": 2
+      },
+      "validity_separable": {
+        "members": 14,
+        "outcomes": {
+          "correct": 5,
+          "schema_invalid_arguments": 4,
+          "valid_wrong_arguments": 5
+        },
+        "pair_correct": 1,
+        "pairs": 7
+      }
+    }
+  },
+  "pairs": [
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "kind": "validity_separable",
+      "pair_id": "K01",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": false
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "asymmetric_edit",
+      "pair_id": "K02",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "kind": "asymmetric_edit",
+      "pair_id": "K03",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "asymmetric_edit",
+      "pair_id": "K04",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "kind": "validity_separable",
+      "pair_id": "K05",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": false
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "validity_separable",
+      "pair_id": "K06",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "validity_separable",
+      "pair_id": "K07",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "validity_separable",
+      "pair_id": "K08",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "equivalent_rewrite",
+      "pair_id": "K09",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "kind": "equivalent_rewrite",
+      "pair_id": "K10",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "validity_separable",
+      "pair_id": "K11",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "asymmetric_edit",
+      "pair_id": "K12",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": false
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "asymmetric_edit",
+      "pair_id": "K13",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": false
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "kind": "asymmetric_edit",
+      "pair_id": "K14",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "asymmetric_edit",
+      "pair_id": "K15",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "valid_wrong_arguments",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    },
+    {
+      "hidden": [
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "kind": "validity_separable",
+      "pair_id": "K16",
+      "visible": [
+        {
+          "known_tool": true,
+          "outcome": "correct",
+          "schema_valid": true,
+          "tool_matches": true
+        },
+        {
+          "known_tool": true,
+          "outcome": "schema_invalid_arguments",
+          "schema_valid": false,
+          "tool_matches": true
+        }
+      ],
+      "visible_same_answer": true
+    }
+  ],
+  "request_count": 48,
+  "scope": "development-only, descriptive",
+  "total_usage": {
+    "completion_tokens": 1890,
+    "prompt_tokens": 18212
+  }
+}

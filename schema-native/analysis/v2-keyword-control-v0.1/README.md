@@ -5,6 +5,8 @@ change its answer when the request stays the same. It uses the existing
 [16 synthetic keyword pairs](../../data/v2-keyword-seed-v0.1/README.md).
 Each member offers one tool, so the control measures argument interpretation.
 
+**Run completed.** See the [measured development results](RESULTS.md).
+
 ## What the offline audit verified
 
 | Count | Result |
