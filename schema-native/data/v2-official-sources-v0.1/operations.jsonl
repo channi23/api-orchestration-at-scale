@@ -1,0 +1,10 @@
+{"project":"pokeapi/pokeapi","tool":"list_pokemon","operation_id":"pokemon_list","path":"/api/v2/pokemon/","description":"List individual Pokémon entries with offset pagination.","omit_local_only":["q"]}
+{"project":"pokeapi/pokeapi","tool":"get_pokemon","operation_id":"pokemon_retrieve","path":"/api/v2/pokemon/{id}/","description":"Get an individual Pokémon entry, including its stats and abilities."}
+{"project":"pokeapi/pokeapi","tool":"get_pokemon_species","operation_id":"pokemon_species_retrieve","path":"/api/v2/pokemon-species/{id}/","description":"Get data shared at the Pokémon species level, such as growth rate and classification."}
+{"project":"pokeapi/pokeapi","tool":"get_pokemon_form","operation_id":"pokemon_form_retrieve","path":"/api/v2/pokemon-form/{id}/","description":"Get a named visual form of a Pokémon."}
+{"project":"pokeapi/pokeapi","tool":"get_pokedex","operation_id":"pokedex_retrieve","path":"/api/v2/pokedex/{id}/","description":"Get an encyclopedia index of Pokémon entries by Pokédex identifier."}
+{"project":"stripe/openapi","tool":"list_products","operation_id":"GetProducts","path":"/v1/products","description":"List catalog products, with optional filters for product status or creation time."}
+{"project":"stripe/openapi","tool":"list_prices","operation_id":"GetPrices","path":"/v1/prices","description":"List price records, with optional filters for product, price type, currency and recurring billing settings."}
+{"project":"stripe/openapi","tool":"list_coupons","operation_id":"GetCoupons","path":"/v1/coupons","description":"List coupons that define discounts."}
+{"project":"stripe/openapi","tool":"list_promotion_codes","operation_id":"GetPromotionCodes","path":"/v1/promotion_codes","description":"List customer-facing promotion codes, optionally filtered by linked coupon or status."}
+{"project":"stripe/openapi","tool":"list_tax_rates","operation_id":"GetTaxRates","path":"/v1/tax_rates","description":"List tax rate records, optionally filtered by status, creation time or whether tax is inclusive."}
