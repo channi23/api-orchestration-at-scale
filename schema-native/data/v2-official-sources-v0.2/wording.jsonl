@@ -1,0 +1,2 @@
+{"parent_task_id":"V2OS_0ab308de31c1","request":"Show up to 5 codes that customers can enter for the discount defined by coupon \"coupon_exampleSpring\". Include only codes that are currently active.","reason":"Make the requested Boolean filter explicit."}
+{"parent_task_id":"V2OS_1ba2415ada23","request":"I already have the first 40 Pokémon entries. Fetch the next 20 in a single page, counting the first entry as position 0.","reason":"Specify the offset convention without giving the model the offset field name."}
