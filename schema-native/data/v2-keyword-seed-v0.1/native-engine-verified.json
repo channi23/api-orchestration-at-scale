@@ -1,0 +1,1884 @@
+{
+  "compiled": 19,
+  "engine_commit": "d795912fedc7d393de740177ea9ea761e7905774",
+  "engine_version": "1.0.1 (bundled by pinned llama.cpp; standalone stage-0 audit used 1.9.1)",
+  "evidence": [
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "f7d5b7255dd66cb4e7ac87d236326ffadf7d5998aadd449fafe86c033b783215",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "email": "nia@example.com",
+          "id": []
+        },
+        {
+          "email": "nia@example.com",
+          "id": null
+        },
+        {
+          "email": "nia@example.com",
+          "id": {}
+        },
+        {
+          "email": "nia@example.com"
+        },
+        {
+          "email": [],
+          "id": "C01"
+        },
+        {
+          "email": null,
+          "id": "C01"
+        },
+        {
+          "email": {},
+          "id": "C01"
+        },
+        {
+          "id": "C01",
+          "phone": "555-0104"
+        },
+        {
+          "id": "C01"
+        },
+        {}
+      ],
+      "pair_id": "K01",
+      "schema_sha256": "44d6c3c3d858469c2a61d83d0ce32d94ca03fdc368006c942ada7dcb511e184a",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "12f0880993d87507b3e71cd5cf326dcb50f349858c897c178afc1a161aee1748",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "email": "nia@example.com",
+          "id": "C01"
+        },
+        {
+          "id": "C01",
+          "phone": []
+        },
+        {
+          "id": "C01",
+          "phone": null
+        },
+        {
+          "id": "C01",
+          "phone": {}
+        },
+        {
+          "id": "C01"
+        },
+        {
+          "id": [],
+          "phone": "555-0104"
+        },
+        {
+          "id": null,
+          "phone": "555-0104"
+        },
+        {
+          "id": {},
+          "phone": "555-0104"
+        },
+        {
+          "phone": "555-0104"
+        },
+        {}
+      ],
+      "pair_id": "K01",
+      "schema_sha256": "53983d6dd1a545c71046f14ac78112c27ba56b8ff73688e59e5bfd88b8f3167e",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "8bf858d372f9021982be706a31e1b4bef32a86530c6125f34da512b6893adb51",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "id": "S02",
+          "mode": "__INVALID__"
+        },
+        {
+          "id": "S02",
+          "mode": []
+        },
+        {
+          "id": "S02",
+          "mode": null
+        },
+        {
+          "id": "S02",
+          "mode": {}
+        },
+        {
+          "id": "S02"
+        },
+        {
+          "id": [],
+          "mode": "economy"
+        },
+        {
+          "id": null,
+          "mode": "economy"
+        },
+        {
+          "id": {},
+          "mode": "economy"
+        },
+        {
+          "mode": "economy"
+        },
+        {}
+      ],
+      "pair_id": "K02",
+      "schema_sha256": "f44b2abe6ac6b1f16bc210ef6293b72c400ba8dcdc8b674af2ec7bdcea204047",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "cd27a29f4e80c51962be2a454d5c926d854c57d79dd311a285d6146933223e25",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "id": "S02",
+          "mode": "__INVALID__"
+        },
+        {
+          "id": "S02",
+          "mode": "economy"
+        },
+        {
+          "id": "S02",
+          "mode": []
+        },
+        {
+          "id": "S02",
+          "mode": null
+        },
+        {
+          "id": "S02",
+          "mode": {}
+        },
+        {
+          "id": "S02"
+        },
+        {
+          "id": [],
+          "mode": "priority"
+        },
+        {
+          "id": null,
+          "mode": "priority"
+        },
+        {
+          "id": {},
+          "mode": "priority"
+        },
+        {
+          "mode": "priority"
+        },
+        {}
+      ],
+      "pair_id": "K02",
+      "schema_sha256": "e0407d05f34d8e77ffa97fd19735617eb7fb016a3fe9ee910d5282c328058f3c",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: oneOf constraints are not supported. Enable 'coerce_one_of' option to approximate oneOf with anyOf\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"a\":{\"type\":\"boolean\"},\"b\":{\"type\":\"boolean\"},\"exception\":{\"type\":\"boolean\"}},\"required\":[\"id\"],\"additionalProperties\":false,\"oneOf\":[{\"properties\":{\"a\":{\"const\":true}},\"required\":[\"a\"]},{\"properties\":{\"b\":{\"const\":true}},\"required\":[\"b\"]}]}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "3a20dd680f359bb417ee050b6754c3d8b1e737b81134a294d6d795f7196f3407",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "a": "__INVALID__",
+          "id": "P03"
+        },
+        {
+          "a": [],
+          "id": "P03"
+        },
+        {
+          "a": null,
+          "id": "P03"
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": "P03"
+        },
+        {
+          "a": true,
+          "id": []
+        },
+        {
+          "a": true,
+          "id": null
+        },
+        {
+          "a": true,
+          "id": {}
+        },
+        {
+          "a": true
+        },
+        {
+          "a": {},
+          "id": "P03"
+        },
+        {
+          "id": "P03"
+        },
+        {}
+      ],
+      "pair_id": "K03",
+      "schema_sha256": "40ccf0363d1732086bace65e071ddfb70d8e09bda4d52d4bb8f60234e972f827",
+      "variant": "S"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: oneOf constraints are not supported. Enable 'coerce_one_of' option to approximate oneOf with anyOf\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"a\":{\"type\":\"boolean\"},\"b\":{\"type\":\"boolean\"},\"exception\":{\"type\":\"boolean\"}},\"required\":[\"id\"],\"additionalProperties\":false,\"oneOf\":[{\"properties\":{\"a\":{\"const\":true}},\"required\":[\"a\"]},{\"properties\":{\"b\":{\"const\":true}},\"required\":[\"b\",\"exception\"]}]}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "f5a2db4a4979b76221136016a59be12cad1757d73c3c58186c541c098a54cef0",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "a": "__INVALID__",
+          "b": true,
+          "id": "P03"
+        },
+        {
+          "a": [],
+          "b": true,
+          "id": "P03"
+        },
+        {
+          "a": null,
+          "b": true,
+          "id": "P03"
+        },
+        {
+          "a": true,
+          "b": "__INVALID__",
+          "id": "P03"
+        },
+        {
+          "a": true,
+          "b": [],
+          "id": "P03"
+        },
+        {
+          "a": true,
+          "b": null,
+          "id": "P03"
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": []
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": null
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": {}
+        },
+        {
+          "a": true,
+          "b": true
+        },
+        {
+          "a": true,
+          "b": {},
+          "id": "P03"
+        },
+        {
+          "a": {},
+          "b": true,
+          "id": "P03"
+        },
+        {
+          "b": true,
+          "id": "P03"
+        },
+        {}
+      ],
+      "pair_id": "K03",
+      "schema_sha256": "5b72aa73b578a021e1829d5ad727ff6fbdaa7451caa39b021e6ae642f432fe9c",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "e5eb3e2bb7d77c841cdb94c4455b350bc477591017eff6b150769430fa318229",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "a": "__INVALID__",
+          "b": true,
+          "id": "P04"
+        },
+        {
+          "a": [],
+          "b": true,
+          "id": "P04"
+        },
+        {
+          "a": null,
+          "b": true,
+          "id": "P04"
+        },
+        {
+          "a": true,
+          "b": "__INVALID__",
+          "id": "P04"
+        },
+        {
+          "a": true,
+          "b": [],
+          "id": "P04"
+        },
+        {
+          "a": true,
+          "b": null,
+          "id": "P04"
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": []
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": null
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": {}
+        },
+        {
+          "a": true,
+          "b": true
+        },
+        {
+          "a": true,
+          "b": {},
+          "id": "P04"
+        },
+        {
+          "a": {},
+          "b": true,
+          "id": "P04"
+        },
+        {}
+      ],
+      "pair_id": "K04",
+      "schema_sha256": "7b33e91f4d8846145ee64c706b4a3f16ac8e96454967e8b75db55a5fc9a4718f",
+      "variant": "S"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"not\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"a\":{\"type\":\"boolean\"},\"b\":{\"type\":\"boolean\"},\"exception\":{\"type\":\"boolean\"}},\"required\":[\"id\"],\"additionalProperties\":false,\"anyOf\":[{\"properties\":{\"a\":{\"const\":true}},\"required\":[\"a\"],\"not\":{\"required\":[\"b\"]}},{\"properties\":{\"b\":{\"const\":true}},\"required\":[\"b\"],\"not\":{\"required\":[\"a\"]}}]}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "ea70e44f60ce47252b30601932876fc140bc19d50da14e368f4d2545e5fadbce",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "a": "__INVALID__",
+          "id": "P04"
+        },
+        {
+          "a": [],
+          "id": "P04"
+        },
+        {
+          "a": null,
+          "id": "P04"
+        },
+        {
+          "a": true,
+          "b": true,
+          "id": "P04"
+        },
+        {
+          "a": true,
+          "id": []
+        },
+        {
+          "a": true,
+          "id": null
+        },
+        {
+          "a": true,
+          "id": {}
+        },
+        {
+          "a": true
+        },
+        {
+          "a": {},
+          "id": "P04"
+        },
+        {
+          "id": "P04"
+        },
+        {}
+      ],
+      "pair_id": "K04",
+      "schema_sha256": "981e155307fae61c6a5dd769e210bd323f8624cb4d2bc72349e84863c71e3378",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"else\", \"if\", \"then\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"zone\":{\"enum\":[\"A\",\"B\"]},\"tax_id\":{\"type\":\"string\"},\"customs_token\":{\"type\":\"string\"}},\"required\":[\"id\",\"zone\"],\"additionalProperties\":false,\"if\":{\"properties\":{\"zone\":{\"const\":\"A\"}},\"required\":[\"zone\"]},\"then\":{\"required\":[\"tax_id\"]},\"else\":{\"required\":[\"customs_token\"]}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "75555fb4f1f76014634e00180e2653c2c3abae93f806c99fbeb37c33a323f828",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "customs_token": "CT5",
+          "id": "D05",
+          "zone": "A"
+        },
+        {
+          "id": "D05",
+          "tax_id": "TX5",
+          "zone": "__INVALID__"
+        },
+        {
+          "id": "D05",
+          "tax_id": "TX5",
+          "zone": []
+        },
+        {
+          "id": "D05",
+          "tax_id": "TX5",
+          "zone": null
+        },
+        {
+          "id": "D05",
+          "tax_id": "TX5",
+          "zone": {}
+        },
+        {
+          "id": "D05",
+          "tax_id": "TX5"
+        },
+        {
+          "id": "D05",
+          "tax_id": [],
+          "zone": "A"
+        },
+        {
+          "id": "D05",
+          "tax_id": null,
+          "zone": "A"
+        },
+        {
+          "id": "D05",
+          "tax_id": {},
+          "zone": "A"
+        },
+        {
+          "id": "D05",
+          "zone": "A"
+        },
+        {
+          "id": [],
+          "tax_id": "TX5",
+          "zone": "A"
+        },
+        {
+          "id": null,
+          "tax_id": "TX5",
+          "zone": "A"
+        },
+        {
+          "id": {},
+          "tax_id": "TX5",
+          "zone": "A"
+        },
+        {
+          "tax_id": "TX5",
+          "zone": "A"
+        },
+        {}
+      ],
+      "pair_id": "K05",
+      "schema_sha256": "964af24128edec4c9b0537e5faa324f38710d644fd44f07ba6e36a07225786cd",
+      "variant": "S"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"else\", \"if\", \"then\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"zone\":{\"enum\":[\"A\",\"B\"]},\"tax_id\":{\"type\":\"string\"},\"customs_token\":{\"type\":\"string\"}},\"required\":[\"id\",\"zone\"],\"additionalProperties\":false,\"if\":{\"properties\":{\"zone\":{\"const\":\"B\"}},\"required\":[\"zone\"]},\"then\":{\"required\":[\"tax_id\"]},\"else\":{\"required\":[\"customs_token\"]}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "e6377bc4f94b55ccd65b97e2651fd3f3cd8a5f956370bbebde2031e1d1385236",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "customs_token": "CT5",
+          "id": "D05",
+          "zone": "__INVALID__"
+        },
+        {
+          "customs_token": "CT5",
+          "id": "D05",
+          "zone": []
+        },
+        {
+          "customs_token": "CT5",
+          "id": "D05",
+          "zone": null
+        },
+        {
+          "customs_token": "CT5",
+          "id": "D05",
+          "zone": {}
+        },
+        {
+          "customs_token": "CT5",
+          "id": "D05"
+        },
+        {
+          "customs_token": "CT5",
+          "id": [],
+          "zone": "A"
+        },
+        {
+          "customs_token": "CT5",
+          "id": null,
+          "zone": "A"
+        },
+        {
+          "customs_token": "CT5",
+          "id": {},
+          "zone": "A"
+        },
+        {
+          "customs_token": "CT5",
+          "zone": "A"
+        },
+        {
+          "customs_token": [],
+          "id": "D05",
+          "zone": "A"
+        },
+        {
+          "customs_token": null,
+          "id": "D05",
+          "zone": "A"
+        },
+        {
+          "customs_token": {},
+          "id": "D05",
+          "zone": "A"
+        },
+        {
+          "id": "D05",
+          "tax_id": "TX5",
+          "zone": "A"
+        },
+        {
+          "id": "D05",
+          "zone": "A"
+        },
+        {}
+      ],
+      "pair_id": "K05",
+      "schema_sha256": "6fb1961ac5f11a76fcfbe1d2c4b2f70f916427480055514fe41b0f026c98859b",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"dependentRequired\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"account_id\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"}},\"required\":[\"id\",\"account_id\"],\"additionalProperties\":false,\"dependentRequired\":{\"account_id\":[\"email\"]}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "785ad421cfbca4e2ec0d580d60027540f1d314faee5afdc13c3726d335408914",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": []
+        },
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": null
+        },
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": {}
+        },
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com"
+        },
+        {
+          "account_id": "acct-7",
+          "email": [],
+          "id": "K06"
+        },
+        {
+          "account_id": "acct-7",
+          "email": null,
+          "id": "K06"
+        },
+        {
+          "account_id": "acct-7",
+          "email": {},
+          "id": "K06"
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K06",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K06"
+        },
+        {
+          "account_id": [],
+          "email": "nia@example.com",
+          "id": "K06"
+        },
+        {
+          "account_id": null,
+          "email": "nia@example.com",
+          "id": "K06"
+        },
+        {
+          "account_id": {},
+          "email": "nia@example.com",
+          "id": "K06"
+        },
+        {
+          "email": "nia@example.com",
+          "id": "K06"
+        },
+        {}
+      ],
+      "pair_id": "K06",
+      "schema_sha256": "d7047d6a262ca767b4398e9cb6d6aaf367261e71da3e8a5fd4a757d65980bcd5",
+      "variant": "S"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"dependentRequired\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"account_id\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"}},\"required\":[\"id\",\"account_id\"],\"additionalProperties\":false,\"dependentRequired\":{\"account_id\":[\"phone\"]}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "908be388eec93e1d89ea99d99a606cbc0ea5baedf5e7dc4556aaf09df1dd19fa",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": "K06"
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K06",
+          "phone": []
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K06",
+          "phone": null
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K06",
+          "phone": {}
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K06"
+        },
+        {
+          "account_id": "acct-7",
+          "id": [],
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "id": null,
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "id": {},
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": [],
+          "id": "K06",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": null,
+          "id": "K06",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": {},
+          "id": "K06",
+          "phone": "555-0104"
+        },
+        {
+          "id": "K06",
+          "phone": "555-0104"
+        },
+        {}
+      ],
+      "pair_id": "K06",
+      "schema_sha256": "b5a31183937bad3761201fe8d763d3d65d49f9ea0048d5087dd71296ec17f3ab",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"dependentSchemas\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"account_id\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"}},\"required\":[\"id\",\"account_id\"],\"additionalProperties\":false,\"dependentSchemas\":{\"account_id\":{\"required\":[\"email\"]}}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "8f54f0d37691339a64d57941387efb07e3985b3195b064da1dc36520af5c4622",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": []
+        },
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": null
+        },
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": {}
+        },
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com"
+        },
+        {
+          "account_id": "acct-7",
+          "email": [],
+          "id": "K07"
+        },
+        {
+          "account_id": "acct-7",
+          "email": null,
+          "id": "K07"
+        },
+        {
+          "account_id": "acct-7",
+          "email": {},
+          "id": "K07"
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K07",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K07"
+        },
+        {
+          "account_id": [],
+          "email": "nia@example.com",
+          "id": "K07"
+        },
+        {
+          "account_id": null,
+          "email": "nia@example.com",
+          "id": "K07"
+        },
+        {
+          "account_id": {},
+          "email": "nia@example.com",
+          "id": "K07"
+        },
+        {
+          "email": "nia@example.com",
+          "id": "K07"
+        },
+        {}
+      ],
+      "pair_id": "K07",
+      "schema_sha256": "da2687f9185928b4445a5ae2e87ee3d709061a33c28d256530102a3d5694b364",
+      "variant": "S"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"dependentSchemas\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"account_id\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"}},\"required\":[\"id\",\"account_id\"],\"additionalProperties\":false,\"dependentSchemas\":{\"account_id\":{\"required\":[\"phone\"]}}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "03458c112bf7d72293f9db1855e0feb1221b5a40b6c32d2e65371093d6192652",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "account_id": "acct-7",
+          "email": "nia@example.com",
+          "id": "K07"
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K07",
+          "phone": []
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K07",
+          "phone": null
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K07",
+          "phone": {}
+        },
+        {
+          "account_id": "acct-7",
+          "id": "K07"
+        },
+        {
+          "account_id": "acct-7",
+          "id": [],
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "id": null,
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "id": {},
+          "phone": "555-0104"
+        },
+        {
+          "account_id": "acct-7",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": [],
+          "id": "K07",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": null,
+          "id": "K07",
+          "phone": "555-0104"
+        },
+        {
+          "account_id": {},
+          "id": "K07",
+          "phone": "555-0104"
+        },
+        {
+          "id": "K07",
+          "phone": "555-0104"
+        },
+        {}
+      ],
+      "pair_id": "K07",
+      "schema_sha256": "8b6375d1a2cdae04ad7cb553c01f00e74161a5196740ac183362019d904351be",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "c45f9667dc2807ade3929c19245448db99f0a4bac0ad79ca07f6d9cb4a03fd06",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "pair": [
+            "__INVALID__",
+            2
+          ]
+        },
+        {
+          "pair": [
+            "beta",
+            "__INVALID__"
+          ]
+        },
+        {
+          "pair": [
+            "beta",
+            []
+          ]
+        },
+        {
+          "pair": [
+            "beta",
+            null
+          ]
+        },
+        {
+          "pair": [
+            "beta",
+            {}
+          ]
+        },
+        {
+          "pair": [
+            2,
+            "beta"
+          ]
+        },
+        {
+          "pair": [
+            [],
+            2
+          ]
+        },
+        {
+          "pair": [
+            null,
+            2
+          ]
+        },
+        {
+          "pair": [
+            {},
+            2
+          ]
+        },
+        {}
+      ],
+      "pair_id": "K08",
+      "schema_sha256": "5ccf866f234c03acd7bd0399851079be5d5ffe461dcd63d9b0ca05860530a322",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "9d72c41b8ec8da0ceb3c6c6a7cebb69c5a1fdecfc64e771580b2b65693e8f422",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "pair": [
+            "__INVALID__",
+            "beta"
+          ]
+        },
+        {
+          "pair": [
+            "beta",
+            2
+          ]
+        },
+        {
+          "pair": [
+            2,
+            "__INVALID__"
+          ]
+        },
+        {
+          "pair": [
+            2,
+            []
+          ]
+        },
+        {
+          "pair": [
+            2,
+            null
+          ]
+        },
+        {
+          "pair": [
+            2,
+            {}
+          ]
+        },
+        {
+          "pair": [
+            [],
+            "beta"
+          ]
+        },
+        {
+          "pair": [
+            null,
+            "beta"
+          ]
+        },
+        {
+          "pair": [
+            {},
+            "beta"
+          ]
+        },
+        {}
+      ],
+      "pair_id": "K08",
+      "schema_sha256": "4d8f2223a887c1803f6fb629c7816ecbf5212ded7cf4ba1e15a995340ddef22b",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "bbf017d9ef292e0d6b5bcfbd510e0a7cfda65464cdd03089d11808657d2cfb67",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US",
+                "postal_code": []
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US",
+                "postal_code": null
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US",
+                "postal_code": {}
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "__INVALID__",
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": [],
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": null,
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": {},
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {}
+          }
+        },
+        {
+          "order": {}
+        },
+        {}
+      ],
+      "pair_id": "K09",
+      "schema_sha256": "b68056f2d0b5fbb9846f8aeaa58af8bd6abc4ccc9cb506e8d37829ac41d40c09",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "bbf017d9ef292e0d6b5bcfbd510e0a7cfda65464cdd03089d11808657d2cfb67",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US",
+                "postal_code": []
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US",
+                "postal_code": null
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US",
+                "postal_code": {}
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "US"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": "__INVALID__",
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": [],
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": null,
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "country": {},
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {
+              "address": {
+                "postal_code": "98101"
+              }
+            }
+          }
+        },
+        {
+          "order": {
+            "destination": {}
+          }
+        },
+        {
+          "order": {}
+        },
+        {}
+      ],
+      "pair_id": "K09",
+      "schema_sha256": "4a91ed5d950b6bde720781ed7b237964abfff50396567d638ed694fee208b78f",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "821115003e44b6479690f94f883b22dd9fcdf757c03d0754aadd82c307495237",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "name": "Cedar",
+          "units": "__INVALID__"
+        },
+        {
+          "name": "Cedar",
+          "units": []
+        },
+        {
+          "name": "Cedar",
+          "units": null
+        },
+        {
+          "name": "Cedar",
+          "units": {}
+        },
+        {
+          "name": "Cedar"
+        },
+        {
+          "name": [],
+          "units": 2
+        },
+        {
+          "name": null,
+          "units": 2
+        },
+        {
+          "name": {},
+          "units": 2
+        },
+        {
+          "units": 2
+        },
+        {}
+      ],
+      "pair_id": "K10",
+      "schema_sha256": "7d3645338c4f3f884b19412450736d3d29f2273f19a1bf976de751ef89f6c513",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "821115003e44b6479690f94f883b22dd9fcdf757c03d0754aadd82c307495237",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "name": "Cedar",
+          "units": "__INVALID__"
+        },
+        {
+          "name": "Cedar",
+          "units": []
+        },
+        {
+          "name": "Cedar",
+          "units": null
+        },
+        {
+          "name": "Cedar",
+          "units": {}
+        },
+        {
+          "name": "Cedar"
+        },
+        {
+          "name": [],
+          "units": 2
+        },
+        {
+          "name": null,
+          "units": 2
+        },
+        {
+          "name": {},
+          "units": 2
+        },
+        {
+          "units": 2
+        },
+        {}
+      ],
+      "pair_id": "K10",
+      "schema_sha256": "2a01da34e8de7e0478d5f3ec20f05b5927350634c15bca5362a27cf224bfe4f2",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"not\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"mode\":{\"enum\":[\"economy\",\"priority\",\"express\"]}},\"required\":[\"mode\"],\"additionalProperties\":false,\"not\":{\"properties\":{\"mode\":{\"const\":\"economy\"}},\"required\":[\"mode\"]}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "04bbe08c5998565e8db5d9b8f5876ae642a50df14edde331cb67c3a406a7c0d0",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "mode": "__INVALID__"
+        },
+        {
+          "mode": "economy"
+        },
+        {
+          "mode": []
+        },
+        {
+          "mode": null
+        },
+        {
+          "mode": {}
+        },
+        {}
+      ],
+      "pair_id": "K11",
+      "schema_sha256": "aa4602afc19bfefdcfa0d05bdbc3e9e4b92d69d214b60fce1e913f989892ed18",
+      "variant": "S"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"not\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"mode\":{\"enum\":[\"economy\",\"priority\",\"express\"]}},\"required\":[\"mode\"],\"additionalProperties\":false,\"not\":{\"properties\":{\"mode\":{\"const\":\"priority\"}},\"required\":[\"mode\"]}}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "c8239ad90d609264e29fccafa3b875e8668693f3a056bf04b5950816aa629cb1",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "mode": "__INVALID__"
+        },
+        {
+          "mode": "priority"
+        },
+        {
+          "mode": []
+        },
+        {
+          "mode": null
+        },
+        {
+          "mode": {}
+        },
+        {}
+      ],
+      "pair_id": "K11",
+      "schema_sha256": "c22d21d4db36f687ab7d72f3705bc8d634d995054b31f4529a45d06e362b4dc5",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "33ac1133126817d95aae1f76049a37f86a86a50e2150bbbb2332b88a5f02d37f",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "retries": "__INVALID__"
+        },
+        {
+          "retries": 7
+        },
+        {
+          "retries": []
+        },
+        {
+          "retries": null
+        },
+        {
+          "retries": {}
+        },
+        {}
+      ],
+      "pair_id": "K12",
+      "schema_sha256": "26f64d36c4eead67313cdc311984bfa0c2035cf88d0fcf5114215ecc0bee9194",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "a93906d36558f5386b6a95301c65981abfefa28889baeac9881a1206036222ed",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "retries": "__INVALID__"
+        },
+        {
+          "retries": []
+        },
+        {
+          "retries": null
+        },
+        {
+          "retries": {}
+        },
+        {}
+      ],
+      "pair_id": "K12",
+      "schema_sha256": "34bea46dc70272eedeaeea4c7071948f3d3ebfc8696ac48949caa364a680f6f9",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "1e42cc582b47a97c2b456969c083404bb0dfdb9aa069c55df4f74eba22d5807b",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "values": [
+            "__INVALID__"
+          ]
+        },
+        {
+          "values": [
+            []
+          ]
+        },
+        {
+          "values": [
+            null
+          ]
+        },
+        {
+          "values": [
+            {}
+          ]
+        },
+        {}
+      ],
+      "pair_id": "K13",
+      "schema_sha256": "a87b0ec166471dc5f5ca1a27d404a7d90156c518ebfdbe98706f926fc71b34af",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "207571055a4dc87f9c27edd8f935f23fee19c6c3c1e0b96fe16369e7ac32ee89",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "values": [
+            "__INVALID__",
+            "b"
+          ]
+        },
+        {
+          "values": [
+            "a",
+            "__INVALID__"
+          ]
+        },
+        {
+          "values": [
+            "a",
+            []
+          ]
+        },
+        {
+          "values": [
+            "a",
+            null
+          ]
+        },
+        {
+          "values": [
+            "a",
+            {}
+          ]
+        },
+        {
+          "values": [
+            "a"
+          ]
+        },
+        {
+          "values": [
+            [],
+            "b"
+          ]
+        },
+        {
+          "values": [
+            null,
+            "b"
+          ]
+        },
+        {
+          "values": [
+            {},
+            "b"
+          ]
+        },
+        {}
+      ],
+      "pair_id": "K13",
+      "schema_sha256": "d88ee710c31f9f0aca6a28f8523b25855aa5cbd97c3f1624dc8ba2aafef09b5d",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "6ada66ac8f5e9eca7c7f63269373c445747c729ff666a0d6e3023d7dd2a11c15",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "id": "M14",
+          "memo": "ready"
+        },
+        {
+          "id": []
+        },
+        {
+          "id": null
+        },
+        {
+          "id": {}
+        },
+        {}
+      ],
+      "pair_id": "K14",
+      "schema_sha256": "85d708fc6f8d200041c3fae9d193483067fc559850e1977bd6ff3f690f8fe2cd",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "96ce184d4f1ec4a2c2f7e3b3a0d073be4ab6a143978ba256c30768b7736ae6ea",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "id": [],
+          "memo": "ready"
+        },
+        {
+          "id": null,
+          "memo": "ready"
+        },
+        {
+          "id": {},
+          "memo": "ready"
+        },
+        {
+          "memo": "ready"
+        },
+        {}
+      ],
+      "pair_id": "K14",
+      "schema_sha256": "c1a808f24924f168e84514a7883eaba0152d13aa1a2ff745a7f4902deebc593e",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"contains\", \"minContains\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"values\":{\"type\":\"array\",\"items\":{\"type\":\"integer\"},\"contains\":{\"multipleOf\":2},\"minContains\":1}},\"required\":[\"values\"],\"additionalProperties\":false}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "197b043f0c6ff7e4d47fdd9e4ec81b852de54584971d136c0e38784a32fbbde0",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "values": [
+            "__INVALID__"
+          ]
+        },
+        {
+          "values": [
+            []
+          ]
+        },
+        {
+          "values": [
+            null
+          ]
+        },
+        {
+          "values": [
+            {}
+          ]
+        },
+        {}
+      ],
+      "pair_id": "K15",
+      "schema_sha256": "c9886d16395f147e1b703c7ae7b1921855e4d007c5c38b08016856d829a210b8",
+      "variant": "S"
+    },
+    {
+      "compile_ok": false,
+      "error": "at 2(8): failed to compile JSON schema: Unimplemented keys: [\"contains\", \"minContains\"]\n   1 | %llguidance {}\n   2 | start: %json {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"values\":{\"type\":\"array\",\"items\":{\"type\":\"integer\"},\"contains\":{\"multipleOf\":2},\"minContains\":2}},\"required\":[\"values\"],\"additionalProperties\":false}\n              ^\n",
+      "gold_accepted": false,
+      "gold_sha256": "981be0040c613f78c2eb3d430c9dbf65b65c3b6a66fcdf5eb09c95c954d75a29",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "values": [
+            "__INVALID__",
+            3,
+            4
+          ]
+        },
+        {
+          "values": [
+            2,
+            "__INVALID__",
+            4
+          ]
+        },
+        {
+          "values": [
+            2,
+            3,
+            "__INVALID__"
+          ]
+        },
+        {
+          "values": [
+            2,
+            3,
+            []
+          ]
+        },
+        {
+          "values": [
+            2,
+            3,
+            null
+          ]
+        },
+        {
+          "values": [
+            2,
+            3,
+            {}
+          ]
+        },
+        {
+          "values": [
+            2,
+            [],
+            4
+          ]
+        },
+        {
+          "values": [
+            2,
+            null,
+            4
+          ]
+        },
+        {
+          "values": [
+            2,
+            {},
+            4
+          ]
+        },
+        {
+          "values": [
+            2
+          ]
+        },
+        {
+          "values": [
+            [],
+            3,
+            4
+          ]
+        },
+        {
+          "values": [
+            null,
+            3,
+            4
+          ]
+        },
+        {
+          "values": [
+            {},
+            3,
+            4
+          ]
+        },
+        {}
+      ],
+      "pair_id": "K15",
+      "schema_sha256": "a837bc423721a25f79320ac0ec0ec8748738a568d6de8446b0ca83fc05117e20",
+      "variant": "S2"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "1a4f75e39cb4f6033ca5515c366630a128f52f099fb6fa263aff70bc19bf77f6",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "code": "PK-A9"
+        },
+        {
+          "code": "__INVALID__"
+        },
+        {
+          "code": []
+        },
+        {
+          "code": null
+        },
+        {
+          "code": {}
+        },
+        {}
+      ],
+      "pair_id": "K16",
+      "schema_sha256": "e4a0ebe247dce6e3038b87fcf0fc0df4149dabdc6dc7440572fa6178acfc571b",
+      "variant": "S"
+    },
+    {
+      "compile_ok": true,
+      "error": null,
+      "gold_accepted": true,
+      "gold_sha256": "90691842f15071f985d3cb5d0cccd398463ce5b4f37a5fae67407c7239349b44",
+      "invalid_accepted": [],
+      "negative_samples": [
+        [],
+        null,
+        {
+          "code": "PK-12"
+        },
+        {
+          "code": "__INVALID__"
+        },
+        {
+          "code": []
+        },
+        {
+          "code": null
+        },
+        {
+          "code": {}
+        },
+        {}
+      ],
+      "pair_id": "K16",
+      "schema_sha256": "2ebb8aa07d6ada49baaf6db697951fe9cd9d352f9dfc780929e3f3b31b11e9ae",
+      "variant": "S2"
+    }
+  ],
+  "gold_accepted": 19,
+  "helper_sha256": "6276c7d7002e1ca17446a9ff57bf4de75e33a39cb7aeb0ada67cadb25ac3dc01",
+  "invalid_accepted": 0,
+  "invalid_probes_checked_on_compiled_schemas": 204,
+  "invalid_probes_offered_total": 383,
+  "kind": "Hash-verified bundled engine with byte tokenizer; no server, model weights or GPU",
+  "library_sha256": "fa217ef4a3e0b76db51d2ce117d98a40df9765eb73a2bca91685f45b099eef3a",
+  "limits": "Finite probes only; no model-tokenizer or actual inference guarantee; no schema was relaxed.",
+  "pairs_sha256": "4f6b5b59fda535be9439401ae42a52d9785750968e4861d5ee8fbd7f466a6e37",
+  "schema_units": 32
+}

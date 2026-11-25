@@ -165,12 +165,19 @@ in order `[valid(S,g), valid(S',g), valid(S,g'), valid(S',g')]`:
 | Pair label | Required evidence |
 | --- | --- |
 | Validity-separable | `[true,false,false,true]`, distinct gold answers, both fully answer the same request |
+| Asymmetric edit (authoring proposal, 2026-11-25) | Both diagonal verdicts true, exactly one cross-verdict false, distinct gold answers; a visible preference or conditional instruction explains why the still-valid alternative is wrong |
 | Equivalent rewrite | `[true,true,true,true]`, same semantic gold; a sound transformation argument for the allowed subset |
 | Non-equivalent, same answer | Same gold and four true verdicts, plus a witness distinguishing the schemas |
 
 Do not assume every meaning-changing edit permits two mutually exclusive valid answers. If the
 request is now impossible, move it out of core rather than silently drop a requested detail.
 Witness agreement supplies bounded checks, not a general equivalence proof.
+
+The asymmetric label is a prospective, model-free authoring clarification for monotone bounds,
+optional fields and overlapping alternatives. It does not amend E0/E0b, lock an analysis rule or
+approve any test task. Report pair kinds separately; do not count asymmetric pairs as mutually
+exclusive validity tests. The development seeds and their limitations are recorded in
+[v2-next-milestone-v0.1/VALIDATION.md](analysis/v2-next-milestone-v0.1/VALIDATION.md).
 
 Allowed core invariance controls: schema property ordering, compact versus readable serialization,
 and consistent bijective renaming of tool/property identifiers across schema, request, gold and
