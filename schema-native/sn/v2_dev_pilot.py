@@ -88,9 +88,9 @@ def template_sha():
     return provenance.digest(template)
 
 
-def implementation():
+def implementation(config_path=CONFIG, extra_files=()):
     modules = (e0b, e0b_resources, preflight, provenance, resources, router, run, base)
-    files = (Path(__file__), *(Path(module.__file__) for module in modules), CONFIG)
+    files = (Path(__file__), *(Path(module.__file__) for module in modules), config_path, *extra_files)
     return {str(file.relative_to(ROOT)): provenance.file_sha(file) for file in files}
 
 
@@ -220,7 +220,7 @@ def token_preflight(plan, post):
     return {"context": n_ctx, "output_token_reserve": model["request_params"]["max_tokens"], "prompt_tokens": counts}
 
 
-def generate(plan, directory, post, guard, *, cooldown=time.sleep):
+def generate(plan, directory, post, guard, *, cooldown=time.sleep, reporter=report):
     cfg = plan["config"]
     budget = e0b.Budget(directory / "request-budget.jsonl", benchmark_cap=cfg["generation_cap"], readiness_cap=0)
     results = []
@@ -249,7 +249,7 @@ def generate(plan, directory, post, guard, *, cooldown=time.sleep):
         guard()
         if index + 1 < len(plan["units"]):
             cooldown(cfg["request_cooldown_seconds"])
-    return report(plan, results)
+    return reporter(plan, results)
 
 
 def port_open(port):
@@ -286,9 +286,9 @@ def server(model, port, log):
                     proc.wait(timeout=10)
 
 
-def launch(plan):
+def launch(plan, *, config_path=CONFIG, extra_files=(), reporter=report):
     cfg, model = plan["config"], plan["profile"]
-    if cfg != json.loads(CONFIG.read_text()) or plan["implementation_sha256"] != implementation():
+    if cfg != json.loads(config_path.read_text()) or plan["implementation_sha256"] != implementation(config_path, extra_files):
         raise ValueError("Approved plan does not match current runner and config")
     if model != json.loads(checked(PROFILE, cfg["profile_sha256"])) or template_sha() != plan["template_sha256"]:
         raise ValueError("Approved model profile or template changed")
@@ -352,7 +352,7 @@ def launch(plan):
             if "offloaded 29/29" not in log.read_text(errors="replace"):
                 raise RuntimeError("No full Metal offload evidence in the dedicated log")
             (directory / "preflight.json").write_bytes(encode(token_preflight(plan, post)))
-            result = generate(plan, directory, post, guard)
+            result = generate(plan, directory, post, guard, reporter=reporter)
         e0b_resources.event(directory, "server_unloaded")
         (directory / "report.json").write_bytes(encode(result))
     except (Exception, KeyboardInterrupt) as error:

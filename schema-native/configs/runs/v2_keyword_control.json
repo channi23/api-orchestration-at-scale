@@ -1,0 +1,14 @@
+{
+  "run_id": "v2-keyword-control-v0.1",
+  "protocol": "v2-keyword-schema-visibility-control",
+  "profile_sha256": "757b5d8da501f0cbf0bbc8c5dc743b801d3b13332a28e0934267d6fd6786b17a",
+  "pairs_sha256": "4f6b5b59fda535be9439401ae42a52d9785750968e4861d5ee8fbd7f466a6e37",
+  "port": 8094,
+  "generation_cap": 48,
+  "cache_prompt": true,
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true,
+  "require_acceptable_thermal_state": true,
+  "max_system_swapout_growth_bytes": 1073741824,
+  "system_swapout_baseline_file": "runs/v2-keyword-control-v0.1/swap-baseline.json"
+}
