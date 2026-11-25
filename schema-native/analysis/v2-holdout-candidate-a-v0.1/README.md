@@ -69,7 +69,15 @@ follow-up ZIP and private files reproduced byte for byte. The review ZIP SHA-256
 `2fdb50b79568138861d25f5d10412eea348eaac0240d5327e9ba93d31c532ec7`.
 The revised private manifest SHA-256 is
 `d986722abc8b02b8bd8d92eed78442def839df1c5f0c828183b57d25285b42f1`.
-The follow-up needs a fresh review and adds no new independent intents.
+The follow-up adds no new independent intents.
+
+The follow-up reviewer reported no prior packet or gold exposure and matched all three
+expected tools and argument objects. All three answers validate. The saved first answers
+and notes matched the supplied copies byte for byte. Local probes show that the schema
+accepts both case variants of one filter string and accepts unknown string-valued range
+operators. Exact argument comparison distinguishes those alternatives. For the case variant,
+specify the intended literal before freezing that request. The follow-up adjudication is
+pending and the tranche still has zero locked-test approvals.
 
 Reproduce it from the pinned first bundle and private revision rows:
 
