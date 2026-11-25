@@ -6,6 +6,8 @@ token counts, latency and which errors need attention before a larger campaign.
 It supplies no held-out, cost, training or comparison claim. No model was loaded while
 preparing this run.
 
+**Run completed.** See the [pilot results and offline checks](PILOT_RESULTS.md).
+
 | Item | Prepared scope |
 | --- | --- |
 | Inputs | 11 distinct development requests with five tools each |
