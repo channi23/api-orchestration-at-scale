@@ -38,6 +38,9 @@ The [joint adjudication status](analysis/v2-authoring-review-v0.1/JOINT_STATUS.m
 and prepare a fresh review packet; catalog/coverage gaps still block test approval.
 The [fresh-context v0.2 review](analysis/v2-authoring-review-v0.2/RESPONSE.md) also matches all 32
 draft golds, while identifying eight assumption-bearing tasks and unresolved catalog concerns.
+The [v0.2 adjudication](analysis/v2-authoring-review-v0.2/JOINT_STATUS.md) now leads to a separate
+[v0.3 wording revision and source-pool probe](data/v2-authoring-v0.3/README.md); gold and old versions
+are preserved, and unresolved catalog/source gaps still block test approval.
 The proposed 800-test/200-development intent target is provisional, not an existing dataset or
 a power guarantee. No new inference or training is authorized; E1/E2 remain gated.
 
