@@ -1,0 +1,31 @@
+{
+  "additional_model_endpoint_requests": 0,
+  "approved_test_intents": 0,
+  "catalogs_identical_to_v0.2": true,
+  "change_kinds": {
+    "unchanged_vs_v0.2": 22,
+    "wording_revision_vs_v0.2": 10
+  },
+  "freeze_ready": false,
+  "fresh_v0.3_blind_reviews": 0,
+  "gold_changes_vs_v0.2": 0,
+  "gold_raw_valid": 32,
+  "max_distractor_appearances": 3,
+  "native_engine_checks": 0,
+  "probe_candidate_counts": {
+    "T016": 15,
+    "T045": 6,
+    "T064": 27,
+    "T093": 0,
+    "T131": 1,
+    "T243": 1,
+    "T254": 9
+  },
+  "raw_schema_changes": 0,
+  "tasks": 32,
+  "tool_description_changes": 0,
+  "training_runs": 0,
+  "v0.2_reviewer_clearly_strong_catalogs": 9,
+  "v0.3_catalogs_verified": false,
+  "version": "v2-authoring-v0.3"
+}
