@@ -75,9 +75,16 @@ The follow-up reviewer reported no prior packet or gold exposure and matched all
 expected tools and argument objects. All three answers validate. The saved first answers
 and notes matched the supplied copies byte for byte. Local probes show that the schema
 accepts both case variants of one filter string and accepts unknown string-valued range
-operators. Exact argument comparison distinguishes those alternatives. For the case variant,
-specify the intended literal before freezing that request. The follow-up adjudication is
-pending and the tranche still has zero locked-test approvals.
+operators. Exact argument comparison distinguishes those alternatives.
+
+Final adjudication confirmed 3/3 matches and the checksums of the saved first answers and
+notes. Its SHA-256 is `871cd159d9a03d737284202bd0aca124ae2b827db043f2975b30ca562f5eedfe`.
+The freeze wording proposal explicitly gives the lowercase extension literal and leaves
+phrase syntax for the model to derive from the tool description. It keeps the same gold
+and is stored as a separate private edit. Its SHA-256 is
+`e4a9279ccf6b88517c967d6c98ccccf94cc2706eaf8b7de13a12ebb74653e856`.
+The first and follow-up review scores use their respective original packet bytes.
+The tranche still has zero locked-test approvals.
 
 Reproduce it from the pinned first bundle and private revision rows:
 
