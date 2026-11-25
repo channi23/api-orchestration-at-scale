@@ -9,7 +9,8 @@ The pinned sources, authoring rows, requests and gold are kept in local review s
 repo records the builder, its checks and the aggregate receipt. The reviewer ZIP contains
 only visible task rows, instructions and upstream licence notices. Its manifest and gold are
 stored separately under an owner-only directory. This is the first candidate tranche.
-Independent semantic review is pending and zero tasks are approved for locked test.
+The first semantic review is recorded below. Adjudication is pending and zero tasks are
+approved for locked test.
 
 ## Verified
 
@@ -29,6 +30,19 @@ The two source projects are reserved for this candidate set. Keep them out of fu
 development and distractor pools. The origin screen is bounded by the indexes above. Forks,
 undocumented collection provenance, semantic duplicates and base-model pretraining remain
 unresolved. The raw hash and normalized wording screens are exact comparisons.
+
+## First solve
+
+The reviewer selected the authored tool on all ten tasks. All ten argument objects validate
+against their selected tool. Nine calls match the complete authored gold. The single strict
+mismatch omitted an optional filter whose effect may already be covered by another filter.
+The same task also raised a phrase-matching ambiguity in the draft request and gold. The
+review additionally flagged date-boundary and scheduling interpretations for adjudication.
+
+The first answers and notes matched the supplied copies byte for byte. The reviewer reported
+no prior packet or gold exposure and disclosed that personal context was loaded. The
+comparison, per-case author notes and gold handoff remain in local storage. No score has been
+revised. Keep any subsequent clarification and revised gold in a new version.
 
 The projection starts from pinned OpenAPI 3.0 inputs for read-only operations. It resolves
 local references, preserves declared parameter names and supported assertions, and adapts
