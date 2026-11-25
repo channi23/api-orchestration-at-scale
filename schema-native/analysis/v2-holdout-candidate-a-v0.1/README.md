@@ -9,8 +9,8 @@ The pinned sources, authoring rows, requests and gold are kept in local review s
 repo records the builder, its checks and the aggregate receipt. The reviewer ZIP contains
 only visible task rows, instructions and upstream licence notices. Its manifest and gold are
 stored separately under an owner-only directory. This is the first candidate tranche.
-The first semantic review is recorded below. Adjudication is pending and zero tasks are
-approved for locked test.
+The first semantic review and adjudication are recorded below. Zero tasks are approved for
+locked test.
 
 ## Verified
 
@@ -41,8 +41,42 @@ review additionally flagged date-boundary and scheduling interpretations for adj
 
 The first answers and notes matched the supplied copies byte for byte. The reviewer reported
 no prior packet or gold exposure and disclosed that personal context was loaded. The
-comparison, per-case author notes and gold handoff remain in local storage. No score has been
-revised. Keep any subsequent clarification and revised gold in a new version.
+comparison, per-case author notes and gold handoff remain in local storage.
+
+## Adjudication and private follow-up
+
+Adjudication confirmed the original 9/10 exact-call matches, 10/10 tool matches and 10/10
+schema-valid arguments. The saved first answers and notes match the preserved bytes. The
+adjudication SHA-256 is
+`99228113123a60a98b728530f3d3049ccc755e97052db058d9c7e30e0b7da08b`.
+
+The review identified one search case where the syntax in both calls is broader than the
+intended result. It also identified date-boundary and scheduling wording that can change the
+meaning of a request. The follow-up revises three requests and two gold argument sets:
+
+- The search requests phrase matching and explicitly asks for both filters. The revised
+  expected query uses the documented phrase syntax. The existing exact comparator retains
+  the original score, and the revised contract requires the narrower search.
+- The date-range case uses explicit UTC instants at both ends, with an inclusive start and
+  an exclusive end. This expresses the intended full days without relying on date-only bounds.
+- The scheduling case spells out the source meaning across past and future records. Its gold
+  stays the same.
+
+The follow-up retains the original tools, schema bytes in the catalog, order and policy.
+It gives the changed requests new task IDs within the same three intent lineages. The
+other seven requests remain in the original packet. All revised golds validate, and the
+follow-up ZIP and private files reproduced byte for byte. The review ZIP SHA-256 is
+`2fdb50b79568138861d25f5d10412eea348eaac0240d5327e9ba93d31c532ec7`.
+The revised private manifest SHA-256 is
+`d986722abc8b02b8bd8d92eed78442def839df1c5f0c828183b57d25285b42f1`.
+The follow-up needs a fresh review and adds no new independent intents.
+
+Reproduce it from the pinned first bundle and private revision rows:
+
+```bash
+.venv/bin/python -m sn.v2_holdout_revision --parent /private/first-candidate \
+  --revisions /private/revisions.jsonl --out /private/follow-up
+```
 
 The projection starts from pinned OpenAPI 3.0 inputs for read-only operations. It resolves
 local references, preserves declared parameter names and supported assertions, and adapts
