@@ -19,6 +19,14 @@ tool descriptions, since more than one tool accepts the slug. It stays in the or
 The other requests also stay there. The two revised rows have new task IDs and keep their
 underlying intent lineages. These are two follow-up development reviews with zero test approvals.
 
+The two first answers matched their inherited gold and validated on the selected tools.
+The reviewer reported working with the ZIP alone and saved answers before gold access.
+The supplied schemas resolve the requested active-only filter through the Boolean `active`
+field. Expiry and redemption limits are separate questions outside this call contract.
+The paging case specifies the index base. Continuing the same list assumes that the first
+page and requested page follow the same ordering. The alternative Pokédex lookup takes a
+single identifier and offers no pagination. Gold adjudication is pending.
+
 ## Reproduce
 
 From `schema-native/`, reuse the v0.1 review ZIP produced by the

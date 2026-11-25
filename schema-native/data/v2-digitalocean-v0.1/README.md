@@ -28,9 +28,27 @@ documented contract. The two possibilities differ by one argument. A future cont
 added schema assertion would require its own version and equivalence scope. Server response
 behavior, live API compatibility and full upstream bundler parity were outside these checks.
 
-These are newly sourced development examples from one project. A second author or reviewer must
-check interpretation and alternative calls. The project becomes an exposed development group
-when its packet is reviewed. E1 and E2 stay gated.
+## Review and adjudication
+
+All five first answers matched the authored tool and arguments. Adjudication confirmed the
+matches and the recorded checksums of the unchanged answers and notes. The reviewer disclosed
+seeing other review filenames while locating the ZIP and reported opening only this packet
+before solving. The adjudication SHA-256 is
+`694fc03a04ba107ff0f16776a7176809e0d1009c033141f0673b4ac78c1a6b9c`.
+
+For the tag task, the request prioritizes the tag and makes the optional name contingent on
+support. The parameter descriptions state the exclusion, so the correct call omits `name`.
+The request expressly asks for page 1. The current policy requires preserving requested
+values, so the correct call includes `page: 1`. The schema also accepts omission because
+`page` is optional. The reviewer identified that overlap as a wording concern.
+
+Use this clarification in future packets: “Keep an explicitly requested value even when
+it equals the schema default. Omit unrequested defaults.” This keeps the scorer focused on
+what the request asked for. The existing packet and exact comparison continue to use their
+published contract.
+
+The five reviewed tasks stay in development and DigitalOcean is now an exposed development
+group. Zero held-out test intents are approved. E1 and E2 stay gated.
 
 ## Reproduce
 
