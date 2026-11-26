@@ -1,0 +1,163 @@
+{
+  "by_catalog_size": {
+    "1": {
+      "exact_calls": 27,
+      "outcomes": {
+        "correct": 27,
+        "schema_invalid_arguments": 16,
+        "valid_wrong_arguments": 5
+      },
+      "requests": 48,
+      "right_tool": 48,
+      "right_tool_and_schema_valid": 32,
+      "schema_valid_for_emitted_tool": 32,
+      "valid_calls_omitting_expected_keys": 0,
+      "valid_calls_omitting_keys_matching_schema_default": 0
+    },
+    "20": {
+      "exact_calls": 34,
+      "outcomes": {
+        "correct": 34,
+        "schema_invalid_arguments": 4,
+        "valid_wrong_arguments": 19,
+        "wrong_tool": 3
+      },
+      "requests": 60,
+      "right_tool": 57,
+      "right_tool_and_schema_valid": 53,
+      "schema_valid_for_emitted_tool": 54,
+      "valid_calls_omitting_expected_keys": 12,
+      "valid_calls_omitting_keys_matching_schema_default": 1
+    },
+    "5": {
+      "exact_calls": 40,
+      "outcomes": {
+        "correct": 40,
+        "schema_invalid_arguments": 4,
+        "valid_wrong_arguments": 20,
+        "wrong_tool": 5
+      },
+      "requests": 69,
+      "right_tool": 64,
+      "right_tool_and_schema_valid": 60,
+      "schema_valid_for_emitted_tool": 63,
+      "valid_calls_omitting_expected_keys": 10,
+      "valid_calls_omitting_keys_matching_schema_default": 0
+    }
+  },
+  "by_track": {
+    "api": {
+      "intent_weighted_exact_accuracy": 0.572463768115942,
+      "intents": 69
+    },
+    "assertion": {
+      "both_variants_exact": 4,
+      "intent_weighted_exact_accuracy": 0.5294117647058824,
+      "intents": 17
+    },
+    "grounding": {
+      "both_variants_exact": 3,
+      "intent_weighted_exact_accuracy": 0.6428571428571429,
+      "intents": 7
+    }
+  },
+  "execution": {
+    "active_segment_seconds": 1313.114,
+    "context_tokens": 9216,
+    "finish_reasons": {
+      "stop": 177
+    },
+    "generation_cap": 177,
+    "matched_online_prompt_counts": 177,
+    "max_system_swapout_growth_bytes": 0,
+    "median_request_wall_seconds": 3.511,
+    "metadata_cap": 360,
+    "metal_offloaded_layers": [
+      29
+    ],
+    "model_unloaded": true,
+    "output_reserve_tokens": 512,
+    "preload_memory_available_bytes": [
+      5164826624,
+      7595360256
+    ],
+    "preload_pressure_levels": [
+      1,
+      1
+    ],
+    "prompt_cache": false,
+    "prompt_tokens_range": [
+      202,
+      7792
+    ],
+    "recorded_pressure_levels": [
+      1
+    ],
+    "recorded_thermal_states": [
+      0
+    ],
+    "request_counts": {
+      "generation_requests": 177,
+      "metadata_requests": 355
+    },
+    "resource_samples": 816,
+    "run_id": "v2-exploratory-free-v0.1",
+    "runtime": {
+      "binary_sha256": "bc429c54d3addee9b1b3c3af4c939235a95e1e0655fb3227f54f89eeac1b5af0",
+      "cmake_cache_sha256": "29e985b57890e71581022b05ad9ad3cd3f8643251620a98e85fd31cf11183c29",
+      "llama_commit": "11fe02151f79c41d0d4af7da708755d73b9c0da6",
+      "llguidance_commit": "d795912fedc7d393de740177ea9ea761e7905774",
+      "model_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a"
+    },
+    "server_args": [
+      "-c",
+      "9216",
+      "-np",
+      "1",
+      "-ngl",
+      "99",
+      "--jinja",
+      "--seed",
+      "0",
+      "-b",
+      "512",
+      "-ub",
+      "128",
+      "--cache-ram",
+      "0",
+      "-lv",
+      "4"
+    ],
+    "settle_pressure_levels": [
+      1,
+      1,
+      1
+    ],
+    "stops": [
+      {
+        "reason": "Pre-load admission needs normal pressure and at least 5 GiB free + inactive + purgeable",
+        "resumable": true,
+        "saved_results": 0
+      }
+    ],
+    "total_completion_tokens": 10496,
+    "total_prompt_tokens": 527593
+  },
+  "matched_api_catalogs": {
+    "exact_by_size": {
+      "20": 34,
+      "5": 35
+    },
+    "intents": 60
+  },
+  "provenance_sha256": {
+    "budget": "400b50afea2a9bad50da2e70ef55e5544d33da108acb96a3d79bc3ef5ff6139e",
+    "export_manifest": "c8b0e552f59a44db90fd274f6d6a4d78afa8332b3cb525df32b3fe8ba2befe03",
+    "freeze_manifest": "837044af132bd981996749cef38509fa7056566be472b14ccaec1946d70ac7f6",
+    "offline_private_score": "ba9ede9b503384fe19d9f6a3c9b1ff95bcf7c96163b54d320484e302a77c9048",
+    "response_ledger": "30ea8387af859b553814e717ed1e924279cb2634719867fb6d0af6dc77d2d6ec",
+    "run_manifest": "ff09ddf73c3046367551e5d489911d593fbc1ae3dd3d56157836bbd1aebdb368",
+    "runner": "eb443cc55cde5fed26ccd331a02ad51ecbc74139b7ab1c598721a53dac0934a6"
+  },
+  "scope": "exploratory, descriptive"
+}

@@ -9,6 +9,8 @@ has never been sent to a remote host.
 
 ## Selected local baseline
 
+The local campaign completed all 177 requests. See the [measured results](RESULTS.md).
+
 Run the staged export with the pinned Qwen3-1.7B Q8_0 and llama.cpp Metal build
 from the measured 9,216-token smoke. The launcher reads only the inference export.
 It reserves at most 177 generation requests and 360 separate non-generating requests.
@@ -93,7 +95,7 @@ For a remote launch, first review the host resource policy and runtime build. Te
 to the server with a synthetic development prompt. Keep the server bound to loopback and
 use an authenticated connection to the host. Transfer only the inference export to an
 authorized host. Preserve raw responses and runtime evidence for local scoring after the full
-ledger is available. Host provisioning, transfer and measured inference remain pending.
+ledger is available. Host provisioning, transfer and remote inference remain pending.
 
 ## Reproduce the export
 
