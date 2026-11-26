@@ -11,7 +11,8 @@ from . import v2_lineage, v2_official_sources as official
 
 BASE = official.BASE
 ATOMS = official.LITERAL_KEYWORDS | {"default", "pattern", "example", "exclusiveMinimum",
-                                     "exclusiveMaximum", "minProperties", "maxProperties"}
+                                     "exclusiveMaximum", "minProperties", "maxProperties",
+                                     "multipleOf", "uniqueItems"}
 REVIEW = """Use only tasks.jsonl, the supplied tool schemas and the policy in each task.
 The notices identify the upstream schema terms. Do not open the repo, prior reviews, files
 with answer keys, or outside documentation. Do not call endpoints. Disclose prior exposure.

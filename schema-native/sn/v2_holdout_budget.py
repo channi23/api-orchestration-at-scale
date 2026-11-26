@@ -19,13 +19,19 @@ def payloads(bundle):
     pilot.checked(packet, m["review_zip_sha256"])
     with ZipFile(packet) as archive:
         visible = archive.read("tasks.jsonl")
+    rows = pilot.rows_by_id(visible)
+    if "tasks_c5_sha256" not in m:
+        # Earlier packets carry only a five-tool view, pinned by the review ZIP.
+        if any(len(task["tools"]) != 5 for task in rows.values()):
+            raise ValueError("Expected the legacy five-tool packet")
+        return {5: rows, 20: {}}, m
     c5 = pilot.checked(bundle / "sealed/tasks.c5.jsonl", m["tasks_c5_sha256"])
     if pilot.base.digest(visible) != m["visible_tasks_sha256"]:
         raise ValueError("Visible task bytes changed")
-    return {5: pilot.rows_by_id(c5), 20: pilot.rows_by_id(visible)}, m
+    return {5: pilot.rows_by_id(c5), 20: rows}, m
 
 
-def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False):
+def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False, profile_path=None):
     from jinja2 import Environment
     from tokenizers import Tokenizer
 
@@ -55,9 +61,13 @@ def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False
         revised, changes = payloads(follow_up)
         if pilot.provenance.file_sha(bundle / "sealed/manifest.json") != changes["parent_manifest_sha256"]:
             raise ValueError("Follow-up does not match the supplied parent bundle")
-        for catalog in rows:
-            for change in changes["changes"]:
-                rows[catalog][change["parent_task_id"]] = revised[catalog][change["task_id"]]
+        for change in changes["changes"]:
+            parent_id, new_id = change["parent_task_id"], change["task_id"]
+            catalogs = [size for size in rows if parent_id in rows[size]]
+            if not catalogs or any(new_id not in revised[size] for size in catalogs):
+                raise ValueError("Follow-up revision must cover every original catalog view")
+            for size in catalogs:
+                rows[size][parent_id] = revised[size][new_id]
     grouped = defaultdict(list)
     for catalog, tasks in rows.items():
         for task in tasks.values():
@@ -65,7 +75,7 @@ def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False
                 continue
             grouped[len(task["tools"])].append(count(task, compact_catalog=compact))
 
-    profile = json.loads(pilot.PROFILE.read_text())
+    profile = json.loads((profile_path or pilot.PROFILE).read_text())
     size = int(profile["server_args"][profile["server_args"].index("-c") + 1])
     reserve = profile["request_params"]["max_tokens"]
     return {
@@ -87,8 +97,10 @@ def main():
     parser.add_argument("--tokenizer", type=Path, required=True)
     parser.add_argument("--follow-up", type=Path)
     parser.add_argument("--compact", action="store_true")
+    parser.add_argument("--profile", type=Path, help="Profile used to calculate the offline prompt limit")
     args = parser.parse_args()
-    result = prompt_token_budget(args.bundle, args.tokenizer, args.follow_up, compact=args.compact)
+    result = prompt_token_budget(args.bundle, args.tokenizer, args.follow_up,
+                                 compact=args.compact, profile_path=args.profile)
     print(json.dumps(result, indent=2, sort_keys=True))
 
 

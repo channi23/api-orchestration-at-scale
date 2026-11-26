@@ -7,10 +7,11 @@ import json
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
-from . import keyword_seed, v2_holdout as intake, v2_lineage, v2_v03
+from . import keyword_seed, v2_holdout as intake, v2_lineage, v2_swagger_inputs, v2_v03
 
 BASE = intake.BASE
 RUN = "v2-holdout-candidate-b-v0.1"
+NEXT = "v2-holdout-candidate-c-v0.1"
 DIALECT = intake.official.DIALECT
 MATRICES = {
     "validity_separable": ([True, False, False, True],),
@@ -35,15 +36,16 @@ def read_previous(bundles):
     return owners, schemas, requests
 
 
-def identifier(intent, suffix):
-    return "V2HCB_" + BASE.digest(f"{RUN}\0{intent}\0{suffix}".encode())[:16]
+def identifier(intent, suffix, stem=RUN):
+    prefix = {RUN: "V2HCB_", NEXT: "V2HCC_"}[stem]
+    return prefix + BASE.digest(f"{stem}\0{intent}\0{suffix}".encode())[:16]
 
 
 def task(task_id, request, tools):
     return {"task_id": task_id, "request": request, "system_policy": intake.POLICY, "tools": tools}
 
 
-def pair_rows(pair):
+def pair_rows(pair, stem=RUN):
     original = pair["schema"]
     path = pair["edit_path"]
     if original.get("$schema") != DIALECT:
@@ -70,14 +72,14 @@ def pair_rows(pair):
             raise ValueError("Declared negative witness validates for a pair")
     tools = [{"name": pair["tool"], "description": pair["tool_description"], "parameters": schema}
              for schema in (original, changed)]
-    ids = [identifier(pair["intent_id"], side) for side in ("S", "S2")]
+    ids = [identifier(pair["intent_id"], side, stem) for side in ("S", "S2")]
     tasks = [task(key, pair["request"], [tool]) for key, tool in zip(ids, tools, strict=True)]
     gold = [{"task_id": key, "tool": pair["tool"], "arguments": args}
             for key, args in zip(ids, (g, h), strict=True)]
     return tasks, gold, matrix
 
 
-def assemble(folder, index, prior_bundles):
+def assemble(folder, index, prior_bundles, *, stem=RUN):
     sources = BASE.read_rows(folder / "sources.jsonl")
     operations = BASE.read_rows(folder / "operations.jsonl")
     drafts = BASE.read_rows(folder / "drafts.jsonl")
@@ -113,12 +115,17 @@ def assemble(folder, index, prior_bundles):
     tools_by_source, documents, notices = {}, {}, {}
     for source in sources:
         group = source["project"]
-        spec = intake.official.load_spec(folder, source["spec"])
-        if (spec["openapi"], str(spec["info"]["version"])) != (source["openapi"], source["version"]):
-            raise ValueError("OpenAPI source version changed")
-        if not spec["openapi"].startswith("3.0."):
-            raise ValueError("Supported API projection requires OpenAPI 3.0")
-        documents[group] = spec
+        entries = source.get("specs") or {"default": {**source["spec"], "dialect": source["openapi"],
+                                                     "version": source["version"]}}
+        documents[group] = {}
+        for key, entry in entries.items():
+            spec = intake.official.load_spec(folder, entry)
+            dialect = spec.get("openapi", spec.get("swagger"))
+            if (dialect, str(spec["info"]["version"])) != (entry["dialect"], entry["version"]):
+                raise ValueError("API source version changed")
+            if dialect != "2.0" and not dialect.startswith(("3.0.", "3.1.")):
+                raise ValueError("Supported API projection requires Swagger 2, OpenAPI 3.0 or the 3.1 shared subset")
+            documents[group][key] = spec
         tools_by_source[group] = {}
         notice = source["notice"]
         notices[notice["file"]] = intake.official.source_file(folder, notice)
@@ -128,7 +135,13 @@ def assemble(folder, index, prior_bundles):
         group, name = op["project"], op["tool"]
         if name in validators:
             raise ValueError("Repeated tool name")
-        schema = intake.project_operation(documents[group], op)
+        document = documents[group][op.get("document", "default")]
+        if "swagger" in document:
+            schema = v2_swagger_inputs.project_operation(document, op)
+        elif document["openapi"].startswith("3.1."):
+            schema = v2_swagger_inputs.project_openapi31(document, op)
+        else:
+            schema = intake.project_operation(document, op)
         digest = BASE.su.sha(schema)
         if digest in exposed_schemas:
             raise ValueError("Exact known schema overlaps tranche B")
@@ -139,7 +152,7 @@ def assemble(folder, index, prior_bundles):
     review, five_tools, gold, evidence = [], [], [], []
     for draft in drafts:
         intent = draft["intent_id"]
-        task_id = identifier(intent, "api")
+        task_id = identifier(intent, "api", stem)
         catalog = tools_by_source[draft["project"]]
         target, args = draft["tool"], draft["arguments"]
         peers = set(draft["close_catalog"])
@@ -157,7 +170,7 @@ def assemble(folder, index, prior_bundles):
                          "schema_valid_tools_5": sorted(peers & set(good)), "schema_valid_tools_20": good})
 
     for pair in pairs:
-        variants, answers, matrix = pair_rows(pair)
+        variants, answers, matrix = pair_rows(pair, stem)
         if any(BASE.su.sha(row["tools"][0]["parameters"]) in exposed_schemas for row in variants):
             raise ValueError("Exact exposed pair schema")
         review.extend(variants)
@@ -223,9 +236,10 @@ def main():
     parser.add_argument("--source-index", type=Path, required=True)
     parser.add_argument("--prior", action="append", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--stem", choices=(RUN, NEXT), default=RUN)
     args = parser.parse_args()
-    bundle = assemble(args.inputs, v2_lineage.load_index(args.source_index), args.prior)
-    print(json.dumps(emit(args.out, *bundle), indent=2, sort_keys=True))
+    bundle = assemble(args.inputs, v2_lineage.load_index(args.source_index), args.prior, stem=args.stem)
+    print(json.dumps(emit(args.out, *bundle, stem=args.stem), indent=2, sort_keys=True))
 
 
 if __name__ == "__main__":

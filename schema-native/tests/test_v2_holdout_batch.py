@@ -87,3 +87,40 @@ def test_writing_revision_requires_both_variants_to_keep_the_same_request():
     assert [row["tools"] for row in changed] == [row["tools"] for row in tasks]
     assert [row["arguments"] for row in expected] == [row["arguments"] for row in answers]
     assert {row["task_id"] for row in changed}.isdisjoint(rows)
+
+
+def test_budget_reads_legacy_five_tool_packet_without_a_second_view(tmp_path):
+    from hashlib import sha256
+    from sn import v2_holdout_budget as budget
+
+    review = tmp_path / "review"
+    sealed = tmp_path / "sealed"
+    review.mkdir()
+    sealed.mkdir()
+    record = {"task_id": "fixture", "tools": [{"name": str(i)} for i in range(5)]}
+    packet = review / "legacy.zip"
+    with ZipFile(packet, "w") as archive:
+        archive.writestr("tasks.jsonl", json.dumps(record) + "\n")
+    manifest = {"review_zip_sha256": sha256(packet.read_bytes()).hexdigest()}
+    (sealed / "manifest.json").write_text(json.dumps(manifest))
+    rows, metadata = budget.payloads(tmp_path)
+    assert rows == {5: {"fixture": record}, 20: {}}
+    assert metadata == manifest
+
+
+def test_review_comparison_accepts_disjoint_parts_and_rejects_repeat_answers(tmp_path):
+    from sn import v2_holdout_review as reviewer
+
+    tasks, expected, _ = batch.pair_rows(PAIR)
+    bundle = tmp_path / "bundle"
+    batch.emit(bundle, tasks, tasks, expected, {}, {"summary": {"approved_test_intents": 0}})
+    first, second, notes = (tmp_path / name for name in ("first.jsonl", "second.jsonl", "notes.md"))
+    first.write_text(json.dumps(expected[0]) + "\n")
+    second.write_text(json.dumps({**expected[1], "arguments": {"label": "wrong"}}) + "\n")
+    notes.write_text("Blind review notes.\n")
+    report = reviewer.compare(bundle, [first, second], [notes])
+    assert report["rows"] == report["tool_matches"] == 2
+    assert report["valid_arguments"] == report["exact_calls"] == 1
+    assert report["approved_test_intents"] == 0
+    with pytest.raises(ValueError, match="repeated task IDs"):
+        reviewer.compare(bundle, [first, first], [notes])

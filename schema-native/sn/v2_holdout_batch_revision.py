@@ -9,9 +9,12 @@ from . import v2_authoring as common, v2_holdout_batch as batch
 
 
 STEM = "v2-holdout-candidate-b-v0.2"
+NEXT = "v2-holdout-candidate-c-v0.2"
+PARENTS = {STEM: batch.RUN, NEXT: batch.NEXT}
+PREFIXES = {STEM: "V2HCBR_", NEXT: "V2HCCR_"}
 
 
-def replace(tasks, small, answers, edits, intents):
+def replace(tasks, small, answers, edits, intents, *, stem=STEM):
     changed, small_changed, gold, evidence = [], [], [], []
     edited = {}
     for edit in edits:
@@ -24,7 +27,7 @@ def replace(tasks, small, answers, edits, intents):
         edited[key] = edit["request"]
         selected, = (tool for tool in original["tools"] if tool["name"] == expected["tool"])
         common.validator(selected["parameters"]).validate(edit["arguments"])
-        revised_id = "V2HCBR_" + common.digest(f"{STEM}\0{key}".encode())[:16]
+        revised_id = PREFIXES[stem] + common.digest(f"{stem}\0{key}".encode())[:16]
         changed.append({**original, "task_id": revised_id, "request": edit["request"]})
         small_changed.append({**original_small, "task_id": revised_id, "request": edit["request"]})
         gold.append({**expected, "task_id": revised_id, "arguments": edit["arguments"]})
@@ -45,12 +48,12 @@ def replace(tasks, small, answers, edits, intents):
     return changed, small_changed, gold, evidence
 
 
-def build(parent, expected_hash, revisions):
+def build(parent, expected_hash, revisions, *, stem=STEM):
     manifest_bytes = (parent / "sealed/manifest.json").read_bytes()
     if common.digest(manifest_bytes) != expected_hash:
         raise ValueError("Parent manifest SHA-256 mismatch")
     m = json.loads(manifest_bytes)
-    packet = parent / "review" / f"{batch.RUN}-blind-review.zip"
+    packet = parent / "review" / f"{PARENTS[stem]}-blind-review.zip"
     gold = parent / "sealed/gold.jsonl"
     small = parent / "sealed/tasks.c5.jsonl"
     for path, key in ((packet, "review_zip_sha256"), (gold, "gold_sha256"), (small, "tasks_c5_sha256")):
@@ -62,7 +65,7 @@ def build(parent, expected_hash, revisions):
     tasks = {row["task_id"]: row for row in rows}
     changed, reduced, answers, edits = replace(
         tasks, {row["task_id"]: row for row in common.read_rows(small)},
-        {row["task_id"]: row for row in common.read_rows(gold)}, common.read_rows(revisions), m["intents"]
+        {row["task_id"]: row for row in common.read_rows(gold)}, common.read_rows(revisions), m["intents"], stem=stem
     )
     summary = {"approved_test_intents": 0, "new_candidate_intents": 0, "revised_rows": len(edits),
                "gold_changes": sum(row["arguments_changed"] for row in edits),
@@ -78,9 +81,10 @@ def main():
     parser.add_argument("--parent-sha256", required=True)
     parser.add_argument("--revisions", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--stem", choices=(STEM, NEXT), default=STEM)
     args = parser.parse_args()
-    print(json.dumps(batch.emit(args.out, *build(args.parent, args.parent_sha256, args.revisions),
-                                stem=STEM), indent=2, sort_keys=True))
+    candidate = build(args.parent, args.parent_sha256, args.revisions, stem=args.stem)
+    print(json.dumps(batch.emit(args.out, *candidate, stem=args.stem), indent=2, sort_keys=True))
 
 
 if __name__ == "__main__":
