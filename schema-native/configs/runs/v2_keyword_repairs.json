@@ -1,0 +1,16 @@
+{
+  "run_id": "v2-keyword-repairs-v0.1",
+  "protocol": "v2-keyword-dev-schema-repairs",
+  "profile_sha256": "757b5d8da501f0cbf0bbc8c5dc743b801d3b13332a28e0934267d6fd6786b17a",
+  "baseline_run": "v2-keyword-control-v0.1",
+  "baseline_manifest_sha256": "c65bd8ccc492e16e3548c13d1dde9d41473974051b9b2f3a4171db8f3dc119e4",
+  "baseline_results_sha256": "4ff1fa948e72f82b6cb93fa3ac14e5ac6a535d07e27754774f85591354ef4b43",
+  "port": 8095,
+  "generation_cap": 39,
+  "cache_prompt": true,
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true,
+  "require_acceptable_thermal_state": true,
+  "max_system_swapout_growth_bytes": 1073741824,
+  "system_swapout_baseline_file": "runs/v2-keyword-repairs-v0.1/swap-baseline.json"
+}

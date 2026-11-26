@@ -110,6 +110,7 @@ def messages(task):
     return [
         {"role": "system", "content": task["system_policy"] + "\n\nAvailable tools (JSON):\n" + catalog},
         {"role": "user", "content": task["request"]},
+        *task.get("follow_up", ()),
     ]
 
 
