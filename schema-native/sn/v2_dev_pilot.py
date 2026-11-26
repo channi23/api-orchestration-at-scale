@@ -106,7 +106,8 @@ def build(outputs):
 
 
 def messages(task):
-    catalog = json.dumps(task["tools"], ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)
+    format_args = ({"separators": (",", ":")} if task.get("catalog_serialization") == "compact" else {"indent": 2})
+    catalog = json.dumps(task["tools"], ensure_ascii=False, sort_keys=True, allow_nan=False, **format_args)
     return [
         {"role": "system", "content": task["system_policy"] + "\n\nAvailable tools (JSON):\n" + catalog},
         {"role": "user", "content": task["request"]},
@@ -218,6 +219,8 @@ def token_preflight(plan, post):
         if not isinstance(tokens, list) or not tokens or len(tokens) + params["max_tokens"] > n_ctx:
             raise RuntimeError(f"Token count or context check failed: {unit['task_id']}")
         counts[unit["task_id"]] = len(tokens)
+    if "expected_prompt_tokens" in plan and counts != plan["expected_prompt_tokens"]:
+        raise RuntimeError("Online prompt lengths differ from the locked offline counts")
     return {"context": n_ctx, "output_token_reserve": model["request_params"]["max_tokens"], "prompt_tokens": counts}
 
 
@@ -287,11 +290,11 @@ def server(model, port, log):
                     proc.wait(timeout=10)
 
 
-def launch(plan, *, config_path=CONFIG, extra_files=(), reporter=report):
+def launch(plan, *, config_path=CONFIG, profile_path=PROFILE, extra_files=(), reporter=report):
     cfg, model = plan["config"], plan["profile"]
     if cfg != json.loads(config_path.read_text()) or plan["implementation_sha256"] != implementation(config_path, extra_files):
         raise ValueError("Approved plan does not match current runner and config")
-    if model != json.loads(checked(PROFILE, cfg["profile_sha256"])) or template_sha() != plan["template_sha256"]:
+    if model != json.loads(checked(profile_path, cfg["profile_sha256"])) or template_sha() != plan["template_sha256"]:
         raise ValueError("Approved model profile or template changed")
     if preflight.runtime(model, str(model_path(model)), str(LLAMA)) != plan["runtime"]:
         raise ValueError("Runtime hashes changed after preparation")

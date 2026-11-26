@@ -35,12 +35,8 @@ def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False
     jinja = Environment(trim_blocks=True, lstrip_blocks=True).from_string(template)
 
     def count(task, compact_catalog=False):
-        messages = pilot.messages(task)
-        if compact_catalog:
-            serialized = json.dumps(task["tools"], ensure_ascii=False, sort_keys=True,
-                                    separators=(",", ":"), allow_nan=False)
-            messages[0]["content"] = task["system_policy"] + "\n\nAvailable tools (JSON):\n" + serialized
-        prompt = jinja.render(messages=messages, add_generation_prompt=True, enable_thinking=False)
+        visible = {**task, "catalog_serialization": "compact"} if compact_catalog else task
+        prompt = jinja.render(messages=pilot.messages(visible), add_generation_prompt=True, enable_thinking=False)
         return len(tokenizer.encode(prompt, add_special_tokens=False).ids)
 
     calibrated = 0

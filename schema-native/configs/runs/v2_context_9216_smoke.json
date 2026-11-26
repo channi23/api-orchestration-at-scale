@@ -1,0 +1,13 @@
+{
+  "run_id": "v2-context-9216-smoke-v0.1",
+  "protocol": "v2-context-development-smoke",
+  "profile_sha256": "a9b7c97063084ffb39b701645bee77d83741a35bbc29d5d918946f52c136d5bf",
+  "port": 8097,
+  "generation_cap": 3,
+  "cache_prompt": false,
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true,
+  "require_acceptable_thermal_state": true,
+  "max_system_swapout_growth_bytes": 1073741824,
+  "system_swapout_baseline_file": "runs/v2-context-9216-smoke-v0.1/swap-baseline.json"
+}
