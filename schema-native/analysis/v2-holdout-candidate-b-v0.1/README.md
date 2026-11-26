@@ -98,6 +98,10 @@ or support a confirmatory claim. The freeze still needs further source and famil
 independent adjudication of the chosen dataset, and a feasible context budget. No candidate
 was sent to Qwen. No baseline, held-out result or training result is reported.
 
+A separate 9,216-token profile passed a [synthetic development smoke](../v2-context-smoke-v0.1/RESULTS.md).
+Its prompt budget clears the current 20 compact catalogs offline. The full freeze and online
+checks on the final catalog bytes remain pending.
+
 ## Reproduce privately
 
 Use the existing Python environment and the retained owner-only sources, drafts and prior

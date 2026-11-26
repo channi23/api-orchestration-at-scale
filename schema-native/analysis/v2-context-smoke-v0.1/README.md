@@ -39,6 +39,8 @@ of a short exact call on the extended input, together with clean resource readin
 hardware smoke check. Accuracy and multi-hour resource behavior need separate evidence.
 No private held-out task or training data is an input.
 
+**Both runs completed.** See the [measured results](RESULTS.md).
+
 ## Reproduce
 
 Run from `schema-native/` in the existing environment. Supply the pinned tokenizer JSON from
