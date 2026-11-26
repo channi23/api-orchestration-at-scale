@@ -31,7 +31,7 @@ def payloads(bundle):
     return {5: pilot.rows_by_id(c5), 20: rows}, m
 
 
-def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False, profile_path=None):
+def calibrated_counter(tokenizer_path):
     from jinja2 import Environment
     from tokenizers import Tokenizer
 
@@ -55,7 +55,11 @@ def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False
         if {u["task_id"]: count(u["visible"]) for u in manifest["units"]} != preflight["prompt_tokens"]:
             raise ValueError("Tokenizer reproducer disagrees with the saved online preflight")
         calibrated += len(preflight["prompt_tokens"])
+    return count, calibrated, pilot.provenance.digest(template)
 
+
+def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False, profile_path=None):
+    count, calibrated, template_sha256 = calibrated_counter(tokenizer_path)
     rows, _ = payloads(bundle)
     if follow_up is not None:
         revised, changes = payloads(follow_up)
@@ -82,7 +86,7 @@ def prompt_token_budget(bundle, tokenizer_path, follow_up=None, *, compact=False
         "online_calibration_counts_matched": calibrated,
         "catalog_serialization": "compact" if compact else "readable",
         "tokenizer_sha256": TOKENIZER_SHA256,
-        "template_sha256": pilot.provenance.digest(template),
+        "template_sha256": template_sha256,
         "context_tokens": size,
         "output_reserve_tokens": reserve,
         "by_catalog_size": {str(n): {"rows": len(values), "prompt_min": min(values), "prompt_max": max(values),
