@@ -1,4 +1,4 @@
-# Exploratory baseline host handoff
+# Exploratory baseline execution
 
 2026-11-27. The [frozen exploratory dataset](../v2-exploratory-freeze-v0.1/README.md) has
 a private inference export with 177 ordered requests. Its manifest SHA-256 is
@@ -6,6 +6,36 @@ a private inference export with 177 ordered requests. Its manifest SHA-256 is
 The export contains only request payloads and a runtime handoff manifest. The expected answers,
 lineage records and scorer stay on the Mac. The export can be checked byte for byte and
 has never been sent to a remote host.
+
+## Selected local baseline
+
+Run the staged export with the pinned Qwen3-1.7B Q8_0 and llama.cpp Metal build
+from the measured 9,216-token smoke. The launcher reads only the inference export.
+It reserves at most 177 generation requests and 360 separate non-generating requests.
+The 360 covers 355 first-pass preflight requests plus five extra requests across segments.
+Every segment checks the live server identity. A completed prompt-length check is reused
+only with the same sealed export and runtime.
+
+The existing Mac guards require at least 5 GiB by the free + inactive + purgeable estimate,
+normal memory pressure before loading, three normal pressure readings five seconds
+apart after loading and nominal thermal state. The launcher unloads its own model on a
+guard stop. It checks pressure, thermal state and swap activity between requests and
+during a long request. The hard limit is 1 GiB of cumulative system swapout growth across
+active segments. The request cooldown is two seconds.
+
+```bash
+export_dir=../../../outputs/v2-exploratory-free-inference-v0.1
+.venv/bin/python -m sn.v2_exploratory_run check --export "$export_dir"
+.venv/bin/python -m sn.v2_exploratory_run run --export "$export_dir"
+```
+
+The second command is also the resume command after a resumable stop. The run
+directory is `runs/v2-exploratory-free-v0.1`. Resumption verifies that saved replies
+and charged generation keys match the same prefix of the frozen order. An unanswered
+generation charge, invalid server telemetry or runtime fault requires inspection and
+blocks an automatic resume. The launcher records a completed run only after unloading.
+Use the frozen scorer offline on the complete response ledger. Keep prompts, answers and
+per-request results out of the published aggregate report.
 
 ## Host options
 
@@ -56,8 +86,8 @@ The prepared protocol uses the verified 9,216-token context, 512-token reserve, 
 and free decoding. The exported request payloads disable prompt-cache reuse consistently.
 Before generation, use the pinned host identity and verify the model, template, context and all
 177 prompt token lengths. The first preflight has 355 nominal non-generating requests.
-The generation cap is 177. Each dispatch needs a durable ledger entry before send. A future
-launcher must preserve completed keys on resume and count any failed or uncertain dispatch.
+The generation cap is 177. Each dispatch needs a durable ledger entry before send.
+Preserve completed keys on resume and count any failed or uncertain dispatch.
 
 For a remote launch, first review the host resource policy and runtime build. Test locally
 to the server with a synthetic development prompt. Keep the server bound to loopback and

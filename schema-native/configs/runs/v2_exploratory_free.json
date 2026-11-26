@@ -1,0 +1,12 @@
+{
+  "run_id": "v2-exploratory-free-v0.1",
+  "port": 8098,
+  "export_manifest_sha256": "c8b0e552f59a44db90fd274f6d6a4d78afa8332b3cb525df32b3fe8ba2befe03",
+  "smoke_manifest_sha256": "c1c39caf261032567c1038357b949f3e8767abf7b60760f4d09e21f51e5eb600",
+  "generation_cap": 177,
+  "metadata_cap": 360,
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true,
+  "require_acceptable_thermal_state": true,
+  "max_system_swapout_growth_bytes": 1073741824
+}
