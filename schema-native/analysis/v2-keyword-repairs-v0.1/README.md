@@ -28,6 +28,8 @@ server session using the same pinned profile. All 32 items are public developmen
 already used to design these interventions. A held-out test needs independently reviewed
 tasks and a fresh prospective baseline under the same campaign.
 
+**Run completed.** See the [measured development results](RESULTS.md).
+
 ## Runtime and request limits
 
 The hard limit is 39 generation attempts, plus up to 79 non-generating metadata requests
