@@ -19,6 +19,37 @@ has never been sent to a remote host.
   Mac's resources. A job launched and recorded entirely on a remote host can keep running
   after the Mac disconnects. [llama.cpp Docker documentation](https://github.com/ggml-org/llama.cpp/blob/master/docs/docker.md)
 
+## Free SSH-controlled host
+
+Oracle Cloud Always Free is the selected option to check first. Its current Ampere A1 allowance
+is 2 OCPUs and 12 GB total per free tenancy. In the console, use an Always Free-eligible
+`VM.Standard.A1.Flex` in the tenancy's home region, an Arm64 Ubuntu image and a boot volume
+within the free allotment. Use your own SSH public key. Capacity can be unavailable and
+idle VMs can be reclaimed. Oracle's sign-up process can require card verification.
+[Always Free terms](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm)
+and [SSH setup](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/connect-to-linux-instance.htm).
+
+A1 is CPU-only. Verify speed on the staged **three-request synthetic smoke** before estimating
+the cost in time of the 177-request workload. The synthetic export is separate from the
+benchmark export, contains no benchmark prompts or answers, and has a manifest SHA-256 of
+`a96613b3accee1a5c2efcceab2183b26fb56a96339e10da3a62d3682dbe9bee5`.
+
+Use the manifest's exact llama.cpp commit and GGUF revision, and verify the model hash on the
+host. The CPU smoke changes GPU layers from 99 to 0 and sets generation and prefill threads
+to two, retaining the 9,216 context and 512-token reserve. Record the Arm CPU build as a
+separate runtime. Check model identity, template and all three exact prompt counts offline
+and against the local server before the three completions. Measure long-prompt wall time and
+memory use on the VM. Keep the model server on loopback. Linux CPU speed and free-tier
+availability remain unverified because no approved host is connected.
+
+From the Mac checkout, the synthetic export can be verified without running Qwen:
+
+```bash
+.venv/bin/python -m sn.v2_free_host_smoke check \
+  --smoke-plan ../../../outputs/v2-context-smoke-v0.1/context-9216.json \
+  --out ../../../outputs/v2-free-cpu-host-smoke-v0.1
+```
+
 ## Preserve the experiment
 
 The prepared protocol uses the verified 9,216-token context, 512-token reserve, fixed seed
