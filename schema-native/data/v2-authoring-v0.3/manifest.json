@@ -1,0 +1,23 @@
+{
+  "aliases": [],
+  "array_order": "preserved",
+  "date": "2026-11-25",
+  "inputs_sha256": {
+    "schema-native/analysis/v2-authoring-review-v0.2/ADJUDICATION.md": "f283f0ed3c8cfeca773a307909204ee043ce1be7f7a8a97147c7e0a424e8c549",
+    "schema-native/data/v2-authoring-v0.2/SYSTEM_POLICY.txt": "71cf74c503b28118f9a13ff40820a37e470843e4c8964dee1f2f5febb80cf6c7",
+    "schema-native/data/v2-authoring-v0.2/catalogs.jsonl": "779b185439e41700953608654efed0356760e49842c78800b43e33394a9cdb40",
+    "schema-native/data/v2-authoring-v0.2/manifest.json": "7a510a1425ea879b93f64671b8975e709e9a077dc948a833bf92b95a4c8d6c32",
+    "schema-native/data/v2-authoring-v0.3/ALIAS_POLICY.txt": "885173533754565f6660715333e4e77f07f30b2dd125ed0b3c5ba0fc94762a18",
+    "schema-native/data/v2-authoring-v0.3/FRESH_REVIEW_INSTRUCTIONS.md": "8fdef8d4c02ab6a1485a500c4b450c15ff18352aa2c66ae2d3932ab0fb892e79",
+    "schema-native/data/v2-authoring-v0.3/wording.jsonl": "5dada9423be7670b881250c90312d744942acb84a23d7fcab6cab64211fc7d6a",
+    "schema-native/sn/v2_authoring.py": "b410658bac1108f192cc692d572f5d14ebe76057dc8edefde135675e819911dd",
+    "schema-native/sn/v2_revision.py": "945098bbf88ade03876b86fa2eb42ef3946c71892996bfe87ea97d94ce81b367",
+    "schema-native/sn/v2_v03.py": "1db809c65fb13209f8ef0ae4e33b26568f9138486eae486b0a7fadc8e74e7b28"
+  },
+  "numeric_comparison": "mathematical value; boolean distinct",
+  "parent_drafts_and_reviews_unchanged": true,
+  "raw_schemas_copied_to_git": false,
+  "status": "PROVISIONAL WORDING REVIEW ONLY",
+  "string_comparison": "exact including case; enum mappings use declared labels",
+  "version": "v2-authoring-v0.3"
+}

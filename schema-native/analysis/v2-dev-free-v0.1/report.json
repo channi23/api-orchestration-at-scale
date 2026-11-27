@@ -1,0 +1,191 @@
+{
+  "median_elapsed_seconds": 2.729847582999355,
+  "outcomes": {
+    "correct": 9,
+    "valid_wrong_arguments": 2
+  },
+  "request_count": 11,
+  "scope": "development-only, descriptive",
+  "tasks": [
+    {
+      "elapsed_seconds": 1.4098072499982663,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2OS_1c3000f30c37",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 30,
+        "prompt_tokens": 746,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 776
+      }
+    },
+    {
+      "elapsed_seconds": 5.755639040999085,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2OS_456828da9fb7",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 3643,
+        "prompt_tokens_details": {
+          "cached_tokens": 98
+        },
+        "total_tokens": 3714
+      }
+    },
+    {
+      "elapsed_seconds": 1.293515124998521,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2OS_74f8ea473096",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 745,
+        "prompt_tokens_details": {
+          "cached_tokens": 98
+        },
+        "total_tokens": 773
+      }
+    },
+    {
+      "elapsed_seconds": 5.146502332998352,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2OS_e32216b361be",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 3625,
+        "prompt_tokens_details": {
+          "cached_tokens": 98
+        },
+        "total_tokens": 3674
+      }
+    },
+    {
+      "elapsed_seconds": 4.824353625001095,
+      "known_tool": true,
+      "outcome": "valid_wrong_arguments",
+      "schema_valid": true,
+      "task_id": "V2OSW_1b2777a6b571",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 3632,
+        "prompt_tokens_details": {
+          "cached_tokens": 99
+        },
+        "total_tokens": 3667
+      }
+    },
+    {
+      "elapsed_seconds": 1.4649473749996105,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2OSW_4ab4190d3191",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 758,
+        "prompt_tokens_details": {
+          "cached_tokens": 98
+        },
+        "total_tokens": 793
+      }
+    },
+    {
+      "elapsed_seconds": 2.505857832999027,
+      "known_tool": true,
+      "outcome": "valid_wrong_arguments",
+      "schema_valid": true,
+      "task_id": "V2DO_321f64c5b032",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 1331,
+        "prompt_tokens_details": {
+          "cached_tokens": 98
+        },
+        "total_tokens": 1387
+      }
+    },
+    {
+      "elapsed_seconds": 2.475330416000361,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2DO_43e2e4265be6",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 1324,
+        "prompt_tokens_details": {
+          "cached_tokens": 368
+        },
+        "total_tokens": 1391
+      }
+    },
+    {
+      "elapsed_seconds": 3.0053695409987995,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2DO_8bc681651846",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 1328,
+        "prompt_tokens_details": {
+          "cached_tokens": 99
+        },
+        "total_tokens": 1410
+      }
+    },
+    {
+      "elapsed_seconds": 2.729847582999355,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2DO_a7b1768fd0c1",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 1330,
+        "prompt_tokens_details": {
+          "cached_tokens": 98
+        },
+        "total_tokens": 1398
+      }
+    },
+    {
+      "elapsed_seconds": 2.8274903329984227,
+      "known_tool": true,
+      "outcome": "correct",
+      "schema_valid": true,
+      "task_id": "V2DO_f37c406a75f5",
+      "tool_matches": true,
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 1321,
+        "prompt_tokens_details": {
+          "cached_tokens": 98
+        },
+        "total_tokens": 1387
+      }
+    }
+  ],
+  "total_usage": {
+    "completion_tokens": 587,
+    "prompt_tokens": 19783
+  }
+}

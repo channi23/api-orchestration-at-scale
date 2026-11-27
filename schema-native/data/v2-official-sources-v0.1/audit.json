@@ -1,0 +1,338 @@
+{
+  "api_calls": 0,
+  "approved_test_intents": 0,
+  "index_coverage": {
+    "collection_only": 286,
+    "indexed_repository": 2002
+  },
+  "indexed_owner_matches": {
+    "github": {
+      "Github_easy/o43292": "github:github/git-lfs",
+      "Github_easy/o43293": "github:github/git-lfs",
+      "Github_easy/o43294": "github:github/git-lfs",
+      "Github_easy/o43295": "github:github/git-lfs",
+      "Github_easy/o43297": "github:github/git-lfs",
+      "Github_medium/o43296": "github:github/git-lfs"
+    },
+    "pokeapi": {},
+    "stripe": {}
+  },
+  "inference_calls": 0,
+  "input_sha256": {
+    "experiment/dataset/tool_pool.v1.jsonl": "20c3d1e7b0da12a950726971e91ff5b0b250b96eeceb82a794c50bc578c97042",
+    "experiment/tasks/tasks.v1.jsonl": "d45a988231cdd458a9594454da0d9e8d4246eefea6e1f5e390614ccf41f36633",
+    "schema-native/data/trainpool/schemas.v1.jsonl": "bd074fd59552934f1fbcaa09d2527b15c3eb2c02e9ae340edc17016e418a7463",
+    "schema-native/data/v2-authoring-v0.3/drafts.clean.jsonl": "09cb7af7d830832a8b246b0b436560970c94df674c918ccb9924607b690abf02",
+    "schema-native/data/v2-official-sources-v0.1/REVIEW_INSTRUCTIONS.md": "f5e933074a08a956ee1f09981394b3af8d4c0ce52a990f0d40e2977049527a51",
+    "schema-native/data/v2-official-sources-v0.1/SYSTEM_POLICY.txt": "f82bad1a3e10b2526428f96be82008192c9048172000c976d8af586607cefbd1",
+    "schema-native/data/v2-official-sources-v0.1/drafts.jsonl": "1461807abffe300862fb82027a38d421d874b09fd10764ab4f2926f9e2e9c982",
+    "schema-native/data/v2-official-sources-v0.1/operations.jsonl": "af7ab37d429e6a3dbe0381aaded8e43be8b0f01521a8fc46fe11a2642982fc40",
+    "schema-native/data/v2-official-sources-v0.1/sources.jsonl": "d13382dbe75512e1363230cdf8d7e8804a9abe7d5a3b47803ec25b5af76e630a",
+    "schema-native/data/v2-source-expansion-v0.1/cards.source.jsonl": "2bd8b37aceef358a3e735b048001b6ef14c25c7de1ae3aa14ffceca604e554a5",
+    "schema-native/sn/v2_lineage.py": "6201aa8052347a57d0931696af020413cb4a045403db0b515b6445e64e2cc50c",
+    "schema-native/sn/v2_official_sources.py": "897996c2cbf582851f72ff8f6fa40a6b86d09875f56b461d16c4a1a12e341298"
+  },
+  "operations": {
+    "get_pokedex": {
+      "empty_optional_body_omitted": false,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "pokedex_retrieve",
+      "parameter_locations": {
+        "id": "path"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "pokeapi/pokeapi",
+      "schema_sha256": "c65990e3c2bf475bddc5082909c85cb63aac3d2eb06ba2f3dd5a27b4412b0c77",
+      "source_path": "/api/v2/pokedex/{id}/"
+    },
+    "get_pokemon": {
+      "empty_optional_body_omitted": false,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "pokemon_retrieve",
+      "parameter_locations": {
+        "id": "path"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "pokeapi/pokeapi",
+      "schema_sha256": "c65990e3c2bf475bddc5082909c85cb63aac3d2eb06ba2f3dd5a27b4412b0c77",
+      "source_path": "/api/v2/pokemon/{id}/"
+    },
+    "get_pokemon_form": {
+      "empty_optional_body_omitted": false,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "pokemon_form_retrieve",
+      "parameter_locations": {
+        "id": "path"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "pokeapi/pokeapi",
+      "schema_sha256": "c65990e3c2bf475bddc5082909c85cb63aac3d2eb06ba2f3dd5a27b4412b0c77",
+      "source_path": "/api/v2/pokemon-form/{id}/"
+    },
+    "get_pokemon_species": {
+      "empty_optional_body_omitted": false,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "pokemon_species_retrieve",
+      "parameter_locations": {
+        "id": "path"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "pokeapi/pokeapi",
+      "schema_sha256": "c65990e3c2bf475bddc5082909c85cb63aac3d2eb06ba2f3dd5a27b4412b0c77",
+      "source_path": "/api/v2/pokemon-species/{id}/"
+    },
+    "list_coupons": {
+      "empty_optional_body_omitted": true,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "GetCoupons",
+      "parameter_locations": {
+        "created": "query",
+        "ending_before": "query",
+        "expand": "query",
+        "limit": "query",
+        "starting_after": "query"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "stripe/openapi",
+      "schema_sha256": "22d4e01984c22980ef1f4392741257fada0216416b55ad0bfb07a2f6780b903e",
+      "source_path": "/v1/coupons"
+    },
+    "list_pokemon": {
+      "empty_optional_body_omitted": false,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [
+        "q"
+      ],
+      "operation_id": "pokemon_list",
+      "parameter_locations": {
+        "limit": "query",
+        "offset": "query"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "pokeapi/pokeapi",
+      "schema_sha256": "10e6338728057ee937e18dc4282d34156a5417015a123977c1cbd024d87c79ff",
+      "source_path": "/api/v2/pokemon/"
+    },
+    "list_prices": {
+      "empty_optional_body_omitted": true,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "GetPrices",
+      "parameter_locations": {
+        "active": "query",
+        "created": "query",
+        "currency": "query",
+        "ending_before": "query",
+        "expand": "query",
+        "limit": "query",
+        "lookup_keys": "query",
+        "product": "query",
+        "recurring": "query",
+        "starting_after": "query",
+        "type": "query"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "stripe/openapi",
+      "schema_sha256": "2204d77c3516487a5e9a4bee958bf90c6c2de0def0e8299646393abecabddd5e",
+      "source_path": "/v1/prices"
+    },
+    "list_products": {
+      "empty_optional_body_omitted": true,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "GetProducts",
+      "parameter_locations": {
+        "active": "query",
+        "created": "query",
+        "ending_before": "query",
+        "expand": "query",
+        "ids": "query",
+        "limit": "query",
+        "shippable": "query",
+        "starting_after": "query",
+        "url": "query"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "stripe/openapi",
+      "schema_sha256": "a9148ae8efd80cf56a666fe8e879b7a014ca88401623d61daa23d3beff36aead",
+      "source_path": "/v1/products"
+    },
+    "list_promotion_codes": {
+      "empty_optional_body_omitted": true,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "GetPromotionCodes",
+      "parameter_locations": {
+        "active": "query",
+        "code": "query",
+        "coupon": "query",
+        "created": "query",
+        "customer": "query",
+        "customer_account": "query",
+        "ending_before": "query",
+        "expand": "query",
+        "limit": "query",
+        "starting_after": "query"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "stripe/openapi",
+      "schema_sha256": "9df0726958fa33bb7931731a4ae9ef2e41fde22e032178e2b48dcb1fe0eb173a",
+      "source_path": "/v1/promotion_codes"
+    },
+    "list_tax_rates": {
+      "empty_optional_body_omitted": true,
+      "exact_prior_argument_schema_matches": [],
+      "method": "GET",
+      "omitted_local_only": [],
+      "operation_id": "GetTaxRates",
+      "parameter_locations": {
+        "active": "query",
+        "created": "query",
+        "ending_before": "query",
+        "expand": "query",
+        "inclusive": "query",
+        "limit": "query",
+        "starting_after": "query"
+      },
+      "prior_root_property_name_set_hits": [],
+      "project": "stripe/openapi",
+      "schema_sha256": "80fa82d2cbc913e923015427add62d6b974cd4582bcb3120d1ceba689af9a678",
+      "source_path": "/v1/tax_rates"
+    }
+  },
+  "source_index_sha256": "0bd4becb72ffb8fa6a0cdcef9853f0ec29ed051f7d5c247d1f98efcec5f7d72c",
+  "tasks": [
+    {
+      "approved_for_test": false,
+      "catalog_tool_names": [
+        "get_pokemon_form",
+        "get_pokedex",
+        "get_pokemon_species",
+        "get_pokemon",
+        "list_pokemon"
+      ],
+      "intent_id": "pokemon-page",
+      "project": "pokeapi/pokeapi",
+      "schema_valid_gold_tool_names": [
+        "list_pokemon"
+      ],
+      "scope": "development_only",
+      "target": "list_pokemon",
+      "task_id": "V2OS_1ba2415ada23"
+    },
+    {
+      "approved_for_test": false,
+      "catalog_tool_names": [
+        "get_pokedex",
+        "get_pokemon_species",
+        "get_pokemon",
+        "list_pokemon",
+        "get_pokemon_form"
+      ],
+      "intent_id": "species-classification",
+      "project": "pokeapi/pokeapi",
+      "schema_valid_gold_tool_names": [
+        "get_pokedex",
+        "get_pokemon_species",
+        "get_pokemon",
+        "get_pokemon_form"
+      ],
+      "scope": "development_only",
+      "target": "get_pokemon_species",
+      "task_id": "V2OS_74f8ea473096"
+    },
+    {
+      "approved_for_test": false,
+      "catalog_tool_names": [
+        "get_pokemon",
+        "get_pokemon_species",
+        "get_pokemon_form",
+        "get_pokedex",
+        "list_pokemon"
+      ],
+      "intent_id": "visual-form",
+      "project": "pokeapi/pokeapi",
+      "schema_valid_gold_tool_names": [
+        "get_pokemon",
+        "get_pokemon_species",
+        "get_pokemon_form",
+        "get_pokedex"
+      ],
+      "scope": "development_only",
+      "target": "get_pokemon_form",
+      "task_id": "V2OS_1c3000f30c37"
+    },
+    {
+      "approved_for_test": false,
+      "catalog_tool_names": [
+        "list_tax_rates",
+        "list_products",
+        "list_promotion_codes",
+        "list_prices",
+        "list_coupons"
+      ],
+      "intent_id": "inactive-products-in-window",
+      "project": "stripe/openapi",
+      "schema_valid_gold_tool_names": [
+        "list_tax_rates",
+        "list_products",
+        "list_promotion_codes",
+        "list_prices"
+      ],
+      "scope": "development_only",
+      "target": "list_products",
+      "task_id": "V2OS_456828da9fb7"
+    },
+    {
+      "approved_for_test": false,
+      "catalog_tool_names": [
+        "list_prices",
+        "list_coupons",
+        "list_promotion_codes",
+        "list_tax_rates",
+        "list_products"
+      ],
+      "intent_id": "one-time-prices-by-currency",
+      "project": "stripe/openapi",
+      "schema_valid_gold_tool_names": [
+        "list_prices"
+      ],
+      "scope": "development_only",
+      "target": "list_prices",
+      "task_id": "V2OS_e32216b361be"
+    },
+    {
+      "approved_for_test": false,
+      "catalog_tool_names": [
+        "list_products",
+        "list_prices",
+        "list_tax_rates",
+        "list_promotion_codes",
+        "list_coupons"
+      ],
+      "intent_id": "active-codes-for-coupon",
+      "project": "stripe/openapi",
+      "schema_valid_gold_tool_names": [
+        "list_promotion_codes"
+      ],
+      "scope": "development_only",
+      "target": "list_promotion_codes",
+      "task_id": "V2OS_0ab308de31c1"
+    }
+  ],
+  "training_runs": 0
+}

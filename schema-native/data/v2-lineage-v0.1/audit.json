@@ -1,0 +1,1135 @@
+{
+  "approved_test_intents": 0,
+  "collection_revision": "9a94995b9279ae3af3aed4b2629172790b968d14",
+  "comparison_inventory": {
+    "external_stress_cases": 21,
+    "legacy_assignments": 1983,
+    "pool_schemas": 300,
+    "v1_paraphrases": 100,
+    "v1_target_tools": 50
+  },
+  "development_components": {
+    "06323be15c33bb3d": {
+      "links": [],
+      "members": [
+        "T122"
+      ]
+    },
+    "10b4fd0f5e8203da": {
+      "links": [],
+      "members": [
+        "seed:K14"
+      ]
+    },
+    "14d6d44a38cc1e06": {
+      "links": [],
+      "members": [
+        "X007"
+      ]
+    },
+    "14fa02e20dee2741": {
+      "links": [],
+      "members": [
+        "X002"
+      ]
+    },
+    "15c72762d1469d64": {
+      "links": [],
+      "members": [
+        "seed:K16"
+      ]
+    },
+    "1d18ab6f292577ee": {
+      "links": [],
+      "members": [
+        "T011"
+      ]
+    },
+    "1e6984681009621b": {
+      "links": [],
+      "members": [
+        "T016"
+      ]
+    },
+    "25ae74b9d1dd5333": {
+      "links": [],
+      "members": [
+        "seed:K10"
+      ]
+    },
+    "288d6638f68ec28a": {
+      "links": [],
+      "members": [
+        "seed:K08"
+      ]
+    },
+    "317937f0453110ab": {
+      "links": [],
+      "members": [
+        "T045"
+      ]
+    },
+    "32e63ef4fabcafc2": {
+      "links": [
+        {
+          "key": "pool:smart_light",
+          "node_count": 2,
+          "reason": "family"
+        }
+      ],
+      "members": [
+        "T018",
+        "T255"
+      ]
+    },
+    "49051bc46d56984d": {
+      "links": [],
+      "members": [
+        "T254"
+      ]
+    },
+    "51f681f30e712d3c": {
+      "links": [
+        {
+          "key": "2d4c4de5749e0ed7cc515b005d01eecb423a001fe018c7c957cd3002e44a6996",
+          "node_count": 2,
+          "reason": "canonical"
+        }
+      ],
+      "members": [
+        "X001",
+        "legacy:Github_easy/o21860"
+      ]
+    },
+    "5276dacdc46f06f5": {
+      "links": [],
+      "members": [
+        "T093"
+      ]
+    },
+    "53cbcf3e40109ea6": {
+      "links": [],
+      "members": [
+        "T056"
+      ]
+    },
+    "6447eb689dacaf3a": {
+      "links": [
+        {
+          "key": "2c8e079833756877dac951de17464d83cf33a589fc211fbc53acd8f5031395a0",
+          "node_count": 2,
+          "reason": "canonical"
+        }
+      ],
+      "members": [
+        "X008",
+        "legacy:Github_easy/o70012"
+      ]
+    },
+    "6745fbaaa2c6f11b": {
+      "links": [
+        {
+          "key": "seed:ordered_prefix",
+          "node_count": 2,
+          "reason": "family"
+        }
+      ],
+      "members": [
+        "seed:K13",
+        "seed:K15"
+      ]
+    },
+    "6b6b73fc4da5da5d": {
+      "links": [
+        {
+          "key": "pool:calendar_event",
+          "node_count": 2,
+          "reason": "family"
+        }
+      ],
+      "members": [
+        "T001",
+        "T033"
+      ]
+    },
+    "7be9c3f01ef0ce26": {
+      "links": [],
+      "members": [
+        "T065"
+      ]
+    },
+    "7f880e2b02014776": {
+      "links": [],
+      "members": [
+        "T039"
+      ]
+    },
+    "821f84c71f89447b": {
+      "links": [],
+      "members": [
+        "T012"
+      ]
+    },
+    "885d9f038098a9ac": {
+      "links": [],
+      "members": [
+        "T213"
+      ]
+    },
+    "974525bda90f02e4": {
+      "links": [],
+      "members": [
+        "T230"
+      ]
+    },
+    "9960612f5cd44675": {
+      "links": [],
+      "members": [
+        "T237"
+      ]
+    },
+    "9e3bef956f6207e4": {
+      "links": [],
+      "members": [
+        "T105"
+      ]
+    },
+    "a49c28d421f42279": {
+      "links": [],
+      "members": [
+        "T027"
+      ]
+    },
+    "a6640ed7a43d9ef9": {
+      "links": [],
+      "members": [
+        "T070"
+      ]
+    },
+    "a66a3bb61e158a64": {
+      "links": [
+        {
+          "key": "glaive:track_calories",
+          "node_count": 3,
+          "reason": "family"
+        }
+      ],
+      "members": [
+        "T131",
+        "X003",
+        "X004"
+      ]
+    },
+    "a6ec6e0ec771c5d8": {
+      "links": [],
+      "members": [
+        "T049"
+      ]
+    },
+    "a7004a7a52870da5": {
+      "links": [
+        {
+          "key": "a58d47f98a7395624d14c974fcf44545b9c1a67334087e9976bb5e17a6795749",
+          "node_count": 2,
+          "reason": "canonical"
+        }
+      ],
+      "members": [
+        "X005",
+        "legacy:Github_medium/o44284"
+      ]
+    },
+    "a7bb2050b2c091ca": {
+      "links": [
+        {
+          "key": "seed:contact_requirements",
+          "node_count": 4,
+          "reason": "family"
+        }
+      ],
+      "members": [
+        "seed:K01",
+        "seed:K05",
+        "seed:K06",
+        "seed:K07"
+      ]
+    },
+    "a81516c437160a16": {
+      "links": [],
+      "members": [
+        "T000"
+      ]
+    },
+    "ae9874a6e530afe5": {
+      "links": [],
+      "members": [
+        "T043"
+      ]
+    },
+    "b12954d021270958": {
+      "links": [],
+      "members": [
+        "seed:K09"
+      ]
+    },
+    "b6d9ac4d24cac636": {
+      "links": [],
+      "members": [
+        "T243"
+      ]
+    },
+    "ba941551a923502f": {
+      "links": [],
+      "members": [
+        "T085"
+      ]
+    },
+    "bf8416897c80d910": {
+      "links": [],
+      "members": [
+        "T079"
+      ]
+    },
+    "c05cef798600d1e1": {
+      "links": [],
+      "members": [
+        "seed:K12"
+      ]
+    },
+    "c23535741b4b454f": {
+      "links": [
+        {
+          "key": "seed:ranked_modes",
+          "node_count": 2,
+          "reason": "family"
+        }
+      ],
+      "members": [
+        "seed:K02",
+        "seed:K11"
+      ]
+    },
+    "c7e3d2507929861c": {
+      "links": [],
+      "members": [
+        "T127"
+      ]
+    },
+    "d44c9f8335a5bc2c": {
+      "links": [],
+      "members": [
+        "T117"
+      ]
+    },
+    "d8cd0364482e75e9": {
+      "links": [],
+      "members": [
+        "T006"
+      ]
+    },
+    "dfff471f69d5a7a6": {
+      "links": [],
+      "members": [
+        "T064"
+      ]
+    },
+    "e64ad2565649a1ee": {
+      "links": [],
+      "members": [
+        "T107"
+      ]
+    },
+    "ea52f8f988a42577": {
+      "links": [],
+      "members": [
+        "T100"
+      ]
+    },
+    "eb642bcc0edec6f0": {
+      "links": [],
+      "members": [
+        "T232"
+      ]
+    },
+    "ec3036628d0a5b38": {
+      "links": [],
+      "members": [
+        "X006"
+      ]
+    },
+    "ee5b9ecb28f1b041": {
+      "links": [
+        {
+          "key": "seed:permission_preference",
+          "node_count": 2,
+          "reason": "family"
+        }
+      ],
+      "members": [
+        "seed:K03",
+        "seed:K04"
+      ]
+    }
+  },
+  "drafts_with_collection_only_origin": [
+    "T011",
+    "T012",
+    "T033",
+    "T049",
+    "T056",
+    "T085",
+    "T127",
+    "T131",
+    "T237"
+  ],
+  "drafts_with_legacy_train_project_overlap": [
+    "T000",
+    "T006",
+    "T016",
+    "T043",
+    "T045",
+    "T064",
+    "T065",
+    "T070",
+    "T093",
+    "T105",
+    "T107",
+    "T122",
+    "T213",
+    "T230",
+    "T232",
+    "T254"
+  ],
+  "evaluated": {
+    "adapter": 8,
+    "api_draft": 32,
+    "keyword_pair": 16
+  },
+  "index_revision": "79f808b10c9e3269ea57f5c7c64fd663eadf2703",
+  "index_sha256": "0bd4becb72ffb8fa6a0cdcef9853f0ec29ed051f7d5c247d1f98efcec5f7d72c",
+  "inputs_sha256": {
+    "experiment/dataset/audit_schemas.jsonl.gz": "5b86a8635ea2442b14ac35585d04f400c5b43152404e2a5b4b2fe26c4bed00f6",
+    "experiment/dataset/tool_pool.v1.jsonl": "20c3d1e7b0da12a950726971e91ff5b0b250b96eeceb82a794c50bc578c97042",
+    "experiment/tasks/tasks.v1.jsonl": "d45a988231cdd458a9594454da0d9e8d4246eefea6e1f5e390614ccf41f36633",
+    "schema-native/data/trainpool/schemas.v1.jsonl": "bd074fd59552934f1fbcaa09d2527b15c3eb2c02e9ae340edc17016e418a7463",
+    "schema-native/data/v2-authoring-v0.1/inventory.jsonl": "53e1fa27690a8207cd97b7f950b89720facbbde32f5549c312a6e1fc4efe5f83",
+    "schema-native/data/v2-authoring-v0.1/stress-inventory.json": "33919b3436667bceb9e5c01ac1879d3f6dad768b89d8bd8a0ff157514d015b08",
+    "schema-native/data/v2-authoring-v0.3/catalogs.jsonl": "2d66f2caa538a764b73fb60f6771605f131f05f6793867d8e4687cc33f710237",
+    "schema-native/data/v2-authoring-v0.3/drafts.clean.jsonl": "09cb7af7d830832a8b246b0b436560970c94df674c918ccb9924607b690abf02",
+    "schema-native/data/v2-authoring-v0.3/manifest.json": "a7e55ce13573d9f21d6e835c826b6d036047bff5866787f73f75e1fd8e794b45",
+    "schema-native/data/v2-catalog-review-v0.1/catalogs.jsonl": "f783f262a04534d6609c9c41e918b4f7214c1b7800bdf0891cf0a9297221e79c",
+    "schema-native/data/v2-keyword-seed-v0.1/pairs.jsonl": "4f6b5b59fda535be9439401ae42a52d9785750968e4861d5ee8fbd7f466a6e37",
+    "schema-native/data/v2-source-expansion-v0.1/cards.source.jsonl": "2bd8b37aceef358a3e735b048001b6ef14c25c7de1ae3aa14ffceca604e554a5",
+    "schema-native/sn/source_expansion.py": "30882145930a0cd8922b11108d122d010cc85d2b767ffdf3f5ac1f3c193e6032",
+    "schema-native/sn/v2_catalog_review.py": "22b021ef2856645b9ccbef2145c243884420d25fa3312fda323f3832416e1e0b",
+    "schema-native/sn/v2_lineage.py": "6201aa8052347a57d0931696af020413cb4a045403db0b515b6445e64e2cc50c",
+    "schema-native/sn/v2_v03.py": "1db809c65fb13209f8ef0ae4e33b26568f9138486eae486b0a7fadc8e74e7b28"
+  },
+  "legacy_train_vs_holdout_repo_crossings": {
+    "github:camshaft/shenu": {
+      "legacy_holdout_family": [
+        "legacy:Github_easy/o28256"
+      ],
+      "legacy_train": [
+        "legacy:Github_easy/o28259",
+        "legacy:Github_easy/o28263",
+        "legacy:Github_easy/o28268",
+        "legacy:Github_trivial/o28266"
+      ]
+    },
+    "github:md-studio/mdstudio": {
+      "legacy_holdout_family": [
+        "legacy:Github_easy/o10059"
+      ],
+      "legacy_train": [
+        "legacy:Github_easy/o10008",
+        "legacy:Github_easy/o10009",
+        "legacy:Github_easy/o10010",
+        "legacy:Github_easy/o10011",
+        "legacy:Github_easy/o10012",
+        "legacy:Github_easy/o10013",
+        "legacy:Github_easy/o10016",
+        "legacy:Github_easy/o10030",
+        "legacy:Github_easy/o10065",
+        "legacy:Github_easy/o10077",
+        "legacy:Github_easy/o10086",
+        "legacy:Github_easy/o10088",
+        "legacy:Github_easy/o10091",
+        "legacy:Github_easy/o10093",
+        "legacy:Github_easy/o10094",
+        "legacy:Github_trivial/o10055",
+        "legacy:Github_trivial/o10082",
+        "legacy:Github_trivial/o10089"
+      ],
+      "legacy_valid": [
+        "legacy:Github_easy/o10014",
+        "legacy:Github_trivial/o10021"
+      ]
+    },
+    "github:washingtonpost/ans-schema": {
+      "legacy_holdout_family": [
+        "legacy:Github_easy/o85467",
+        "legacy:Github_easy/o85918"
+      ],
+      "legacy_train": [
+        "legacy:Github_easy/o85906",
+        "legacy:Github_easy/o85927",
+        "legacy:Github_easy/o85947",
+        "legacy:Github_easy/o85967",
+        "legacy:Github_easy/o86524",
+        "legacy:Github_easy/o87817",
+        "legacy:Github_easy/o87829",
+        "legacy:Github_easy/o87861",
+        "legacy:Github_medium/o85984",
+        "legacy:Github_medium/o86643",
+        "legacy:Github_trivial/o85971",
+        "legacy:Github_trivial/o87858"
+      ],
+      "legacy_valid": [
+        "legacy:Github_easy/o85667",
+        "legacy:Github_easy/o85972",
+        "legacy:Github_easy/o87825"
+      ]
+    },
+    "github:xchen101/analysis-preservation.cern.ch": {
+      "legacy_holdout_family": [
+        "legacy:Github_easy/o89702",
+        "legacy:Github_easy/o89704"
+      ],
+      "legacy_train": [
+        "legacy:Github_easy/o89660",
+        "legacy:Github_easy/o89671",
+        "legacy:Github_easy/o89678",
+        "legacy:Github_medium/o89688"
+      ],
+      "legacy_valid": [
+        "legacy:Github_easy/o89703"
+      ]
+    }
+  },
+  "lineage_components": {
+    "largest": {
+      "401d9520dee17c49": {
+        "links": [
+          {
+            "key": "glaive:generate_random_password",
+            "node_count": 16,
+            "reason": "family"
+          }
+        ],
+        "members": [
+          "legacy:Glaiveai2K/generate_random_password_19556164",
+          "legacy:Glaiveai2K/generate_random_password_321a6b80",
+          "legacy:Glaiveai2K/generate_random_password_35b0a53a",
+          "legacy:Glaiveai2K/generate_random_password_3ed647e6",
+          "legacy:Glaiveai2K/generate_random_password_4ec97c11",
+          "legacy:Glaiveai2K/generate_random_password_4f3a045d",
+          "legacy:Glaiveai2K/generate_random_password_5e5dcf71",
+          "legacy:Glaiveai2K/generate_random_password_60146e8c",
+          "legacy:Glaiveai2K/generate_random_password_78ac1a3b",
+          "legacy:Glaiveai2K/generate_random_password_8cf128ad",
+          "legacy:Glaiveai2K/generate_random_password_adc9cd6f",
+          "legacy:Glaiveai2K/generate_random_password_d1fa85be",
+          "legacy:Glaiveai2K/generate_random_password_dd3a84c3",
+          "legacy:Glaiveai2K/generate_random_password_e0f7b38a",
+          "legacy:Glaiveai2K/generate_random_password_f0248d47",
+          "legacy:Glaiveai2K/generate_random_password_f69985b9"
+        ]
+      }
+    },
+    "max": 16,
+    "median": 1,
+    "min": 1,
+    "p95": 1,
+    "total": 2261
+  },
+  "origin_resolution": {
+    "collection_only": 286,
+    "indexed_repository": 2005
+  },
+  "relevant_source_groups": {
+    "authored:keyword-seeds": {},
+    "collection:Glaiveai2K": {
+      "legacy_train": [
+        "legacy:Glaiveai2K/analyze_social_media_mentions_df9069d1",
+        "legacy:Glaiveai2K/analyze_social_media_sentiment_6ef0069e",
+        "legacy:Glaiveai2K/analyze_social_media_sentiment_b20b116b",
+        "legacy:Glaiveai2K/analyze_stock_market_8b93e3e7",
+        "legacy:Glaiveai2K/analyze_stock_portfolio_41eaee49",
+        "legacy:Glaiveai2K/book_movie_tickets_d31f3dcf",
+        "legacy:Glaiveai2K/calculate_area_volume_0d2bc377",
+        "legacy:Glaiveai2K/calculate_body_fat_percentage_33dd2c27",
+        "legacy:Glaiveai2K/calculate_body_fat_percentage_7ad23510",
+        "legacy:Glaiveai2K/calculate_body_fat_percentage_b191ff41",
+        "legacy:Glaiveai2K/calculate_car_emissions_056da912",
+        "legacy:Glaiveai2K/calculate_car_emissions_847c1055",
+        "legacy:Glaiveai2K/calculate_daily_calorie_intake_acb3f005",
+        "legacy:Glaiveai2K/calculate_daily_calorie_intake_ae8ae349",
+        "legacy:Glaiveai2K/calculate_discounted_price_range_a872bd48",
+        "legacy:Glaiveai2K/calculate_fitness_goal_8459efad",
+        "legacy:Glaiveai2K/calculate_grade_6a63d3bd",
+        "legacy:Glaiveai2K/calculate_gross_salary_4b0ebccc",
+        "legacy:Glaiveai2K/calculate_gross_salary_e46c4bac",
+        "legacy:Glaiveai2K/calculate_loan_payment_2c534679",
+        "legacy:Glaiveai2K/calculate_loan_repayment_2da0b954",
+        "legacy:Glaiveai2K/calculate_mortgage_db09d564",
+        "legacy:Glaiveai2K/calculate_rental_cost_6fa0b6ce",
+        "legacy:Glaiveai2K/calculate_rental_income_bce2d46e",
+        "legacy:Glaiveai2K/calculate_rental_income_fc698629",
+        "legacy:Glaiveai2K/calculate_score_86db377a",
+        "legacy:Glaiveai2K/calculate_volume_3ab76764",
+        "legacy:Glaiveai2K/calculate_volume_48347ef8",
+        "legacy:Glaiveai2K/calculate_volume_56fe1b99",
+        "legacy:Glaiveai2K/calculate_volume_686b84dd",
+        "legacy:Glaiveai2K/calculate_volume_73171077",
+        "legacy:Glaiveai2K/calculate_volume_78b79f91",
+        "legacy:Glaiveai2K/calculate_volume_814f1eab",
+        "legacy:Glaiveai2K/calculate_volume_e04c004c",
+        "legacy:Glaiveai2K/create_event_3a2451b9",
+        "legacy:Glaiveai2K/create_event_c98b0488",
+        "legacy:Glaiveai2K/create_invoice_1a6bcbdb",
+        "legacy:Glaiveai2K/create_invoice_59a0e40c",
+        "legacy:Glaiveai2K/create_invoice_7408fa0e",
+        "legacy:Glaiveai2K/create_invoice_77a0838d",
+        "legacy:Glaiveai2K/create_invoice_81c42de6",
+        "legacy:Glaiveai2K/create_invoice_84ada69d",
+        "legacy:Glaiveai2K/create_invoice_a0aa4cbd",
+        "legacy:Glaiveai2K/create_invoice_b9509f0f",
+        "legacy:Glaiveai2K/create_invoice_bfbea62f",
+        "legacy:Glaiveai2K/create_invoice_c89e226a",
+        "legacy:Glaiveai2K/create_invoice_d62f99e4",
+        "legacy:Glaiveai2K/create_invoice_f3e816c7",
+        "legacy:Glaiveai2K/create_playlist_d5dba9ae",
+        "legacy:Glaiveai2K/create_roadmap_b17bb54b",
+        "legacy:Glaiveai2K/create_survey_24f9edca",
+        "legacy:Glaiveai2K/create_survey_62a4c941",
+        "legacy:Glaiveai2K/create_todo_e7e42931",
+        "legacy:Glaiveai2K/create_user_633f87f7",
+        "legacy:Glaiveai2K/create_user_88c5c41d",
+        "legacy:Glaiveai2K/find_hotel_availability_d8204e4d",
+        "legacy:Glaiveai2K/find_nearby_hotels_b2edf798",
+        "legacy:Glaiveai2K/find_nearby_places_162556f6",
+        "legacy:Glaiveai2K/find_nearby_places_73939eda",
+        "legacy:Glaiveai2K/find_nearby_places_742d9e5e",
+        "legacy:Glaiveai2K/find_nearest_gas_station_130299b1",
+        "legacy:Glaiveai2K/generate_barcode_db222138",
+        "legacy:Glaiveai2K/generate_calendar_event_a37e2af9",
+        "legacy:Glaiveai2K/generate_calendar_event_ede388c2",
+        "legacy:Glaiveai2K/generate_random_password_19556164",
+        "legacy:Glaiveai2K/generate_random_password_321a6b80",
+        "legacy:Glaiveai2K/generate_random_password_35b0a53a",
+        "legacy:Glaiveai2K/generate_random_password_3ed647e6",
+        "legacy:Glaiveai2K/generate_random_password_4ec97c11",
+        "legacy:Glaiveai2K/generate_random_password_4f3a045d",
+        "legacy:Glaiveai2K/generate_random_password_5e5dcf71",
+        "legacy:Glaiveai2K/generate_random_password_60146e8c",
+        "legacy:Glaiveai2K/generate_random_password_78ac1a3b",
+        "legacy:Glaiveai2K/generate_random_password_8cf128ad",
+        "legacy:Glaiveai2K/generate_random_password_adc9cd6f",
+        "legacy:Glaiveai2K/generate_random_password_complex_3652f820",
+        "legacy:Glaiveai2K/generate_random_password_d1fa85be",
+        "legacy:Glaiveai2K/generate_random_password_dd3a84c3",
+        "legacy:Glaiveai2K/generate_random_password_e0f7b38a",
+        "legacy:Glaiveai2K/generate_random_password_f0248d47",
+        "legacy:Glaiveai2K/generate_random_password_f69985b9",
+        "legacy:Glaiveai2K/generate_random_password_with_constraints_4bddedda",
+        "legacy:Glaiveai2K/generate_random_string_c711bd0a",
+        "legacy:Glaiveai2K/generate_resume_d9ba16a3",
+        "legacy:Glaiveai2K/get_local_events_16cae7a1",
+        "legacy:Glaiveai2K/get_recipe_11750e82",
+        "legacy:Glaiveai2K/order_food_a0b861b2",
+        "legacy:Glaiveai2K/search_events_48bf3d6d",
+        "legacy:Glaiveai2K/search_images_aaa46b56",
+        "legacy:Glaiveai2K/search_recipe_8096f36e",
+        "legacy:Glaiveai2K/search_recipes_46bda2a3",
+        "legacy:Glaiveai2K/search_recipes_df373236",
+        "legacy:Glaiveai2K/search_recipes_e0fa3e61",
+        "legacy:Glaiveai2K/search_recipes_fb66ed5b",
+        "legacy:Glaiveai2K/search_tweets_1810a1cc",
+        "legacy:Glaiveai2K/track_expenses_a6fa070d",
+        "legacy:Glaiveai2K/track_expenses_c8268204",
+        "legacy:Glaiveai2K/track_fitness_activity_2989efaf"
+      ],
+      "legacy_valid": [
+        "legacy:Glaiveai2K/get_news_3a72e79a"
+      ],
+      "v1_target": [
+        "T001",
+        "T005",
+        "T009",
+        "T029",
+        "T051",
+        "T092",
+        "T166",
+        "T203"
+      ],
+      "v2_distractor": [
+        "T001",
+        "T003",
+        "T012",
+        "T029",
+        "T033",
+        "T049",
+        "T095",
+        "T121",
+        "T127",
+        "T134",
+        "T166",
+        "T203",
+        "T237",
+        "T282",
+        "X003"
+      ],
+      "v2_draft_target": [
+        "T011",
+        "T012",
+        "T033",
+        "T049",
+        "T085",
+        "T127",
+        "T131",
+        "T237"
+      ]
+    },
+    "collection:Snowplow": {
+      "legacy_train": [
+        "legacy:Snowplow/sp_107_Normalized",
+        "legacy:Snowplow/sp_11_Normalized",
+        "legacy:Snowplow/sp_139_Normalized",
+        "legacy:Snowplow/sp_148_Normalized",
+        "legacy:Snowplow/sp_149_Normalized",
+        "legacy:Snowplow/sp_150_Normalized",
+        "legacy:Snowplow/sp_151_Normalized",
+        "legacy:Snowplow/sp_154_Normalized",
+        "legacy:Snowplow/sp_155_Normalized",
+        "legacy:Snowplow/sp_157_Normalized",
+        "legacy:Snowplow/sp_158_Normalized",
+        "legacy:Snowplow/sp_160_Normalized",
+        "legacy:Snowplow/sp_161_Normalized",
+        "legacy:Snowplow/sp_164_Normalized",
+        "legacy:Snowplow/sp_165_Normalized",
+        "legacy:Snowplow/sp_166_Normalized",
+        "legacy:Snowplow/sp_167_Normalized",
+        "legacy:Snowplow/sp_168_Normalized",
+        "legacy:Snowplow/sp_173_Normalized",
+        "legacy:Snowplow/sp_1_Normalized",
+        "legacy:Snowplow/sp_215_Normalized",
+        "legacy:Snowplow/sp_217_Normalized",
+        "legacy:Snowplow/sp_219_Normalized",
+        "legacy:Snowplow/sp_224_Normalized",
+        "legacy:Snowplow/sp_225_Normalized",
+        "legacy:Snowplow/sp_226_Normalized",
+        "legacy:Snowplow/sp_227_Normalized",
+        "legacy:Snowplow/sp_22_Normalized",
+        "legacy:Snowplow/sp_230_Normalized",
+        "legacy:Snowplow/sp_232_Normalized",
+        "legacy:Snowplow/sp_233_Normalized",
+        "legacy:Snowplow/sp_238_Normalized",
+        "legacy:Snowplow/sp_241_Normalized",
+        "legacy:Snowplow/sp_242_Normalized",
+        "legacy:Snowplow/sp_245_Normalized",
+        "legacy:Snowplow/sp_246_Normalized",
+        "legacy:Snowplow/sp_250_Normalized",
+        "legacy:Snowplow/sp_251_Normalized",
+        "legacy:Snowplow/sp_252_Normalized",
+        "legacy:Snowplow/sp_253_Normalized",
+        "legacy:Snowplow/sp_256_Normalized",
+        "legacy:Snowplow/sp_260_Normalized",
+        "legacy:Snowplow/sp_262_Normalized",
+        "legacy:Snowplow/sp_26_Normalized",
+        "legacy:Snowplow/sp_276_Normalized",
+        "legacy:Snowplow/sp_277_Normalized",
+        "legacy:Snowplow/sp_278_Normalized",
+        "legacy:Snowplow/sp_287_Normalized",
+        "legacy:Snowplow/sp_288_Normalized",
+        "legacy:Snowplow/sp_289_Normalized",
+        "legacy:Snowplow/sp_28_Normalized",
+        "legacy:Snowplow/sp_290_Normalized",
+        "legacy:Snowplow/sp_294_Normalized",
+        "legacy:Snowplow/sp_295_Normalized",
+        "legacy:Snowplow/sp_297_Normalized",
+        "legacy:Snowplow/sp_29_Normalized",
+        "legacy:Snowplow/sp_301_Normalized",
+        "legacy:Snowplow/sp_30_Normalized",
+        "legacy:Snowplow/sp_314_Normalized",
+        "legacy:Snowplow/sp_316_Normalized",
+        "legacy:Snowplow/sp_317_Normalized",
+        "legacy:Snowplow/sp_318_Normalized",
+        "legacy:Snowplow/sp_31_Normalized",
+        "legacy:Snowplow/sp_320_Normalized",
+        "legacy:Snowplow/sp_323_Normalized",
+        "legacy:Snowplow/sp_335_Normalized",
+        "legacy:Snowplow/sp_35_Normalized",
+        "legacy:Snowplow/sp_36_Normalized",
+        "legacy:Snowplow/sp_37_Normalized",
+        "legacy:Snowplow/sp_380_Normalized",
+        "legacy:Snowplow/sp_381_Normalized",
+        "legacy:Snowplow/sp_383_Normalized",
+        "legacy:Snowplow/sp_39_Normalized",
+        "legacy:Snowplow/sp_404_Normalized",
+        "legacy:Snowplow/sp_405_Normalized",
+        "legacy:Snowplow/sp_407_Normalized",
+        "legacy:Snowplow/sp_416_Normalized",
+        "legacy:Snowplow/sp_43_Normalized",
+        "legacy:Snowplow/sp_47_Normalized",
+        "legacy:Snowplow/sp_49_Normalized",
+        "legacy:Snowplow/sp_51_Normalized",
+        "legacy:Snowplow/sp_52_Normalized",
+        "legacy:Snowplow/sp_53_Normalized",
+        "legacy:Snowplow/sp_55_Normalized",
+        "legacy:Snowplow/sp_56_Normalized",
+        "legacy:Snowplow/sp_57_Normalized",
+        "legacy:Snowplow/sp_58_Normalized",
+        "legacy:Snowplow/sp_59_Normalized",
+        "legacy:Snowplow/sp_62_Normalized",
+        "legacy:Snowplow/sp_63_Normalized",
+        "legacy:Snowplow/sp_64_Normalized",
+        "legacy:Snowplow/sp_65_Normalized",
+        "legacy:Snowplow/sp_67_Normalized",
+        "legacy:Snowplow/sp_68_Normalized",
+        "legacy:Snowplow/sp_71_Normalized",
+        "legacy:Snowplow/sp_83_Normalized",
+        "legacy:Snowplow/sp_84_Normalized",
+        "legacy:Snowplow/sp_86_Normalized",
+        "legacy:Snowplow/sp_8_Normalized",
+        "legacy:Snowplow/sp_92_Normalized"
+      ],
+      "legacy_valid": [
+        "legacy:Snowplow/sp_19_Normalized",
+        "legacy:Snowplow/sp_237_Normalized",
+        "legacy:Snowplow/sp_270_Normalized",
+        "legacy:Snowplow/sp_285_Normalized",
+        "legacy:Snowplow/sp_298_Normalized",
+        "legacy:Snowplow/sp_299_Normalized",
+        "legacy:Snowplow/sp_33_Normalized",
+        "legacy:Snowplow/sp_61_Normalized",
+        "legacy:Snowplow/sp_85_Normalized",
+        "legacy:Snowplow/sp_97_Normalized"
+      ],
+      "v1_target": [
+        "T028",
+        "T132",
+        "T188",
+        "T273"
+      ],
+      "v2_distractor": [
+        "T052",
+        "T075",
+        "T147",
+        "T188",
+        "T192",
+        "T195",
+        "T216",
+        "T219",
+        "T253",
+        "T274",
+        "T292"
+      ],
+      "v2_draft_target": [
+        "T056"
+      ]
+    },
+    "github:alphagov/performanceplatform-onboarding-schemas": {
+      "legacy_train": [
+        "legacy:Github_easy/o21466",
+        "legacy:Github_easy/o21470"
+      ],
+      "v2_distractor": [
+        "T015"
+      ],
+      "v2_draft_target": [
+        "T000"
+      ]
+    },
+    "github:amitmangalvedkar/iot-java": {
+      "v2_distractor": [
+        "T027"
+      ],
+      "v2_draft_target": [
+        "T027"
+      ]
+    },
+    "github:andrew-templeton/cfn-cloudwatch-logs-janitor": {
+      "legacy_train": [
+        "legacy:Github_easy/o21860"
+      ],
+      "v2_distractor": [
+        "X001"
+      ]
+    },
+    "github:andrew-templeton/cfn-dynamodb-streamspecification": {
+      "v2_draft_target": [
+        "T117"
+      ]
+    },
+    "github:andrewhayward/badger-sett": {
+      "legacy_train": [
+        "legacy:Github_easy/o21868"
+      ],
+      "v2_draft_target": [
+        "T105"
+      ]
+    },
+    "github:augmentedjs/example": {
+      "v2_distractor": [
+        "T100"
+      ],
+      "v2_draft_target": [
+        "T100"
+      ]
+    },
+    "github:docdoku/rbs": {
+      "legacy_train": [
+        "legacy:Github_easy/o36594",
+        "legacy:Github_easy/o36596",
+        "legacy:Github_easy/o36598",
+        "legacy:Github_medium/o36600"
+      ],
+      "v2_distractor": [
+        "T045"
+      ],
+      "v2_draft_target": [
+        "T045"
+      ]
+    },
+    "github:glurp/ocpp_simulator": {
+      "legacy_train": [
+        "legacy:Github_easy/o43976",
+        "legacy:Github_easy/o43977",
+        "legacy:Github_easy/o43998",
+        "legacy:Github_easy/o43999",
+        "legacy:Github_easy/o44009",
+        "legacy:Github_easy/o44020",
+        "legacy:Github_easy/o44022",
+        "legacy:Github_medium/o43971",
+        "legacy:Github_trivial/o43979"
+      ],
+      "legacy_valid": [
+        "legacy:Github_trivial/o44010"
+      ],
+      "v1_target": [
+        "T141",
+        "T170"
+      ],
+      "v2_distractor": [
+        "T006",
+        "T142",
+        "T170",
+        "T230",
+        "T275"
+      ],
+      "v2_draft_target": [
+        "T006",
+        "T230"
+      ]
+    },
+    "github:gopro/forgejs": {
+      "legacy_train": [
+        "legacy:Github_easy/o44234",
+        "legacy:Github_easy/o44241",
+        "legacy:Github_easy/o44250",
+        "legacy:Github_easy/o44262",
+        "legacy:Github_easy/o44267",
+        "legacy:Github_easy/o44286",
+        "legacy:Github_easy/o44296",
+        "legacy:Github_easy/o44303",
+        "legacy:Github_easy/o44307",
+        "legacy:Github_easy/o44311",
+        "legacy:Github_medium/o44261",
+        "legacy:Github_medium/o44264",
+        "legacy:Github_medium/o44298"
+      ],
+      "legacy_valid": [
+        "legacy:Github_easy/o44231",
+        "legacy:Github_easy/o44299",
+        "legacy:Github_medium/o44284"
+      ],
+      "v1_target": [
+        "T168",
+        "T218"
+      ],
+      "v2_distractor": [
+        "T168",
+        "T218"
+      ],
+      "v2_draft_target": [
+        "T122"
+      ]
+    },
+    "github:icecp/icecp": {
+      "legacy_train": [
+        "legacy:Github_easy/o47061",
+        "legacy:Github_easy/o47064"
+      ],
+      "v2_distractor": [
+        "T254"
+      ],
+      "v2_draft_target": [
+        "T254"
+      ]
+    },
+    "github:kaizenteamswe/norris-rtc": {
+      "legacy_train": [
+        "legacy:Github_easy/o54543",
+        "legacy:Github_easy/o54546",
+        "legacy:Github_easy/o54554",
+        "legacy:Github_easy/o54555",
+        "legacy:Github_medium/o54541",
+        "legacy:Github_medium/o54547",
+        "legacy:Github_medium/o54550",
+        "legacy:Github_medium/o54551"
+      ],
+      "legacy_valid": [
+        "legacy:Github_easy/o54556"
+      ],
+      "v1_target": [
+        "T161"
+      ],
+      "v2_distractor": [
+        "T161"
+      ],
+      "v2_draft_target": [
+        "T070"
+      ]
+    },
+    "github:laerciosantana/bustrackerapi": {
+      "v2_draft_target": [
+        "T079"
+      ]
+    },
+    "github:lovepark/libo3d3xx": {
+      "legacy_train": [
+        "legacy:Github_easy/o57603",
+        "legacy:Github_easy/o57642",
+        "legacy:Github_medium/o57650"
+      ],
+      "v2_distractor": [
+        "T043",
+        "T107",
+        "T185",
+        "T207"
+      ],
+      "v2_draft_target": [
+        "T043",
+        "T107"
+      ]
+    },
+    "github:notpeter/legiscrape": {},
+    "github:open-ent-ng/poll": {
+      "v2_distractor": [
+        "T039"
+      ],
+      "v2_draft_target": [
+        "T039"
+      ]
+    },
+    "github:rbessick5/prairielearn": {
+      "legacy_train": [
+        "legacy:Github_easy/o69602"
+      ],
+      "v2_distractor": [
+        "T213"
+      ],
+      "v2_draft_target": [
+        "T213"
+      ]
+    },
+    "github:revapi/revapi": {
+      "legacy_train": [
+        "legacy:Github_easy/o70012",
+        "legacy:Github_easy/o70014",
+        "legacy:Github_easy/o70017"
+      ],
+      "v2_distractor": [
+        "T263",
+        "X008"
+      ],
+      "v2_draft_target": [
+        "T016"
+      ]
+    },
+    "github:richardjmarini/jsonschema": {
+      "legacy_train": [
+        "legacy:Github_easy/o70267",
+        "legacy:Github_easy/o70288"
+      ]
+    },
+    "github:usingjsonschema/ujs-book-materials": {
+      "legacy_train": [
+        "legacy:Github_easy/o83697",
+        "legacy:Github_easy/o83709",
+        "legacy:Github_easy/o83711",
+        "legacy:Github_easy/o83712",
+        "legacy:Github_easy/o83719",
+        "legacy:Github_easy/o83720",
+        "legacy:Github_easy/o83725",
+        "legacy:Github_medium/o83702",
+        "legacy:Github_medium/o83722",
+        "legacy:Github_trivial/o83688",
+        "legacy:Github_trivial/o83695",
+        "legacy:Github_trivial/o83723"
+      ],
+      "v1_target": [
+        "T176"
+      ],
+      "v2_distractor": [
+        "T065",
+        "T139",
+        "T176",
+        "T246"
+      ],
+      "v2_draft_target": [
+        "T064",
+        "T065",
+        "T232"
+      ]
+    },
+    "github:w1nterl0ng/swd-layouts": {
+      "v2_draft_target": [
+        "T243"
+      ]
+    },
+    "github:washingtonpost/ans-schema": {
+      "legacy_holdout_family": [
+        "legacy:Github_easy/o85467",
+        "legacy:Github_easy/o85918"
+      ],
+      "legacy_train": [
+        "legacy:Github_easy/o85906",
+        "legacy:Github_easy/o85927",
+        "legacy:Github_easy/o85947",
+        "legacy:Github_easy/o85967",
+        "legacy:Github_easy/o86524",
+        "legacy:Github_easy/o87817",
+        "legacy:Github_easy/o87829",
+        "legacy:Github_easy/o87861",
+        "legacy:Github_medium/o85984",
+        "legacy:Github_medium/o86643",
+        "legacy:Github_trivial/o85971",
+        "legacy:Github_trivial/o87858"
+      ],
+      "legacy_valid": [
+        "legacy:Github_easy/o85667",
+        "legacy:Github_easy/o85972",
+        "legacy:Github_easy/o87825"
+      ],
+      "v1_target": [
+        "T120"
+      ],
+      "v2_distractor": [
+        "T058",
+        "T198",
+        "T228"
+      ],
+      "v2_draft_target": [
+        "T093"
+      ]
+    },
+    "github:zehortigoza/soletta": {
+      "v2_draft_target": [
+        "T018"
+      ]
+    }
+  },
+  "split_assigned": false
+}

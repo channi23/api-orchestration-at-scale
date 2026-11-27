@@ -1,0 +1,9 @@
+{
+  "authoring": "assistant-authored development contracts; no additional model endpoint",
+  "dialect": "https://json-schema.org/draft/2020-12/schema",
+  "inference_requests": 0,
+  "native_support_claimed": false,
+  "source_sha256": "24ad39e51ef8d07d5f1ee9641d11abf4ddb8e72e459f11e5124fccf80f4ef978",
+  "training_runs": 0,
+  "validator_version": "4.26.0"
+}

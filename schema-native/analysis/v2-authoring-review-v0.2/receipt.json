@@ -1,0 +1,42 @@
+{
+  "adjudication_status": "Answer comparison complete; wording, semantics and catalog concerns remain open",
+  "answers_received": 32,
+  "approved_test_intents": 0,
+  "artifacts_sha256": {
+    "README.md": "2686031daab3b7487ccb38bf3887d2244e9126a172b71f3239590c556446bd33",
+    "RESPONSE.md": "be39ca1c1bf848a8d5c1a9ef43e7b099ec4030da4724653e48511fa024f0c515",
+    "REVIEW_NOTES.md": "9b46b55ea012c003db74b5c32a1c370c285d8bc9a40adecf78dd0ac6e60af669",
+    "answers.jsonl": "fed02474e7ee0f07e4afb2a2f156d5a867f438e2fd512a64212a6b7561166ad8",
+    "comparison.json": "5833db774492ff39e62daf41f50a3b3fdc9701730e1beb74478a478927116f9e",
+    "gold.jsonl": "e9e5bd67231b49d08af9c1352ba3acab1a785aeb104db60841413768a7619c2a",
+    "task-comparison.jsonl": "c33f6525c16976afff2532127b41f7b899463f9848b12e7631226ff75df2040f"
+  },
+  "assumption_flagged_tasks": 8,
+  "authoring_manifest_sha256": "7a510a1425ea879b93f64671b8975e709e9a077dc948a833bf92b95a4c8d6c32",
+  "catalog_judgements_status": "Reviewer ratings; 16 includes seven borderline cases, not a verified count of 16 passing catalogs.",
+  "context_disclosure": "Reviewer reports using only the ZIP; an automatic unrelated user-profile snapshot was present and not used; no task memories or prior gold accessed.",
+  "gold_agreement": 32,
+  "independence_status": "self-reported fresh-context blind solve; not independently verified or a different underlying model",
+  "original_blind_zip_sha256": "f6e7a5f2e7dce9bdd49d4cceb4c17a6670e2828e089b81ab9831a2358a9dd79c",
+  "pretraining_schema_exposure": "unknown, explicitly disclosed by reviewer",
+  "raw_valid": 32,
+  "received_date": "2026-11-25",
+  "received_files": {
+    "REVIEW_NOTES.md": {
+      "sha256": "9b46b55ea012c003db74b5c32a1c370c285d8bc9a40adecf78dd0ac6e60af669",
+      "uploaded_filename": "REVIEW_NOTES_1.md"
+    },
+    "answers.jsonl": {
+      "sha256": "fed02474e7ee0f07e4afb2a2f156d5a867f438e2fd512a64212a6b7561166ad8",
+      "uploaded_filename": "answers_1.jsonl"
+    }
+  },
+  "reviewer_catalog_judgements": {
+    "moderate_or_borderline_2": 7,
+    "no_real_near_miss": 7,
+    "one_competitor": 9,
+    "strong_2_plus": 9
+  },
+  "reviewer_id": "claude-fresh-session-self-reported-blind-v0.2",
+  "source_commit": "c67218e724a49b0262339e8d938245f5df77974e"
+}

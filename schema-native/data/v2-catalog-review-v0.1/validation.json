@@ -1,0 +1,56 @@
+{
+  "approved_test_intents": 0,
+  "candidate_witness_valid": 3,
+  "cases": [
+    {
+      "author_semantic_rationale": "Both tools concern retention. The request gives 7200 seconds for a data source, with no log group name prefix. The valid candidate example supplies an unrelated prefix and duration.",
+      "candidate_card_id": "X001",
+      "candidate_schema_sha256": "2d4c4de5749e0ed7cc515b005d01eecb423a001fe018c7c957cd3002e44a6996",
+      "candidate_witness_also_valid_for_target": false,
+      "candidate_witness_valid": true,
+      "catalog_tool_ids_accepting_target_arguments": [
+        "T254"
+      ],
+      "target_gold_also_valid_for_candidate": false,
+      "target_gold_valid": true,
+      "target_tool_id": "T254",
+      "task_id": "V2CR_771749f7f6a7"
+    },
+    {
+      "author_semantic_rationale": "The candidate can represent the two foods and calories. It has no declared daily calorie target and does not preserve the text servings. The target tool is the only one in this catalog that describes both.",
+      "candidate_card_id": "X003",
+      "candidate_schema_sha256": "3f750ef9bee32f28ca3749fb3cfa36fe0cd69d30a116e24600457e3e514680ca",
+      "candidate_witness_also_valid_for_target": false,
+      "candidate_witness_valid": true,
+      "catalog_tool_ids_accepting_target_arguments": [
+        "T131"
+      ],
+      "target_gold_also_valid_for_candidate": false,
+      "target_gold_valid": true,
+      "target_tool_id": "T131",
+      "task_id": "V2CR_b9973f9f9cc9"
+    },
+    {
+      "author_semantic_rationale": "The candidate accepts include/exclude strings, but names elements or archives and supplies no declared annotation-name or regex operation. Its open root can even accept the target's arguments as undeclared keys. The tool description and request are needed to distinguish the calls.",
+      "candidate_card_id": "X008",
+      "candidate_schema_sha256": "2c8e079833756877dac951de17464d83cf33a589fc211fbc53acd8f5031395a0",
+      "candidate_witness_also_valid_for_target": true,
+      "candidate_witness_valid": true,
+      "catalog_tool_ids_accepting_target_arguments": [
+        "X008",
+        "T263",
+        "T016"
+      ],
+      "target_gold_also_valid_for_candidate": true,
+      "target_gold_valid": true,
+      "target_tool_id": "T016",
+      "task_id": "V2CR_36cddd7dade1"
+    }
+  ],
+  "catalogs": 3,
+  "endpoint_requests": 0,
+  "independent_reviews": 0,
+  "target_gold_valid": 3,
+  "tools_per_catalog": 5,
+  "verified_near_misses": 0
+}

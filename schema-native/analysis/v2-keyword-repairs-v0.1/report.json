@@ -1,0 +1,343 @@
+{
+  "arms": {
+    "baseline": {
+      "improved": 0,
+      "logical_requests": 32,
+      "outcomes": {
+        "correct": 18,
+        "schema_invalid_arguments": 7,
+        "valid_wrong_arguments": 7
+      },
+      "regressed": 0,
+      "token_usage": {
+        "completion_tokens": 1261,
+        "prompt_tokens": 13627
+      }
+    },
+    "checklist": {
+      "improved": 0,
+      "logical_requests": 32,
+      "outcomes": {
+        "correct": 18,
+        "schema_invalid_arguments": 7,
+        "valid_wrong_arguments": 7
+      },
+      "regressed": 0,
+      "token_usage": {
+        "completion_tokens": 1266,
+        "prompt_tokens": 15291
+      }
+    },
+    "validator_retry": {
+      "improved": 1,
+      "logical_requests": 39,
+      "outcomes": {
+        "correct": 19,
+        "schema_invalid_arguments": 4,
+        "valid_wrong_arguments": 9
+      },
+      "regressed": 0,
+      "token_usage": {
+        "completion_tokens": 1506,
+        "prompt_tokens": 17424
+      }
+    }
+  },
+  "items": 32,
+  "live_requests": 39,
+  "live_token_usage": {
+    "completion_tokens": 1511,
+    "prompt_tokens": 19088
+  },
+  "scope": "development-only, descriptive; stored baseline",
+  "tasks": [
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K01|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K01|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K02|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "schema_invalid_arguments",
+        "checklist": "schema_invalid_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": true,
+      "task_id": "K02|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "schema_invalid_arguments",
+        "checklist": "schema_invalid_arguments",
+        "validator_retry": "schema_invalid_arguments"
+      },
+      "retry_sent": true,
+      "task_id": "K03|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K03|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K04|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "schema_invalid_arguments",
+        "checklist": "schema_invalid_arguments",
+        "validator_retry": "correct"
+      },
+      "retry_sent": true,
+      "task_id": "K04|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "valid_wrong_arguments",
+        "checklist": "valid_wrong_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": false,
+      "task_id": "K05|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "schema_invalid_arguments",
+        "checklist": "schema_invalid_arguments",
+        "validator_retry": "schema_invalid_arguments"
+      },
+      "retry_sent": true,
+      "task_id": "K05|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "valid_wrong_arguments",
+        "checklist": "valid_wrong_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": false,
+      "task_id": "K06|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "valid_wrong_arguments",
+        "checklist": "valid_wrong_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": false,
+      "task_id": "K06|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "valid_wrong_arguments",
+        "checklist": "valid_wrong_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": false,
+      "task_id": "K07|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "valid_wrong_arguments",
+        "checklist": "valid_wrong_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": false,
+      "task_id": "K07|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K08|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "schema_invalid_arguments",
+        "checklist": "schema_invalid_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": true,
+      "task_id": "K08|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K09|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K09|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K10|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K10|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "schema_invalid_arguments",
+        "checklist": "schema_invalid_arguments",
+        "validator_retry": "schema_invalid_arguments"
+      },
+      "retry_sent": true,
+      "task_id": "K11|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K11|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K12|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K12|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K13|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K13|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K14|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "valid_wrong_arguments",
+        "checklist": "valid_wrong_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": false,
+      "task_id": "K14|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "valid_wrong_arguments",
+        "checklist": "valid_wrong_arguments",
+        "validator_retry": "valid_wrong_arguments"
+      },
+      "retry_sent": false,
+      "task_id": "K15|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K15|visible|S2"
+    },
+    {
+      "outcomes": {
+        "baseline": "correct",
+        "checklist": "correct",
+        "validator_retry": "correct"
+      },
+      "retry_sent": false,
+      "task_id": "K16|visible|S"
+    },
+    {
+      "outcomes": {
+        "baseline": "schema_invalid_arguments",
+        "checklist": "schema_invalid_arguments",
+        "validator_retry": "schema_invalid_arguments"
+      },
+      "retry_sent": true,
+      "task_id": "K16|visible|S2"
+    }
+  ]
+}

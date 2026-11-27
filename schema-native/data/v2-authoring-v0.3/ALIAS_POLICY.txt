@@ -1,0 +1,1 @@
+When the request supplies a field's string value, preserve it exactly, including case. Do not substitute a synonym or a differently cased alias. For semantic mappings to an enum, use the schema's declared enum value. No alternative string aliases are accepted in this provisional contract; any later exception must be versioned and reviewed before model evaluation.

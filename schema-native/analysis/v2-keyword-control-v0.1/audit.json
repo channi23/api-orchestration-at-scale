@@ -1,0 +1,189 @@
+{
+  "different_gold_pairs": 14,
+  "evidence": [
+    {
+      "different_gold": true,
+      "family_id": "contact_requirements",
+      "hidden_messages_sha256": "37550b7d1f6f1ddb6814cdf817a31c4dcc2efd185ca76aafb69396001f88685a",
+      "pair_id": "K01",
+      "pair_kind": "validity_separable",
+      "visible_messages_sha256": {
+        "S": "5a502626fcc58afc350553539090bf1a290485f0b94a79292eb1f61c365bb9f8",
+        "S2": "7e013eaab4679cac909cd280d41fc63f46ab878fca5f63375debd26926be2390"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "ranked_modes",
+      "hidden_messages_sha256": "b718d8a31736f6defadc935dfde1538938550cee22bc96908cae9f969bf0452c",
+      "pair_id": "K02",
+      "pair_kind": "asymmetric_edit",
+      "visible_messages_sha256": {
+        "S": "f9f623720a86cbc216d5523200faf1690105e97d1ef221df86d799a56dba92c8",
+        "S2": "82030d99c07bab50eb646b66f550a82b6e21091202a89158fc9e279825570840"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "permission_preference",
+      "hidden_messages_sha256": "7fc24e7782db19d0589f1b5f746d360d6aed1e4ee5c488a7870e2d3a446a371c",
+      "pair_id": "K03",
+      "pair_kind": "asymmetric_edit",
+      "visible_messages_sha256": {
+        "S": "a9a27130b751a8aa0f4f50890edd415b0bbcd99b757e617761cd5d02ed5a4411",
+        "S2": "9b82e85d10a922435a4f835e9239b2374bad0cbd0dea9735cd2ca5149cdb2979"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "permission_preference",
+      "hidden_messages_sha256": "4186c028669af72dc0fc91bc6bdd4de04c3bb8df271a6a29fef503d396d2e291",
+      "pair_id": "K04",
+      "pair_kind": "asymmetric_edit",
+      "visible_messages_sha256": {
+        "S": "421cba3e327a333f2956fe251dc64419d446827e7568fe9939048063f19a0164",
+        "S2": "b338f4e52685f6e062d5bce48b906c553ddc0eb9749ed0aeced09c2784f00320"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "contact_requirements",
+      "hidden_messages_sha256": "60f7176d879ba06dcdde33b7a6d811910b050b48e2c02949162c00a129594740",
+      "pair_id": "K05",
+      "pair_kind": "validity_separable",
+      "visible_messages_sha256": {
+        "S": "33d0d04b7bbe246c322c4180b9963311b10de0a4fe3d8c43dafc818c8f2afa56",
+        "S2": "bb672eb1ec1dd4589696a7763934e1e9bb31f7ef2048aec48a944537201bb81a"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "contact_requirements",
+      "hidden_messages_sha256": "7ca31ece283277962906d505f3c8d5406cf08765c89c343e26f18ce188817870",
+      "pair_id": "K06",
+      "pair_kind": "validity_separable",
+      "visible_messages_sha256": {
+        "S": "2ff1e4db02d8761db3068c01f1221d9846d91aac8655debdfdc3557a2dfe14da",
+        "S2": "fea7d052333b148d223cad98d87c1e5fb66b4d683097277d33032c827ded1a81"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "contact_requirements",
+      "hidden_messages_sha256": "3a2dd30dfe6308d859c173dadc31b37b0dbbc66c9dc53471808a19e88867eba2",
+      "pair_id": "K07",
+      "pair_kind": "validity_separable",
+      "visible_messages_sha256": {
+        "S": "badc9e15da5dd3593c237131c398a93ba7bb4dd9d48493204d3215cd244b4cbf",
+        "S2": "18211f1ffea069d33d022bce02bedb0c4b2140d30a54d89d188e21a8a5a7f051"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "typed_tuple",
+      "hidden_messages_sha256": "d916e55a87562176343f4b1622b9042f4e79341f903b8ce26949ea3989f60f77",
+      "pair_id": "K08",
+      "pair_kind": "validity_separable",
+      "visible_messages_sha256": {
+        "S": "4378e15237671bf73b9e5559c2587d733932e2db77e35763897dd7e6f2589529",
+        "S2": "d9104a49b7c8712aed58c382a00e27df38f66db6c10a6192e575d4ef96edecce"
+      }
+    },
+    {
+      "different_gold": false,
+      "family_id": "nested_address_rewrite",
+      "hidden_messages_sha256": "a9f1765ea1f5aeed336ccf805bb650e4bc0b3b744e3929550dab35aa81d7cdf7",
+      "pair_id": "K09",
+      "pair_kind": "equivalent_rewrite",
+      "visible_messages_sha256": {
+        "S": "637f536500db34fbf23f782a2200602828a785d0bff9c9525b19cc0de379eca0",
+        "S2": "8c52ac620255e80d85e9c60b84620ad5b827123386d8a589811e8a1b76a38fa3"
+      }
+    },
+    {
+      "different_gold": false,
+      "family_id": "open_object_intersection",
+      "hidden_messages_sha256": "340ac6b6176a56402f364b4a86e7dc6ed5095ee32a0b7ec279df991b2c9a0a8f",
+      "pair_id": "K10",
+      "pair_kind": "equivalent_rewrite",
+      "visible_messages_sha256": {
+        "S": "4d7724ac59c8980f0492dfe926928157dda72f9007f68175f503f852f4fe2af7",
+        "S2": "6caf2fcd1baf45aa6f22e4546ffb742ebe49d3af9540beb22b32c565b1f8a9d7"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "ranked_modes",
+      "hidden_messages_sha256": "7fcb07614092a3183f014312f950b165a76f72739b066df7b517a330fb62ec4c",
+      "pair_id": "K11",
+      "pair_kind": "validity_separable",
+      "visible_messages_sha256": {
+        "S": "0321f5597376831abbba9ca4a5ff6a923beca1664286bd57a628d4a1b5090db7",
+        "S2": "75f5a44ffc46a957ea9693c4442565139a84240a6d46aed09d9bbbfb072629bf"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "bounded_budget",
+      "hidden_messages_sha256": "34f0319023ab8b3c017dd0a508cc6d1917f3d8b9cee4cc673a9e7e6c3edf0bb4",
+      "pair_id": "K12",
+      "pair_kind": "asymmetric_edit",
+      "visible_messages_sha256": {
+        "S": "6cfe79cdd0b02485106d8f82840571ba0b32d934e8dbaf56c2d79f54422dc702",
+        "S2": "ba0a8ff2f799f512ec3d790d4939c36cba5f339929c9dfde5cd505225fea8e3a"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "ordered_prefix",
+      "hidden_messages_sha256": "6601a9cdef04b107687fbb8ec4494cc0e89153714522437f78b53a193bfc5cc2",
+      "pair_id": "K13",
+      "pair_kind": "asymmetric_edit",
+      "visible_messages_sha256": {
+        "S": "f623c12036555624ab1e036a92ae1575ccf4c09aa53e28c5f3f6a614275506d2",
+        "S2": "da461d985ffadc5b6e5f0b36397fcefde7fd7f5edc7d42bfca1af7c624676870"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "supported_details",
+      "hidden_messages_sha256": "0c7cc900d236da365ff8a9c5b9bdc5c7fce830bda08dad4cc4eced0992bde1b4",
+      "pair_id": "K14",
+      "pair_kind": "asymmetric_edit",
+      "visible_messages_sha256": {
+        "S": "d503e4ab780083ce9dfda5717af649e7ee86dcd4f7c8db97d330d656fc3eb9f8",
+        "S2": "900021a5a3464f87e482da9f62d90333349eed1aef29c2fa688e49aa202f5c4c"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "ordered_prefix",
+      "hidden_messages_sha256": "ef3d23633511238126eecd04f9b0892f48248e98ecae68960c2705538b094a52",
+      "pair_id": "K15",
+      "pair_kind": "asymmetric_edit",
+      "visible_messages_sha256": {
+        "S": "f2092dd706ba62c1197883930d107447fdf4683ca27a96c647df25f2f0a00817",
+        "S2": "c8c90a593ddde9ce95f2864566d61a68e02c57e7ae4e6a374d4d10543c6d94a2"
+      }
+    },
+    {
+      "different_gold": true,
+      "family_id": "identifier_choice",
+      "hidden_messages_sha256": "071b22818770efe80cbe16bcef8d933ab1fa2c5f1ec02c1baa4ca4a1862b2004",
+      "pair_id": "K16",
+      "pair_kind": "validity_separable",
+      "visible_messages_sha256": {
+        "S": "bf927b14fa27731fcd9b13607c59f7e41d7ad43ad64be67ae4a8532b2ffd011b",
+        "S2": "4f62e49067cd3c99c75c60c76563b958a1d2d87c446ca46fd0f32d2ab1030e91"
+      }
+    }
+  ],
+  "families": 10,
+  "hidden_max_exact_members": 18,
+  "hidden_max_pair_correct": 2,
+  "hidden_prompts": 16,
+  "pairs": 16,
+  "pairs_sha256": "4f6b5b59fda535be9439401ae42a52d9785750968e4861d5ee8fbd7f466a6e37",
+  "scope": "model-free development design",
+  "visible_prompts": 32
+}

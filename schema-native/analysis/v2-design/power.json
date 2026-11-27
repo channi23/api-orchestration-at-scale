@@ -1,0 +1,403 @@
+{
+  "status": "DESIGN ONLY; NOT A POWER GUARANTEE OR NEW MODEL RESULT",
+  "planning_date": "2026-11-25",
+  "source": "schema-native/analysis/e0b-amendment3-v1/results.jsonl.gz",
+  "source_gzip_sha256": "d7baf37717a16b87d1d69a0bde6e363ad658bc5ac387c3853dd2498431f9e686",
+  "source_uncompressed_sha256": "b439a463e53cae55fa38cd1a62399332602fd97b2d779e28195120e99c5baf90",
+  "stored_records": 1562,
+  "historical_scores_used_verbatim": true,
+  "historical_metric": "Stored eval.e2e_success, not a re-evaluation under the proposed v2 strict contract",
+  "paired_audits": [
+    {
+      "a": "C1",
+      "b": "C2",
+      "final_select_pairs": 200,
+      "independent_intents": 50,
+      "rows_per_intent": 4,
+      "b_only_correct": 37,
+      "a_only_correct": 1,
+      "both_correct": 139,
+      "both_wrong": 23,
+      "difference_pp": 18.0,
+      "row_discordance": 0.19,
+      "intent_mean_distribution": {
+        "-0.25": 1,
+        "0": 34,
+        "0.25": 7,
+        "0.75": 2,
+        "1": 6
+      },
+      "row_difference_variance": 0.15839195979899498,
+      "intent_mean_variance": 0.12255102040816326,
+      "descriptive_design_effect": 3.0948798301046305
+    },
+    {
+      "a": "F0",
+      "b": "V",
+      "final_select_pairs": 200,
+      "independent_intents": 50,
+      "rows_per_intent": 4,
+      "b_only_correct": 5,
+      "a_only_correct": 0,
+      "both_correct": 171,
+      "both_wrong": 24,
+      "difference_pp": 2.5,
+      "row_discordance": 0.025,
+      "intent_mean_distribution": {
+        "0": 46,
+        "0.25": 3,
+        "0.5": 1
+      },
+      "row_difference_variance": 0.024497487437185928,
+      "intent_mean_variance": 0.008290816326530613,
+      "descriptive_design_effect": 1.3537414965986394
+    }
+  ],
+  "normal_approximation_scenarios": [
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.05,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 434
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.1,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 870
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.19,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 1655
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.2,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 1742
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.3,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 2614
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.05,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 155
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.1,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 312
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.19,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 595
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.2,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 626
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.3,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 940
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.1,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 121
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.19,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 231
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.2,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 243
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.3,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 366
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.05,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 526
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.1,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 1054
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.19,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 2005
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.2,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 2110
+    },
+    {
+      "effect_pp": 3.0,
+      "discordance": 0.3,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 3166
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.05,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 188
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.1,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 378
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.19,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 720
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.2,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 758
+    },
+    {
+      "effect_pp": 5.0,
+      "discordance": 0.3,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 1139
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.1,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 146
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.19,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 280
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.2,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 295
+    },
+    {
+      "effect_pp": 8.0,
+      "discordance": 0.3,
+      "alpha": 0.025,
+      "target_power": 0.8,
+      "independent_binary_pairs_approx": 443
+    }
+  ],
+  "whole_intent_conditional_simulations": [
+    {
+      "contrast": "C2 - C1",
+      "scenarios": [
+        {
+          "n_intents": 25,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.8365,
+          "monte_carlo_se": 0.008269454335081607
+        },
+        {
+          "n_intents": 50,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.997,
+          "monte_carlo_se": 0.0012229063741758816
+        },
+        {
+          "n_intents": 100,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 1.0,
+          "monte_carlo_se": 0.0
+        },
+        {
+          "n_intents": 250,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 1.0,
+          "monte_carlo_se": 0.0
+        },
+        {
+          "n_intents": 25,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.698,
+          "monte_carlo_se": 0.010266352809055416
+        },
+        {
+          "n_intents": 50,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.9895,
+          "monte_carlo_se": 0.0022792268425937726
+        },
+        {
+          "n_intents": 100,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 1.0,
+          "monte_carlo_se": 0.0
+        },
+        {
+          "n_intents": 250,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 1.0,
+          "monte_carlo_se": 0.0
+        }
+      ]
+    },
+    {
+      "contrast": "V - F0",
+      "scenarios": [
+        {
+          "n_intents": 25,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.1365,
+          "monte_carlo_se": 0.007676840170278394
+        },
+        {
+          "n_intents": 50,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.4665,
+          "monte_carlo_se": 0.011155217389186104
+        },
+        {
+          "n_intents": 100,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.945,
+          "monte_carlo_se": 0.005097793640389931
+        },
+        {
+          "n_intents": 250,
+          "alpha": 0.05,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 1.0,
+          "monte_carlo_se": 0.0
+        },
+        {
+          "n_intents": 25,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.042,
+          "monte_carlo_se": 0.004485309353879618
+        },
+        {
+          "n_intents": 50,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.2545,
+          "monte_carlo_se": 0.009739860111931793
+        },
+        {
+          "n_intents": 100,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 0.853,
+          "monte_carlo_se": 0.007918049002121673
+        },
+        {
+          "n_intents": 250,
+          "alpha": 0.025,
+          "repeats": 2000,
+          "seed": 20261125,
+          "conditional_power": 1.0,
+          "monte_carlo_se": 0.0
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only 50 observed independent intents; no family-level sampling frame.",
+    "The order contrast cannot predict a semantic training effect.",
+    "Row discordance is not independent-intent discordance.",
+    "Simulations use observed intent effects and a normal z rule, not the proposed hierarchical analysis.",
+    "Only four pilot intents show V gains; resampling cannot create unseen regressions and may be optimistic. Do not size v2 from that simulation.",
+    "800 test intents is a provisional authoring target, not guaranteed power.",
+    "A 5-point effect scenario does not power a 5-point threshold at 80% if the true effect is exactly 5 points."
+  ]
+}

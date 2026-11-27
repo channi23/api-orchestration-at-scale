@@ -1,0 +1,42 @@
+{
+  "run_id": "v2-dev-free-v0.1",
+  "protocol": "v2-dev-free",
+  "profile_sha256": "757b5d8da501f0cbf0bbc8c5dc743b801d3b13332a28e0934267d6fd6786b17a",
+  "port": 8093,
+  "generation_cap": 11,
+  "cache_prompt": true,
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true,
+  "require_acceptable_thermal_state": true,
+  "max_system_swapout_growth_bytes": 1073741824,
+  "system_swapout_baseline_file": "runs/v2-dev-free-v0.1/swap-baseline.json",
+  "sources": [
+    {
+      "group": "official-original",
+      "packet": "v2-official-sources-v0.1-blind-review.zip",
+      "receipt_dir": "v2-official-sources-v0.1-review-receipt",
+      "packet_sha256": "a134e1569f4f3199ab06f4b6ef8df158db0065db0dbb620d3a4cf2434ef335fa",
+      "gold_sha256": "4805da27a99c48edc263e78ffaf050bae6fe9e0ac02c75e01e09f52c509e8f44",
+      "adjudication_receipt_sha256": "c6278ef51d25d21b79c82658ca40fa3e06e12e676b319e6d6c537b655f5f40b4",
+      "task_ids": ["V2OS_1c3000f30c37", "V2OS_456828da9fb7", "V2OS_74f8ea473096", "V2OS_e32216b361be"]
+    },
+    {
+      "group": "official-revised",
+      "packet": "v2-official-sources-v0.2-wording-review.zip",
+      "receipt_dir": "v2-official-sources-v0.2-review-receipt",
+      "packet_sha256": "17151c73e0f50f39c3f86e1da033787b4bf57dea3625e3b2ab18d6004e2f7d38",
+      "gold_sha256": "53807f8ea414583f3248613ea4a8e9530106e0b4a03504ed0aa3be2103476d2f",
+      "adjudication_receipt_sha256": "6007cf6f2a1d5645dad7af9a566089cd3ebd39d63fb385e16823e6134b369ed7",
+      "task_ids": ["V2OSW_1b2777a6b571", "V2OSW_4ab4190d3191"]
+    },
+    {
+      "group": "digitalocean",
+      "packet": "v2-digitalocean-v0.1-blind-review.zip",
+      "receipt_dir": "v2-digitalocean-v0.1-review-receipt",
+      "packet_sha256": "2ccf9926b271f9a1f6f73a4aa20e89ec39a28b396963e706cfd73d31de60e40a",
+      "gold_sha256": "d2bc227de3f9b7d87a0bbcb913baa4ae184d047e1fcf4d2bffa6671a501e226c",
+      "adjudication_receipt_sha256": "f793900fbf08ede998f5c286a10dca91bc7fd2708f3349bf0c13d1320d4b01a5",
+      "task_ids": ["V2DO_321f64c5b032", "V2DO_43e2e4265be6", "V2DO_8bc681651846", "V2DO_a7b1768fd0c1", "V2DO_f37c406a75f5"]
+    }
+  ]
+}

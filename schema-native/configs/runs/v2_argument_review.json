@@ -1,0 +1,17 @@
+{
+  "run_id": "v2-argument-review-v0.1",
+  "port": 8097,
+  "baseline_run": "v2-dev-free-v0.1",
+  "baseline_manifest_sha256": "36b6f71fd49773f5af454d2ee789b72521b0c7322eb4a0c348a882da08d89c25",
+  "baseline_results_sha256": "4a6a6a813c258b48a6d5b89fd14d6d35706eb9dbe0f9f231edb0db5b4689440b",
+  "baseline_report_sha256": "8a28ed65189fc867f82dd10328bafeb42f35fd5b7b0ca8e5ba9e920da64fbd75",
+  "profile_sha256": "757b5d8da501f0cbf0bbc8c5dc743b801d3b13332a28e0934267d6fd6786b17a",
+  "jsonschema_version": "4.26.0",
+  "generation_cap": 11,
+  "metadata_cap": 28,
+  "cache_prompt": true,
+  "request_cooldown_seconds": 2,
+  "require_normal_memory_pressure": true,
+  "require_acceptable_thermal_state": true,
+  "max_system_swapout_growth_bytes": 1073741824
+}

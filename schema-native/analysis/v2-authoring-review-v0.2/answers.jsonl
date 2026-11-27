@@ -1,0 +1,32 @@
+{"task_id": "V2B_005a8720962b", "tool": "create_poll", "arguments": {"question": "Which workshop time works?", "answers": [{"value": "Morning"}, {"value": "Afternoon"}], "end": "2027-06-02T17:00:00Z"}}
+{"task_id": "V2B_08d0b9115ec8", "tool": "push_chart_update", "arguments": {"stream": [{"label": "North", "data": [12, 15, 11]}, {"label": "South", "data": [9, 14]}]}}
+{"task_id": "V2B_151fe38eddb1", "tool": "start_charging_transaction", "arguments": {"connectorId": 2, "idTag": "EV-813", "meterStart": 18420, "timestamp": "2027-09-11T10:15:00Z", "reservationId": 7202}}
+{"task_id": "V2B_1e3ff6263df1", "tool": "create_geo_path", "arguments": {"name": "Dock loop", "description": "Survey route", "points": [{"latitude": 47.61, "longitude": -122.33}, {"latitude": 47.62, "longitude": -122.34}]}}
+{"task_id": "V2B_1f9830117b99", "tool": "set_data_retention", "arguments": {"span": 7200}}
+{"task_id": "V2B_243ee0e3507c", "tool": "search_hotels", "arguments": {"location": "Porto", "check_in_date": "2027-04-09", "check_out_date": "2027-04-12", "number_of_guests": 3}}
+{"task_id": "V2B_363bd0409596", "tool": "set_temporal_filter", "arguments": {"NumberOfImages": 7}}
+{"task_id": "V2B_398e2201ba23", "tool": "set_full_name", "arguments": {"firstName": "Nia", "lastName": "Patel"}}
+{"task_id": "V2B_3c0655d94e31", "tool": "track_calories", "arguments": {"food_items": [{"name": "Oatmeal", "calories": 240, "serving_size": "1 bowl"}, {"name": "Apple", "calories": 95, "serving_size": "1 medium apple"}], "target_calories": 2100}}
+{"task_id": "V2B_3cb8ce9d349b", "tool": "generate_invoice", "arguments": {"customer_name": "Harbor Studio", "items": [{"name": "Desk lamp", "quantity": 2, "price": 35.5}, {"name": "Cable tray", "quantity": 3, "price": 12}]}}
+{"task_id": "V2B_3e2345e939ab", "tool": "configure_sprite_animation", "arguments": {"name": "Walk east", "start": 3, "end": 18, "frameRate": 12, "loop": false}}
+{"task_id": "V2B_50438e445044", "tool": "create_booking_resource", "arguments": {"name": "Cedar lab", "school_id": "sch-27", "color": "#2468AC", "validation": true}}
+{"task_id": "V2B_51686a29d711", "tool": "create_multiple_choice_question", "arguments": {"text": "<p>Which numbers are even?</p>", "correctAnswers": ["<p>2</p>", "<p>4</p>"], "incorrectAnswers": ["<p>3</p>"]}}
+{"task_id": "V2B_776ea3d84fa2", "tool": "select_country", "arguments": {"country": "Costa Rica"}}
+{"task_id": "V2B_7cb23e7a63ed", "tool": "send_email", "arguments": {"recipient_email": "nia@example.com", "subject": "Workshop notes", "message": "Please review the agenda.", "attachments": ["/tmp/agenda.pdf", "/tmp/room-map.png"]}}
+{"task_id": "V2B_88b4ef7b9c33", "tool": "reserve_charging_connector", "arguments": {"connectorId": 4, "idTag": "EV-204", "expiryDate": "2027-03-18T15:30:00Z", "reservationId": 7201}}
+{"task_id": "V2B_8905a631b42b", "tool": "set_smart_light", "arguments": {"core.brightlight": {"name": "Reading nook", "power": 42, "state": true}}}
+{"task_id": "V2B_8c5bffd77d25", "tool": "configure_camera_network", "arguments": {"StaticIPv4Address": "192.0.2.40", "StaticIPv4SubNetMask": "255.255.255.0", "StaticIPv4Gateway": "192.0.2.1", "UseDHCP": false}}
+{"task_id": "V2B_98d28f13b4af", "tool": "set_video_subtitles", "arguments": {"confidence": 0.94, "urls": [{"format": "WEB_VTT", "url": "https://example.com/subtitles/clip.vtt"}, {"format": "SRT", "url": "https://example.com/subtitles/clip.srt"}]}}
+{"task_id": "V2B_9bdae199ecd4", "tool": "track_share_event", "arguments": {"content_type": "article", "item_id": "post-431", "method": "email"}}
+{"task_id": "V2B_9c21f559ffc3", "tool": "book_flight", "arguments": {"origin": "SEA", "destination": "BOS", "departure_date": "2027-08-14", "passengers": 2}}
+{"task_id": "V2B_9d7e69c4b46e", "tool": "register_youth_athlete", "arguments": {"name": "Maya Reed", "sex": "F", "age": 13}}
+{"task_id": "V2B_a4d79419f6c8", "tool": "update_scoreboard", "arguments": {"leftPlayerName": "Nia", "leftPlayerCharacters": "Falcon / Owl", "leftPlayerScore": 18, "rightPlayerName": "Omar", "rightPlayerCharacters": "Lynx", "rightPlayerScore": 23}}
+{"task_id": "V2B_b94e21f53f2e", "tool": "convert_temperature", "arguments": {"temperature": 22, "from_unit": "Celsius", "to_unit": "Fahrenheit"}}
+{"task_id": "V2B_b9cdc6285489", "tool": "enable_table_stream", "arguments": {"TableName": "OrdersArchive", "StreamViewType": "NEW_AND_OLD_IMAGES"}}
+{"task_id": "V2B_c8fbab190e91", "tool": "set_annotation_filter", "arguments": {"include": ["^public\\."], "exclude": ["^internal\\."], "regex": true}}
+{"task_id": "V2B_d5eb59cc179f", "tool": "schedule_meeting", "arguments": {"meeting_title": "Launch review", "participants": ["Nia Patel", "Omar Reed"], "start_time": "2027-05-06 09:00", "end_time": "2027-05-06 09:45"}}
+{"task_id": "V2B_d63dc99be3d6", "tool": "create_team_user", "arguments": {"Name": "Nia Patel", "ID": 204, "Email": "nia@example.com", "Role": "Operations", "Active": true}}
+{"task_id": "V2B_dee36871406d", "tool": "record_temperature_event", "arguments": {"temp": 68}}
+{"task_id": "V2B_ef5659105261", "tool": "submit_badge_list", "arguments": {"badgelist": [{"loc": "https://example.com/badges/a.json", "priority": 0.8}, {"loc": "https://example.com/badges/b.json", "priority": 0.3}]}}
+{"task_id": "V2B_f29fbf3ea11c", "tool": "record_channel_transactions", "arguments": {"_id": "dGVsLTIwMjcwMjAx", "_timestamp": "2027-02-01T00:00:00+00:00", "period": "day", "channel": "telephone", "count": 37}}
+{"task_id": "V2B_fca075eb27e3", "tool": "search_restaurants", "arguments": {"location": "Seattle", "cuisine": "Korean", "price_range": {"min": 18, "max": 35}}}

@@ -1,0 +1,30 @@
+{
+  "additional_model_endpoint_requests": 0,
+  "approved_test_intents": 0,
+  "bindings": {
+    "identity": 6,
+    "root_value_resource": 2
+  },
+  "candidate_cards": 8,
+  "catalog_insertions": 0,
+  "limits": [
+    "Cards are offline adapters to pre-existing schemas, not asserted production APIs.",
+    "Positive examples establish validity only, not task difficulty or a semantic peer.",
+    "Wrapped scalar/array schemas need an offline resource binding; no runner compatibility is claimed.",
+    "Original corpus scan covered 9558 schemas; reviewed nomination is not exhaustive source clearance."
+  ],
+  "native_capability_checks": 0,
+  "near_misses_verified": 0,
+  "remaining_unrepresented_gap_targets": [
+    "T045",
+    "T243"
+  ],
+  "represented_gap_targets": [
+    "T016",
+    "T064",
+    "T093",
+    "T131",
+    "T254"
+  ],
+  "valid_samples": 8
+}

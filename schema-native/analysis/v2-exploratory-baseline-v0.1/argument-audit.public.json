@@ -1,0 +1,107 @@
+{
+  "all_argument_error_intents": 46,
+  "argument_errors": {
+    "schema_invalid_arguments": {
+      "api_intents_with_same_change_kind_at_both_sizes": {
+        "changed": 1,
+        "extra": 1
+      },
+      "call_signatures": {
+        "changed": 12,
+        "extra": 4,
+        "extra+changed": 3,
+        "missing+changed": 1,
+        "missing+extra": 4
+      },
+      "calls": 24,
+      "calls_by_change": {
+        "changed": 16,
+        "extra": 11,
+        "missing": 5
+      },
+      "calls_with_nested_change": {
+        "changed": 1,
+        "extra": 5,
+        "missing": 2
+      },
+      "intents": 19,
+      "intents_by_change": {
+        "changed": 13,
+        "extra": 8,
+        "missing": 4
+      },
+      "most_extra_paths_on_one_intent": 32,
+      "paths_by_change": {
+        "changed": 18,
+        "extra": 46,
+        "missing": 10
+      }
+    },
+    "valid_wrong_arguments": {
+      "api_intents_with_same_change_kind_at_both_sizes": {
+        "changed": 1,
+        "extra": 8,
+        "missing": 4
+      },
+      "call_signatures": {
+        "changed": 5,
+        "extra": 15,
+        "extra+changed": 2,
+        "missing": 13,
+        "missing+extra": 9
+      },
+      "calls": 44,
+      "calls_by_change": {
+        "changed": 7,
+        "extra": 26,
+        "missing": 22
+      },
+      "calls_with_nested_change": {
+        "changed": 1,
+        "extra": 1,
+        "missing": 1
+      },
+      "intents": 32,
+      "intents_by_change": {
+        "changed": 6,
+        "extra": 18,
+        "missing": 18
+      },
+      "most_extra_paths_on_one_intent": 58,
+      "paths_by_change": {
+        "changed": 7,
+        "extra": 96,
+        "missing": 26
+      }
+    }
+  },
+  "input_sha256": {
+    "freeze_manifest": "837044af132bd981996749cef38509fa7056566be472b14ccaec1946d70ac7f6",
+    "offline_private_score": "ba9ede9b503384fe19d9f6a3c9b1ff95bcf7c96163b54d320484e302a77c9048",
+    "response_ledger": "30ea8387af859b553814e717ed1e924279cb2634719867fb6d0af6dc77d2d6ec"
+  },
+  "intents": 93,
+  "requests": 177,
+  "schema_invalid_calls_by_reported_validator_keyword": {
+    "additionalProperties": 3,
+    "const": 2,
+    "enum": 3,
+    "exclusiveMaximum": 1,
+    "maxLength": 1,
+    "maxProperties": 3,
+    "minLength": 1,
+    "minimum": 1,
+    "not": 1,
+    "oneOf": 1,
+    "pattern": 4,
+    "required": 3,
+    "type": 3,
+    "uniqueItems": 1
+  },
+  "scope": "exploratory, post hoc audit of frozen baseline",
+  "valid_wrong_argument_calls_with_extra_matching_direct_default": 6,
+  "wrong_calls_valid_under_emitted_tool_schema": {
+    "valid_wrong_arguments": 44,
+    "wrong_tool": 4
+  }
+}

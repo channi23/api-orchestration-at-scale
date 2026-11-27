@@ -1,0 +1,1126 @@
+{
+  "catalogs_changed_from_probe": false,
+  "scope": "Frozen 300-tool pool only. Text hits are not semantic peers; misses are not an absence proof in upstream or other APIs.",
+  "searched_pool_size": 300,
+  "searches": [
+    {
+      "candidates": [
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Reserve an electric-vehicle charging connector for an ID tag until an expiry date."
+            },
+            {
+              "path": "/properties/expiryDate",
+              "text": "expiryDate"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "05fd914e283409cbfa8fa57c877369bd55fb1b2bc45127ba77f6a62da042cd48",
+          "schema_id": "Github_easy/o43988",
+          "tool_id": "T006",
+          "tool_name": "reserve_charging_connector",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/engine/properties/timeout",
+              "text": "timeout"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "5cb048417270bfc70b907476545b18f7c5c886994927f8121456e90a635e61a6",
+          "schema_id": "Github_medium/o19062",
+          "tool_id": "T010",
+          "tool_name": "configure_bidding_engine",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Configure the cluster command-line client's connection, timeout, and output settings."
+            },
+            {
+              "path": "/properties/timeout",
+              "text": "timeout"
+            },
+            {
+              "path": "/properties/timeout/description",
+              "text": "Request timeout in seconds"
+            },
+            {
+              "path": "/properties/timeout/title",
+              "text": "Request timeout in seconds"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "2730d8e5c2a7f4186921365fabfe6777c8972c753061a52730f2cac08178716e",
+          "schema_id": "Github_medium/o76552",
+          "tool_id": "T025",
+          "tool_name": "configure_dcos_cli",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Create a network-appliance variable with its type, scope, expiry, and overflow behaviour."
+            },
+            {
+              "path": "/properties/expires",
+              "text": "expires"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "16c5193d165abc313a05e709c4e357c2bfc3e2456bf8ef18930614a29d41c359",
+          "schema_id": "Github_easy/o30815",
+          "tool_id": "T061",
+          "tool_name": "create_appliance_variable",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/clouddblookuptimeout",
+              "text": "clouddblookuptimeout"
+            },
+            {
+              "path": "/properties/cloudkeepalivetimeout",
+              "text": "cloudkeepalivetimeout"
+            },
+            {
+              "path": "/properties/cloudserverconnecttimeout",
+              "text": "cloudserverconnecttimeout"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "e08b8fb9ea87ec5277a6f195441fb4a3732d065b3fbeff0095dd483ecda7d20f",
+          "schema_id": "Github_medium/o31097",
+          "tool_id": "T108",
+          "tool_name": "set_url_filter_params",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Throttle payloads to a maximum rate per minute and store the time since the last allowed payload."
+            },
+            {
+              "path": "/properties/timeSincePath/description",
+              "text": "JSON path to store the time since last not throttled payload"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "d377eed47af6663b8321ae06cdd520c5277aebe740888756d1281e315a88b430",
+          "schema_id": "Github_easy/o6228",
+          "tool_id": "T136",
+          "tool_name": "configure_rate_throttle",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/ttl",
+              "text": "ttl"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "360d251f0467caa1b7d42505956933b5b06bc405ac62ac8d56316ceaa2883817",
+          "schema_id": "Github_easy/o9939",
+          "tool_id": "T182",
+          "tool_name": "invite_org_member",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Add a payment card with cardholder name, card number, expiry month and year, and CVV."
+            },
+            {
+              "path": "/properties/expireDateMonth",
+              "text": "expireDateMonth"
+            },
+            {
+              "path": "/properties/expireDateYear",
+              "text": "expireDateYear"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "dfaa09d6a1cf8bed18cb795d14c4c4d3c842c32edbee578705efc0480d6bf521",
+          "schema_id": "Github_easy/o74459",
+          "tool_id": "T190",
+          "tool_name": "add_payment_card",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Create a post in a discussion thread with a title, content, publication and expiration dates, and a headline flag."
+            },
+            {
+              "path": "/properties/expiration_date",
+              "text": "expiration_date"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "bbf1ef2b3432c842198f59bb02092d0e7909557a1bf94c2f263783c4feb45cad",
+          "schema_id": "Github_easy/o12215",
+          "tool_id": "T294",
+          "tool_name": "create_forum_post",
+          "units_or_api_semantics_verified": false
+        }
+      ],
+      "pattern": "retention|lifespan|time.?to.?live|ttl|expir|timeout",
+      "target_tool_id": "T254"
+    },
+    {
+      "candidates": [
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Assign a user a role (administrator, contributor, or viewer) in a food pantry."
+            },
+            {
+              "path": "/properties/pantryId/description",
+              "text": "Unique ID of food pantry"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "5e6e71a48d3ba05303762d2b85efa1230482b5e01eb4a0487dc04263b0fa6d5d",
+          "schema_id": "Github_medium/o53616",
+          "tool_id": "T135",
+          "tool_name": "assign_pantry_role",
+          "units_or_api_semantics_verified": false
+        }
+      ],
+      "pattern": "calorie|nutrition|meal|food",
+      "target_tool_id": "T131"
+    },
+    {
+      "candidates": [
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/reservationId",
+              "text": "reservationId"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "05fd914e283409cbfa8fa57c877369bd55fb1b2bc45127ba77f6a62da042cd48",
+          "schema_id": "Github_easy/o43988",
+          "tool_id": "T006",
+          "tool_name": "reserve_charging_connector",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Book a hotel room of a given type in a location for a number of guests and dates."
+            },
+            {
+              "path": "/properties/room_type",
+              "text": "room_type"
+            },
+            {
+              "path": "/properties/room_type/description",
+              "text": "The type of room required"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "bfb09106fcb436b0641fb1450c79785d10e7564929e70385a72d885952b880e0",
+          "schema_id": "Glaiveai2K/book_hotel_e2c3dd06",
+          "tool_id": "T166",
+          "tool_name": "book_hotel",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Declare annual rental-income flags: non-resident landlord status and shared rent-a-room income."
+            },
+            {
+              "path": "/properties/rarJointLet/description",
+              "text": "A notification that the Rent A Room income (RAR) is shared with another individual"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "877ad02bfa546c63f7bb95445deeb77232d599da7de337c7a42afd5629cfdca0",
+          "schema_id": "Github_easy/o46432",
+          "tool_id": "T197",
+          "tool_name": "declare_rental_flags",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Configure commenting on content: whether it is allowed and displayed, moderation, and how many days it stays open."
+            },
+            {
+              "path": "/properties/moderation_required",
+              "text": "moderation_required"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "6ae72bce68d5632574ddcf3c19e9dc0e260a3d844e8ec902c767fc18427c0fc7",
+          "schema_id": "WashingtonPost/wp_45_Normalized",
+          "tool_id": "T200",
+          "tool_name": "configure_comments",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/reservationId",
+              "text": "reservationId"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "3bf8b4144b66d1c74454a433ebb936bfcccf485b2aa417b09fb9892cd830d416",
+          "schema_id": "Github_easy/o43992",
+          "tool_id": "T230",
+          "tool_name": "start_charging_transaction",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/publication_date/description",
+              "text": "string timestamp representing the start date of the booking"
+            },
+            {
+              "path": "/properties/expiration_date/description",
+              "text": "string timestamp representing the start date of the booking"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "bbf1ef2b3432c842198f59bb02092d0e7909557a1bf94c2f263783c4feb45cad",
+          "schema_id": "Github_easy/o12215",
+          "tool_id": "T294",
+          "tool_name": "create_forum_post",
+          "units_or_api_semantics_verified": false
+        }
+      ],
+      "pattern": "room|booking|moderation|reservation|slot",
+      "target_tool_id": "T045"
+    },
+    {
+      "candidates": [
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Create a calendar event with a title, start and end time, and location."
+            },
+            {
+              "path": "/properties/location",
+              "text": "location"
+            },
+            {
+              "path": "/properties/location/description",
+              "text": "The location of the event"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "18d3a859df59e6254099d3637b171492241597d5548134aba8b13a241827087e",
+          "schema_id": "Glaiveai2K/create_calendar_event_a2233073",
+          "tool_id": "T001",
+          "tool_name": "create_calendar_event",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Search job listings by keywords, location, and salary range."
+            },
+            {
+              "path": "/properties/location",
+              "text": "location"
+            },
+            {
+              "path": "/properties/location/description",
+              "text": "The location to search within"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "d244f38ebe81074ff74fa234c9ab06427ec9b8e5a2d497bac16d5ac2f9ae2853",
+          "schema_id": "Glaiveai2K/search_jobs_ece2422b",
+          "tool_id": "T005",
+          "tool_name": "search_jobs",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/state",
+              "text": "state"
+            },
+            {
+              "path": "/properties/country",
+              "text": "country"
+            },
+            {
+              "path": "/properties/country/description",
+              "text": "Country as uppercase ISO 3166-1 alpha-2 code"
+            },
+            {
+              "path": "/properties/phone/description",
+              "text": "telephone number (mandatory when using UPS and the following terms apply: service is one_day or one_day_early or ship to country is different than ship from country)"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "9412f8af4d34678b4208bff6069c66d91d4114c99bc9980ccc9051dc3b1e69cf",
+          "schema_id": "Github_medium/o75563",
+          "tool_id": "T008",
+          "tool_name": "set_shipment_address",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Search for available hotels in a location for given check-in and check-out dates."
+            },
+            {
+              "path": "/properties/location",
+              "text": "location"
+            },
+            {
+              "path": "/properties/location/description",
+              "text": "The location of the hotel"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "75fcf14ee2f860cc088dcffeff6e6f9875ad0fea2cefc6b618e4864e73d6b204",
+          "schema_id": "Glaiveai2K/search_hotels_d2c27c8f",
+          "tool_id": "T012",
+          "tool_name": "search_hotels",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Set the name, brightness level, and on/off state of a smart light."
+            },
+            {
+              "path": "/definitions/core.brightlight/properties/state",
+              "text": "state"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "0e576cbccf0dfe5033bd92d02201156c962c92a1d320b4b5707d6b10df45ea9b",
+          "schema_id": "Github_easy/o91010",
+          "tool_id": "T018",
+          "tool_name": "set_smart_light",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/$schema-location",
+              "text": "$schema-location"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "386750c0ec87131a6d66f447145934d721cdefb08e70da917bf9e7a1e5226519",
+          "schema_id": "Github_easy/o35778",
+          "tool_id": "T035",
+          "tool_name": "set_service_exposure",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/state",
+              "text": "state"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "dcbb05884baddc6a36c80a653a7e02aba70d0a2ec397c178db2768882b66077e",
+          "schema_id": "Github_easy/o81497",
+          "tool_id": "T047",
+          "tool_name": "update_notification_state",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Search for restaurants by location, cuisine, and price range."
+            },
+            {
+              "path": "/properties/location",
+              "text": "location"
+            },
+            {
+              "path": "/properties/location/description",
+              "text": "The location to search for restaurants"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "c8cf8a9a50bea1e5085918f0d4e8abefa8ff3763e3943a96535ae7942a9a39a1",
+          "schema_id": "Glaiveai2K/search_restaurants_19db03d4",
+          "tool_id": "T049",
+          "tool_name": "search_restaurants",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/definitions/PostalAddress/properties/addressCountry",
+              "text": "addressCountry"
+            },
+            {
+              "path": "/definitions/PostalAddress/properties/addressRegion",
+              "text": "addressRegion"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "4a7a64e69dac35edaa5d0575d4ffb09366a5a5c3a7cb3a7869d97a9aa29cde0e",
+          "schema_id": "Github_medium/o43729",
+          "tool_id": "T089",
+          "tool_name": "create_place",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Record an intelligence statement value with its credibility rating on the Admiralty scale."
+            },
+            {
+              "path": "/title",
+              "text": "statement"
+            },
+            {
+              "path": "/properties/value/description",
+              "text": "A value from the enumeration for this statement"
+            },
+            {
+              "path": "/properties/description/description",
+              "text": "A textual description of this statement"
+            },
+            {
+              "path": "/properties/credibility/description",
+              "text": "The credibility of this statement, using the Admirality scale"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "7fe6db5d5f4a0f022f8a9f1ad17e31179900b84f0b8eafb7a0d3918d14d94d26",
+          "schema_id": "Github_easy/o51223",
+          "tool_id": "T091",
+          "tool_name": "record_intel_statement",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/urls/description",
+              "text": "The locations of any subtitle transcriptions of the video."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "ee8211279164d73d731d26a8d4182514fc2c44d29ec1ae0bc887848607510354",
+          "schema_id": "Github_easy/o85985",
+          "tool_id": "T093",
+          "tool_name": "set_video_subtitles",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/badgelist/items/properties/loc/description",
+              "text": "The location URI of a badge assertion."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "c771d983a35d0f5aacd13dce2a198b34deb85a78e08b585c165ce0ee18040cd2",
+          "schema_id": "Github_easy/o21869",
+          "tool_id": "T105",
+          "tool_name": "submit_badge_list",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/state",
+              "text": "state"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "1be866c8d93854c0b404cafc179018000e8e793125f97cd29dcf015596bdc860",
+          "schema_id": "Github_easy/o31242",
+          "tool_id": "T115",
+          "tool_name": "configure_storefront_site",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/href/description",
+              "text": "A URL. Specifies the location of the linked document."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "3172d9368d2860d5ba6e47659f3abb18a7f8226e1f90a1d120e5c29a43b4d012",
+          "schema_id": "Github_easy/o28196",
+          "tool_id": "T116",
+          "tool_name": "add_document_link",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/description",
+              "text": "Defines how location information will be retrieved from a [CSV](csvLayer.md) file referenced through the web, ie. referenced by URL."
+            },
+            {
+              "path": "/title",
+              "text": "locationInfo"
+            },
+            {
+              "path": "/properties/locationType",
+              "text": "locationType"
+            },
+            {
+              "path": "/properties/locationType/description",
+              "text": "String value indicating location type."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "e93007ee4efe5b95ea7fb86e7fd397a77ad2dd06e76112d26eaaa55a7fd11574",
+          "schema_id": "Github_easy/o90233",
+          "tool_id": "T133",
+          "tool_name": "set_csv_location_fields",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/type/description",
+              "text": "A description of what the named entity is. E.g. 'organization', 'person', or 'location'."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "fb0ec956e1ccbb2592139ce60da30a8b50661007022fc413cbd307cc6f1e72ae",
+          "schema_id": "Github_easy/o85973",
+          "tool_id": "T163",
+          "tool_name": "tag_named_entity",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/applicationStateType",
+              "text": "applicationStateType"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "1abfd1d99a6d7d31b13bcfdb530e0080cd2ef9f05d035b420920881e011d5b30",
+          "schema_id": "Snowplow/sp_145_Normalized",
+          "tool_id": "T164",
+          "tool_name": "track_push_message",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Book a hotel room of a given type in a location for a number of guests and dates."
+            },
+            {
+              "path": "/properties/location",
+              "text": "location"
+            },
+            {
+              "path": "/properties/location/description",
+              "text": "The location of the hotel"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "bfb09106fcb436b0641fb1450c79785d10e7564929e70385a72d885952b880e0",
+          "schema_id": "Glaiveai2K/book_hotel_e2c3dd06",
+          "tool_id": "T166",
+          "tool_name": "book_hotel",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/state",
+              "text": "state"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "8c0d88d1f5a1259812ecba6494ed10e065a72cabfa0b3d025c36acc368a225dd",
+          "schema_id": "Github_easy/o33193",
+          "tool_id": "T169",
+          "tool_name": "register_service_site",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Instruct a charge point to download and install firmware from a location at a given time, with retry settings."
+            },
+            {
+              "path": "/properties/location",
+              "text": "location"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "2c050580cad9f94e4b3719523587f5ff1fda3f24cb3caf3988ff95fd66b3dd34",
+          "schema_id": "Github_easy/o43997",
+          "tool_id": "T174",
+          "tool_name": "update_firmware",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/webpack/properties/configFile/description",
+              "text": "Location of your webpack config file"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "b5bc983cea243d42318939abd7f2cc9dcc776f015065adc2a84bd41b44361021",
+          "schema_id": "Github_easy/o78482",
+          "tool_id": "T187",
+          "tool_name": "configure_webpack_transpiler",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Record an app state transition, such as a launch or backgrounding, with first-run and upgrade flags."
+            },
+            {
+              "path": "/description",
+              "text": "Schema for an app state transition event"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "26bdfe8743e8cbb382b54eea00455d108de5e57ae76c46d90263fcadea279f22",
+          "schema_id": "Snowplow/sp_140_Normalized",
+          "tool_id": "T189",
+          "tool_name": "track_app_state_transition",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/awsRegion",
+              "text": "awsRegion"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "3902f7f8114f3f198f7bb83bea2d4f5e255b414ca47999859f6848a2cfe32740",
+          "schema_id": "Snowplow/sp_359_Normalized",
+          "tool_id": "T192",
+          "tool_name": "configure_dynamodb_storage",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Create a region tag that restricts which entries are visible, with a name, a group, and a comment."
+            },
+            {
+              "path": "/description",
+              "text": "A region is some kind of a logical group that could be set for some entries. It allows 'vertical' restrictions of object visibility"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "ccb8f7510a23006f34b7be53fe4271d6fb75755d67bdcbe84a67cf6a232e37e0",
+          "schema_id": "Github_medium/o73996",
+          "tool_id": "T225",
+          "tool_name": "create_region_tag",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Register a research organization with its title, acronym, country, DOI, and alternate identifiers."
+            },
+            {
+              "path": "/properties/country",
+              "text": "country"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "26aa47241711ffb76acb0e205cb66b2bb3cb4e85769fc7b808103965b95b271e",
+          "schema_id": "Github_easy/o57450",
+          "tool_id": "T266",
+          "tool_name": "register_organization",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/displayUTCOffset/description",
+              "text": "UTC offset in decimal hours. Not to be applied to datetime for sun position, only to adjust display of datetime in UI. If displayUTCOffset is null, offset is calculated for the current location (approximate only)."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "408a6ebd3117bd70ed266135604ed92cd0648605d296e5b51777bbffa736ab5b",
+          "schema_id": "Github_easy/o90230",
+          "tool_id": "T279",
+          "tool_name": "set_scene_lighting",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Render a star-rating component with community and user ratings and read-only or disabled states."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "30b9ae84b35d2f70fd59feb5bfc9c7816d18d78beb6336f59e54b21cf92cbe19",
+          "schema_id": "Github_easy/o85205",
+          "tool_id": "T286",
+          "tool_name": "render_rating_component",
+          "units_or_api_semantics_verified": false
+        }
+      ],
+      "pattern": "country|region|state|location",
+      "target_tool_id": "T064"
+    },
+    {
+      "candidates": [],
+      "pattern": "subtitle|caption|text.?track|audio.?track",
+      "target_tool_id": "T093"
+    },
+    {
+      "candidates": [
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/score",
+              "text": "score"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "fb0ec956e1ccbb2592139ce60da30a8b50661007022fc413cbd307cc6f1e72ae",
+          "schema_id": "Github_easy/o85973",
+          "tool_id": "T163",
+          "tool_name": "tag_named_entity",
+          "units_or_api_semantics_verified": false
+        }
+      ],
+      "pattern": "score|leaderboard|match.?result|player",
+      "target_tool_id": "T243"
+    },
+    {
+      "candidates": [
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/include_numbers",
+              "text": "include_numbers"
+            },
+            {
+              "path": "/properties/include_numbers/description",
+              "text": "Include numbers in the password"
+            },
+            {
+              "path": "/properties/include_special_characters",
+              "text": "include_special_characters"
+            },
+            {
+              "path": "/properties/include_special_characters/description",
+              "text": "Include special characters in the password"
+            },
+            {
+              "path": "/properties/include_uppercase",
+              "text": "include_uppercase"
+            },
+            {
+              "path": "/properties/include_uppercase/description",
+              "text": "Include uppercase letters in the password"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "e782dd6cf3a1925321a61daab007ba9a1086e89b81f71717c624b9f238019eec",
+          "schema_id": "Glaiveai2K/generate_password_42faba47",
+          "tool_id": "T009",
+          "tool_name": "generate_password",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Configure an ad bidding engine with its demand-side platform endpoints, log level, and port."
+            },
+            {
+              "path": "/properties/log_level",
+              "text": "log_level"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "5cb048417270bfc70b907476545b18f7c5c886994927f8121456e90a635e61a6",
+          "schema_id": "Github_medium/o19062",
+          "tool_id": "T010",
+          "tool_name": "configure_bidding_engine",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/percent_allocated/description",
+              "text": "Percentage of resource to include in utilization metric calculation"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "1d1b94182b6b33c593c4e604bb8a31faec7874bd6f4924efaa21c90a740a8472",
+          "schema_id": "Github_medium/o83272",
+          "tool_id": "T022",
+          "tool_name": "define_resource_spec",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Configure a camera's temporal mean filter by the number of images to average."
+            },
+            {
+              "path": "/title",
+              "text": "O3D3xx temporal mean filter configuration"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "3c14672bdc670fc5471c167df0120c2ebf5d26c926f2aed50d045b1ca20ea78a",
+          "schema_id": "Github_easy/o57656",
+          "tool_id": "T043",
+          "tool_name": "set_temporal_filter",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/price_range/properties/max/description",
+              "text": "The maximum price range of restaurants to include in search results"
+            },
+            {
+              "path": "/properties/price_range/properties/min/description",
+              "text": "The minimum price range of restaurants to include in search results"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "c8cf8a9a50bea1e5085918f0d4e8abefa8ff3763e3943a96535ae7942a9a39a1",
+          "schema_id": "Glaiveai2K/search_restaurants_19db03d4",
+          "tool_id": "T049",
+          "tool_name": "search_restaurants",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/description",
+              "text": "Memo objects represent arbitrary data that can be included in a transaction"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "7af4acd6aa97e41af7840c701b7e9ce4dcced3c971e72210ef624d12605a8bd8",
+          "schema_id": "Github_easy/o89147",
+          "tool_id": "T071",
+          "tool_name": "attach_transaction_memo",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/attachments/description",
+              "text": "The file attachments to be included in the email"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "66316e56e4d879c60dea18c6965ead63815d2586c4c98656d49b330b61f83f1c",
+          "schema_id": "Glaiveai2K/send_email_8f13fa2e",
+          "tool_id": "T085",
+          "tool_name": "send_email",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Bind a caching policy globally with a priority, a bind type, and evaluation settings."
+            },
+            {
+              "path": "/title",
+              "text": "cacheglobal_cachepolicy_binding"
+            },
+            {
+              "path": "/properties/globalbindtype",
+              "text": "globalbindtype"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "d7e84132365c4864744151a8ebc02a90e6401760d855fcf199bcde1906a52d58",
+          "schema_id": "Github_medium/o30262",
+          "tool_id": "T094",
+          "tool_name": "bind_cache_policy",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Set URL-filtering database parameters such as the cloud host, update schedule, and database threads."
+            },
+            {
+              "path": "/title",
+              "text": "urlfilteringparameter"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "e08b8fb9ea87ec5277a6f195441fb4a3732d065b3fbeff0095dd483ecda7d20f",
+          "schema_id": "Github_medium/o31097",
+          "tool_id": "T108",
+          "tool_name": "set_url_filter_params",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/buyerNetworkIdentifier/description",
+              "text": "One of the following Buyer-assigned values may be included: Buyer OVC Identifier, Buyer EVC Identifier, Buyer UNI Identifier, Buyer ENNI Identifier."
+            },
+            {
+              "path": "/properties/sellerNetworkIdentifier/description",
+              "text": "One of the following Seller-assigned values may be included: OVC Identifier, EVC Identifier, UNI Identifier, ENNI Identifier."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "e0bcf67ba1279daac1fdb6fab41a6324874c1d209a9bfaa42c307eaeb244c404",
+          "schema_id": "Github_easy/o28187",
+          "tool_id": "T130",
+          "tool_name": "request_order_disconnect",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Whitelist specific CVEs with rationales and ignore vulnerabilities at or below a severity level."
+            },
+            {
+              "path": "/description",
+              "text": "Whitelist"
+            },
+            {
+              "path": "/title",
+              "text": "Whitelist"
+            },
+            {
+              "path": "/properties/ignoreSevertiesAtOrBelow",
+              "text": "ignoreSevertiesAtOrBelow"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "da383d8a4a74e601d2faeddf2574f18bda46cb6cb6e12d71432cab54553d1298",
+          "schema_id": "Github_easy/o76439",
+          "tool_id": "T148",
+          "tool_name": "set_vulnerability_whitelist",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/mjs_access_whitelist",
+              "text": "mjs_access_whitelist"
+            },
+            {
+              "path": "/properties/mjs_access_whitelist/description",
+              "text": "The mjs_access_whitelist member is an array of rules that indicates the type of access the URLs matching the rule should have."
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "d722ea3f9d957f1835f091f4aa2d9e7af40a77bf066d5c436c14e13da140c34b",
+          "schema_id": "Github_easy/o58320",
+          "tool_id": "T172",
+          "tool_name": "set_api_access_whitelist",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Configure batch conversion of video files to MPEG-4 with source globs, output directory, and ffmpeg options."
+            },
+            {
+              "path": "/properties/src/description",
+              "text": "Input go files(Glob), expand with env first. ie ~/movie/non-mp4/&#42;&#42;/&#42;.{mp4,mkv,avi,flv}"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "d8112f79bd4935dd5333aba7a366a5d27af5cfff26fb69440f6b714ab1529c70",
+          "schema_id": "Github_medium/o39086",
+          "tool_id": "T205",
+          "tool_name": "configure_video_conversion",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "tool_description",
+              "text": "Configure a camera's spatial bilateral filter mask size and smoothing parameters."
+            },
+            {
+              "path": "/title",
+              "text": "O3D3xx spatial bilateral filter configuration"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "8ddf6876cdee283e997d9597a1587ecdbf1b26ffeaf1ca106c8b32c2c1eef718",
+          "schema_id": "Github_easy/o57639",
+          "tool_id": "T207",
+          "tool_name": "set_spatial_filter",
+          "units_or_api_semantics_verified": false
+        },
+        {
+          "matched_texts": [
+            {
+              "path": "/properties/includeFiles",
+              "text": "includeFiles"
+            },
+            {
+              "path": "/properties/includeDataTableRows",
+              "text": "includeDataTableRows"
+            },
+            {
+              "path": "/properties/includeDevices",
+              "text": "includeDevices"
+            }
+          ],
+          "near_miss_verified": false,
+          "schema_canonical_sha256": "cc1e58601b39b2f34fcf8497039466f196567f589fba1d601bb00887f5b6c395",
+          "schema_id": "Github_easy/o9780",
+          "tool_id": "T222",
+          "tool_name": "request_data_export",
+          "units_or_api_semantics_verified": false
+        }
+      ],
+      "pattern": "include|exclude|glob|filter|allow.?list|white.?list|ignore|log.?level",
+      "target_tool_id": "T016"
+    }
+  ]
+}

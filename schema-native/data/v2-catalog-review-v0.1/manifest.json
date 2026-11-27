@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-25",
+  "inputs_sha256": {
+    "schema-native/data/v2-authoring-v0.3/catalogs.jsonl": "2d66f2caa538a764b73fb60f6771605f131f05f6793867d8e4687cc33f710237",
+    "schema-native/data/v2-authoring-v0.3/drafts.clean.jsonl": "09cb7af7d830832a8b246b0b436560970c94df674c918ccb9924607b690abf02",
+    "schema-native/data/v2-authoring-v0.3/manifest.json": "a7e55ce13573d9f21d6e835c826b6d036047bff5866787f73f75e1fd8e794b45",
+    "schema-native/data/v2-catalog-review-v0.1/FRESH_REVIEW_INSTRUCTIONS.md": "f20eb5e90c549337985e88f1be2254134511fd95ed84366f4e8edd8fee264a1a",
+    "schema-native/data/v2-catalog-review-v0.1/swaps.jsonl": "2a4ab154a426ee82d4489706bd14b12a5c8d44dd6b8b1273f5a4ebd330ed1a54",
+    "schema-native/data/v2-source-expansion-v0.1/cards.source.jsonl": "2bd8b37aceef358a3e735b048001b6ef14c25c7de1ae3aa14ffceca604e554a5",
+    "schema-native/data/v2-source-expansion-v0.1/manifest.json": "7d1139c7bc9919694f6a4e3e8b2e422dfad69a15329a2c6aaa373455eb2bd657",
+    "schema-native/sn/v2_catalog_review.py": "22b021ef2856645b9ccbef2145c243884420d25fa3312fda323f3832416e1e0b"
+  },
+  "policy_sha256": "d4b6c56b5d9f5bcd677e4cacc644dad192d4ac0b7ab2d74f75067409207f6b4a",
+  "scope": "Model-free catalog review, development only",
+  "source_collection_revision": "9a94995b9279ae3af3aed4b2629172790b968d14",
+  "version": "v2-catalog-review-v0.1"
+}

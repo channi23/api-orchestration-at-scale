@@ -1,0 +1,278 @@
+{
+  "approved_test_intents": 0,
+  "checks": [
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "negative_counts": [
+        12,
+        12
+      ],
+      "pair_id": "K01",
+      "pair_kind": "validity_separable",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "negative_counts": [
+        12,
+        13
+      ],
+      "pair_id": "K02",
+      "pair_kind": "asymmetric_edit",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        true,
+        false,
+        true
+      ],
+      "negative_counts": [
+        13,
+        16
+      ],
+      "pair_id": "K03",
+      "pair_kind": "asymmetric_edit",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "negative_counts": [
+        15,
+        13
+      ],
+      "pair_id": "K04",
+      "pair_kind": "asymmetric_edit",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "negative_counts": [
+        17,
+        17
+      ],
+      "pair_id": "K05",
+      "pair_kind": "validity_separable",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "negative_counts": [
+        16,
+        16
+      ],
+      "pair_id": "K06",
+      "pair_kind": "validity_separable",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "negative_counts": [
+        16,
+        16
+      ],
+      "pair_id": "K07",
+      "pair_kind": "validity_separable",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "negative_counts": [
+        12,
+        12
+      ],
+      "pair_id": "K08",
+      "pair_kind": "validity_separable",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "negative_counts": [
+        14,
+        14
+      ],
+      "pair_id": "K09",
+      "pair_kind": "equivalent_rewrite",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "negative_counts": [
+        12,
+        12
+      ],
+      "pair_id": "K10",
+      "pair_kind": "equivalent_rewrite",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "negative_counts": [
+        8,
+        8
+      ],
+      "pair_id": "K11",
+      "pair_kind": "validity_separable",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        true,
+        false,
+        true
+      ],
+      "negative_counts": [
+        8,
+        7
+      ],
+      "pair_id": "K12",
+      "pair_kind": "asymmetric_edit",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "negative_counts": [
+        7,
+        12
+      ],
+      "pair_id": "K13",
+      "pair_kind": "asymmetric_edit",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        true,
+        false,
+        true
+      ],
+      "negative_counts": [
+        7,
+        7
+      ],
+      "pair_id": "K14",
+      "pair_kind": "asymmetric_edit",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "negative_counts": [
+        7,
+        16
+      ],
+      "pair_id": "K15",
+      "pair_kind": "asymmetric_edit",
+      "valid_wrong_witnesses_verified": 2
+    },
+    {
+      "edit_verified": true,
+      "matrix": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "negative_counts": [
+        8,
+        8
+      ],
+      "pair_id": "K16",
+      "pair_kind": "validity_separable",
+      "valid_wrong_witnesses_verified": 2
+    }
+  ],
+  "independent_reviews": 0,
+  "limits": [
+    "Family groups are conservative author labels, not proof of independence.",
+    "Synthetic schema-conditioned preferences are not representative API traffic.",
+    "Equivalent examples share concepts with exposed stress-fixtures 0.4; no held-out novelty claim.",
+    "Engine support and tokenizer behavior require separate evidence."
+  ],
+  "pair_kinds": {
+    "asymmetric_edit": 7,
+    "equivalent_rewrite": 2,
+    "validity_separable": 7
+  },
+  "pairs": 16,
+  "proposed_family_groups": 10,
+  "schema_units": 32,
+  "status": "Development-only synthetic seeds, not a frozen or powered held-out dataset",
+  "version": "v2-keyword-seed-v0.1"
+}

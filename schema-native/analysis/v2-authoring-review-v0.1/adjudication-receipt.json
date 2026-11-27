@@ -1,0 +1,8 @@
+{
+  "blind_review": false,
+  "file": "ADJUDICATION.md",
+  "original_receipt_sha256": "2d19b7f358db5c26987f994a656b57c646bbea0772d352cd16a9f767596bf021",
+  "received_date": "2026-11-25",
+  "sha256": "5eeb77040b18435657398257d32306decc42a6c83f5e596ff7f79b27c681c778",
+  "status": "Reviewer has now seen the gold; this is unblinded adjudication, not a new blind solve"
+}

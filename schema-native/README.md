@@ -21,6 +21,29 @@ See [the resource guide](RESOURCE_GUIDE.md).
 The original `experiment/` tracked files are unchanged.
 `PLAN.md` contains the preregistered predictions and research gates.
 
+## Next milestone: v2 design review
+
+E0b is complete; its [accepted interpretation](analysis/e0b-amendment3-v1/INTERPRETATION.md)
+records the order effect and limits. The next work is the [draft v2 benchmark specification](V2_DESIGN.md)
+for [issue #6](https://github.com/channi23/api-orchestration-at-scale/issues/6), with
+[model-free sample-size planning](analysis/v2-design/POWER.md) and
+[verification details](analysis/v2-design/VALIDATION.md).
+The user authorized candidate authoring next; the [first 32-task draft batch](data/v2-authoring-v0.1/README.md)
+and [author self-review](analysis/v2-design/AUTHORING_REVIEW.md) are now available for independent
+review, with all 250 candidate tools inventoried and no accepted test intents yet.
+The [first blind-review response](analysis/v2-authoring-review-v0.1/RESPONSE.md) records 32/32
+author/reviewer agreement while retaining unresolved wording and difficulty concerns.
+The [joint adjudication status](analysis/v2-authoring-review-v0.1/JOINT_STATUS.md) and separate
+[v0.2 revision](data/v2-authoring-v0.2/README.md) preserve the originals, clarify the prompt contract
+and prepare a fresh review packet; catalog/coverage gaps still block test approval.
+The [fresh-context v0.2 review](analysis/v2-authoring-review-v0.2/RESPONSE.md) also matches all 32
+draft golds, while identifying eight assumption-bearing tasks and unresolved catalog concerns.
+The [v0.2 adjudication](analysis/v2-authoring-review-v0.2/JOINT_STATUS.md) now leads to a separate
+[v0.3 wording revision and source-pool probe](data/v2-authoring-v0.3/README.md); gold and old versions
+are preserved, and unresolved catalog/source gaps still block test approval.
+The proposed 800-test/200-development intent target is provisional, not an existing dataset or
+a power guarantee. No new inference or training is authorized; E1/E2 remain gated.
+
 ## Model-free verification
 
 Python 3.13 is the recommended Mac environment. Python 3.14 was used for the local tests.
