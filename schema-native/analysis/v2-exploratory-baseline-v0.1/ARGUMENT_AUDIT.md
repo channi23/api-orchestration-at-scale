@@ -43,6 +43,9 @@ development check against known mistakes. The previous
 [checklist experiment](../v2-keyword-repairs-v0.1/RESULTS.md) left all 32 stress outcomes
 unchanged, so the candidate needs a measured gain to justify its extra call.
 
+The [measured development comparison](../v2-argument-review-v0.1/RESULTS.md)
+completed all 11 reviews. Exact accuracy stayed at 9/11 with 32.0% more tokens.
+
 ## Verification
 
 The audit checks the frozen manifest, response ledger, validator version and scorer
