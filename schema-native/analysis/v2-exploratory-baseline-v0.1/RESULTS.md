@@ -45,6 +45,8 @@ intents, 52.9% on assertion pairs and 64.3% on grounding pairs.
 The frozen scorer ran offline against the private response ledger. The
 [public aggregate](aggregate.public.json) gives counts and SHA-256 receipts.
 Prompts, raw replies, gold answers and per-task scores stay local.
+The [offline argument audit](ARGUMENT_AUDIT.md) breaks down wrong calls by added
+fields, omitted fields and changed values.
 
 ```bash
 umask 077
